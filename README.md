@@ -24,8 +24,6 @@ A **Play** defines the work. **Acts** break it into sequential steps. **Leads** 
 
 Need human approval before a critical step? Add a **Gate** — no agent has ever passed one autonomously, and the architecture makes it structurally impossible. Need confidence that an Act's output is correct before the next one begins? The **Checklist Agent** runs in a fresh, isolated context with no access to the generator's reasoning — zero confirmation bias, just evidence against criteria. Acts are self-contained with defined inputs and outputs, so a Play is composable like building blocks: swap an Act, add one, reorder the sequence. The model adapts to your workflow, not the other way around.
 
-→ See [`theater-model/README.md`](theater-model/README.md) for the model, templates, and examples.
-
 ---
 
 ### [Iteration Harness](harness-core/README.md)
@@ -35,8 +33,6 @@ Shipping a skill that "works in the demo" is easy. Shipping one that survives re
 Tests are written first and locked after approval — the skill adapts to the tests, never the other way around. When tests fail, a **Reasoner** performs root-cause analysis and writes fix instructions. A **Skill-Change Agent** applies the fix with full version control. When tests pass, an independent **Review** act scores the skill across 8 quality dimensions. Findings go back through the Reasoner with explicit delta-acceptance thresholds — not every finding is worth fixing, and the system knows the difference.
 
 The harness enforces strict separation of concerns: the test-runner can't edit skills, the skill-changer can't run tests, the reviewer can't modify anything. Agents communicate through files, not prompts. Every decision, fix, and review finding is a versioned artifact — making the entire development history auditable and recoverable.
-
-→ See [`harness-core/README.md`](harness-core/README.md) for the full production guide, role definitions, and implementation details.
 
 ---
 
