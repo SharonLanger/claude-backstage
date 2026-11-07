@@ -6,6 +6,6 @@ Each skill will have its own folder with its instructions, purpose, required inp
 
 ## Available skills
 
-No standalone skills have been added yet.
+- [SVG diagram](svg-diagram/README.md) — Create editable SVG diagrams for Markdown flows, APIs, and architecture. Invoke with `/svg-diagram` or let Claude select it for relevant documentation work.
 
 [← Back to Claude Backstage](../README.md)

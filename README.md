@@ -8,7 +8,9 @@ A growing collection of reusable tools and practical approaches to agent coordin
 
 Reusable instructions that teach Claude Code how to perform specific tasks.
 
-*Skills and usage guides will be listed here as they are added.*
+### [SVG diagram](skills/svg-diagram/README.md)
+
+Create editable SVG diagrams for README files and technical Markdown. Invoke `/svg-diagram` to explain a flow, API interaction, architecture, or state transition. Diagrams live beside their documents, with portable relative links and a visual verification step.
 
 ---
 
