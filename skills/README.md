@@ -6,6 +6,6 @@ Each skill will have its own folder with its instructions, purpose, required inp
 
 ## Available skills
 
-No standalone skills have been added yet.
+- [SL SVG diagram](sl-svg-diagram/README.md) — Animate input scenarios, branches, API calls, and method chains in Markdown. Invoke `/sl-svg-diagram`; uses a pinned, integrity-checked animdiagram dependency.
 
 [← Back to Claude Backstage](../README.md)

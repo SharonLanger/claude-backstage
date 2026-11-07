@@ -1,0 +1,131 @@
+{
+  "loop": 7,
+  "events": [
+    {
+      "id": "request",
+      "kind": "packet",
+      "at": 0.5,
+      "travel": 1.2,
+      "from": [
+        168,
+        128
+      ],
+      "to": [
+        256,
+        128
+      ],
+      "color": "#87E4C3"
+    },
+    {
+      "id": "result",
+      "kind": "packet",
+      "at": 2.4,
+      "travel": 1.2,
+      "from": [
+        384,
+        128
+      ],
+      "to": [
+        472,
+        128
+      ],
+      "color": "#87E4C3"
+    },
+    {
+      "id": "capacity",
+      "kind": "bar",
+      "at": 0,
+      "x": 40,
+      "y": 328,
+      "w": 560,
+      "h": 24,
+      "steps": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0.2
+        ],
+        [
+          2,
+          0.4
+        ],
+        [
+          3,
+          0.65
+        ],
+        [
+          4,
+          0.8
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "color": "#A880FF"
+    },
+    {
+      "id": "workera1",
+      "kind": "pulse",
+      "at": 1,
+      "x": 104,
+      "y": 544,
+      "ring_r": 28,
+      "dur": 1.2,
+      "color": "#87E4C3"
+    },
+    {
+      "id": "workerb1",
+      "kind": "pulse",
+      "at": 1,
+      "x": 536,
+      "y": 544,
+      "ring_r": 28,
+      "dur": 1.2,
+      "color": "#87E4C3"
+    },
+    {
+      "id": "workera3",
+      "kind": "pulse",
+      "at": 3,
+      "x": 104,
+      "y": 544,
+      "ring_r": 28,
+      "dur": 1.2,
+      "color": "#87E4C3"
+    },
+    {
+      "id": "workerb3",
+      "kind": "pulse",
+      "at": 3,
+      "x": 536,
+      "y": 544,
+      "ring_r": 28,
+      "dur": 1.2,
+      "color": "#87E4C3"
+    },
+    {
+      "id": "workera5",
+      "kind": "pulse",
+      "at": 5,
+      "x": 104,
+      "y": 544,
+      "ring_r": 28,
+      "dur": 1.2,
+      "color": "#87E4C3"
+    },
+    {
+      "id": "workerb5",
+      "kind": "pulse",
+      "at": 5,
+      "x": 536,
+      "y": 544,
+      "ring_r": 28,
+      "dur": 1.2,
+      "color": "#87E4C3"
+    }
+  ]
+}
