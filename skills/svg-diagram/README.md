@@ -57,6 +57,35 @@ It reads the relevant source or specification, chooses a diagram form, writes se
 
 The skill reports whether visual inspection was completed. It does not automatically commit, publish, install tools, or change Claude Code settings.
 
+## Agent context cost and first-version guidance
+
+Reading Markdown as text normally loads the image reference, not the linked SVG source. However, a fresh agent may follow that reference to understand the diagram. If diagrams are used extensively, those extra reads can consume substantial context with coordinates, styling, and paths rather than useful semantics. Instructions inside this skill alone cannot guide an agent that has not loaded it.
+
+For the first version, document the convention in the consuming project's `CLAUDE.md`. For example:
+
+> Understand diagrams from their surrounding Markdown first. If more detail is needed, read the linked companion with the same basename and the suffix `.agent.md`, when available. Read SVG source only when creating, editing, or debugging the visual. If no companion exists and the prose is insufficient, report the missing explanation rather than routinely loading SVG source.
+
+A companion such as `diagrams/design-request-flow.agent.md` should describe participants, calls, ordering, conditions, and outcomes concisely, without coordinates or styling. Link it from the main document so readers can discover it. Keep its semantics synchronized with the SVG. This README records the proposed convention; the current skill does not yet require or automatically guarantee companion creation. Adding this guidance to a consuming project's `CLAUDE.md` is a separate project change.
+
+### Ballpark risk
+
+These are illustrative planning ranges for text-based technical diagrams, not measurements or limits:
+
+| Diagram | SVG source size | Concise Markdown semantics |
+| --- | --- | --- |
+| Simple flow | 1–5 KB | 0.2–1 KB |
+| Detailed flow or call hierarchy | 10–100+ KB | 1–5 KB |
+
+Raw SVG can therefore consume several times to tens of times more context than a semantic explanation. SVG exported with verbose metadata, text converted to paths, or embedded images can reach hundreds of KB or MB. Actual token cost depends on the tokenizer, markup, numeric paths, and tool truncation; byte ratios are not token ratios. These estimates concern reading SVG as text, not image-processing token costs.
+
+The practical risk is low when an agent reads only the Markdown reference, and rises with the number and size of SVG sources it opens. A short diagram description is useful even where tool limits prevent loading the full SVG.
+
+### Possible later enforcement
+
+A future deterministic hook in System One Harness could intercept SVG reads, check for the matching `.agent.md`, and redirect the agent with a short message. It would need an explicit exception for visual editing, a fallback when the companion is missing, and verification against Claude Code's hook contract. Blocking the Read tool alone would not cover shell commands or other file-reading tools.
+
+No interception hook or read restriction is implemented by this skill. `CLAUDE.md` guidance is advisory and does not guarantee that every agent will avoid SVG reads.
+
 ## Manual acceptance checks
 
 In a disposable project, exercise these cases with Claude Code:
