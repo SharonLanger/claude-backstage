@@ -6,6 +6,6 @@ Each skill will have its own folder with its instructions, purpose, required inp
 
 ## Available skills
 
-- [SVG diagram](svg-diagram/README.md) — Create editable SVG diagrams for Markdown flows, APIs, and architecture. Invoke with `/svg-diagram` or let Claude select it for relevant documentation work.
+- [SL SVG diagram](sl-svg-diagram/README.md) — Animate input scenarios, branches, API calls, and method chains in Markdown. Invoke `/sl-svg-diagram`; uses a pinned, integrity-checked animdiagram dependency.
 
 [← Back to Claude Backstage](../README.md)
