@@ -2,7 +2,7 @@
 
 Reusable instructions and tools that teach Claude Code how to perform specific tasks. Each skill's README covers installation, usage, examples, and requirements.
 
-## [SL SVG Diagram](sl-svg-diagram/README.md)
+### [SL SVG Diagram](sl-svg-diagram/README.md)
 
 Create animated Markdown diagrams to explain methods, API calls, data flow, and concurrent work. The skill uses a pinned animdiagram dependency, checks its integrity before execution, and saves each visual with editable motion JSON and a concise `.agent.md` companion.
 
