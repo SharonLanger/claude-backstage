@@ -1,11 +1,11 @@
-# 🧩 Skills
+# Skills
 
-Reusable instructions that teach Claude Code how to perform specific tasks.
+Reusable instructions and tools that teach Claude Code how to perform specific tasks. Each skill's README covers installation, usage, examples, and requirements.
 
-Each skill will have its own folder with its instructions, purpose, required inputs, expected outputs, and examples. Related workflows and scripts can link to the skill's documentation.
+## [SL SVG Diagram](sl-svg-diagram/README.md)
 
-## Available skills
+Create animated Markdown diagrams to explain methods, API calls, data flow, and concurrent work. The skill uses a pinned animdiagram dependency, checks its integrity before execution, and saves each visual with editable motion JSON and a concise `.agent.md` companion.
 
-- [SL SVG diagram](sl-svg-diagram/README.md) — Animate input scenarios, branches, API calls, and method chains in Markdown. Invoke `/sl-svg-diagram`; uses a pinned, integrity-checked animdiagram dependency.
+After installation, invoke `/sl-svg-diagram` with a Markdown path and what you want explained; Claude can also select it for relevant documentation tasks. Its README includes an animated showcase, setup instructions, and audit limitations.
 
-[← Back to Claude Backstage](../README.md)
+[← Claude Backstage](../README.md)
