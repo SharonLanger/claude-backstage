@@ -8,7 +8,7 @@ Build refuses existing SVGs/companions without its generated ownership marker an
 
 ## Schema and topology
 
-Start from the [flow](../tests/fixtures/flow.spec.json), [boolean branch](../tests/fixtures/branch.spec.json), or [six independent peers](../tests/fixtures/grid.spec.json) fixture. Unknown fields and versions, duplicate JSON keys/IDs, broken references, invalid dimensions/times and unsupported topology are errors. IDs match `[A-Za-z][A-Za-z0-9_-]{0,47}`; node and link IDs share a namespace. Scenario IDs are separate.
+Start from the [flow](../examples/flow.spec.json), [boolean branch](../examples/branch.spec.json), [six independent peers](../examples/grid.spec.json), or [four enum scenarios](../examples/enum.spec.json) example. Unknown fields and versions, duplicate JSON keys/IDs, broken references, invalid dimensions/times and unsupported topology are errors. IDs match `[A-Za-z][A-Za-z0-9_-]{0,47}`; node and link IDs share a namespace. Scenario IDs are separate.
 
 | Field | Contents |
 |---|---|
@@ -55,18 +55,3 @@ Use only an approved renderer with enforced outbound network denial. Inspect the
 ## Existing motion recipes
 
 For mechanisms beyond semantic packets/pulses use the manual route and load the dependency's `references/motion-grammar.md` or `references/storyboard.md` from `.installation.json` only as needed. Streams use `kind: stream` with endpoints/period/count, pulses use `kind: pulse` with center/time, bars use `kind: bar` with timed fractions, and moving groups use the upstream motion grammar. Preserve markers and compile with `timeline`; do not invent new semantic step fields or bypass the wrapper.
-
-## Deterministic checks and smoke runner
-
-Requires Git and Python 3.10+ plus a cached checkout at the exact audited commit. Setup can download it when installation is requested; the following tests do not need a network connection:
-
-```sh
-python3 -I skills/sl-svg-diagram/tests/run.py /absolute/cached/animdiagram
-bash skills/sl-svg-diagram/scripts/setup-animdiagram.sh --skill-dir /temporary/skill --dependency-dir /absolute/cached/animdiagram
-python3 -I skills/sl-svg-diagram/tests/smoke.py --skill-dir /temporary/skill --output-dir /temporary/fresh-output
-python3 -I skills/sl-svg-diagram/tests/measure_cost.py --skill-dir /temporary/skill --output-dir /temporary/fresh-cost-output
-```
-
-Use disposable locations, never the user's installed skill/profile/dependency as a mutation fixture. The smoke runner builds all three examples through the installed wrapper, checks XML/companions/repeatability, and runs schema/integrity/legacy tests in disposable clones. It returns nonzero on required failure and reports retained artifact paths. `--output-dir` must be fresh; omit it for a retained temporary directory.
-
-`measure_cost.py` compares layout-equivalent manual static SVG plus motion JSON against compact semantic JSON for a creation and label refinement. It records authoring-character proxies, changed-character proxies, actual wrapper-call counts and returned tool-output characters. The manual inputs are reconstructed locally, not measured live Claude output. These measurements do not establish token savings; actual usage/model SVG reads are unavailable. Browser and actual installed Claude acceptance are separate gates.

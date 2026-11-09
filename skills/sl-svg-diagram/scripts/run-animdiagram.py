@@ -17,9 +17,20 @@ SKILL = Path(__file__).resolve().parent.parent
 CONFIG = ".installation.json"
 TOOLS = {"timeline": "timeline.py", "check": "check.py", "skin": "skin.py",
          "preview": "preview.py", "test": "test_timeline.py"}
-REQUIRED = ("SKILL.md", "README.md", "audit/animdiagram-audit.md",
-            "audit/verified-files.sha256", "scripts/setup-animdiagram.sh",
-            "scripts/run-animdiagram.py")
+# Runtime bundle only. Keep repository docs, tests and generated outputs out.
+REQUIRED = (
+    "SKILL.md",
+    "references/authoring.md", "references/diagram-rules.md", "references/generation.md",
+    "references/preview.md", "references/reading-diagrams.md",
+    "scripts/setup-animdiagram.sh", "scripts/run-animdiagram.py",
+    "scripts/generate.py", "scripts/scenario_preview.py",
+    "defaults/v1.json", "audit/verified-files.sha256", "notices/animdiagram-MIT.txt",
+    "examples/flow.spec.json", "examples/branch.spec.json",
+    "examples/grid.spec.json", "examples/enum.spec.json",
+)
+# Imported runtime modules must not add bytecode caches to the installed bundle.
+sys.dont_write_bytecode = True
+
 
 
 class IntegrityError(Exception):
@@ -28,8 +39,10 @@ class IntegrityError(Exception):
 
 def manifest() -> dict[str, str]:
     for name in REQUIRED:
-        if not (SKILL / name).is_file():
-            raise IntegrityError("incomplete skill installation")
+        path = SKILL / name
+        if not path.is_file() or any(SKILL.joinpath(*PurePosixPath(name).parts[:i]).is_symlink()
+                                     for i in range(1, len(PurePosixPath(name).parts) + 1)):
+            raise IntegrityError("incomplete or linked skill installation")
     if "name: sl-svg-diagram\n" not in (SKILL / "SKILL.md").read_text():
         raise IntegrityError("unexpected skill identity")
     entries = {}
@@ -94,10 +107,14 @@ def setup(args) -> int:
         raise IntegrityError("linked skill installation")
     if target == root or target in root.parents or root in target.parents:
         raise IntegrityError("skill and dependency locations must be separate")
-    files = {p.relative_to(SKILL): p.read_bytes() for p in SKILL.rglob("*")
-             if p.is_file() and p.name != CONFIG and "__pycache__" not in p.parts}
+    files = {Path(name): (SKILL / name).read_bytes() for name in REQUIRED}
     if target.exists():
         # Never replace another version or customized installation silently.
+        allowed = {Path(CONFIG), *files}
+        for rel in files:
+            allowed.update(parent for parent in rel.parents if parent != Path('.'))
+        if any(path.is_symlink() or path.relative_to(target) not in allowed for path in target.rglob('*')):
+            raise IntegrityError("existing skill differs; choose a fresh destination")
         for rel, raw in files.items():
             dest = target / rel
             if dest.is_symlink() or not dest.is_file() or dest.read_bytes() != raw:

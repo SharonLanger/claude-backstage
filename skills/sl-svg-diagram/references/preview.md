@@ -42,13 +42,8 @@ Then call `preview <svg> --spec <legacy-spec>`. Compile with `timeline` before c
 
 Legacy selector support is deliberately limited to packets, pulses, phase/show windows, and ambient streams. Bars/moving groups require the ordinary `--plain` preview or migration to a supported semantic input. Cross-boundary or truncated effects fail with advice to adjust ranges/timing. Do not infer scenarios from phase captions: several phases can belong to one scenario.
 
-## Verification
+## Visual verification
 
-The [smoke runner](generation.md#deterministic-checks-and-smoke-runner) exercises four semantic fixtures and a legacy ambient fixture. In an approved OS network namespace with Python Playwright and Chromium already available, run:
+In an approved renderer with enforced outbound network denial, inspect each scenario at intended and narrow document widths. Check active input, route exclusivity, ordered calls/concurrency, full arrivals/effect tails, outcome pauses/reset, text clipping, node/tag containment and bottom/side clearance. Verify play/pause freezes all effects and ambient motion, selection preserves play/pause state, scrubbing/static frame stay in range, dropdown keyboard focus is usable, and reduced motion retains static meaning.
 
-```sh
-unshare --user --map-root-user --net python3 <skill>/tests/browser_layout.py --examples-dir /temporary/smoke-output --output-dir /temporary/layout-evidence
-unshare --user --map-root-user --net python3 <skill>/tests/browser_preview.py --examples-dir /temporary/smoke-output --output-dir /temporary/playback-evidence
-```
-
-The scripts require no default route and a failed external socket probe. The playback test drives full cycles using virtual browser time, checks real computed effect opacity/transforms, and separately measures real elapsed playback speed. It covers boolean/four-enum choices, exclusive repetition and captions at boundaries, complete outcome/reset windows, pause/resume, selection changes, scrubbing, static frame, keyboard focus, background/zoom, ambient periods, standalone image animation and reduced motion. For standalone SVG images this Chromium requires a separate browser with `--force-prefers-reduced-motion=reduce`; per-page reduced-motion emulation does not propagate into image documents. Screenshots and JSON evidence are written outside the repository.
+At narrow widths request an alternate layout when labels become unreadable. If the approved rendering environment is unavailable, report visual verification as pending. Automated development checks live in the repository README rather than the installed skill.

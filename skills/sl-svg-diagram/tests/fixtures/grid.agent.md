@@ -14,4 +14,4 @@ Generated from the semantic spec; timings are illustrative unless explained othe
 
 Outcome: All peers can work together in this illustrative fixture.
 
-[Editable semantic spec](grid.spec.json)
+[Editable semantic spec](../../examples/grid.spec.json)

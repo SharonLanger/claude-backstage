@@ -12,6 +12,7 @@ import xml.etree.ElementTree as ET
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--skill-dir', type=Path, required=True)
+parser.add_argument('--skip-integration', action='store_true', help='fixture smoke only; omit for the complete integration/integrity suite')
 parser.add_argument('--output-dir', type=Path, help='fresh directory; default retained temporary directory')
 args = parser.parse_args()
 skill = args.skill_dir.resolve()
@@ -34,7 +35,7 @@ try:
     run('verify')
     for preset in ('flow', 'branch', 'grid', 'enum'):
         spec, svg = out / (preset+'.spec.json'), out / (preset+'.svg')
-        shutil.copyfile(skill / 'tests/fixtures' / spec.name, spec)
+        shutil.copyfile(skill / 'examples' / spec.name, spec)
         run('build', spec, '--out', svg, '--preview')
         run('check', svg)
         ET.parse(svg)
@@ -65,11 +66,17 @@ try:
     ambient_spec.write_text(json.dumps(legacy, indent=2))
     run('preview', ambient_svg, '--spec', ambient_spec)
     run('preview', ambient_svg, '--plain', '--out', out / 'plain.preview.html')
-    result = subprocess.run([sys.executable, '-I', str(skill / 'tests/run.py'), config['dependency']], capture_output=True, text=True)
-    (out / 'integration.log').write_text(result.stdout + result.stderr)
-    if result.returncode:
-        raise RuntimeError('integration/integrity suite failed; see integration.log')
-    print(f'PASS: three presets/four fixtures, compiler/checker/scenario metadata, companions, repeatability, schema and integrity regressions.\nArtifacts: {out}\nVisual and live Claude acceptance are separate checks.')
+    if not args.skip_integration:
+        suite = Path(__file__).resolve().parent / 'run.py'
+        result = subprocess.run([sys.executable, '-I', str(suite), config['dependency'],
+                                 '--skill-dir', str(skill)], capture_output=True, text=True)
+        (out / 'integration.log').write_text(result.stdout + result.stderr)
+        if result.returncode:
+            raise RuntimeError('integration/integrity suite failed; see integration.log')
+    print(f'PASS: three presets/four examples, compiler/checker/scenario metadata, companions and repeatability.\n'
+          f'Integration/integrity suite: {"SKIPPED by request" if args.skip_integration else "PASS"}.\n'
+          f'Artifacts: {out}\nVisual and live Claude acceptance are separate checks.')
+
 except (OSError, ValueError, RuntimeError, AssertionError, ET.ParseError) as exc:
     print(f'FAIL: {exc}\nArtifacts: {out}', file=sys.stderr)
     raise SystemExit(1)

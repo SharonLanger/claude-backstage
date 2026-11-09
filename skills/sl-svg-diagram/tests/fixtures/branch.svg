@@ -102,6 +102,6 @@ text {font-family:monospace;font-size:14px;fill:#F4F6FC} .semantic-caption {font
   <text class="semantic-caption story" x="28" y="370.4" text-anchor="start" fill="#4CF490" style="animation-name:s1_label0;opacity:0">enabled=false</text>
   <text class="semantic-caption story" x="28" y="390" text-anchor="start" fill="#4CF490" style="animation-name:s1_outcome0;opacity:0">Disabled work is skipped.</text>
   <!-- @/motion:elements -->
-<metadata id="sl-scenarios">{"loop": 8.6, "scenarios": [{"end": 4.3, "id": "true", "label": "enabled=true", "start": 0.0}, {"end": 8.6, "id": "false", "label": "enabled=false", "start": 4.3}], "spec_path": "branch.spec.json", "spec_sha256": "86e7e6e994f36bfc9b00b54dea04c2293e80c971cc9bc284d005429b8a1b0a2a", "version": "sl-preview/v1"}</metadata>
+<metadata id="sl-scenarios">{"loop": 8.6, "scenarios": [{"end": 4.3, "id": "true", "label": "enabled=true", "start": 0.0}, {"end": 8.6, "id": "false", "label": "enabled=false", "start": 4.3}], "spec_path": "../../examples/branch.spec.json", "spec_sha256": "86e7e6e994f36bfc9b00b54dea04c2293e80c971cc9bc284d005429b8a1b0a2a", "version": "sl-preview/v1"}</metadata>
 </svg>
-<!-- sl-svg-sha256: 842613a7d394376f9727f89393ee0ce673304618c92b04724afe66495e575ca7 -->
+<!-- sl-svg-sha256: 9a7df522c873cf48f04e13dd55c97ce97628e0d2686e66bcd444b491b378b8f8 -->

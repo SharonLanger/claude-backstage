@@ -14,12 +14,15 @@ parser.add_argument('--skill-dir',type=Path,required=True)
 parser.add_argument('--output-dir',type=Path,required=True,help='fresh directory')
 a=parser.parse_args(); a.output_dir.mkdir(parents=True,exist_ok=False)
 runner=a.skill_dir/'scripts/run-animdiagram.py'
+sys.dont_write_bytecode = True
+verified=subprocess.run([sys.executable,'-I',str(runner),'verify'],capture_output=True,text=True)
+if verified.returncode:raise RuntimeError(verified.stdout+verified.stderr)
 module_spec=importlib.util.spec_from_file_location('sl_cost',a.skill_dir/'scripts/generate.py')
 g=importlib.util.module_from_spec(module_spec);module_spec.loader.exec_module(g)
 defaults=g.load(a.skill_dir/'defaults/v1.json')
 config=json.loads((a.skill_dir/'.installation.json').read_text())
 template=(Path(config['dependency'])/'assets/template.svg').read_text()
-spec=g.load(a.skill_dir/'tests/fixtures/flow.spec.json')
+spec=g.load(a.skill_dir/'examples/flow.spec.json')
 refined=copy.deepcopy(spec);refined['nodes'][1]['label']='Validate incoming request carefully'
 
 def surfaces(value):

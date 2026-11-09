@@ -16,6 +16,12 @@ SOURCE = Path(__file__).resolve().parents[1]
 CHECKOUT = Path(sys.argv.pop(1)).resolve() if len(sys.argv) > 1 else None
 PIN = 'a8edca75f041ebb75c74ac9d3b3fbec3b9cd5486'
 
+RUNTIME = SOURCE
+if '--skill-dir' in sys.argv:
+    runtime_index = sys.argv.index('--skill-dir')
+    RUNTIME = Path(sys.argv[runtime_index + 1]).resolve()
+    del sys.argv[runtime_index:runtime_index + 2]
+
 
 class GenerationTests(unittest.TestCase):
     @classmethod
@@ -26,7 +32,7 @@ class GenerationTests(unittest.TestCase):
         subprocess.run(['git', 'clone', '--quiet', '--no-hardlinks', str(CHECKOUT), str(cls.dep)], check=True)
         subprocess.run(['git', 'checkout', '--quiet', '--detach', PIN], cwd=cls.dep, check=True)
         cls.skill = cls.base / 'installed skill'
-        command = [sys.executable, '-I', str(SOURCE / 'scripts/run-animdiagram.py'), 'setup',
+        command = [sys.executable, '-I', str(RUNTIME / 'scripts/run-animdiagram.py'), 'setup',
                    '--skill-dir', str(cls.skill), '--dependency-dir', str(cls.dep)]
         result = subprocess.run(command, capture_output=True, text=True)
         if result.returncode:
@@ -49,7 +55,7 @@ class GenerationTests(unittest.TestCase):
         self.debug = self.work / 'normalized.json'
 
     def fixture(self, name='flow'):
-        return json.loads((SOURCE / 'tests/fixtures' / (name + '.spec.json')).read_text())
+        return json.loads((SOURCE / 'examples' / (name + '.spec.json')).read_text())
 
     def build(self, value, debug=True, extra=(), runner=None, env=None, profile=None):
         self.spec.write_text(json.dumps(value))

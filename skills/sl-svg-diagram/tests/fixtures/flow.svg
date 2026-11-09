@@ -92,6 +92,6 @@ text {font-family:monospace;font-size:14px;fill:#F4F6FC} .semantic-caption {font
   <text class="semantic-caption story" x="28" y="510" text-anchor="start" fill="#4CF490" style="animation-name:s0_label0;opacity:0">Normal request</text>
   <text class="semantic-caption story" x="28" y="529.6" text-anchor="start" fill="#4CF490" style="animation-name:s0_outcome0;opacity:0">Result stored.</text>
   <!-- @/motion:elements -->
-<metadata id="sl-scenarios">{"loop": 4.3, "scenarios": [{"end": 4.3, "id": "normal", "label": "Normal request", "start": 0.0}], "spec_path": "flow.spec.json", "spec_sha256": "e0bd38c61a7ec1640d2f768376c510fac140e5b3c97e4c12af1897dd756439a5", "version": "sl-preview/v1"}</metadata>
+<metadata id="sl-scenarios">{"loop": 4.3, "scenarios": [{"end": 4.3, "id": "normal", "label": "Normal request", "start": 0.0}], "spec_path": "../../examples/flow.spec.json", "spec_sha256": "e0bd38c61a7ec1640d2f768376c510fac140e5b3c97e4c12af1897dd756439a5", "version": "sl-preview/v1"}</metadata>
 </svg>
-<!-- sl-svg-sha256: 31362fbbed71024e9b786f8dc2a229839aa7b6caf1348395689ab5cd3333d6e8 -->
+<!-- sl-svg-sha256: 53546341396787bf768e9aa056ff38b5d62741cb6b49f7f59baf2d06dc64b217 -->

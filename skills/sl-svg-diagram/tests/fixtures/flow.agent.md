@@ -16,4 +16,4 @@ Generated from the semantic spec; timings are illustrative unless explained othe
 
 Outcome: Result stored.
 
-[Editable semantic spec](flow.spec.json)
+[Editable semantic spec](../../examples/flow.spec.json)

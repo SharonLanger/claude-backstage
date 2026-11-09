@@ -54,6 +54,10 @@ Success prints `Integrity: PASS`. Normal commands verify **silently on every inv
 
 The skill lives in `~/.claude/skills/sl-svg-diagram/`; its dependency lives separately in `~/.local/share/sl-svg-diagram/animdiagram/<commit>/`. Optional setup arguments: `--skill-dir /absolute/project/.claude/skills/sl-svg-diagram` and `--dependency-dir /absolute/cache/path`.
 
+Setup installs an explicit 17-file runtime bundle: `SKILL.md`, the five authoring/reading references, four wrapper/generation/preview scripts, versioned defaults, the audited hash manifest, MIT notice, and four compact specs in `examples/`. It generates `.installation.json` for the selected dependency path. Repository README/audit prose, tests, generated example SVGs/companions and showcase assets stay in this checkout. Unknown source files and caches are never copied. The complete pinned dependency checkout remains separate and unchanged.
+
+A lean installation can rerun its setup script to another fresh destination using the same supported arguments. Setup refuses installations with different contents or extra files, including earlier larger bundles; back up/move those yourself or choose a fresh `--skill-dir`. It never deletes user files or changes personal preferences.
+
 The wrapper requires commit **`a8edca75f041ebb75c74ac9d3b3fbec3b9cd5486`** and verifies all 62 audited file hashes before executing a temporary snapshot of those bytes. A different commit, changed/missing file, or altered tracked-file set blocks execution—even if you accidentally pull a newer version. Untracked code is not executed.
 
 There are no automatic updates or repairs. Setup refuses to overwrite a different/customized installation. Back up and move a mismatched installation/dependency out of its configured location, then rerun setup. Do not alter the manifest to accept unknown changes.
@@ -83,8 +87,35 @@ Personal settings belong in `~/.claude/sl-svg-diagram/preferences.md`, outside t
 
 The skill adapts to your saved preferences. A one-time correction updates the current diagram; an explicit “remember this” request or accepted proposal saves a scoped rule. See [the preference workflow](references/diagram-rules.md#saved-preferences). Reinstallation preserves personal settings.
 
-[Authoring commands and verification](references/authoring.md) cover the usable manual template/timeline route, light variants, and optional HTML previews with the existing playback controls. Compact semantic JSON and three layout presets are available through `build`; see [schema, examples, and smoke checks](references/generation.md). Add `--preview` to build optional [scenario-selecting HTML](references/preview.md) with `All` and named scenario choices, preserving pause/scrub/static/background/zoom controls. HTML is optional; animated SVG remains the normal deliverable.
+[Authoring commands and verification](references/authoring.md) cover the usable manual template/timeline route, light variants, and optional HTML previews with the existing playback controls. Compact semantic JSON and three layout presets are available through `build`; see [schema and examples](references/generation.md). Add `--preview` to build optional [scenario-selecting HTML](references/preview.md) with `All` and named scenario choices, preserving pause/scrub/static/background/zoom controls. HTML is optional; animated SVG remains the normal deliverable.
 
 [Reading guide](references/reading-diagrams.md) gives fresh reading sessions a short route to meaning without loading the full authoring skill. Guidance is not enforcement; review transcripts to assess unnecessary SVG reads. Token savings depend on actual avoided reads and have not been measured for these changes.
+
+## Development checks
+
+Run repository test code against a disposable installed runtime; tests are not installed. Requires Git/Python 3.10+ and a cached checkout at the audited commit. Setup downloads only when installation is requested and its dependency destination is absent. Reuse a verified cached checkout for offline runs; tests mutate disposable clones.
+
+```sh
+python3 -I skills/sl-svg-diagram/tests/run.py /absolute/cached/animdiagram
+bash skills/sl-svg-diagram/scripts/setup-animdiagram.sh --skill-dir /temporary/skill --dependency-dir /absolute/cached/animdiagram
+python3 -I skills/sl-svg-diagram/tests/run.py /absolute/cached/animdiagram --skill-dir /temporary/skill
+python3 -I skills/sl-svg-diagram/tests/smoke.py --skill-dir /temporary/skill --output-dir /temporary/fresh-output
+python3 -I skills/sl-svg-diagram/tests/measure_cost.py --skill-dir /temporary/skill --output-dir /temporary/fresh-cost-output
+```
+
+Use fresh disposable destinations, never the user's installed skill/profile/dependency as a mutation fixture. The smoke runner uses installed `examples/` and wrapper, parses generated SVG/companions, checks repeatability and legacy ambient metadata, and calls repository integration/integrity tests against that installed runtime. It exits nonzero on required failure and reports artifacts. `--output-dir` must be fresh; omit it for a retained temporary directory. `--skip-integration` runs only the fixture smoke and explicitly reports that the integration suite was skipped.
+
+The cost runner uses the installed generator/defaults/example and verified wrapper. It compares equivalent reconstructed manual static SVG/motion JSON against compact semantic JSON for a creation and label refinement, recording authoring/changed-character proxies, wrapper calls and returned tool-output characters. These are not token measurements or live Claude runs; model usage/source-read counts are unavailable and no percentage token saving is claimed.
+
+Browser checks are separate. In an approved OS network namespace with Python Playwright and Chromium already installed:
+
+```sh
+unshare --user --map-root-user --net python3 skills/sl-svg-diagram/tests/browser_layout.py --examples-dir /temporary/fresh-output --output-dir /temporary/layout-evidence
+unshare --user --map-root-user --net python3 skills/sl-svg-diagram/tests/browser_preview.py --examples-dir /temporary/fresh-output --output-dir /temporary/playback-evidence
+```
+
+The runners require no default route and a failed external socket probe. Four semantic fixtures are checked at intended/narrow widths; auxiliary legacy fixtures are covered by playback. Full browser cycles inspect actual opacity/transforms, choices/exclusivity, boundaries/tails/pauses/reset, controls, real speed, ambient periods, standalone image animation and reduced motion. For SVG image documents Chromium here requires a separate browser with `--force-prefers-reduced-motion=reduce` plus explicit page context; page-level emulation alone does not propagate into those images. Screenshots/JSON are retained outside the repository. Narrow branch/grid/enum labels still need alternate layouts at 360px; passing bounds does not establish readability.
+
+Actual installed Claude acceptance remains separate and pending when CLI/authentication are unavailable. Verify real tool calls and artifacts for boolean/grid/enum creation, one-time versus remembered preferences in an explicit temporary profile, and a fresh reading session. Deterministic tests, browser renders and a final assistant message do not prove live skill use.
 
 [Skill instructions](SKILL.md) · [All skills](../README.md)

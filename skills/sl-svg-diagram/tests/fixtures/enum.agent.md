@@ -40,4 +40,4 @@ Outcome: Batch outcome.
 
 Outcome: Skip outcome.
 
-[Editable semantic spec](enum.spec.json)
+[Editable semantic spec](../../examples/enum.spec.json)

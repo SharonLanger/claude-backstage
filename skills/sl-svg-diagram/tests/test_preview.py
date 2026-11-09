@@ -15,6 +15,12 @@ import unittest
 SOURCE=Path(__file__).resolve().parents[1]
 CHECKOUT=Path(sys.argv.pop(1)).resolve() if len(sys.argv)>1 else None
 
+RUNTIME = SOURCE
+if '--skill-dir' in sys.argv:
+    runtime_index = sys.argv.index('--skill-dir')
+    RUNTIME = Path(sys.argv[runtime_index + 1]).resolve()
+    del sys.argv[runtime_index:runtime_index + 2]
+
 
 class PreviewTests(unittest.TestCase):
     @classmethod
@@ -25,7 +31,7 @@ class PreviewTests(unittest.TestCase):
         subprocess.run(['git','clone','--quiet','--no-hardlinks',str(CHECKOUT),str(cls.dep)],check=True)
         cls.skill=cls.base/'installed skill'
         cls.runner=cls.skill/'scripts/run-animdiagram.py'
-        result=subprocess.run([sys.executable,'-I',str(SOURCE/'scripts/run-animdiagram.py'),'setup',
+        result=subprocess.run([sys.executable,'-I',str(RUNTIME/'scripts/run-animdiagram.py'),'setup',
                                '--skill-dir',str(cls.skill),'--dependency-dir',str(cls.dep)],capture_output=True,text=True)
         if result.returncode:raise RuntimeError(result.stdout+result.stderr)
         module_spec=importlib.util.spec_from_file_location('sl_preview_tests',cls.skill/'scripts/scenario_preview.py')
@@ -42,7 +48,7 @@ class PreviewTests(unittest.TestCase):
         return subprocess.run([sys.executable,'-I',str(self.runner),*map(str,args)],capture_output=True,text=True)
 
     def generated(self,name='branch',edit=None):
-        spec=json.loads((SOURCE/'tests/fixtures'/(name+'.spec.json')).read_text())
+        spec=json.loads((SOURCE/'examples'/(name+'.spec.json')).read_text())
         if edit:edit(spec)
         self.spec.write_text(json.dumps(spec))
         result=self.run_tool('build',self.spec,'--out',self.svg,'--preview')

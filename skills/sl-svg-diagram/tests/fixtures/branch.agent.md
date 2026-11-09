@@ -24,4 +24,4 @@ Outcome: Enabled work completes.
 
 Outcome: Disabled work is skipped.
 
-[Editable semantic spec](branch.spec.json)
+[Editable semantic spec](../../examples/branch.spec.json)

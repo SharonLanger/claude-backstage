@@ -15,7 +15,7 @@ Resolve this installed skill's directory from its location, never from the proje
 
 Invoke tools only through `python3 -I <skill>/scripts/run-animdiagram.py`. Each tool invocation checks the exact audited commit and SHA-256 manifest, then executes a temporary snapshot of the verified bytes. Successful integrity checks are silent; do not add a separate verification call or narrate checks during ordinary work.
 
-If integrity fails, stop. Report the short failure and direct the user to the README installation instructions. Never bypass the wrapper, update the pinned commit or manifest, automatically repair the dependency, or run a direct upstream script. Setup downloads only when the user requests installation.
+If integrity fails, stop. Report the short failure and direct the user to the [repository README installation instructions](https://github.com/SharonLanger/claude-backstage/blob/main/skills/sl-svg-diagram/README.md#install-and-use). Never bypass the wrapper, update the pinned commit or manifest, automatically repair the dependency, or run a direct upstream script. Setup downloads only when the user requests installation.
 
 ## Workflow and references
 
