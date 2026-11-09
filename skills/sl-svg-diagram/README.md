@@ -18,15 +18,19 @@ Use one mechanism or combine them when it helps the explanation. Every diagram k
 
 ## Install and use
 
-Requires Git, Bash, and Python 3.10+. While this skill is in draft PR #1:
+Requires Git, Bash, and Python 3.10+:
 
 ```sh
-git clone --branch skill/svg-diagram https://github.com/SharonLanger/claude-backstage.git
+git clone https://github.com/SharonLanger/claude-backstage.git
 cd claude-backstage
 bash skills/sl-svg-diagram/scripts/setup-animdiagram.sh
 ```
 
-Already have this branch checked out? Run only the setup command. It downloads and verifies the pinned dependency, runs its tests, installs the skill, and checks the installed configuration.
+Already have this repository checked out? Run only the setup command. It downloads and verifies the pinned dependency, runs its tests, installs the skill, and checks the installed configuration.
+
+In **each project where you use this skill**, add the following line to that project's root `CLAUDE.md` (create the file if it does not exist). Do not add it to the Claude Backstage repository unless that is the project containing your diagrams. This gives Claude the guidance even when it has not loaded the skill:
+
+> For diagram meaning, read surrounding Markdown or the matching `.agent.md` file. Read SVG source only when creating, editing, or debugging the visual.
 
 Start a new Claude Code session:
 
@@ -78,12 +82,10 @@ Reading Markdown does not normally load the linked SVG source. The extra tokens 
 | Option | Benefit | Tradeoff |
 |---|---|---|
 | Keep the guidance only in the skill | No extra project-wide instruction tokens | Agents that have not loaded the skill may unnecessarily read SVG source |
-| Add the line below to `CLAUDE.md` | Fresh sessions receive the same guidance without loading the skill | Small recurring instruction cost; guidance is not enforcement |
+| Add the setup line to your project's `CLAUDE.md` | Fresh sessions receive the same guidance without loading the skill | Small recurring instruction cost; guidance is not enforcement |
 | Add a stateful Read hook (future option) | Intervenes when an SVG read is attempted, without a standing `CLAUDE.md` rule | Requires hook setup and state; a blocked read still costs a short tool response |
 
-Optional line to copy from this skill's guidance into your project's `CLAUDE.md`:
-
-> For diagram meaning, read surrounding Markdown or the matching `.agent.md` file. Read SVG source only when editing or debugging the visual.
+The setup line above is guidance, not enforcement. To monitor its effect, review Claude Code transcripts for SVG `Read` calls and check whether each read was needed to create, edit, or debug the visual.
 
 Assuming approximately 40 tokens for the rule, one avoided SVG read pays for the following number of fresh instruction loads:
 
