@@ -254,7 +254,7 @@ def normalize(spec, defaults):
         start, end = [x + w / 2, y + h], [tx + tw / 2, ty]
         mid = (start[1] + end[1]) / 2
         routes[lid] = [start, [start[0], mid], [end[0], mid], end]
-    # Normalized windows are the sole timing authority, ready for optional preview.
+    # Scenario windows share the compiler centisecond loop clock.
     events, scenarios = [], []
     edge, guard = defaults['compiler']['caption_edge'], defaults['compiler']['caption_guard']
     clock = 0.0
@@ -356,10 +356,18 @@ def companion(spec, spec_path, out):
         link = next(l for l in spec['links'] if l['id'] == step['link'])
         nodes = {n['id']: n['label'] for n in spec['nodes']}
         return literal(nodes[link['from']]) + ' → ' + literal(nodes[link['to']])
-    parts = [COMPANION_MARKER, '# ' + literal(spec['title']), literal(spec['claim']), literal(spec['explanation']),
-             'Generated from the semantic spec; timings are illustrative unless explained otherwise.']
+    parts = [COMPANION_MARKER, '# ' + literal(spec['title']), 'Purpose: ' + literal(spec['claim']),
+             'Context and assumptions: ' + literal(spec['explanation']),
+             'Timing assumption: illustrative, unless the supplied context says otherwise.']
+    if spec.get('side_panel'):
+        parts += ['Notes: ' + '; '.join(literal(item) for item in spec['side_panel'])]
+    if 'caption' in spec:
+        parts += ['Caption: ' + literal(spec['caption'])]
     for scenario in spec['scenarios']:
-        parts += ['## ' + literal(scenario['label'])]
+        parts += ['## ' + literal(scenario['label']), 'Input/condition: ' + literal(scenario['label']),
+                  'Order: numbered steps run in sequence. ' +
+                  ('Concurrency: only steps marked Together run concurrently.' if any('parallel' in step for step in scenario['steps'])
+                   else 'Concurrency: none asserted.')]
         parts += [f'{i}. {describe(step)}' for i, step in enumerate(scenario['steps'], 1)]
         parts += ['Outcome: ' + literal(scenario['outcome'])]
     if spec['sources']:
@@ -370,15 +378,47 @@ def companion(spec, spec_path, out):
     return '\n\n'.join(parts) + '\n'
 
 
-def build(spec_path, out, defaults_path, data, execute, debug=None, preview_module=None, make_preview=False):
+def validate_visibility(css, normalized):
+    """Reject actual emitted duplicate opacity offsets with conflicting values.
+
+    Pinned CSS combines duplicate offsets using the later value; a rounded-away
+    zero-opacity boundary can otherwise reveal a later event in an earlier window.
+    """
+    names = set()
+    for match in re.finditer(r'@keyframes\s+([\w-]+)\s*\{((?:[^{}]|\{[^{}]*\})*)\}', css):
+        name, body = match.groups()
+        require(name not in names, f'duplicate animation name: {name}; rename effects')
+        names.add(name)
+        stops = {}
+        match = re.match(r's(\d+)_', name)
+        # The audited template also contains unused utility keyframes (tick).
+        window = normalized['scenarios'][int(match.group(1))] if match else None
+        loop = normalized['motion']['loop']
+        for selectors, declarations in re.findall(r'([^{}]+)\{([^{}]*)\}', body):
+            opacity = re.search(r'opacity\s*:\s*([0-9.]+)', declarations)
+            if not opacity:
+                continue
+            value = float(opacity.group(1))
+            for offset in re.findall(r'([0-9.]+)%', selectors):
+                point = float(offset)
+                require(point not in stops or stops[point] == value,
+                        f'compiler collapses visibility offsets for {name}; shorten loop or lengthen effect')
+                stops[point] = value
+        # Every visible interval must remain inside its authored scenario after
+        # the compiler rounds percentages. Adjacent captions cannot leak.
+        ordered = sorted(stops.items())
+        for (left, a), (right, b) in zip(ordered, ordered[1:]):
+            if window and (a > 0 or b > 0):
+                require(left / 100 * loop >= window['start'] - 1e-8 and
+                        right / 100 * loop <= window['end'] + 1e-8,
+                        f'compiler visibility crosses scenario boundary for {name}; lengthen setup/reset')
+
+
+
+def build(spec_path, out, defaults_path, data, execute, debug=None):
     require(out.suffix == '.svg', '--out must end in .svg')
     require(out.resolve() != spec_path.resolve(), 'output must not replace input')
     agent = out.with_suffix('.agent.md')
-    preview_path = out.with_suffix('.preview.html')
-    if make_preview:
-        require(not preview_path.is_symlink(), 'refusing linked preview output')
-        require(not preview_path.exists() or '<!-- sl-diagram/v1 generated preview -->' in preview_path.read_text()[:300],
-                'refusing to overwrite manual preview')
     for path, marker in ((out, MARKER), (agent, COMPANION_MARKER)):
         require(not path.is_symlink(), f'refusing linked output: {path}')
         require(not path.exists() or marker in path.read_text()[:300], f'refusing to overwrite manual file: {path}')
@@ -397,19 +437,12 @@ def build(spec_path, out, defaults_path, data, execute, debug=None, preview_modu
         require(execute(data, 'check', [str(svg)]) == 0, 'verified structural checker failed')
         compiled = svg.read_text()
         parsed = ET.fromstring(compiled)
-        try:
-            preview_module.validate_visibility('\n'.join(e.text or '' for e in parsed.iter() if e.tag.endswith('}style')))
-        except preview_module.PreviewError as exc:
-            raise BuildError(str(exc)) from exc
+        validate_visibility('\n'.join(e.text or '' for e in parsed.iter() if e.tag.endswith('}style')), n)
     digest = hashlib.sha256(json.dumps(spec, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
-    meta = {'version':'sl-preview/v1', 'loop':n['motion']['loop'], 'scenarios':n['scenarios'],
-            'spec_sha256':digest, 'spec_path':Path(os.path.relpath(spec_path.resolve(), out.resolve().parent)).as_posix()}
-    stamped = preview_module.stamp(MARKER + '\n<!-- semantic-sha256: ' + digest + ' -->\n' + compiled, meta)
+    stamped = MARKER + '\n<!-- semantic-sha256: ' + digest + ' -->\n' + compiled
     payloads = {out: stamped, agent: companion(spec, spec_path.resolve(), out.resolve())}
-    if make_preview:
-        payloads[preview_path] = preview_module.page(stamped, out.name, preview_module.ranges(meta['loop'], meta['scenarios']))
     if debug is not None:
-        require(debug.resolve() not in {out.resolve(), agent.resolve(), spec_path.resolve(), preview_path.resolve()}, 'debug path conflicts with primary asset')
+        require(debug.resolve() not in {out.resolve(), agent.resolve(), spec_path.resolve()}, 'debug path conflicts with primary asset')
         require(not debug.exists(), 'debug output already exists')
         payloads[debug] = json.dumps(n, sort_keys=True, indent=2, ensure_ascii=False) + '\n'
     # Stage all writes in their destination directories before replacing files.

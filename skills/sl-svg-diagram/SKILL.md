@@ -1,29 +1,28 @@
 ---
 name: sl-svg-diagram
-description: Create animated SVG walkthroughs for Markdown that show how inputs and conditions activate different execution paths, API calls, and method chains.
+description: Create animated SVG explanations from semantic JSON using audited local AnimDiagram.
 argument-hint: "[Markdown path] [flow or scenarios to explain]"
 user-invocable: true
 ---
 
-# Animated SVG walkthrough
+# Animated diagrams
 
-Create an animated explanation, not a static diagram with decorative motion. Use the audited local animdiagram dependency through this skill's wrapper. This skill can be selected for a relevant documentation task or invoked explicitly.
+Resolve `<skill>` from this installed file. Invoke only `python3 -I <skill>/scripts/run-animdiagram.py`. Each call verifies the pin/hashes. Stop on verification failure; never bypass it or change the pin. Installation and repair require an installation request.
 
-## Invocation and integrity
+1. Establish the target document and inspect relevant sources. Identify nodes, conditions, order, real concurrency and outcomes. Label hypothetical behavior and illustrative timing. Read `~/.claude/sl-svg-diagram/preferences.md` only if present; task directions win. Save a preference only on explicit request or an accepted suggestion.
+2. Choose `flow` for one ordered chain, `branch` for a rooted tree, or `grid` for independent peers; choose grid above five peers. Grid has no links; branch has no merges or cycles. Preserve the actual relationships. Unsupported layouts or unusual motion need [the optional reference](references/options.md); never discard meaning to fit a preset.
+3. Write `<stem>.spec.json` beside the intended SVG. Use the following shape; replace the illustrative content with grounded facts:
 
-Resolve this installed skill's directory from its location, never from the project working directory. In the commands below, `<skill>` means that absolute directory.
+```json
+{"format":"sl-diagram/v1","defaults_version":"v1","title":"Request","claim":"An accepted request is stored.","explanation":"Illustrative example.","sources":[],"layout":"flow","nodes":[{"id":"receive","label":"Receive"},{"id":"store","label":"Store"}],"links":[{"id":"save","from":"receive","to":"store"}],"scenarios":[{"id":"accepted","label":"Accepted request","steps":[{"link":"save"}],"outcome":"Stored."}]}
+```
 
-Invoke tools only through `python3 -I <skill>/scripts/run-animdiagram.py`. Each tool invocation checks the exact audited commit and SHA-256 manifest, then executes a temporary snapshot of the verified bytes. Successful integrity checks are silent; do not add a separate verification call or narrate checks during ordinary work.
+IDs are unique ASCII identifiers starting with a letter. Node fields: `id`, `label`, optional `tag`. Link fields: `id`, `from`, `to`. Sources are `{label,url}` with HTTP(S) URLs. Each scenario has `id`, `label`, `steps`, `outcome`. A step is `{"link":"id"}`, `{"node":"id"}`, or `{"parallel":[simple steps]}`; ordinary steps are sequential, parallel groups cannot nest. Up to 20 nodes, 30 links and eight scenarios. Boolean/enum cases share the same drawing and play in authored order. Use scenario labels for inputs/conditions and explanation for assumptions. Optional `side_panel` is a list of explanation strings; `caption` supplies bottom text.
 
-If integrity fails, stop. Report the short failure and direct the user to the [repository README installation instructions](https://github.com/SharonLanger/claude-backstage/blob/main/skills/sl-svg-diagram/README.md#install-and-use). Never bypass the wrapper, update the pinned commit or manifest, automatically repair the dependency, or run a direct upstream script. Setup downloads only when the user requests installation.
+Omit `settings` for standard appearance. Scripts own geometry, wrapping, clearance, colors and timings. For a requested override, consult only [the optional reference](references/options.md) and save supported numeric settings in the JSON. Do not read scripts or defaults during ordinary creation.
 
-## Workflow and references
+4. Run `build <absolute-spec.json> --out <absolute-diagram.svg>`. It creates the drawing, passes native motion JSON to AnimDiagram, checks the result and formats a companion from the supplied facts. Edit the JSON and rebuild for corrections; do not hand-edit generated SVG. On validation failure, fix the reported field and retry. Create native `preview <svg>` HTML only on explicit request; scenario selection is deferred.
+5. Verify that `<stem>.agent.md` faithfully explains the purpose, conditions, sequence/concurrency, outcomes, assumptions and sources. Keep the three files together under the document's asset convention, otherwise sibling `diagrams/`. Embed a relative image and a separate companion link; encode spaces in URLs.
+6. Inspect intended and narrow widths, labels, side/bottom clearance and scenario meaning with an approved renderer enforcing outbound network denial for the browser and subprocesses. Structural checks alone do not prove visual quality. If rendering is unavailable, report visual checks pending. No automatic browser install, external service, resource loading or publication.
 
-1. Establish the target document and grounded behavior from the task and relevant sources. Label hypothetical or planned behavior. Never invent calls, branches, concurrency, or measured timings.
-2. Read [diagram rules](references/diagram-rules.md) and, if it exists, `~/.claude/sl-svg-diagram/preferences.md`. Missing personal preferences mean use shipped defaults. Apply task directions before personal preferences before defaults; correctness, integrity, and privacy remain mandatory. Explain any required preference that cannot be met.
-3. Choose a supported `flow`, `branch`, or independent `grid` preset and author compact semantic JSON using [generation](references/generation.md). Resolve applicable preferences into typed saved settings and run `build` through the wrapper. Use the manual template/timeline route in [authoring](references/authoring.md) for unsupported layouts or unusual motion. Load only the references needed for the chosen route.
-4. Keep SVG self-contained and script-free. Build and check through the wrapper. Render only in an environment with enforced outbound network denial covering the browser and subprocesses. The checker is structural, not a visual or security pass. If safe rendering is unavailable, report visual verification as pending. Do not install a browser or alter network policy automatically.
-5. Retain the animated `.svg`, editable `.spec.json`, and concise `.agent.md` together. Update their meaning consistently; embed a relative Markdown image and companion link, URL-encoding spaces. Follow the detailed placement and verification procedure in authoring.
-6. Fix corrections in the current diagram. Save reusable preferences only when the user asks to remember them or accepts a proposed rule; see the rules reference. For optional scenario-selecting HTML use `build --preview` and [preview verification](references/preview.md); preserve the standalone animated SVG. Report artifact links, scenario meaning, and verification status.
-
-For understanding an existing diagram, use [reading diagrams](references/reading-diagrams.md); it does not require the authoring workflow. Never upload diagrams, source, or specs to another service. The approved enterprise Claude connection is separate. Do not use the upstream gallery, automatic browser launch, or video export. No automatic commits, pushes, publishing, or project `CLAUDE.md` changes.
+Report artifact links and verification status. For reading, use [the short guide](references/reading-diagrams.md). No automatic commits or CLAUDE.md edits.

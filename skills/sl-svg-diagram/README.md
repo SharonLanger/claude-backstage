@@ -1,24 +1,14 @@
 # SL SVG Diagram — make explanations move
 
-Explain methods, APIs, data flow, and system behavior with animated SVGs embedded in Markdown. Show where a request travels, how a value changes, or which operations happen together.
+Create animated SVG explanations embedded in Markdown. Claude writes grounded semantic JSON; a bounded layout generator computes the drawing and native motion JSON, the pinned [AnimDiagram](https://github.com/praveenvijayan/animdiagram) compiler animates it, and the builder formats a companion from the supplied facts. Common creation needs no reference reads beyond task sources and optional personal preferences.
 
-## Pick a motion that explains the idea
+![Traveling packets, a filling gauge and synchronized worker pulses](sl-diagrams/readme-motion-showcase.svg)
 
-![Animated showcase: traveling request packets, a filling gauge, and synchronized worker pulses](sl-diagrams/readme-motion-showcase.svg)
-
-Illustrative designs, not a real API or live telemetry. These are reusable animation mechanisms, not alternative input scenarios. [Diagram meaning](sl-diagrams/readme-motion-showcase.agent.md) · [Editable motion JSON](sl-diagrams/readme-motion-showcase.spec.json)
-
-| Try this | Ask Claude |
-|---|---|
-| **Follow the call** | “Explain this method with a packet moving through the calls it makes.” |
-| **Watch it accumulate** | “Explain batch processing with a gauge that fills as items complete.” |
-| **See work happen together** | “Explain these parallel workers with synchronized highlights.” |
-
-Use one mechanism or combine them when it helps the explanation. Every diagram keeps its editable motion JSON and a concise `.agent.md` companion for readers that only need its meaning. SVG animation depends on the Markdown viewer; the labels remain readable when motion is disabled.
+Illustrative native mechanisms, not live telemetry. [Meaning](sl-diagrams/readme-motion-showcase.agent.md) · [Native editable JSON](sl-diagrams/readme-motion-showcase.spec.json). This showcase uses the supported native route for motion beyond the semantic presets.
 
 ## Install and use
 
-Requires Git, Bash, and Python 3.10+:
+Requires Git, Bash and Python 3.10+:
 
 ```sh
 git clone https://github.com/SharonLanger/claude-backstage.git
@@ -26,96 +16,105 @@ cd claude-backstage
 bash skills/sl-svg-diagram/scripts/setup-animdiagram.sh
 ```
 
-Already have this repository checked out? Run only the setup command. It downloads and verifies the pinned dependency, runs its tests, installs the skill, and checks the installed configuration.
+If already cloned, reuse that checkout: update to the reviewed revision and run setup. The shell launcher stays in the repository; the installed Python wrapper also supports `setup`.
 
-In **each project where you use this skill**, add the following line to that project's root `CLAUDE.md` (create the file if it does not exist). Do not add it to the Claude Backstage repository unless that is the project containing your diagrams. This gives Claude the guidance even when it has not loaded the skill:
+Default skill: `~/.claude/skills/sl-svg-diagram/`. Separate dependency: `~/.local/share/sl-svg-diagram/animdiagram/a8edca75f041ebb75c74ac9d3b3fbec3b9cd5486/`. Override with `--skill-dir /absolute/fresh/skill --dependency-dir /absolute/cache/animdiagram`. A clean matching cached checkout is reused. Setup can download the pinned dependency when absent; runtime calls never download or repair it.
+
+The runtime allowlist copies exactly **eight assets**: `SKILL.md`, `references/reading-diagrams.md`, `references/options.md`, `scripts/run-animdiagram.py`, `scripts/generate.py`, `defaults/v1.json`, `audit/verified-files.sha256`, and `notices/animdiagram-MIT.txt`. Setup generates `.installation.json`, making nine installed files. Tests, examples, README, audit prose, showcase, setup launcher and caches stay in the repository. The separate dependency checkout stays complete. Setup runs upstream tests and verifies the installed configuration.
+
+Setup refuses differing/customized installations, extra files and symlinks, preserving user files. Earlier bundles require a fresh `--skill-dir` or backing up/moving the old destination before reinstalling. For reinstalling, moving/removing only the old skill directory is sufficient; keeping the clean pinned dependency cache is fine. To uninstall, remove the skill directory after checking for user additions. Cache deletion is optional when no longer needed. Personal preferences live outside both.
+
+Start a new Claude session:
+
+```text
+/sl-svg-diagram docs/design.md Explain enabled=true and enabled=false and their actual method calls
+```
+
+In projects with diagrams, optionally add this plain path guidance to their `CLAUDE.md` (adjust custom paths):
 
 > When reading a diagram, follow `~/.claude/skills/sl-svg-diagram/references/reading-diagrams.md`: read surrounding Markdown and the matching `.agent.md` before SVG source.
 
-Use the actual installed path if you chose a custom installation. This is a plain path reference, not an `@` import; load the guide only when reading diagrams.
+This is conditional guidance, not an import or access restriction. Setup never changes project/global `CLAUDE.md`.
 
-Start a new Claude Code session:
+## Semantic creation and rebuild
 
-```text
-/sl-svg-diagram docs/design.md Show enabled=true and enabled=false and the methods each calls
-```
+The installed [skill](SKILL.md) includes a complete valid JSON example. Repository fixtures show [flow](examples/flow.spec.json), [true/false branch](examples/branch.spec.json), [six peers](examples/grid.spec.json) and [enum cases](examples/enum.spec.json). Examples are test fixtures and are not copied into the installation.
 
-Claude may also select it for relevant documentation work. This illustrates scenarios, not live execution.
-
-Check installation at any time:
+`<skill>` is the absolute installed directory. Save semantic JSON beside the desired SVG:
 
 ```sh
-python3 -I ~/.claude/skills/sl-svg-diagram/scripts/run-animdiagram.py verify
+python3 -I <skill>/scripts/run-animdiagram.py build /absolute/diagrams/request.spec.json --out /absolute/diagrams/request.svg
 ```
 
-Success prints `Integrity: PASS`. Normal commands verify **silently on every invocation**, with no extra model call.
+The builder validates `sl-diagram/v1`, applies versioned defaults and explicit saved overrides, generates static SVG plus intermediate motion JSON, runs the verified compiler/checker, checks XML and emitted animation visibility boundaries, then writes SVG and `.agent.md`. Successful output is a short paths/summary message. Intermediate motion is temporary; `--debug-normalized /absolute/new.json` explicitly saves diagnostic geometry, motion and scenario windows. The semantic input is never rewritten.
 
-## Installation and integrity
+Presets preserve meaning:
 
-The skill lives in `~/.claude/skills/sl-svg-diagram/`; its dependency lives separately in `~/.local/share/sl-svg-diagram/animdiagram/<commit>/`. Optional setup arguments: `--skill-dir /absolute/project/.claude/skills/sl-svg-diagram` and `--dependency-dir /absolute/cache/path`.
+| Preset | Supported relationships |
+|---|---|
+| `flow` | One ordered chain, including six or more ordered steps. |
+| `branch` | Connected rooted tree, one parent per non-root node; no merges/cycles. |
+| `grid` | Independent peers, no links, up to three columns. Choose it above five independent items. |
 
-Setup installs an explicit 17-file runtime bundle: `SKILL.md`, the five authoring/reading references, four wrapper/generation/preview scripts, versioned defaults, the audited hash manifest, MIT notice, and four compact specs in `examples/`. It generates `.installation.json` for the selected dependency path. Repository README/audit prose, tests, generated example SVGs/companions and showcase assets stay in this checkout. Unknown source files and caches are never copied. The complete pinned dependency checkout remains separate and unchanged.
+Boolean and enum cases share fixed geometry and play sequentially in authored order. A scenario step is a node pulse, a routed link packet, or an explicitly parallel group. Ordinary steps are sequential; the generator never infers program behavior or drops unsupported links. Use scenario labels for inputs/conditions and explanation for context/assumptions. Companions format those supplied facts, sequence/concurrency, outcomes, notes, timing assumptions and source links; Claude verifies they faithfully describe the task.
 
-A lean installation can rerun its setup script to another fresh destination using the same supported arguments. Setup refuses installations with different contents or extra files, including earlier larger bundles; back up/move those yourself or choose a fresh `--skill-dir`. It never deletes user files or changes personal preferences.
+Limits: 1–20 nodes, at most 30 links, 1–8 scenarios, 30 top-level steps per scenario, 120 simple steps total, and a 250-second compiler precision budget. Parallel groups contain 2–8 distinct simple steps without nesting. Unknown schema/settings fields, duplicate JSON keys/IDs, bad references, nonfinite numbers and unsupported topology fail. See the small [optional reference](references/options.md) for settings ranges, text limits and native fallback. No arbitrary graph engine is included; Archify and scenario selectors remain deferred.
 
-The wrapper requires commit **`a8edca75f041ebb75c74ac9d3b3fbec3b9cd5486`** and verifies all 62 audited file hashes before executing a temporary snapshot of those bytes. A different commit, changed/missing file, or altered tracked-file set blocks execution—even if you accidentally pull a newer version. Untracked code is not executed.
+Scripts own margins/gaps, wrapping, tag heights, title/claim, side panel/gutter, scenario/outcome/footer clearance, palette and timing defaults. Intended `document_width` defaults to 1000; layouts shrinking text below 11px at that width fail. Actual narrow embeds can still be unreadable and need a separate layout. Keep feedback in semantic JSON and rebuild; generated SVG/companion ownership markers prevent overwriting manual files. Symlink outputs fail. Validation/compilation failure preserves previous outputs. Each output replacement is atomic; a filesystem failure during replacements does not provide multi-file rollback.
 
-There are no automatic updates or repairs. Setup refuses to overwrite a different/customized installation. Back up and move a mismatched installation/dependency out of its configured location, then rerun setup. Do not alter the manifest to accept unknown changes.
+Earlier `sl-diagram/v1` inputs remain supported. Generated outputs no longer carry selector metadata or custom HTML/JavaScript. Manual/native inputs remain a separate supported route.
 
-## Audit and privacy
+Keep `<stem>.spec.json`, `<stem>.svg`, and `<stem>.agent.md` together under the target document's asset convention, otherwise sibling `diagrams/`. Embed relative image and companion links, encoding spaces:
 
-Uses MIT-licensed [animdiagram](https://github.com/praveenvijayan/animdiagram), pinned to an audited commit, not a release tag. The November 7, 2026 audit found **no network syscalls during tested core generation**: 8/8 upstream tests passed and 11/11 example specs regenerated exactly.
-
-**The whole checkout is not guaranteed offline.** Its gallery loads Google Fonts, Chromium attempted background connections, and the SVG checker misses some external-resource forms. Test connections were blocked. This wrapper excludes gallery execution, automatic browser opening, and video export. Visual inspection requires an externally enforced offline browser; setup does not configure that policy. Your approved enterprise Claude connection is separate.
-
-[Full audit, results, and limitations](audit/animdiagram-audit.md). Hash checks detect dependency changes; they do not certify arbitrary generated SVG, your runtime, or malicious changes to the wrapper itself. Re-audit before changing the pin.
-
-## Files and agent context
-
-```text
-docs/design.md
-docs/diagrams/design-request-flow.svg
-docs/diagrams/design-request-flow.spec.json
-docs/diagrams/design-request-flow.agent.md
+```markdown
+![Animated request flow](diagrams/request.svg)
+[Diagram meaning](diagrams/request.agent.md)
 ```
 
-Existing asset conventions or explicit destinations take precedence. Markdown links to the animated image and its semantic companion; the spec preserves editable timing.
+Read existing `~/.claude/sl-svg-diagram/preferences.md` only if present. Task directions override preferences/defaults. Save supported overrides into the semantic JSON for reproducible rebuilds; changing personal Markdown later does not change saved diagrams. Save a personal rule only on explicit request or an accepted suggestion. Setup never writes preferences.
 
-## Preferences and authoring
+## Native authoring and optional preview
 
-Personal settings belong in `~/.claude/sl-svg-diagram/preferences.md`, outside the installation. Missing preferences use [shipped defaults](references/diagram-rules.md); setup never creates or overwrites personal settings. Task instructions take precedence, followed by personal preferences, then defaults. Correctness, integrity, and privacy remain mandatory.
+For merges/cycles, custom layout, streams/bars or moving groups, follow [the optional reference](references/options.md). The wrapper retains `template`, `timeline`, `check`, `skin`, `preview` and upstream `test`. Native authoring uses static SVG coordinates plus native motion JSON and a companion authored from grounded facts. Choose a fresh output when migrating manual work.
 
-The skill adapts to your saved preferences. A one-time correction updates the current diagram; an explicit “remember this” request or accepted proposal saves a scoped rule. See [the preference workflow](references/diagram-rules.md#saved-preferences). Reinstallation preserves personal settings.
+Only on explicit request, create native HTML:
 
-[Authoring commands and verification](references/authoring.md) cover the usable manual template/timeline route, light variants, and optional HTML previews with the existing playback controls. Compact semantic JSON and three layout presets are available through `build`; see [schema and examples](references/generation.md). Add `--preview` to build optional [scenario-selecting HTML](references/preview.md) with `All` and named scenario choices, preserving pause/scrub/static/background/zoom controls. HTML is optional; animated SVG remains the normal deliverable.
+```sh
+python3 -I <skill>/scripts/run-animdiagram.py preview /absolute/diagrams/request.svg
+```
 
-[Reading guide](references/reading-diagrams.md) gives fresh reading sessions a short route to meaning without loading the full authoring skill. Guidance is not enforcement; review transcripts to assess unnecessary SVG reads. Token savings depend on actual avoided reads and have not been measured for these changes.
+Preview provides upstream playback controls; scenario dropdowns are deferred. Its pause handler does not reliably freeze CSS animations, so inspect scrub/static frames. Default `build` creates no HTML. Optional `skin <svg> --to light` derives the upstream fixed light palette; reapply derivatives after semantic rebuilds.
+
+Render with enforced outbound network denial covering browser subprocesses. Inspect intended/narrow widths, labels/tags, side/footer clearance, route/order/concurrency meaning, effect tails, outcome pauses/reset and reduced motion. If rendering is unavailable, report visual checks pending. Structural success does not prove visual quality. No automatic browser install/policy changes or publishing.
+
+## Integrity and privacy
+
+Pin: **`a8edca75f041ebb75c74ac9d3b3fbec3b9cd5486`**. Every wrapper call verifies actual HEAD, complete tracked-file set and all 62 audited hashes before executing a temporary snapshot of the verified bytes. Changed/missing files or another commit block execution; untracked code is excluded. There are no automatic updates/repairs. Troubleshoot with `python3 -I <skill>/scripts/run-animdiagram.py verify`.
+
+[Audit and limitations](audit/animdiagram-audit.md): tested core generation made no network syscalls; upstream tests passed 8/8 and 11/11 examples regenerated exactly during that audit. The whole checkout is not guaranteed offline: its gallery loads Google Fonts, browser background traffic was blocked, and its checker misses some external-resource forms. The wrapper blocks gallery execution, browser launch and export. Keep SVG script-free/self-contained: no external fonts/resources, event handlers or `foreignObject`. Never upload private diagrams/source/specs to external diagram services; the approved Claude connection is separate.
+
+The wrapper/generator are project-owned code; dependency hashes do not certify their changes or arbitrary authored SVG. [MIT notice](notices/animdiagram-MIT.txt) accompanies dependency attribution. Re-audit before changing the pin or manifest.
 
 ## Development checks
 
-Run repository test code against a disposable installed runtime; tests are not installed. Requires Git/Python 3.10+ and a cached checkout at the audited commit. Setup downloads only when installation is requested and its dependency destination is absent. Reuse a verified cached checkout for offline runs; tests mutate disposable clones.
+Tests live in the repository and run against disposable copies and installations. Reuse an exact audited checkout offline:
 
 ```sh
-python3 -I skills/sl-svg-diagram/tests/run.py /absolute/cached/animdiagram
-bash skills/sl-svg-diagram/scripts/setup-animdiagram.sh --skill-dir /temporary/skill --dependency-dir /absolute/cached/animdiagram
-python3 -I skills/sl-svg-diagram/tests/run.py /absolute/cached/animdiagram --skill-dir /temporary/skill
-python3 -I skills/sl-svg-diagram/tests/smoke.py --skill-dir /temporary/skill --output-dir /temporary/fresh-output
-python3 -I skills/sl-svg-diagram/tests/measure_cost.py --skill-dir /temporary/skill --output-dir /temporary/fresh-cost-output
+bash skills/sl-svg-diagram/scripts/setup-animdiagram.sh --skill-dir /temporary/fresh-skill --dependency-dir /absolute/cached/animdiagram
+python3 -I skills/sl-svg-diagram/tests/run.py /absolute/cached/animdiagram --skill-dir /temporary/fresh-skill
+python3 -I skills/sl-svg-diagram/tests/smoke.py --skill-dir /temporary/fresh-skill --output-dir /temporary/fresh-output
+# Explicit native preview variant:
+python3 -I skills/sl-svg-diagram/tests/smoke.py --skill-dir /temporary/fresh-skill --output-dir /temporary/other-fresh-output --preview
 ```
 
-Use fresh disposable destinations, never the user's installed skill/profile/dependency as a mutation fixture. The smoke runner uses installed `examples/` and wrapper, parses generated SVG/companions, checks repeatability and legacy ambient metadata, and calls repository integration/integrity tests against that installed runtime. It exits nonzero on required failure and reports artifacts. `--output-dir` must be fresh; omit it for a retained temporary directory. `--skip-integration` runs only the fixture smoke and explicitly reports that the integration suite was skipped.
+Script smoke builds four repository semantic fixtures through the installed wrapper, checks companions/XML/repeatability/links, exercises native template/timeline/check and runs integration/integrity tests. Default smoke creates no HTML; `--preview` exercises separate native preview. `--skip-integration` reports the skipped suite. Output directories must be fresh; omitting the option retains a temporary directory. No tests/examples are installed and no real user files/profiles are mutated.
 
-The cost runner uses the installed generator/defaults/example and verified wrapper. It compares equivalent reconstructed manual static SVG/motion JSON against compact semantic JSON for a creation and label refinement, recording authoring/changed-character proxies, wrapper calls and returned tool-output characters. These are not token measurements or live Claude runs; model usage/source-read counts are unavailable and no percentage token saving is claimed.
-
-Browser checks are separate. In an approved OS network namespace with Python Playwright and Chromium already installed:
+`tests/browser_layout.py` checks fixture text bounds at intended/narrow widths. `tests/browser_motion.py` samples each expected packet/pulse, parallel starts, caption exclusivity, reduced motion and text clearance, saving scenario screenshots and `motion.json`. Both repository-only helpers require Chromium and Playwright plus enforced network denial. Example Linux runner (the network namespace covers browser subprocesses):
 
 ```sh
-unshare --user --map-root-user --net python3 skills/sl-svg-diagram/tests/browser_layout.py --examples-dir /temporary/fresh-output --output-dir /temporary/layout-evidence
-unshare --user --map-root-user --net python3 skills/sl-svg-diagram/tests/browser_preview.py --examples-dir /temporary/fresh-output --output-dir /temporary/playback-evidence
+unshare --user --map-root-user --net python3 -I skills/sl-svg-diagram/tests/browser_motion.py --examples-dir /temporary/fresh-output/examples --output-dir /temporary/browser-motion
 ```
 
-The runners require no default route and a failed external socket probe. Four semantic fixtures are checked at intended/narrow widths; auxiliary legacy fixtures are covered by playback. Full browser cycles inspect actual opacity/transforms, choices/exclusivity, boundaries/tails/pauses/reset, controls, real speed, ambient periods, standalone image animation and reduced motion. For SVG image documents Chromium here requires a separate browser with `--force-prefers-reduced-motion=reduce` plus explicit page context; page-level emulation alone does not propagate into those images. Screenshots/JSON are retained outside the repository. Narrow branch/grid/enum labels still need alternate layouts at 360px; passing bounds does not establish readability.
-
-Actual installed Claude acceptance remains separate and pending when CLI/authentication are unavailable. Verify real tool calls and artifacts for boolean/grid/enum creation, one-time versus remembered preferences in an explicit temporary profile, and a fresh reading session. Deterministic tests, browser renders and a final assistant message do not prove live skill use.
+Both helpers refuse a default network route or a working external socket. `--names flow branch` selects motion fixtures; the default covers all four. Browser checks complement structural tests. Script smoke is **not a live Claude invocation**: where Claude CLI/API/authentication are unavailable, live skill acceptance remains pending. No token-saving percentage is measured or claimed.
 
 [Skill instructions](SKILL.md) · [All skills](../README.md)

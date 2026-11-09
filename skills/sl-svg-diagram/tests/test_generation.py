@@ -84,7 +84,7 @@ class GenerationTests(unittest.TestCase):
         self.assertFalse(self.debug.exists())
 
     def test_three_presets_real_compiler_and_repeatability(self):
-        for name in ('flow', 'branch', 'grid'):
+        for name in ('flow', 'branch', 'grid', 'enum'):
             with self.subTest(preset=name):
                 spec = self.fixture(name)
                 normalized = self.good(spec)
@@ -147,6 +147,26 @@ class GenerationTests(unittest.TestCase):
                 spec['links'] = [{'id':'edge','from':'peer1','to':'peer2'}]
             with self.subTest(name=name):
                 self.invalid(spec, 'requires')
+
+    def test_duplicate_json_keys_cycles_duplicate_links_and_failed_compile(self):
+        self.spec.write_text('{"format":"sl-diagram/v1","format":"sl-diagram/v1"}')
+        result = subprocess.run([sys.executable, '-I', str(self.runner), 'build', str(self.spec), '--out', str(self.svg)], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 2)
+        self.assertIn('duplicate JSON field', result.stderr)
+        spec = self.fixture()
+        spec['links'].append(copy.deepcopy(spec['links'][0]))
+        self.invalid(spec, 'duplicate link ID')
+        spec = self.fixture()
+        spec['links'].append({'id':'cycle', 'from':'store', 'to':'input'})
+        self.invalid(spec, 'requires')
+        self.good(self.fixture())
+        before = self.svg.read_bytes(), self.agent.read_bytes()
+        self.spec.write_text(json.dumps(self.fixture()))
+        with self.assertRaises(self.generator.BuildError):
+            self.generator.build(self.spec, self.svg, self.skill / 'defaults/v1.json',
+                                 {'assets/template.svg': (self.dep / 'assets/template.svg').read_bytes()},
+                                 lambda *args: 1)
+        self.assertEqual(before, (self.svg.read_bytes(), self.agent.read_bytes()))
 
     def test_grid_five_six_and_ordered_six(self):
         spec = self.fixture('grid')
@@ -257,10 +277,17 @@ class GenerationTests(unittest.TestCase):
         spec['settings']={'travel':.12345,'pause':.56789,'reset':.23456,'setup':.12345,'effect_tail':.56789}
         n=self.good(spec)
         root=ET.parse(self.svg).getroot()
-        metadata=json.loads(next(e.text for e in root.iter() if e.get('id')=='sl-scenarios'))
-        self.assertEqual(metadata['loop'],4.62)
+        self.assertFalse(any(e.get('id') == 'sl-scenarios' for e in root.iter()))
+        self.assertEqual(n['motion']['loop'],4.62)
         self.assertEqual(n['scenarios'][-1]['end'],4.62)
         self.assertIn('animation-duration: 4.62s;',self.svg.read_text())
+
+    def test_emitted_visibility_cannot_cross_scenario_boundary(self):
+        normalized = {'motion': {'loop': 10}, 'scenarios': [{'start': 0, 'end': 5}, {'start': 5, 'end': 10}]}
+        good = '@keyframes s1_label0 { 0%, 51% {opacity:0} 52%, 90% {opacity:1} 91%, 100% {opacity:0} }'
+        self.generator.validate_visibility(good, normalized)
+        with self.assertRaisesRegex(self.generator.BuildError, 'crosses scenario boundary'):
+            self.generator.validate_visibility(good.replace('51%', '49%'), normalized)
 
     def test_integrity_blocks_build_before_upstream_executes(self):
         for damage in ('head','file'):
