@@ -52,5 +52,3 @@ unshare --user --map-root-user --net python3 <skill>/tests/browser_preview.py --
 ```
 
 The scripts require no default route and a failed external socket probe. The playback test drives full cycles using virtual browser time, checks real computed effect opacity/transforms, and separately measures real elapsed playback speed. It covers boolean/four-enum choices, exclusive repetition and captions at boundaries, complete outcome/reset windows, pause/resume, selection changes, scrubbing, static frame, keyboard focus, background/zoom, ambient periods, standalone image animation and reduced motion. For standalone SVG images this Chromium requires a separate browser with `--force-prefers-reduced-motion=reduce`; per-page reduced-motion emulation does not propagate into image documents. Screenshots and JSON evidence are written outside the repository.
-
-Real Claude acceptance is a separate requirement. See the repository's `docs/design/sl-svg-diagram/user-review-guide.md` for disposable installation, temporary preferences, fixture prompts, transcript/artifact checks and a fresh reading session. A script or a model's final “done” message does not prove live skill use.
