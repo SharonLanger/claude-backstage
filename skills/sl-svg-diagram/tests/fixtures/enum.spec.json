@@ -1,0 +1,107 @@
+{
+  "format": "sl-diagram/v1",
+  "defaults_version": "v1",
+  "title": "FOUR ENUM ROUTES",
+  "claim": "The selected enum value activates exactly its authored route.",
+  "explanation": "A disposable hypothetical fixture; no repository behavior is asserted.",
+  "sources": [],
+  "layout": "branch",
+  "nodes": [
+    {
+      "id": "input",
+      "label": "Mode"
+    },
+    {
+      "id": "read",
+      "label": "Read handler"
+    },
+    {
+      "id": "write",
+      "label": "Write handler"
+    },
+    {
+      "id": "batch",
+      "label": "Batch handler"
+    },
+    {
+      "id": "skip",
+      "label": "Skip handler"
+    }
+  ],
+  "links": [
+    {
+      "id": "read_route",
+      "from": "input",
+      "to": "read"
+    },
+    {
+      "id": "write_route",
+      "from": "input",
+      "to": "write"
+    },
+    {
+      "id": "batch_route",
+      "from": "input",
+      "to": "batch"
+    },
+    {
+      "id": "skip_route",
+      "from": "input",
+      "to": "skip"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "read",
+      "label": "mode=read",
+      "steps": [
+        {
+          "node": "input"
+        },
+        {
+          "link": "read_route"
+        }
+      ],
+      "outcome": "Read outcome."
+    },
+    {
+      "id": "write",
+      "label": "mode=write",
+      "steps": [
+        {
+          "node": "input"
+        },
+        {
+          "link": "write_route"
+        }
+      ],
+      "outcome": "Write outcome."
+    },
+    {
+      "id": "batch",
+      "label": "mode=batch",
+      "steps": [
+        {
+          "node": "input"
+        },
+        {
+          "link": "batch_route"
+        }
+      ],
+      "outcome": "Batch outcome."
+    },
+    {
+      "id": "skip",
+      "label": "mode=skip",
+      "steps": [
+        {
+          "node": "input"
+        },
+        {
+          "link": "skip_route"
+        }
+      ],
+      "outcome": "Skip outcome."
+    }
+  ]
+}

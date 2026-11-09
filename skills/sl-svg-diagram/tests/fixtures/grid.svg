@@ -41,9 +41,9 @@
     /* s0_e6: pulse */
     @keyframes s0_e6 { 0%, 9.68% { transform: scale(0.4); opacity: 0; } 11.48% { transform: scale(0.5); opacity: 0.8; } 32.26%, 100% { transform: scale(1.4); opacity: 0; } }
     /* s0_label0: phase */
-    @keyframes s0_label0 { 0%, 87.1% { opacity: 1; } 90.32%, 100% { opacity: 0; } }
+    @keyframes s0_label0 { 0%, 0.81% { opacity: 0; } 2.42%, 87.1% { opacity: 1; } 88.71%, 100% { opacity: 0; } }
     /* s0_outcome0: phase */
-    @keyframes s0_outcome0 { 0%, 45.16% { opacity: 0; } 48.39%, 87.1% { opacity: 1; } 90.32%, 100% { opacity: 0; } }
+    @keyframes s0_outcome0 { 0%, 49.19% { opacity: 0; } 50.81%, 87.1% { opacity: 1; } 88.71%, 100% { opacity: 0; } }
     /* @/motion:css */
 
     @media (prefers-reduced-motion: reduce) {
@@ -135,4 +135,6 @@ text {font-family:monospace;font-size:14px;fill:#F4F6FC} .semantic-caption {font
   <text class="semantic-caption story" x="28" y="623.6" text-anchor="start" fill="#4CF490" style="animation-name:s0_label0;opacity:0">Independent work</text>
   <text class="semantic-caption story" x="28" y="643.2" text-anchor="start" fill="#4CF490" style="animation-name:s0_outcome0;opacity:0">All peers can work together in this illustrative fixture.</text>
   <!-- @/motion:elements -->
+<metadata id="sl-scenarios">{"loop": 3.1, "scenarios": [{"end": 3.1, "id": "peers", "label": "Independent work", "start": 0.0}], "spec_path": "grid.spec.json", "spec_sha256": "2b444c5e0090b4c32c10992c53486e2edf7414c7bb2488cb180d9143b90a7522", "version": "sl-preview/v1"}</metadata>
 </svg>
+<!-- sl-svg-sha256: 6c7b30f6b0ec24624035f7b4f80eef38b8f2aa749f7822bee483c3483cc673a8 -->

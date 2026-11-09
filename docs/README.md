@@ -6,6 +6,6 @@ Documentation will be organized by topic, with an overview and links to deeper e
 
 ## Available documentation
 
-- [SL SVG Diagram implementation design](design/sl-svg-diagram/sl-svg-diagram-mini-design.md): instruction organization, planned generation, and scenario preview.
+- [SL SVG Diagram implementation design](design/sl-svg-diagram/sl-svg-diagram-mini-design.md): instruction organization, generation, and scenario preview. [Candidate review and live acceptance guide](design/sl-svg-diagram/user-review-guide.md).
 
 [← Back to Claude Backstage](../README.md)

@@ -51,9 +51,12 @@ class GenerationTests(unittest.TestCase):
     def fixture(self, name='flow'):
         return json.loads((SOURCE / 'tests/fixtures' / (name + '.spec.json')).read_text())
 
-    def build(self, value, debug=True, extra=(), runner=None, env=None):
+    def build(self, value, debug=True, extra=(), runner=None, env=None, profile=None):
         self.spec.write_text(json.dumps(value))
-        args = [sys.executable, '-I', str(runner or self.runner), 'build', str(self.spec), '--out', str(self.svg)]
+        args = [sys.executable, '-I']
+        if profile is not None:
+            args += [str(SOURCE / 'tests/isolated_home.py'), str(profile)]
+        args += [str(runner or self.runner), 'build', str(self.spec), '--out', str(self.svg)]
         if debug:
             self.debug.unlink(missing_ok=True)
             args += ['--debug-normalized', str(self.debug)]
@@ -162,6 +165,10 @@ class GenerationTests(unittest.TestCase):
         spec = self.fixture('branch')
         n = self.good(spec)
         events = {e['id']:e for e in n['motion']['events']}
+        self.assertTrue(all(e.get('edge')>0 for e in events.values() if e['kind']=='phase'))
+        for window in n['scenarios']:
+            label=events[f's{n["scenarios"].index(window)}_label0']
+            self.assertGreater(label['at']-label['edge'],window['start'])
         self.assertEqual(events['s0_e2']['to'], n['routes']['true_route'][-1])
         self.assertEqual(events['s1_e2']['to'], n['routes']['false_route'][-1])
         self.assertGreater(events['s0_e2']['at'], events['s0_e1']['at'])
@@ -179,7 +186,7 @@ class GenerationTests(unittest.TestCase):
         pref = home / '.claude/sl-svg-diagram/preferences.md'
         pref.parent.mkdir(parents=True)
         pref.write_text('Use absurdly giant labels globally.\n')
-        result = self.build(spec, env={**os.environ, 'HOME':str(home)})
+        result = self.build(spec, profile=home)
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(original,self.svg.read_bytes())
         spec['settings']={'outer_margin':40,'gap':80, 'font_size':16}
@@ -229,6 +236,25 @@ class GenerationTests(unittest.TestCase):
             self.assertIn('manual file',result.stderr)
             self.assertEqual(path.read_text(),'manual work')
             path.unlink()
+
+    def test_compiler_precision_rejects_collapsed_generated_effects(self):
+        spec=self.fixture()
+        spec['settings']={'travel':.1,'effect_tail':.5,'setup':5,'pause':10,'reset':5}
+        spec['scenarios']=[{'id':f'long{i}','label':f'Long {i}',
+                            'steps':[{'node':'input'} for _ in range(30)],'outcome':'Complete.'} for i in range(4)]
+        self.invalid(spec,'collapses visibility offsets')
+        spec['settings']['travel']=10
+        self.invalid(spec,'precision budget')
+
+    def test_fractional_timing_uses_actual_compiler_loop_clock(self):
+        spec=self.fixture('branch')
+        spec['settings']={'travel':.12345,'pause':.56789,'reset':.23456,'setup':.12345,'effect_tail':.56789}
+        n=self.good(spec)
+        root=ET.parse(self.svg).getroot()
+        metadata=json.loads(next(e.text for e in root.iter() if e.get('id')=='sl-scenarios'))
+        self.assertEqual(metadata['loop'],4.62)
+        self.assertEqual(n['scenarios'][-1]['end'],4.62)
+        self.assertIn('animation-duration: 4.62s;',self.svg.read_text())
 
     def test_integrity_blocks_build_before_upstream_executes(self):
         for damage in ('head','file'):

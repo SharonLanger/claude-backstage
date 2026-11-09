@@ -30,8 +30,11 @@ class WrapperTests(unittest.TestCase):
         (self.skill / ".installation.json").write_text(json.dumps({"commit": PIN, "dependency": str(self.dep)}))
         self.runner = self.skill / "scripts/run-animdiagram.py"
 
-    def run_tool(self, *args, env=None):
-        return subprocess.run([sys.executable, "-I", str(self.runner), *map(str, args)],
+    def run_tool(self, *args, env=None, profile=None):
+        command = [sys.executable, "-I"]
+        if profile is not None:
+            command += [str(SOURCE / "tests/isolated_home.py"), str(profile)]
+        return subprocess.run([*command, str(self.runner), *map(str, args)],
                               cwd=self.base, capture_output=True, text=True, env=env)
 
     def blocked(self, *args):
@@ -136,17 +139,16 @@ class WrapperTests(unittest.TestCase):
         profile = self.base / "isolated home"
         preferences = profile / ".claude/sl-svg-diagram/preferences.md"
         target = profile / ".claude/skills/sl-svg-diagram"
-        env = {**os.environ, "HOME": str(profile)}
         args = ("setup", "--skill-dir", target, "--dependency-dir", self.dep)
         # An absent profile stays absent: setup does not manufacture preferences.
-        result = self.run_tool(*args, env=env)
+        result = self.run_tool(*args, profile=profile)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertFalse(preferences.exists())
         preferences.parent.mkdir(parents=True)
         original = b"Personal rule: preserve this exact file.\n"
         preferences.write_bytes(original)
         shutil.rmtree(target)
-        result = self.run_tool(*args, env=env)
+        result = self.run_tool(*args, profile=profile)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertEqual(preferences.read_bytes(), original)
         self.assertFalse((target / "preferences.md").exists())
@@ -161,9 +163,9 @@ class WrapperTests(unittest.TestCase):
         # Missing preferences still permit the current manual workflow.
         preferences.unlink()
         runner = target / "scripts/run-animdiagram.py"
-        result = subprocess.run([sys.executable, "-I", str(runner), "template",
+        result = subprocess.run([sys.executable, "-I", str(SOURCE / "tests/isolated_home.py"), str(profile), str(runner), "template",
                                  str(self.base / "without preferences.svg")],
-                                env=env, capture_output=True, text=True)
+                                capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertFalse(preferences.exists())
 

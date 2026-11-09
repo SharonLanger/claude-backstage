@@ -41,9 +41,9 @@
     }
     @keyframes s0_e2-glow { 0%, 25.58% { opacity: 0; } 26.74% { opacity: 0.3; } 31.4%, 100% { opacity: 0; } }
     /* s0_label0: phase */
-    @keyframes s0_label0 { 0%, 45.35% { opacity: 1; } 46.51%, 100% { opacity: 0; } }
+    @keyframes s0_label0 { 0%, 0.29% { opacity: 0; } 0.87%, 45.35% { opacity: 1; } 45.93%, 100% { opacity: 0; } }
     /* s0_outcome0: phase */
-    @keyframes s0_outcome0 { 0%, 30.23% { opacity: 0; } 31.4%, 45.35% { opacity: 1; } 46.51%, 100% { opacity: 0; } }
+    @keyframes s0_outcome0 { 0%, 31.69% { opacity: 0; } 32.27%, 45.35% { opacity: 1; } 45.93%, 100% { opacity: 0; } }
     /* s1_e1: pulse */
     @keyframes s1_e1 { 0%, 53.49% { transform: scale(0.4); opacity: 0; } 54.14% { transform: scale(0.5); opacity: 0.8; } 61.63%, 100% { transform: scale(1.4); opacity: 0; } }
     /* s1_e2: packet */
@@ -57,9 +57,9 @@
     }
     @keyframes s1_e2-glow { 0%, 75.58% { opacity: 0; } 76.74% { opacity: 0.3; } 81.4%, 100% { opacity: 0; } }
     /* s1_label0: phase */
-    @keyframes s1_label0 { 0%, 48.84% { opacity: 0; } 50%, 95.35% { opacity: 1; } 96.51%, 100% { opacity: 0; } }
+    @keyframes s1_label0 { 0%, 50.29% { opacity: 0; } 50.87%, 95.35% { opacity: 1; } 95.93%, 100% { opacity: 0; } }
     /* s1_outcome0: phase */
-    @keyframes s1_outcome0 { 0%, 80.23% { opacity: 0; } 81.4%, 95.35% { opacity: 1; } 96.51%, 100% { opacity: 0; } }
+    @keyframes s1_outcome0 { 0%, 81.69% { opacity: 0; } 82.27%, 95.35% { opacity: 1; } 95.93%, 100% { opacity: 0; } }
     /* @/motion:css */
 
     @media (prefers-reduced-motion: reduce) {
@@ -102,4 +102,6 @@ text {font-family:monospace;font-size:14px;fill:#F4F6FC} .semantic-caption {font
   <text class="semantic-caption story" x="28" y="370.4" text-anchor="start" fill="#4CF490" style="animation-name:s1_label0;opacity:0">enabled=false</text>
   <text class="semantic-caption story" x="28" y="390" text-anchor="start" fill="#4CF490" style="animation-name:s1_outcome0;opacity:0">Disabled work is skipped.</text>
   <!-- @/motion:elements -->
+<metadata id="sl-scenarios">{"loop": 8.6, "scenarios": [{"end": 4.3, "id": "true", "label": "enabled=true", "start": 0.0}, {"end": 8.6, "id": "false", "label": "enabled=false", "start": 4.3}], "spec_path": "branch.spec.json", "spec_sha256": "86e7e6e994f36bfc9b00b54dea04c2293e80c971cc9bc284d005429b8a1b0a2a", "version": "sl-preview/v1"}</metadata>
 </svg>
+<!-- sl-svg-sha256: 842613a7d394376f9727f89393ee0ce673304618c92b04724afe66495e575ca7 -->

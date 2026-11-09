@@ -149,6 +149,36 @@ def execute(data: dict[str, bytes], tool: str, arguments: list[str], quiet=False
         return result.returncode
 
 
+def inspect_motion(data, spec_path, svg_text):
+    """Compile a legacy schedule in a verified snapshot; return its actual resolved clock."""
+    with tempfile.TemporaryDirectory(prefix="sl-preview-verified-") as tmp:
+        snapshot = Path(tmp)
+        for name, raw in data.items():
+            dest = snapshot / name
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            dest.write_bytes(raw)
+        (snapshot / "input.svg").write_text(svg_text)
+        (snapshot / "input.json").write_bytes(spec_path.read_bytes())
+        bridge = snapshot / "inspect_motion.py"
+        bridge.write_text("""import importlib.util, json
+from pathlib import Path
+root = Path(__file__).parent
+module_spec = importlib.util.spec_from_file_location('verified_timeline', root / 'scripts/timeline.py')
+m = importlib.util.module_from_spec(module_spec)
+module_spec.loader.exec_module(m)
+spec = json.loads((root / 'input.json').read_text())
+css, elements, table, loop = m.compile_spec(spec)
+svg = (root / 'input.svg').read_text()
+print(json.dumps({'events': spec['events'], 'table': table, 'loop': loop, 'rendered_loop': float(m.fmt(loop)),
+                  'settings': {**m.DEFAULTS, **{k:v for k,v in spec.items() if k in m.DEFAULTS}},
+                  'matches': m.inject(svg, css, elements) == svg}))
+""")
+        result = subprocess.run([sys.executable, "-I", "-S", str(bridge)], capture_output=True, text=True)
+        if result.returncode:
+            raise ValueError("verified legacy compiler rejected spec: " + result.stderr[-1000:])
+        return json.loads(result.stdout)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
@@ -167,6 +197,7 @@ def main() -> int:
     build.add_argument("spec", type=Path)
     build.add_argument("--out", type=Path, required=True)
     build.add_argument("--debug-normalized", type=Path)
+    build.add_argument("--preview", action="store_true", help="also emit scenario HTML")
     args = parser.parse_args()
     try:
         if args.command == "setup":
@@ -181,6 +212,12 @@ def main() -> int:
             with args.destination.open("xb") as dest:
                 dest.write(data[name])
             return 0
+        def preview_module():
+            import importlib.util
+            module_spec = importlib.util.spec_from_file_location("sl_preview", SKILL / "scripts/scenario_preview.py")
+            module = importlib.util.module_from_spec(module_spec)
+            module_spec.loader.exec_module(module)
+            return module
         if args.command == "build":
             import importlib.util
             module_spec = importlib.util.spec_from_file_location("sl_generate", SKILL / "scripts/generate.py")
@@ -188,17 +225,63 @@ def main() -> int:
             module_spec.loader.exec_module(generator)
             try:
                 return generator.build(args.spec, args.out, SKILL / "defaults/v1.json", data,
-                                       lambda d, tool, a: execute(d, tool, a, quiet=True), args.debug_normalized)
+                                       lambda d, tool, a: execute(d, tool, a, quiet=True), args.debug_normalized,
+                                       preview_module(), args.preview)
             except (generator.BuildError, OSError) as exc:
                 print("Build: FAIL. " + str(exc), file=sys.stderr)
                 return 2
         arguments = args.arguments
         if arguments[:1] == ["--"]:
             arguments = arguments[1:]
-        if args.command == "preview" and any(a.startswith("--") and a != "--out"
-                                             and not a.startswith("--out=") for a in arguments):
+        if args.command == "skin" and arguments and Path(arguments[0]).is_file():
+            source_path = Path(arguments[0])
+            source = source_path.read_text()
+            if 'id="sl-scenarios"' in source:
+                skin_parser = argparse.ArgumentParser(prog="skin", allow_abbrev=False)
+                skin_parser.add_argument("svg", type=Path)
+                skin_parser.add_argument("--to", choices=("light", "dark"), required=True)
+                skin_parser.add_argument("--out", type=Path)
+                skin = skin_parser.parse_args(arguments)
+                import re
+                stem = re.sub(r"-(light|dark)$", "", skin.svg.stem)
+                out = skin.out or skin.svg.with_name(f"{stem}-{skin.to}.svg")
+                module = preview_module()
+                try:
+                    module.metadata(source, source_path)
+                    with tempfile.TemporaryDirectory(prefix="sl-skin-") as tmp:
+                        target = Path(tmp) / "converted.svg"
+                        result = execute(data, "skin", [str(skin.svg), "--to", skin.to, "--out", str(target)], quiet=True)
+                        if result:
+                            return result
+                        converted = module.converted(source, target.read_text(), source_path, out)
+                    module.atomic_write(out, converted)
+                    print(out)
+                    return 0
+                except (module.PreviewError, OSError) as exc:
+                    print("Skin: FAIL. " + str(exc), file=sys.stderr)
+                    return 2
+        if args.command == "preview" and any(a.startswith("--") and a not in ("--out", "--spec", "--plain")
+                                             and not a.startswith(("--out=", "--spec=")) for a in arguments):
             print("Blocked: automatic browser launch requires a separately enforced offline renderer.", file=sys.stderr)
             return 2
+        if args.command == "preview":
+            preview_parser = argparse.ArgumentParser(prog="preview", allow_abbrev=False)
+            preview_parser.add_argument("svg", type=Path)
+            preview_parser.add_argument("--out", type=Path)
+            preview_parser.add_argument("--spec", type=Path)
+            preview_parser.add_argument("--plain", action="store_true")
+            options = preview_parser.parse_args(arguments)
+            if not options.plain:
+                module = preview_module()
+                try:
+                    result = module.render(options.svg, options.out, options.spec,
+                                           lambda path, svg: inspect_motion(data, path, svg))
+                    if result is not None:
+                        return result
+                except (module.PreviewError, OSError) as exc:
+                    print("Preview: FAIL. " + str(exc), file=sys.stderr)
+                    return 2
+            arguments = [str(options.svg)] + (["--out", str(options.out)] if options.out else [])
         return execute(data, args.command, arguments)
     except (IntegrityError, OSError, ValueError, KeyError, subprocess.CalledProcessError):
         print("Integrity: FAIL. Installation or audited dependency mismatch; execution blocked. Restore the pinned installation.", file=sys.stderr)

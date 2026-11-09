@@ -256,6 +256,7 @@ def normalize(spec, defaults):
         routes[lid] = [start, [start[0], mid], [end[0], mid], end]
     # Normalized windows are the sole timing authority, ready for optional preview.
     events, scenarios = [], []
+    edge, guard = defaults['compiler']['caption_edge'], defaults['compiler']['caption_guard']
     clock = 0.0
     for i, scenario in enumerate(spec['scenarios']):
         start = clock
@@ -283,16 +284,17 @@ def normalize(spec, defaults):
         # Captions are individually wrapped, with separate label and outcome regions.
         y = footer_top + f
         for j, line in enumerate(lines(scenario['label'], footer_width, f, 'scenario label')):
-            events.append({'id': f's{i}_label{j}', 'kind': 'phase', 'at': start, 'until': clock, 'text': line,
-                           'x': margin, 'y': y, 'anchor': 'start', 'class': 'semantic-caption'})
+            events.append({'id': f's{i}_label{j}', 'kind': 'phase', 'at': start + edge + guard, 'until': clock, 'text': line,
+                           'x': margin, 'y': y, 'anchor': 'start', 'class': 'semantic-caption', 'edge': edge})
             y += f * 1.4
         for j, line in enumerate(lines(scenario['outcome'], footer_width, f, 'outcome')):
-            events.append({'id': f's{i}_outcome{j}', 'kind': 'phase', 'at': outcome_start, 'until': clock,
-                           'text': line, 'x': margin, 'y': y, 'anchor': 'start', 'class': 'semantic-caption'})
+            events.append({'id': f's{i}_outcome{j}', 'kind': 'phase', 'at': outcome_start + edge + guard, 'until': clock,
+                           'text': line, 'x': margin, 'y': y, 'anchor': 'start', 'class': 'semantic-caption', 'edge': edge})
             y += f * 1.4
-        scenarios.append({'id': scenario['id'], 'label': scenario['label'], 'start': round(start, 6), 'end': round(end, 6)})
+        scenarios.append({'id': scenario['id'], 'label': scenario['label'], 'start': round(start, 2), 'end': round(end, 2)})
         clock = end
-    motion = {'loop': round(clock, 6), 'accent': defaults['colors']['accent'],
+    require(clock <= defaults['compiler']['max_loop'], 'timeline exceeds compiler precision budget; split into shorter diagrams')
+    motion = {'loop': round(clock, 2), 'accent': defaults['colors']['accent'],
               'glow_dur': s['effect_tail'], 'events': events}
     return {'settings': s, 'width': math.ceil(width / 4) * 4, 'height': math.ceil(height / 4) * 4, 'boxes': boxes, 'routes': routes,
             'wrapped': wrapped, 'title': title, 'claim': claim, 'top': top, 'flow_width': flow_width,
@@ -368,10 +370,15 @@ def companion(spec, spec_path, out):
     return '\n\n'.join(parts) + '\n'
 
 
-def build(spec_path, out, defaults_path, data, execute, debug=None):
+def build(spec_path, out, defaults_path, data, execute, debug=None, preview_module=None, make_preview=False):
     require(out.suffix == '.svg', '--out must end in .svg')
     require(out.resolve() != spec_path.resolve(), 'output must not replace input')
     agent = out.with_suffix('.agent.md')
+    preview_path = out.with_suffix('.preview.html')
+    if make_preview:
+        require(not preview_path.is_symlink(), 'refusing linked preview output')
+        require(not preview_path.exists() or '<!-- sl-diagram/v1 generated preview -->' in preview_path.read_text()[:300],
+                'refusing to overwrite manual preview')
     for path, marker in ((out, MARKER), (agent, COMPANION_MARKER)):
         require(not path.is_symlink(), f'refusing linked output: {path}')
         require(not path.exists() or marker in path.read_text()[:300], f'refusing to overwrite manual file: {path}')
@@ -389,12 +396,20 @@ def build(spec_path, out, defaults_path, data, execute, debug=None):
         require(execute(data, 'timeline', [str(motion), '--inject', str(svg)]) == 0, 'verified motion compiler failed')
         require(execute(data, 'check', [str(svg)]) == 0, 'verified structural checker failed')
         compiled = svg.read_text()
-        ET.fromstring(compiled)
+        parsed = ET.fromstring(compiled)
+        try:
+            preview_module.validate_visibility('\n'.join(e.text or '' for e in parsed.iter() if e.tag.endswith('}style')))
+        except preview_module.PreviewError as exc:
+            raise BuildError(str(exc)) from exc
     digest = hashlib.sha256(json.dumps(spec, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
-    payloads = {out: MARKER + '\n<!-- semantic-sha256: ' + digest + ' -->\n' + compiled,
-                agent: companion(spec, spec_path.resolve(), out.resolve())}
+    meta = {'version':'sl-preview/v1', 'loop':n['motion']['loop'], 'scenarios':n['scenarios'],
+            'spec_sha256':digest, 'spec_path':Path(os.path.relpath(spec_path.resolve(), out.resolve().parent)).as_posix()}
+    stamped = preview_module.stamp(MARKER + '\n<!-- semantic-sha256: ' + digest + ' -->\n' + compiled, meta)
+    payloads = {out: stamped, agent: companion(spec, spec_path.resolve(), out.resolve())}
+    if make_preview:
+        payloads[preview_path] = preview_module.page(stamped, out.name, preview_module.ranges(meta['loop'], meta['scenarios']))
     if debug is not None:
-        require(debug.resolve() not in {out.resolve(), agent.resolve(), spec_path.resolve()}, 'debug path conflicts with primary asset')
+        require(debug.resolve() not in {out.resolve(), agent.resolve(), spec_path.resolve(), preview_path.resolve()}, 'debug path conflicts with primary asset')
         require(not debug.exists(), 'debug output already exists')
         payloads[debug] = json.dumps(n, sort_keys=True, indent=2, ensure_ascii=False) + '\n'
     # Stage all writes in their destination directories before replacing files.

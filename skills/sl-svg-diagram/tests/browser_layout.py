@@ -20,9 +20,14 @@ try:
 except OSError:
     pass
 reports=[]
+semantic=('flow','branch','grid','enum')
+missing=[name for name in semantic if not (a.examples_dir/(name+'.svg')).is_file()]
+assert not missing, f'Missing semantic fixture outputs: {missing}'
+skipped=[path.name for path in a.examples_dir.glob('*.svg') if path.stem not in semantic]
 with sync_playwright() as pw:
     browser=pw.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
-    for path in sorted(a.examples_dir.glob('*.svg')):
+    for name in semantic:
+        path=a.examples_dir/(name+'.svg')
         for width in (1000,360):
             page=browser.new_page(viewport={'width':width,'height':1800},reduced_motion='reduce')
             # file:// is blocked by the managed browser; inspect identical local bytes inline.
@@ -55,4 +60,4 @@ with sync_playwright() as pw:
 assert reports, 'No generated SVG examples'
 assert all(not r['nodeFailures'] and not r['clearance'] for r in reports), reports
 assert all(r['readable'] for r in reports if r['document_width']==1000), reports
-print(f'PASS: {len(reports)} real-browser layouts; narrow-width readability reported separately. Artifacts: {a.output_dir}')
+print(f'PASS: {len(reports)} real-browser layouts; narrow-width readability reported separately. Auxiliary SVGs skipped (covered by playback tests): {skipped}. Artifacts: {a.output_dir}')
