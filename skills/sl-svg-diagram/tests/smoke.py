@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Repository smoke for installed native AnimDiagram workflow; disposable outputs only."""
+"""Repository script smoke for installed semantic and native workflows; not a live Claude invocation."""
 import argparse
 import json
 from pathlib import Path
@@ -32,6 +32,24 @@ def run(*arguments):
 
 try:
     run('verify')
+    # Repository-only examples mock Claude-authored semantic facts.
+    examples = out / 'examples'
+    examples.mkdir(parents=True)
+    for name in ('flow', 'branch', 'grid', 'enum'):
+        source = Path(__file__).resolve().parents[1] / 'examples' / (name + '.spec.json')
+        semantic = examples / source.name
+        semantic.write_bytes(source.read_bytes())
+        generated = examples / (name + '.svg')
+        run('build', semantic, '--out', generated, '--debug-normalized', examples / (name + '.normalized.json'))
+        ET.parse(generated)
+        before = generated.read_bytes(), generated.with_suffix('.agent.md').read_bytes()
+        run('build', semantic, '--out', generated)
+        assert before == (generated.read_bytes(), generated.with_suffix('.agent.md').read_bytes())
+        companion = generated.with_suffix('.agent.md')
+        facts = json.loads(semantic.read_text())
+        assert facts['explanation'] in companion.read_text()
+        for link in re.findall(r'\[[^\]]*\]\(([^)]+)\)', companion.read_text()):
+            assert (companion.parent / unquote(link)).is_file(), link
     folder = out / 'nested docs/diagrams'
     svg, spec, agent = [folder / ('request flow' + suffix) for suffix in ('.svg', '.spec.json', '.agent.md')]
     document = folder.parent / 'design notes.md'
@@ -99,10 +117,10 @@ Sources: self-contained hypothetical fixture, not repository behavior.
         (out / 'integration.log').write_text(result.stdout + result.stderr)
         if result.returncode:
             raise RuntimeError('integration tests failed; see integration.log')
-    print(f'PASS: native template/timeline/check, repeatability, companion and relative Markdown links.\n'
+    print(f'PASS: four semantic preset/case builds plus native template/timeline/check, repeatability, companions and relative links.\n'
           f'HTML: {"explicit native preview" if a.preview else "none (default)"}. '
           f'Integration: {"SKIPPED by request" if a.skip_integration else "PASS"}.\n'
-          f'Artifacts: {out}\nVisual/live Claude checks are separate.')
+          f'Artifacts: {out}\nScript smoke only; visual checks and live Claude invocation are separate.')
 except (OSError, ValueError, RuntimeError, AssertionError, ET.ParseError) as exc:
     print(f'FAIL: {exc}\nArtifacts: {out}', file=sys.stderr)
     raise SystemExit(1)

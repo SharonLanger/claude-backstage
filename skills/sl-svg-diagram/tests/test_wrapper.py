@@ -22,7 +22,8 @@ if '--skill-dir' in sys.argv:
     RUNTIME = Path(sys.argv[runtime_index + 1]).resolve()
     del sys.argv[runtime_index:runtime_index + 2]
 
-BUNDLE = {'SKILL.md', 'references/reading-diagrams.md', 'scripts/run-animdiagram.py',
+BUNDLE = {'SKILL.md', 'references/reading-diagrams.md', 'references/options.md',
+          'scripts/run-animdiagram.py', 'scripts/generate.py', 'defaults/v1.json',
           'audit/verified-files.sha256', 'notices/animdiagram-MIT.txt'}
 
 
@@ -63,22 +64,31 @@ class WrapperTests(unittest.TestCase):
         self.assertNotEqual(self.run_tool("template", output).returncode, 0)
         self.assertEqual(output.read_bytes(), original)
 
-    def test_inline_native_example_uses_pinned_defaults(self):
+    def test_inline_semantic_example_builds_in_installed_bundle(self):
         example = re.search(r'```json\s*(.*?)```', (self.skill / 'SKILL.md').read_text(), re.DOTALL)
         self.assertIsNotNone(example)
         value = json.loads(example.group(1))
+        self.assertEqual(value['format'], 'sl-diagram/v1')
+        self.assertLessEqual(len((self.skill / 'SKILL.md').read_text()), 4000)
         spec, svg = self.base / 'inline.spec.json', self.base / 'inline.svg'
+        spec.write_text(json.dumps(value))
+        compiled = self.run_tool('build', spec, '--out', svg)
+        self.assertEqual(compiled.returncode, 0, compiled.stdout + compiled.stderr)
+        self.assertTrue(svg.with_suffix('.agent.md').is_file())
+        self.assertFalse(svg.with_suffix('.preview.html').exists())
+
+    def test_native_motion_still_uses_pinned_defaults(self):
+        spec, svg = self.base / 'native.spec.json', self.base / 'native.svg'
+        value = {'events':[{'id':'request', 'kind':'packet', 'at':.3, 'from':[208,148], 'to':[320,148]}]}
         spec.write_text(json.dumps(value))
         self.assertEqual(self.run_tool('template', svg).returncode, 0)
         compiled = self.run_tool('timeline', spec, '--inject', svg)
         self.assertEqual(compiled.returncode, 0, compiled.stdout + compiled.stderr)
         self.assertIn('loop 9s', compiled.stdout)
         self.assertIn('request-ring', svg.read_text())
-        # Compare actual output to explicit pinned defaults, rather than duplicated prose.
         implicit = svg.read_bytes()
         value['loop'] = 9
-        for event in value['events']:
-            event.update(travel=.6, ring=True)
+        value['events'][0].update(travel=.6, ring=True)
         spec.write_text(json.dumps(value))
         self.assertEqual(self.run_tool('timeline', spec, '--inject', svg).returncode, 0)
         self.assertEqual(svg.read_bytes(), implicit)

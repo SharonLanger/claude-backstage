@@ -19,7 +19,8 @@ TOOLS = {"timeline": "timeline.py", "check": "check.py", "skin": "skin.py",
          "preview": "preview.py", "test": "test_timeline.py"}
 # Runtime bundle only. Keep repository docs, tests and generated outputs out.
 REQUIRED = (
-    "SKILL.md", "references/reading-diagrams.md", "scripts/run-animdiagram.py",
+    "SKILL.md", "references/reading-diagrams.md", "references/options.md",
+    "scripts/run-animdiagram.py", "scripts/generate.py", "defaults/v1.json",
     "audit/verified-files.sha256", "notices/animdiagram-MIT.txt",
 )
 # Imported runtime modules must not add bytecode caches to the installed bundle.
@@ -143,7 +144,7 @@ def setup(args) -> int:
     return 0
 
 
-def execute(data: dict[str, bytes], tool: str, arguments: list[str]) -> int:
+def execute(data: dict[str, bytes], tool: str, arguments: list[str], quiet=False) -> int:
     # Snapshot the actual hashed bytes to avoid a check-then-read race and prevent
     # untracked Python modules/bytecode in the checkout from entering execution.
     with tempfile.TemporaryDirectory(prefix="sl-svg-diagram-") as tmp:
@@ -152,8 +153,12 @@ def execute(data: dict[str, bytes], tool: str, arguments: list[str]) -> int:
             dest = snapshot / name
             dest.parent.mkdir(parents=True, exist_ok=True)
             dest.write_bytes(raw)
-        return subprocess.run([sys.executable, "-I", "-S",
-                               str(snapshot / "scripts" / TOOLS[tool]), *arguments]).returncode
+        result = subprocess.run([sys.executable, "-I", "-S",
+                                 str(snapshot / "scripts" / TOOLS[tool]), *arguments],
+                                capture_output=quiet, text=quiet)
+        if quiet and result.returncode:
+            print((result.stdout + result.stderr)[-2000:], file=sys.stderr)
+        return result.returncode
 
 
 def main() -> int:
@@ -167,6 +172,10 @@ def main() -> int:
     for tool in TOOLS:
         cmd = commands.add_parser(tool, add_help=False)
         cmd.add_argument("arguments", nargs=argparse.REMAINDER)
+    build = commands.add_parser("build", help="build semantic JSON into SVG and companion")
+    build.add_argument("spec", type=Path)
+    build.add_argument("--out", type=Path, required=True)
+    build.add_argument("--debug-normalized", type=Path)
     copy = commands.add_parser("template", help="copy an audited SVG template without overwriting")
     copy.add_argument("destination", type=Path)
     copy.add_argument("--light", action="store_true")
@@ -184,6 +193,17 @@ def main() -> int:
             with args.destination.open("xb") as dest:
                 dest.write(data[name])
             return 0
+        if args.command == "build":
+            import importlib.util
+            module_spec = importlib.util.spec_from_file_location("sl_generate", SKILL / "scripts/generate.py")
+            generator = importlib.util.module_from_spec(module_spec)
+            module_spec.loader.exec_module(generator)
+            try:
+                return generator.build(args.spec, args.out, SKILL / "defaults/v1.json", data,
+                                       lambda d, tool, a: execute(d, tool, a, quiet=True), args.debug_normalized)
+            except (generator.BuildError, OSError) as exc:
+                print("Build: FAIL. " + str(exc), file=sys.stderr)
+                return 2
         arguments = args.arguments
         if arguments[:1] == ["--"]:
             arguments = arguments[1:]
