@@ -3,6 +3,8 @@
 import importlib.util
 import json
 import os
+import re
+from urllib.parse import unquote, urlsplit
 from pathlib import Path
 import shutil
 import subprocess
@@ -129,6 +131,57 @@ class WrapperTests(unittest.TestCase):
         (target / "SKILL.md").write_text("customized")
         self.assertEqual(self.run_tool(*args).returncode, 2)
         self.assertEqual((target / "SKILL.md").read_text(), "customized")
+
+    def test_installed_references_and_personal_preferences_are_separate(self):
+        profile = self.base / "isolated home"
+        preferences = profile / ".claude/sl-svg-diagram/preferences.md"
+        target = profile / ".claude/skills/sl-svg-diagram"
+        env = {**os.environ, "HOME": str(profile)}
+        args = ("setup", "--skill-dir", target, "--dependency-dir", self.dep)
+        # An absent profile stays absent: setup does not manufacture preferences.
+        result = self.run_tool(*args, env=env)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertFalse(preferences.exists())
+        preferences.parent.mkdir(parents=True)
+        original = b"Personal rule: preserve this exact file.\n"
+        preferences.write_bytes(original)
+        shutil.rmtree(target)
+        result = self.run_tool(*args, env=env)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertEqual(preferences.read_bytes(), original)
+        self.assertFalse((target / "preferences.md").exists())
+        # Authoring references resolve from the installed bundle, not cwd.
+        for document in [target / "SKILL.md", *sorted((target / "references").glob("*.md"))]:
+            prose = re.sub(r"```.*?```", "", document.read_text(), flags=re.DOTALL)
+            for link in re.findall(r"!?\[[^\]]*\]\(([^)]+)\)", prose):
+                path = unquote(urlsplit(link).path)
+                if path:
+                    self.assertTrue((document.parent / path).is_file(), (document, link))
+        self.assertEqual(len(list((target / "references").glob("*.md"))), 3)
+        # Missing preferences still permit the current manual workflow.
+        preferences.unlink()
+        runner = target / "scripts/run-animdiagram.py"
+        result = subprocess.run([sys.executable, "-I", str(runner), "template",
+                                 str(self.base / "without preferences.svg")],
+                                env=env, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertFalse(preferences.exists())
+
+    def test_nested_document_links_resolve_with_spaces(self):
+        document = self.base / "nested docs/design notes.md"
+        assets = document.parent / "custom assets"
+        assets.mkdir(parents=True)
+        svg = assets / "request flow.svg"
+        companion = svg.with_suffix(".agent.md")
+        result = self.run_tool("template", svg)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        companion.write_text("Illustrative request flow.\n")
+        document.write_text("![Flow](custom%20assets/request%20flow.svg)\n"
+                            "[Diagram semantics](custom%20assets/request%20flow.agent.md)\n")
+        links = re.findall(r"!?\[[^\]]*\]\(([^)]+)\)", document.read_text())
+        resolved = [(document.parent / unquote(link)).resolve() for link in links]
+        self.assertEqual(resolved, [svg.resolve(), companion.resolve()])
+        self.assertTrue(all(path.is_file() for path in resolved))
 
     def test_installer_refuses_bad_dependency(self):
         (self.dep / "scripts/skin.py").write_text("changed")

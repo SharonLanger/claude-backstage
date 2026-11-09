@@ -6,6 +6,6 @@ Documentation will be organized by topic, with an overview and links to deeper e
 
 ## Available documentation
 
-No standalone documentation has been added to this section yet.
+- [SL SVG Diagram implementation design](design/sl-svg-diagram/sl-svg-diagram-mini-design.md): instruction organization, planned generation, and scenario preview.
 
 [← Back to Claude Backstage](../README.md)

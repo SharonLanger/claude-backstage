@@ -30,7 +30,9 @@ Already have this repository checked out? Run only the setup command. It downloa
 
 In **each project where you use this skill**, add the following line to that project's root `CLAUDE.md` (create the file if it does not exist). Do not add it to the Claude Backstage repository unless that is the project containing your diagrams. This gives Claude the guidance even when it has not loaded the skill:
 
-> For diagram meaning, read surrounding Markdown or the matching `.agent.md` file. Read SVG source only when creating, editing, or debugging the visual.
+> When reading a diagram, follow `~/.claude/skills/sl-svg-diagram/references/reading-diagrams.md`: read surrounding Markdown and the matching `.agent.md` before SVG source.
+
+Use the actual installed path if you chose a custom installation. This is a plain path reference, not an `@` import; load the guide only when reading diagrams.
 
 Start a new Claude Code session:
 
@@ -75,31 +77,14 @@ docs/diagrams/design-request-flow.agent.md
 
 Existing asset conventions or explicit destinations take precedence. Markdown links to the animated image and its semantic companion; the spec preserves editable timing.
 
-### Avoid unnecessary SVG reads
+## Preferences and authoring
 
-Reading Markdown does not normally load the linked SVG source. The extra tokens are spent only if an agent opens the SVG to understand it. This skill already tells agents to read the surrounding Markdown or matching `.agent.md` for meaning, and to read SVG source for editing or debugging. The options below mainly help sessions that have not loaded the skill.
+Personal settings belong in `~/.claude/sl-svg-diagram/preferences.md`, outside the installation. Missing preferences use [shipped defaults](references/diagram-rules.md); setup never creates or overwrites personal settings. Task instructions take precedence, followed by personal preferences, then defaults. Correctness, integrity, and privacy remain mandatory.
 
-| Option | Benefit | Tradeoff |
-|---|---|---|
-| Keep the guidance only in the skill | No extra project-wide instruction tokens | Agents that have not loaded the skill may unnecessarily read SVG source |
-| Add the setup line to your project's `CLAUDE.md` | Fresh sessions receive the same guidance without loading the skill | Small recurring instruction cost; guidance is not enforcement |
-| Add a stateful Read hook (future option) | Intervenes when an SVG read is attempted, without a standing `CLAUDE.md` rule | Requires hook setup and state; a blocked read still costs a short tool response |
+The skill adapts to your saved preferences. A one-time correction updates the current diagram; an explicit “remember this” request or accepted proposal saves a scoped rule. See [the preference workflow](references/diagram-rules.md#saved-preferences). Reinstallation preserves personal settings.
 
-The setup line above is guidance, not enforcement. To monitor its effect, review Claude Code transcripts for SVG `Read` calls and check whether each read was needed to create, edit, or debug the visual.
+[Authoring commands and verification](references/authoring.md) cover the usable manual template/timeline route, light variants, and optional HTML previews with the existing playback controls. Semantic JSON generation, layout presets, and scenario selection are planned in the [three-stage design](https://github.com/SharonLanger/claude-backstage/blob/feat/svg-preferences-generation-preview/docs/design/sl-svg-diagram/sl-svg-diagram-mini-design.md), not available commands yet. The design link points to this feature branch; design files are not installed with the skill. HTML is optional; animated SVG remains the normal deliverable.
 
-Assuming approximately 40 tokens for the rule, one avoided SVG read pays for the following number of fresh instruction loads:
-
-| Illustrative diagram | SVG source | Companion | Tokens saved per avoided read | Equivalent rule loads |
-|---|---:|---:|---:|---:|
-| Simple flow | 800 | 100 | 700 | 17.5 (about 18) |
-| Detailed flow | 8,000 | 500 | 7,500 | 187.5 (about 188) |
-
-Calculation: `(SVG tokens − companion tokens) / rule tokens`. This is a break-even comparison, not a waiting period: the saving occurs when the unnecessary read is avoided. With only one avoided read, enough subsequent instruction loads eventually consume that saving; additional avoided reads add savings. If the explanation is already in context, the examples become 20 and 200 loads. These are illustrative estimates, not tokenizer measurements.
-
-Count fresh context loads, not elapsed time or every conversation turn. A restart, resume, or compaction counts only when instructions are loaded into a newly constructed context. Context capacity is per session; prompt caching and repeated input processing affect billing separately. [Detailed assumptions](audit/animdiagram-audit.md#agent-context-and-future-enforcement).
-
-For advanced use, a small stateful hook could block the first SVG Read request in a session and point to its matching `.agent.md`, if present. Its short response would explain that retrying the same SVG Read permits source access when needed. A second read of that same resolved path in the same session would pass; reads of other files or in other sessions would not inherit that state. If no companion exists, the response must say so and explain the retry. This is a reminder against accidental context waste, not a security boundary; it does not cover shell or other-tool reads.
-
-You can build that hook yourself, or follow [System One Harness](https://github.com/SharonLanger/system-one-harness) for a planned plugin flow. **The hook and plugin flow are not implemented or verified here.** The Claude Code hook contract and state handling must be checked before implementation.
+[Reading guide](references/reading-diagrams.md) gives fresh reading sessions a short route to meaning without loading the full authoring skill. Guidance is not enforcement; review transcripts to assess unnecessary SVG reads. Token savings depend on actual avoided reads and have not been measured for these changes.
 
 [Skill instructions](SKILL.md) · [All skills](../README.md)
