@@ -1,0 +1,63 @@
+{
+  "format": "sl-diagram/v1",
+  "defaults_version": "v1",
+  "title": "BOOLEAN ROUTES",
+  "claim": "Illustrative routes through a request handler.",
+  "explanation": "A disposable hypothetical fixture; no repository behavior is asserted.",
+  "sources": [],
+  "layout": "branch",
+  "nodes": [
+    {
+      "id": "input",
+      "label": "enabled?"
+    },
+    {
+      "id": "yes",
+      "label": "Execute enabled methods"
+    },
+    {
+      "id": "no",
+      "label": "Return disabled result"
+    }
+  ],
+  "links": [
+    {
+      "id": "true_route",
+      "from": "input",
+      "to": "yes"
+    },
+    {
+      "id": "false_route",
+      "from": "input",
+      "to": "no"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "true",
+      "label": "enabled=true",
+      "steps": [
+        {
+          "node": "input"
+        },
+        {
+          "link": "true_route"
+        }
+      ],
+      "outcome": "Enabled work completes."
+    },
+    {
+      "id": "false",
+      "label": "enabled=false",
+      "steps": [
+        {
+          "node": "input"
+        },
+        {
+          "link": "false_route"
+        }
+      ],
+      "outcome": "Disabled work is skipped."
+    }
+  ]
+}

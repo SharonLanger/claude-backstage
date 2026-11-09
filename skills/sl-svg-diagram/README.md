@@ -30,7 +30,9 @@ Already have this repository checked out? Run only the setup command. It downloa
 
 In **each project where you use this skill**, add the following line to that project's root `CLAUDE.md` (create the file if it does not exist). Do not add it to the Claude Backstage repository unless that is the project containing your diagrams. This gives Claude the guidance even when it has not loaded the skill:
 
-> For diagram meaning, read surrounding Markdown or the matching `.agent.md` file. Read SVG source only when creating, editing, or debugging the visual.
+> When reading a diagram, follow `~/.claude/skills/sl-svg-diagram/references/reading-diagrams.md`: read surrounding Markdown and the matching `.agent.md` before SVG source.
+
+Use the actual installed path if you chose a custom installation. This is a plain path reference, not an `@` import; load the guide only when reading diagrams.
 
 Start a new Claude Code session:
 
@@ -51,6 +53,10 @@ Success prints `Integrity: PASS`. Normal commands verify **silently on every inv
 ## Installation and integrity
 
 The skill lives in `~/.claude/skills/sl-svg-diagram/`; its dependency lives separately in `~/.local/share/sl-svg-diagram/animdiagram/<commit>/`. Optional setup arguments: `--skill-dir /absolute/project/.claude/skills/sl-svg-diagram` and `--dependency-dir /absolute/cache/path`.
+
+Setup installs an explicit 17-file runtime bundle: `SKILL.md`, the five authoring/reading references, four wrapper/generation/preview scripts, versioned defaults, the audited hash manifest, MIT notice, and four compact specs in `examples/`. It generates `.installation.json` for the selected dependency path. Repository README/audit prose, tests, generated example SVGs/companions and showcase assets stay in this checkout. Unknown source files and caches are never copied. The complete pinned dependency checkout remains separate and unchanged.
+
+A lean installation can rerun its setup script to another fresh destination using the same supported arguments. Setup refuses installations with different contents or extra files, including earlier larger bundles; back up/move those yourself or choose a fresh `--skill-dir`. It never deletes user files or changes personal preferences.
 
 The wrapper requires commit **`a8edca75f041ebb75c74ac9d3b3fbec3b9cd5486`** and verifies all 62 audited file hashes before executing a temporary snapshot of those bytes. A different commit, changed/missing file, or altered tracked-file set blocks execution—even if you accidentally pull a newer version. Untracked code is not executed.
 
@@ -75,31 +81,41 @@ docs/diagrams/design-request-flow.agent.md
 
 Existing asset conventions or explicit destinations take precedence. Markdown links to the animated image and its semantic companion; the spec preserves editable timing.
 
-### Avoid unnecessary SVG reads
+## Preferences and authoring
 
-Reading Markdown does not normally load the linked SVG source. The extra tokens are spent only if an agent opens the SVG to understand it. This skill already tells agents to read the surrounding Markdown or matching `.agent.md` for meaning, and to read SVG source for editing or debugging. The options below mainly help sessions that have not loaded the skill.
+Personal settings belong in `~/.claude/sl-svg-diagram/preferences.md`, outside the installation. Missing preferences use [shipped defaults](references/diagram-rules.md); setup never creates or overwrites personal settings. Task instructions take precedence, followed by personal preferences, then defaults. Correctness, integrity, and privacy remain mandatory.
 
-| Option | Benefit | Tradeoff |
-|---|---|---|
-| Keep the guidance only in the skill | No extra project-wide instruction tokens | Agents that have not loaded the skill may unnecessarily read SVG source |
-| Add the setup line to your project's `CLAUDE.md` | Fresh sessions receive the same guidance without loading the skill | Small recurring instruction cost; guidance is not enforcement |
-| Add a stateful Read hook (future option) | Intervenes when an SVG read is attempted, without a standing `CLAUDE.md` rule | Requires hook setup and state; a blocked read still costs a short tool response |
+The skill adapts to your saved preferences. A one-time correction updates the current diagram; an explicit “remember this” request or accepted proposal saves a scoped rule. See [the preference workflow](references/diagram-rules.md#saved-preferences). Reinstallation preserves personal settings.
 
-The setup line above is guidance, not enforcement. To monitor its effect, review Claude Code transcripts for SVG `Read` calls and check whether each read was needed to create, edit, or debug the visual.
+[Authoring commands and verification](references/authoring.md) cover the usable manual template/timeline route, light variants, and optional HTML previews with the existing playback controls. Compact semantic JSON and three layout presets are available through `build`; see [schema and examples](references/generation.md). Add `--preview` to build optional [scenario-selecting HTML](references/preview.md) with `All` and named scenario choices, preserving pause/scrub/static/background/zoom controls. HTML is optional; animated SVG remains the normal deliverable.
 
-Assuming approximately 40 tokens for the rule, one avoided SVG read pays for the following number of fresh instruction loads:
+[Reading guide](references/reading-diagrams.md) gives fresh reading sessions a short route to meaning without loading the full authoring skill. Guidance is not enforcement; review transcripts to assess unnecessary SVG reads. Token savings depend on actual avoided reads and have not been measured for these changes.
 
-| Illustrative diagram | SVG source | Companion | Tokens saved per avoided read | Equivalent rule loads |
-|---|---:|---:|---:|---:|
-| Simple flow | 800 | 100 | 700 | 17.5 (about 18) |
-| Detailed flow | 8,000 | 500 | 7,500 | 187.5 (about 188) |
+## Development checks
 
-Calculation: `(SVG tokens − companion tokens) / rule tokens`. This is a break-even comparison, not a waiting period: the saving occurs when the unnecessary read is avoided. With only one avoided read, enough subsequent instruction loads eventually consume that saving; additional avoided reads add savings. If the explanation is already in context, the examples become 20 and 200 loads. These are illustrative estimates, not tokenizer measurements.
+Run repository test code against a disposable installed runtime; tests are not installed. Requires Git/Python 3.10+ and a cached checkout at the audited commit. Setup downloads only when installation is requested and its dependency destination is absent. Reuse a verified cached checkout for offline runs; tests mutate disposable clones.
 
-Count fresh context loads, not elapsed time or every conversation turn. A restart, resume, or compaction counts only when instructions are loaded into a newly constructed context. Context capacity is per session; prompt caching and repeated input processing affect billing separately. [Detailed assumptions](audit/animdiagram-audit.md#agent-context-and-future-enforcement).
+```sh
+python3 -I skills/sl-svg-diagram/tests/run.py /absolute/cached/animdiagram
+bash skills/sl-svg-diagram/scripts/setup-animdiagram.sh --skill-dir /temporary/skill --dependency-dir /absolute/cached/animdiagram
+python3 -I skills/sl-svg-diagram/tests/run.py /absolute/cached/animdiagram --skill-dir /temporary/skill
+python3 -I skills/sl-svg-diagram/tests/smoke.py --skill-dir /temporary/skill --output-dir /temporary/fresh-output
+python3 -I skills/sl-svg-diagram/tests/measure_cost.py --skill-dir /temporary/skill --output-dir /temporary/fresh-cost-output
+```
 
-For advanced use, a small stateful hook could block the first SVG Read request in a session and point to its matching `.agent.md`, if present. Its short response would explain that retrying the same SVG Read permits source access when needed. A second read of that same resolved path in the same session would pass; reads of other files or in other sessions would not inherit that state. If no companion exists, the response must say so and explain the retry. This is a reminder against accidental context waste, not a security boundary; it does not cover shell or other-tool reads.
+Use fresh disposable destinations, never the user's installed skill/profile/dependency as a mutation fixture. The smoke runner uses installed `examples/` and wrapper, parses generated SVG/companions, checks repeatability and legacy ambient metadata, and calls repository integration/integrity tests against that installed runtime. It exits nonzero on required failure and reports artifacts. `--output-dir` must be fresh; omit it for a retained temporary directory. `--skip-integration` runs only the fixture smoke and explicitly reports that the integration suite was skipped.
 
-You can build that hook yourself, or follow [System One Harness](https://github.com/SharonLanger/system-one-harness) for a planned plugin flow. **The hook and plugin flow are not implemented or verified here.** The Claude Code hook contract and state handling must be checked before implementation.
+The cost runner uses the installed generator/defaults/example and verified wrapper. It compares equivalent reconstructed manual static SVG/motion JSON against compact semantic JSON for a creation and label refinement, recording authoring/changed-character proxies, wrapper calls and returned tool-output characters. These are not token measurements or live Claude runs; model usage/source-read counts are unavailable and no percentage token saving is claimed.
+
+Browser checks are separate. In an approved OS network namespace with Python Playwright and Chromium already installed:
+
+```sh
+unshare --user --map-root-user --net python3 skills/sl-svg-diagram/tests/browser_layout.py --examples-dir /temporary/fresh-output --output-dir /temporary/layout-evidence
+unshare --user --map-root-user --net python3 skills/sl-svg-diagram/tests/browser_preview.py --examples-dir /temporary/fresh-output --output-dir /temporary/playback-evidence
+```
+
+The runners require no default route and a failed external socket probe. Four semantic fixtures are checked at intended/narrow widths; auxiliary legacy fixtures are covered by playback. Full browser cycles inspect actual opacity/transforms, choices/exclusivity, boundaries/tails/pauses/reset, controls, real speed, ambient periods, standalone image animation and reduced motion. For SVG image documents Chromium here requires a separate browser with `--force-prefers-reduced-motion=reduce` plus explicit page context; page-level emulation alone does not propagate into those images. Screenshots/JSON are retained outside the repository. Narrow branch/grid/enum labels still need alternate layouts at 360px; passing bounds does not establish readability.
+
+Actual installed Claude acceptance remains separate and pending when CLI/authentication are unavailable. Verify real tool calls and artifacts for boolean/grid/enum creation, one-time versus remembered preferences in an explicit temporary profile, and a fresh reading session. Deterministic tests, browser renders and a final assistant message do not prove live skill use.
 
 [Skill instructions](SKILL.md) · [All skills](../README.md)
