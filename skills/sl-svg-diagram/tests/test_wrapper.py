@@ -22,14 +22,8 @@ if '--skill-dir' in sys.argv:
     RUNTIME = Path(sys.argv[runtime_index + 1]).resolve()
     del sys.argv[runtime_index:runtime_index + 2]
 
-BUNDLE = set("""
-SKILL.md
-references/authoring.md references/diagram-rules.md references/generation.md
-references/preview.md references/reading-diagrams.md
-scripts/setup-animdiagram.sh scripts/run-animdiagram.py scripts/generate.py scripts/scenario_preview.py
-defaults/v1.json audit/verified-files.sha256 notices/animdiagram-MIT.txt
-examples/flow.spec.json examples/branch.spec.json examples/grid.spec.json examples/enum.spec.json
-""".split())
+BUNDLE = {'SKILL.md', 'references/reading-diagrams.md', 'scripts/run-animdiagram.py',
+          'audit/verified-files.sha256', 'notices/animdiagram-MIT.txt'}
 
 
 class WrapperTests(unittest.TestCase):
@@ -68,6 +62,26 @@ class WrapperTests(unittest.TestCase):
         original = output.read_bytes()
         self.assertNotEqual(self.run_tool("template", output).returncode, 0)
         self.assertEqual(output.read_bytes(), original)
+
+    def test_inline_native_example_uses_pinned_defaults(self):
+        example = re.search(r'```json\s*(.*?)```', (self.skill / 'SKILL.md').read_text(), re.DOTALL)
+        self.assertIsNotNone(example)
+        value = json.loads(example.group(1))
+        spec, svg = self.base / 'inline.spec.json', self.base / 'inline.svg'
+        spec.write_text(json.dumps(value))
+        self.assertEqual(self.run_tool('template', svg).returncode, 0)
+        compiled = self.run_tool('timeline', spec, '--inject', svg)
+        self.assertEqual(compiled.returncode, 0, compiled.stdout + compiled.stderr)
+        self.assertIn('loop 9s', compiled.stdout)
+        self.assertIn('request-ring', svg.read_text())
+        # Compare actual output to explicit pinned defaults, rather than duplicated prose.
+        implicit = svg.read_bytes()
+        value['loop'] = 9
+        for event in value['events']:
+            event.update(travel=.6, ring=True)
+        spec.write_text(json.dumps(value))
+        self.assertEqual(self.run_tool('timeline', spec, '--inject', svg).returncode, 0)
+        self.assertEqual(svg.read_bytes(), implicit)
 
     def test_changed_script_is_not_executed(self):
         sentinel = self.base / "executed"
@@ -177,7 +191,7 @@ class WrapperTests(unittest.TestCase):
                 path = unquote(parsed.path)
                 if path:
                     self.assertTrue((document.parent / path).is_file(), (document, link))
-        self.assertTrue((target / "references/generation.md").is_file())
+        self.assertTrue((target / "references/reading-diagrams.md").is_file())
         # Missing preferences still permit the current manual workflow.
         preferences.unlink()
         runner = target / "scripts/run-animdiagram.py"
@@ -223,14 +237,13 @@ class WrapperTests(unittest.TestCase):
         for name in BUNDLE:
             self.assertEqual((target / name).read_bytes(), (self.skill / name).read_bytes())
         runner = target / 'scripts/run-animdiagram.py'
-        build = subprocess.run([sys.executable, '-I', str(runner), 'build',
-                                str(target / 'examples/branch.spec.json'), '--out', str(self.base / 'branch.svg'), '--preview'],
-                               capture_output=True, text=True)
-        self.assertEqual(build.returncode, 0, build.stdout + build.stderr)
-        # Runtime imports do not leave caches that would break setup reruns.
+        native = self.base / 'native.svg'
+        result = subprocess.run([sys.executable, '-I', str(runner), 'template', str(native)],
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertEqual(installed_files(target), expected)
         for destination in (target, self.base / 'second lean runtime'):
-            result = subprocess.run(['bash', str(target / 'scripts/setup-animdiagram.sh'),
+            result = subprocess.run([sys.executable, '-I', str(runner), 'setup',
                                      '--skill-dir', str(destination), '--dependency-dir', str(self.dep)],
                                     capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
@@ -250,7 +263,7 @@ class WrapperTests(unittest.TestCase):
                         self.blocked('verify')
                 finally:
                     path.write_bytes(original)
-        missing = self.skill / 'scripts/generate.py'
+        missing = self.skill / 'references/reading-diagrams.md'
         missing.unlink()
         target = self.base / 'incomplete install'
         result = self.run_tool('setup', '--skill-dir', target, '--dependency-dir', self.dep)
@@ -268,13 +281,13 @@ class WrapperTests(unittest.TestCase):
         self.assertEqual(before, {p.relative_to(target):p.read_bytes() for p in target.rglob('*') if p.is_file()})
         extra.unlink()
         # A linked expected directory must not redirect writes outside the install.
-        original = target / 'examples'
-        external = self.base / 'external examples'
+        original = target / 'references'
+        external = self.base / 'external references'
         original.rename(external)
         original.symlink_to(external, target_is_directory=True)
         self.assertEqual(self.run_tool(*args).returncode, 2)
         self.assertTrue(original.is_symlink())
-        self.assertEqual((external / 'flow.spec.json').read_bytes(), (self.skill / 'examples/flow.spec.json').read_bytes())
+        self.assertEqual((external / 'reading-diagrams.md').read_bytes(), (self.skill / 'references/reading-diagrams.md').read_bytes())
 
     def test_repository_smoke_uses_installed_runtime_without_installed_tests(self):
         target = self.base / 'lean runtime'
@@ -285,9 +298,16 @@ class WrapperTests(unittest.TestCase):
                                  '--skill-dir', str(target), '--output-dir', str(output), '--skip-integration'],
                                 capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        for name in ('flow', 'branch', 'grid', 'enum'):
-            self.assertTrue((output / (name + '.svg')).is_file())
-            self.assertTrue((output / (name + '.preview.html')).is_file())
+        svg = output / 'nested docs/diagrams/request flow.svg'
+        self.assertTrue(svg.is_file())
+        self.assertTrue(svg.with_suffix('.agent.md').is_file())
+        self.assertFalse(list(output.rglob('*.html')))
+        preview_output = self.base / 'explicit preview outputs'
+        result = subprocess.run([sys.executable, '-I', str(SOURCE / 'tests/smoke.py'),
+                                 '--skill-dir', str(target), '--output-dir', str(preview_output),
+                                 '--skip-integration', '--preview'], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertTrue((preview_output / 'nested docs/diagrams/request flow.preview.html').is_file())
         self.assertFalse((target / 'tests').exists())
 
     def test_installer_refuses_bad_dependency(self):
