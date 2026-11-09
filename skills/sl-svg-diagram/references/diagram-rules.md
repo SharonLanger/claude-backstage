@@ -12,7 +12,7 @@ Read these defaults and applicable personal preferences when planning a diagram.
 | `animation.scenario-pause` | Scenario transitions | Include a readable outcome pause and reset. | default |
 | `style.avoid` | Every diagram | Avoid cramped edges, overlapping tags, decorative motion, and moving nodes between scenarios. | avoid |
 
-These are authoring rules for the existing manual route. Versioned numeric defaults and typed JSON overrides will accompany the planned generator; they are not implemented here.
+These are qualitative authoring rules. [Versioned defaults](../defaults/v1.json) are the numeric authority; translate applicable preferences into typed `settings` in the saved [semantic spec](generation.md). The runtime never interprets prose.
 
 ## Saved preferences
 
@@ -28,4 +28,4 @@ For example, “Make these labels larger” changes this diagram only. “Rememb
 | text.readability | My diagrams | Prefer larger labels; wrap or rearrange to fit. | default |
 ```
 
-Update an existing ID instead of accumulating contradictory entries. Resolve conflicting instructions with the user. Never modify dependency code or its manifest for a preference. Future generation will translate applicable prose into saved typed overrides; the runtime must not interpret arbitrary Markdown or call another model.
+Update an existing ID instead of accumulating contradictory entries. Resolve conflicting instructions with the user. Never modify dependency code or its manifest for a preference. During generation, translate applicable prose into saved typed overrides; the runtime must not interpret arbitrary Markdown or call another model.

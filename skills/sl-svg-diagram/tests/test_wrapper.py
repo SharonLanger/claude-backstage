@@ -157,7 +157,7 @@ class WrapperTests(unittest.TestCase):
                 path = unquote(urlsplit(link).path)
                 if path:
                     self.assertTrue((document.parent / path).is_file(), (document, link))
-        self.assertEqual(len(list((target / "references").glob("*.md"))), 3)
+        self.assertTrue((target / "references/generation.md").is_file())
         # Missing preferences still permit the current manual workflow.
         preferences.unlink()
         runner = target / "scripts/run-animdiagram.py"
