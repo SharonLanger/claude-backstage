@@ -22,7 +22,7 @@ Default skill: `~/.claude/skills/sl-svg-diagram/`. Separate dependency: `~/.loca
 
 The runtime allowlist copies exactly **eight assets**: `SKILL.md`, `references/reading-diagrams.md`, `references/options.md`, `scripts/run-animdiagram.py`, `scripts/generate.py`, `defaults/v1.json`, `audit/verified-files.sha256`, and `notices/animdiagram-MIT.txt`. Setup generates `.installation.json`, making nine installed files. Tests, examples, README, audit prose, showcase, setup launcher and caches stay in the repository. The separate dependency checkout stays complete. Setup runs upstream tests and verifies the installed configuration.
 
-Setup refuses differing/customized installations, extra files and symlinks, preserving user files. Earlier bundles require a fresh `--skill-dir` or backing up/moving the old destination before reinstalling. To reverse installation, remove only the skill directory and the separately configured dependency cache after checking they contain no user additions. Personal preferences live outside both.
+Setup refuses differing/customized installations, extra files and symlinks, preserving user files. Earlier bundles require a fresh `--skill-dir` or backing up/moving the old destination before reinstalling. For reinstalling, moving/removing only the old skill directory is sufficient; keeping the clean pinned dependency cache is fine. To uninstall, remove the skill directory after checking for user additions. Cache deletion is optional when no longer needed. Personal preferences live outside both.
 
 Start a new Claude session:
 
@@ -109,6 +109,12 @@ python3 -I skills/sl-svg-diagram/tests/smoke.py --skill-dir /temporary/fresh-ski
 
 Script smoke builds four repository semantic fixtures through the installed wrapper, checks companions/XML/repeatability/links, exercises native template/timeline/check and runs integration/integrity tests. Default smoke creates no HTML; `--preview` exercises separate native preview. `--skip-integration` reports the skipped suite. Output directories must be fresh; omitting the option retains a temporary directory. No tests/examples are installed and no real user files/profiles are mutated.
 
-`tests/browser_layout.py` checks fixture text bounds at intended/narrow widths using Chromium under enforced network denial. Browser tests complement structural tests. Script smoke is **not a live Claude invocation**: where Claude CLI/API/authentication are unavailable, live skill acceptance remains pending. No token-saving percentage is measured or claimed.
+`tests/browser_layout.py` checks fixture text bounds at intended/narrow widths. `tests/browser_motion.py` samples each expected packet/pulse, parallel starts, caption exclusivity, reduced motion and text clearance, saving scenario screenshots and `motion.json`. Both repository-only helpers require Chromium and Playwright plus enforced network denial. Example Linux runner (the network namespace covers browser subprocesses):
+
+```sh
+unshare --user --map-root-user --net python3 -I skills/sl-svg-diagram/tests/browser_motion.py --examples-dir /temporary/fresh-output/examples --output-dir /temporary/browser-motion
+```
+
+Both helpers refuse a default network route or a working external socket. `--names flow branch` selects motion fixtures; the default covers all four. Browser checks complement structural tests. Script smoke is **not a live Claude invocation**: where Claude CLI/API/authentication are unavailable, live skill acceptance remains pending. No token-saving percentage is measured or claimed.
 
 [Skill instructions](SKILL.md) · [All skills](../README.md)
