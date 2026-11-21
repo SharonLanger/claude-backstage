@@ -2,6 +2,10 @@
 
 **Family:** E — Context Engineering
 
+## Related practitioner guidance
+
+Read [Verify an unfamiliar API](../../D-verification-evaluation/guides/verify-unfamiliar-api.md) for the corresponding manual session procedure and its applicability limits.
+
 ## Problem
 
 When relevant documents, facts, or records are loaded into context at task start — before it is known which specific pieces will be needed — the context window fills with material that may never be used. The model attends to all loaded content equally; irrelevant retrieved chunks introduce noise that degrades precision. Conversely, when nothing is pre-loaded and the model lacks access to a retrieval mechanism, it hallucinates or answers from stale parametric knowledge.

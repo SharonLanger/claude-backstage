@@ -11,6 +11,23 @@ When an agent fails, the instinct is to retry. But retrying without understandin
 
 Before retrying, spend one explicit diagnostic step investigating the failure. The agent (or a dedicated diagnostic sub-agent) examines the error, the inputs, the intermediate outputs, and the execution trace to form a hypothesis about the root cause. The retry prompt is then constructed to address that specific cause — not just to "try again."
 
+## In a session: assess before naming a fix
+
+Use this when your request contains an unverified diagnosis, or each attempted fix assumes the previous explanation was correct. You need observations and control over the conversation; access to code or logs helps distinguish explanations.
+
+**Quick tip:** Describe expected versus observed behavior before asking for a particular repair. Ask for an assessment before edits and one check that could distinguish plausible explanations. Then introduce your own diagnosis as a hypothesis.
+
+1. Preserve relevant observations, reproduction conditions, and binding requirements. Separate them from your proposed cause; do not withhold a useful clue to make the question seem neutral.
+2. Ask what supports the initial explanation and what credible alternative would predict a different result. If the evidence already identifies the cause, a direct check is enough.
+3. Compare your hypothesis with the assessment. Run or request the distinguishing check. Agreement, disagreement, and confident language do not settle the cause.
+4. Choose a change consistent with the result and requirements. Recheck the failing case and neighboring behavior. If the result cannot distinguish the explanations, collect the missing evidence before patching.
+
+**Original illustration:** “Fix cache invalidation” already assigns a cause. Try: “After updating an order, the list shows its old status. Before editing, assess the cause and identify the smallest useful check.” A cache-hit trace remains relevant evidence and should be included.
+
+This adapts PAT-0007. Sharma et al.'s [Towards Understanding Sycophancy in Language Models](https://arxiv.org/html/2310.13548v4), §§3.2–3.3, finds that suggestions and unsupported challenges can sway tested QA answers. It does not test this debugging procedure or establish that disagreement improves correctness. Anthropic's [specific-prompt and verification advice](https://code.claude.com/docs/en/best-practices#write-a-specific-prompt) supports supplying observations and checking results. The staged assessment and illustration are catalog adaptations. Sources consulted 2026-11-22. Skip the extra assessment when the cause and fix are already verified.
+
+For an unclear goal, use [Clarify an idea](../../K-human-control/guides/clarify-an-idea.md). For choosing between implementations, use [Repair or a fresh attempt](../guides/repair-or-fresh-attempt.md).
+
 ## Solution Structure
 
 <details>

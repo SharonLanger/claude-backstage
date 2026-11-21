@@ -9,6 +9,11 @@ human-in-the-loop/
 └── approval-workflows.md   ← designing review gates and approval checkpoints
 ```
 
+## Practical session routes
+
+- [Clarify an idea](../../families/K-human-control/guides/clarify-an-idea.md)
+- [Manage review overload](../../families/K-human-control/guides/manage-review-overload.md)
+
 ## File descriptions
 
 - **when-to-interrupt.md** — Deciding when agents should pause for human input; maps to families K, H
@@ -27,4 +32,4 @@ Use this folder when designing or tuning the boundary between autonomous agent a
 | "My agent is interrupting too often (or not enough)" | `when-to-interrupt.md` |
 | "I need to design a multi-step approval process" | `approval-workflows.md` |
 
-Last updated: 2026-08-24
+Last updated: 2026-11-22

@@ -1,5 +1,9 @@
 # F06 — Structured Repository Instructions
 
+## Related practitioner guidance
+
+Read [Make intentional decisions visible](../../E-context-engineering/guides/clarify-domain-terms.md#make-an-intentional-decision-visible-at-the-edit) for the corresponding manual session procedure and its applicability limits.
+
 ## Problem
 
 Without explicit, repo-specific instructions, agents fall back on general training knowledge — which may be correct for standard projects but wrong for this codebase's conventions, architecture, tooling choices, and constraints. Generic behavior produces generic output: agents use the wrong build command, ignore established patterns, reinvent solved problems, and make locally-wrong decisions that are globally reasonable. The more unusual the repo's conventions, the more expensive this gap becomes.

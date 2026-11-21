@@ -1,7 +1,7 @@
 # AI Design Patterns Catalog — Inventory
 
 Installed catalog: `~/.cache/sl-knowledge-atlas/catalog/`
-Total files: 272 markdown files
+Total files: 278 markdown files
 
 ## Summary
 
@@ -12,13 +12,13 @@ Total files: 272 markdown files
 | Anti-patterns (top-level) | 10 (AP01–AP10) |
 | Anti-patterns (family-level) | 10 |
 | Principles | 8 (P1–P8) |
-| Guides | 9 |
+| Guides | 13 |
 | Comparisons | 2 |
 | Reference docs | 2 |
 | Use-case files | 26 articles across 8 categories, plus 9 indexes |
 | Contributing/meta files | 5 |
 | Input/research files | 1 |
-| Index/README files | ~47 |
+| Index/README files | ~49 |
 
 ---
 
@@ -81,7 +81,7 @@ Use the [symptom bridge](bridge-file.md) for conversational wording and the [cat
 **Guides:** do-you-need-multi-agent
 **Comparisons:** manager-vs-orchestrator-vs-coordinator, reviewer-vs-checker-vs-synthesizer
 
-### D — Verification & Evaluation (12 patterns, 2 guides)
+### D — Verification & Evaluation (12 patterns, 3 guides)
 
 **Patterns:**
 
@@ -100,7 +100,7 @@ Use the [symptom bridge](bridge-file.md) for conversational wording and the [cat
 | `D11-end-to-end-task-success` | End-to-End Task-Success Eval |
 | `D12-step-level-diagnostic` | Step-Level Diagnostic Eval |
 
-**Guides:** eval-type-selector, verification-ladder
+**Guides:** eval-type-selector, verification-ladder, verify-unfamiliar-api
 
 ### E — Context Engineering (10 patterns, 2 anti-patterns, 4 guides)
 
@@ -170,7 +170,7 @@ Use the [symptom bridge](bridge-file.md) for conversational wording and the [cat
 | `H07-authorization-outside-model` | Authorization Outside the Model |
 | `H08-non-ai-fallback-path` | Non-AI Fallback Path |
 
-### I — Reliability & Recovery (11 patterns, 2 anti-patterns)
+### I — Reliability & Recovery (11 patterns, 2 anti-patterns, 1 guide)
 
 **Patterns:**
 
@@ -189,6 +189,7 @@ Use the [symptom bridge](bridge-file.md) for conversational wording and the [cat
 | `validation-retry-loop` | Validation-Retry Loop |
 
 **Anti-patterns:** infinite-weakly-bounded-loop, retry-without-new-information
+**Guides:** repair-or-fresh-attempt
 
 ### J — Security & Trust Boundaries (11 patterns, 2 anti-patterns)
 
@@ -210,7 +211,7 @@ Use the [symptom bridge](bridge-file.md) for conversational wording and the [cat
 
 **Anti-patterns:** AP-model-as-security-boundary, AP-overpowered-coding-agent
 
-### K — Human Control (6 patterns)
+### K — Human Control (6 patterns, 2 guides)
 
 | File | Title |
 |---|---|
@@ -220,6 +221,8 @@ Use the [symptom bridge](bridge-file.md) for conversational wording and the [cat
 | `K04-review-before-side-effect` | Review Before Side Effect |
 | `K05-draft-preview-before-apply` | Draft/Preview Before Apply |
 | `K06-human-on-the-loop-monitoring` | Human-on-the-Loop Monitoring |
+
+**Guides:** clarify-an-idea, manage-review-overload
 
 ### L — Memory & State (9 patterns)
 
@@ -387,7 +390,7 @@ Cross-reference: `principles/index.md` maps principles × families × anti-patte
 
 | File | Purpose |
 |---|---|
-| `source-registry.md` | 30 verified source URLs + family-source mapping |
+| `source-registry.md` | 34 verified source URLs + family-source mapping |
 | `authoring-guide.md` | How to write pattern files |
 | `catalog-intake.md` | How to add new patterns to the catalog |
 | `classification-guide.md` | How to classify patterns into families |
@@ -405,17 +408,17 @@ Cross-reference: `principles/index.md` maps principles × families × anti-patte
 
 ## Source Registry Summary
 
-The registry lists 30 sources across four categories.
+The registry lists 34 sources across four categories.
 
 | Category | Sources | Examples |
 |---|---|---|
 | Primary (high-authority) | 18 | Anthropic (4), OpenAI (5), Google (1), Microsoft (1), AWS (4), OWASP (3) |
 | Practitioner / Expert | 8 | Hamel Husain (4), Simon Willison (2), Matt Pocock (2) |
-| Academic / Educational | 2 | Stanford CS224G, Samman Coaching |
+| Academic / Educational | 6 | Stanford CS224G, Samman Coaching, three papers, Haas researcher interview |
 | Open Source | 2 | AWS Samples repo, Moby AI usage policy |
 
-Selected research is now adapted into four existing patterns (Fresh-Context Retry, B5, Retry-With-Feedback, D05) and the new Clarify Domain Terms guide. Their practical session sections, examples, limits, and source attribution are bundled locally; full source articles are not bundled.
+Batch 1 adapted four patterns and added Clarify Domain Terms. Batch 2 adds four practical guides, enriches Root-Cause-Before-Retry, and extends Clarify Domain Terms with decision visibility. Sources, limits, and examples are bundled locally; full source articles are not bundled.
 
 ---
 
-Last updated: 2026-11-21
+Last updated: 2026-11-22

@@ -12,6 +12,12 @@ debugging/
 └── non-determinism.md         ← flaky behavior, inconsistent results across runs
 ```
 
+## Practical session routes
+
+- [Verify an unfamiliar API](../../families/D-verification-evaluation/guides/verify-unfamiliar-api.md)
+- [Assess before naming a fix](../../families/I-reliability-recovery/patterns/root-cause-before-retry.md#in-a-session-assess-before-naming-a-fix)
+- [Repair or a fresh attempt](../../families/I-reliability-recovery/guides/repair-or-fresh-attempt.md)
+
 ## File descriptions
 
 - **agent-not-completing.md** — Agent loops, stalls, or never finishes; maps to families I, H, A; anti-patterns: Infinite/Weakly Bounded Loop, Retry Without New Information
@@ -34,4 +40,4 @@ Use this folder when an agent system is misbehaving and you need to diagnose the
 | "The agent seems to forget things or the prompt is degrading" | `context-problems.md` |
 | "Results change randomly between identical runs" | `non-determinism.md` |
 
-Last updated: 2026-08-24
+Last updated: 2026-11-22

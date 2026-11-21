@@ -4,6 +4,10 @@
 
 ---
 
+## Practical session guidance
+
+- [Choose between a repair and a fresh bounded implementation](guides/repair-or-fresh-attempt.md).
+
 ## Practitioner entry points
 
 - [Recover a drifting session](patterns/fresh-context-retry.md#in-a-session-recover-decisions-without-losing-useful-work) — the session returns to an abandoned approach or forgets a decision.
@@ -13,6 +17,9 @@
 
 ```
 I-reliability-recovery/
+├── guides/
+│   ├── README.md — practical guide navigation
+│   ├── repair-or-fresh-attempt.md — Choose between a repair and a fresh bounded implementation
 ├── README.md                          ← this file (navigation, lookup tables, decision guide)
 │
 ├── patterns/
@@ -159,4 +166,4 @@ ALWAYS: use Checkpoint and Resume for long multi-step tasks so recovery
 
 ---
 
-Last updated: 2026-08-24
+Last updated: 2026-11-22

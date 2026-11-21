@@ -1,5 +1,9 @@
 # Flaky Behavior, Inconsistent Results Across Runs
 
+## Practitioner routes
+
+- [Repair or a fresh attempt](../../families/I-reliability-recovery/guides/repair-or-fresh-attempt.md)
+
 ## Scenario
 
 Your agent produces different outputs for the same input, passes evals intermittently, behaves differently in production versus development, or exhibits "works on my machine" syndrome. You need to identify whether the non-determinism is inherent (LLM sampling), environmental (different context), or systemic (race conditions, ordering effects).

@@ -3,6 +3,10 @@
 **Family:** I — Reliability & Recovery
 **Type:** Pattern
 
+## Related practitioner guidance
+
+Read [Repair or a fresh attempt](../../I-reliability-recovery/guides/repair-or-fresh-attempt.md) for the corresponding manual session procedure and its applicability limits.
+
 ## Problem
 
 As an agent accumulates conversation history across multiple failed attempts, that history can become the source of new failures. Errors, incorrect assumptions, and bad intermediate outputs embedded in the context subtly bias every subsequent generation. The model anchors on prior mistakes, over-corrects for phantom constraints, or gets confused by contradictory information it produced earlier. More retries with the same polluted context make things worse, not better.

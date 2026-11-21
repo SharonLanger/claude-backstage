@@ -1,5 +1,9 @@
 # K06 — Human-on-the-Loop Monitoring
 
+## Related practitioner guidance
+
+Read [Manage review overload](../../K-human-control/guides/manage-review-overload.md) for the corresponding manual session procedure and its applicability limits.
+
 ## Intent
 
 Allow the agent to execute autonomously while a human observes the stream of actions and can intervene at any point, without being in the critical path.

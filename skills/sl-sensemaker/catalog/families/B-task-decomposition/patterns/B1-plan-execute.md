@@ -1,5 +1,9 @@
 # B1: Plan → Execute
 
+## Related practitioner guidance
+
+Read [Clarify an idea](../../K-human-control/guides/clarify-an-idea.md) for the corresponding manual session procedure and its applicability limits.
+
 ## Intent
 
 Produce a complete, explicit plan before taking any action, then execute each step of that plan in sequence.

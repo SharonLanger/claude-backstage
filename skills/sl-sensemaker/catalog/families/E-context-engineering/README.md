@@ -6,6 +6,10 @@
 
 ---
 
+## Decision visibility
+
+For intentional code being simplified away, read [Make an intentional decision visible at the edit](guides/clarify-domain-terms.md#make-an-intentional-decision-visible-at-the-edit).
+
 ## Directory Structure
 
 ```
@@ -167,4 +171,4 @@ Both anti-patterns below are cataloged in `anti-patterns/` at the top-level cata
 
 ---
 
-Last updated: 2026-08-24
+Last updated: 2026-11-22

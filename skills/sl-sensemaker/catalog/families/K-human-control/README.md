@@ -8,10 +8,19 @@ Patterns for deciding when an agent should pause, check in, or hand off to a hum
 
 ---
 
+## Practical session guidance
+
+- [Develop a rough request through a focused interview](guides/clarify-an-idea.md).
+- [Manage incoming decisions and reviews across tasks](guides/manage-review-overload.md).
+
 ## Directory Tree
 
 ```
 K-human-control/
+├── guides/
+│   ├── README.md — practical guide navigation
+│   ├── clarify-an-idea.md — Develop a rough request through a focused interview
+│   ├── manage-review-overload.md — Manage incoming decisions and reviews across tasks
 ├── README.md                          ← this file (navigation hub)
 ├── autonomy-calibration-guide.md      ← when to use which level of human control
 ├── trust-ladder.md                    ← supervised → autonomous progression model
@@ -163,4 +172,4 @@ Level 5 — Autonomous (rarely appropriate)
 
 ---
 
-Last updated: 2026-08-24
+Last updated: 2026-11-22

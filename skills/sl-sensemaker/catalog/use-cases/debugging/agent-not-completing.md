@@ -1,5 +1,10 @@
 # Agent Loops, Stalls, or Never Finishes
 
+## Practitioner routes
+
+- [Assess before naming a fix](../../families/I-reliability-recovery/patterns/root-cause-before-retry.md#in-a-session-assess-before-naming-a-fix)
+- [Repair or a fresh attempt](../../families/I-reliability-recovery/guides/repair-or-fresh-attempt.md)
+
 ## Scenario
 
 Your agent enters infinite loops, gets stuck retrying the same action, runs indefinitely without converging on a result, or silently stalls without producing output. You need to diagnose whether the issue is architectural (missing stop conditions), environmental (tool timeouts), or prompt-related (unclear success criteria).

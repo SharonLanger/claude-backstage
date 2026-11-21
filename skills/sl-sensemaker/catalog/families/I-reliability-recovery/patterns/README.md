@@ -4,6 +4,10 @@
 
 ---
 
+## Practitioner diagnosis
+
+Start with [Assess before naming a fix](root-cause-before-retry.md#in-a-session-assess-before-naming-a-fix) when the prompt already contains an unverified cause.
+
 ## Practitioner entry points
 
 - [Recover a drifting session](fresh-context-retry.md#in-a-session-recover-decisions-without-losing-useful-work) — the session returns to an abandoned approach or forgets a decision.
@@ -87,4 +91,4 @@ Each engineering pattern follows this structure:
 
 ---
 
-Last updated: 2026-08-24
+Last updated: 2026-11-22

@@ -1,5 +1,9 @@
 # Detecting Regressions After Changes
 
+## Practitioner routes
+
+- [Make intentional decisions visible](../../families/E-context-engineering/guides/clarify-domain-terms.md#make-an-intentional-decision-visible-at-the-edit)
+
 ## Scenario
 
 You changed your agent's prompts, tools, model version, or orchestration logic and need to verify you didn't break something that was previously working. You want a systematic approach to regression detection — not just "run it again and see if it looks okay."

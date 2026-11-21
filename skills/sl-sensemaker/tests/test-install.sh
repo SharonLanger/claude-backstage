@@ -39,9 +39,16 @@ check_practitioner_route 'approach we explicitly rejected' 'families/I-reliabili
 check_practitioner_route 'the diff is enormous' 'families/B-task-decomposition/patterns/B5-milestone-checkpoint.md#in-a-session-slice-a-change-for-review'
 check_practitioner_route 'My feedback produces' 'families/I-reliability-recovery/patterns/retry-with-feedback.md#in-a-session-turn-feedback-into-a-check'
 check_practitioner_route 'Domain experts and developers' 'families/E-context-engineering/guides/clarify-domain-terms.md'
-printf 'Five practitioner routes reach installed guidance.\n'
+check_practitioner_route 'It agrees with every diagnosis' 'families/I-reliability-recovery/patterns/root-cause-before-retry.md#in-a-session-assess-before-naming-a-fix'
+check_practitioner_route 'That method doesn’t exist.' 'families/D-verification-evaluation/guides/verify-unfamiliar-api.md'
+check_practitioner_route 'We keep patching the same thing.' 'families/I-reliability-recovery/guides/repair-or-fresh-attempt.md'
+check_practitioner_route 'Help me figure out what I mean' 'families/K-human-control/guides/clarify-an-idea.md'
+check_practitioner_route 'I delegated five things.' 'families/K-human-control/guides/manage-review-overload.md'
+check_practitioner_route 'That strange-looking code was intentional.' 'families/E-context-engineering/guides/clarify-domain-terms.md#make-an-intentional-decision-visible-at-the-edit'
+printf 'Eleven practitioner routes reach installed guidance.\n'
 test -z "$(find "$cache" -name practitioner-coverage.md -print)"
 test -z "$(find "$cache" -name practitioner-intake-batch-1.md -print)"
+test -z "$(find "$cache" -name practitioner-intake-batch-2.md -print)"
 
 # Simulate stale installed content and a user addition between installs.
 printf 'stale file\n' > "$cache/catalog/$ap"

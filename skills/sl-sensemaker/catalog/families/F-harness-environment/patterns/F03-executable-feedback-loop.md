@@ -1,5 +1,9 @@
 # F03 — Executable Feedback Loop
 
+## Related practitioner guidance
+
+Read [Verify an unfamiliar API](../../D-verification-evaluation/guides/verify-unfamiliar-api.md) for the corresponding manual session procedure and its applicability limits.
+
 ## Problem
 
 Without fast, executable feedback, agents cannot self-correct. An agent that writes code and cannot run tests must either submit blind output or rely on static reasoning to verify correctness — both of which are unreliable for non-trivial logic. When feedback is slow (minutes-long CI runs), non-executable (human review only), or unstructured (wall-of-text output), agents cannot iterate effectively. Silent failures are the worst case: the agent believes the output is correct, but the feedback loop never fired or checked the wrong thing.
