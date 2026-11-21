@@ -13,8 +13,8 @@ for source in SKILL.md catalog/catalog-lookup.md bridge-file.md catalog-inventor
 done
 
 skill_dir="$HOME/.claude/skills/sl-sensemaker"
-cache_dir="$HOME/.cache/sl-mentor"
-printf 'Installing catalog and navigation files in %s\n' "$cache_dir"
+cache_dir="$HOME/.cache/sl-knowledge-atlas"
+printf 'Installing SL Knowledge Atlas in %s\n' "$cache_dir"
 mkdir -p "$cache_dir/catalog"
 cp -R catalog/. "$cache_dir/catalog/"
 cp bridge-file.md catalog-inventory.md "$cache_dir/"

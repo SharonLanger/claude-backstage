@@ -29,11 +29,11 @@ Setup uses a POSIX shell and standard file utilities. It installs the skill at `
 
 ## Where the guidance comes from
 
-SL Sensemaker is the first skill that uses the shared pattern catalog. The [symptom bridge](bridge-file.md) and [catalog lookup](catalog/catalog-lookup.md) help it locate entries. Sensemaker reads the entries themselves before recommending an approach. If they answer only part of your question, it explains what they cover and what remains open.
+SL Knowledge Atlas is the shared local knowledge base. SL Sensemaker is its first skill. The [symptom bridge](bridge-file.md) and [catalog lookup](catalog/catalog-lookup.md) help it locate entries. Sensemaker reads the entries themselves before recommending an approach. If they answer only part of your question, it explains what they cover and what remains open.
 
-Setup installs the catalog and navigation files under `~/.cache/sl-mentor/`, the original cache location. Catalog lookup works locally. Future skills, such as transcript analysis or workflow evaluation, can reuse those same files.
+Setup installs the catalog and navigation files under `~/.cache/sl-knowledge-atlas/`. Catalog lookup works locally. Future skills, such as transcript analysis or workflow evaluation, can reuse those same files.
 
-## Update or switch from SL Mentor
+## Update or repair
 
 From your checkout, run:
 
@@ -42,6 +42,6 @@ git pull --ff-only
 ./skills/sl-sensemaker/setup.sh
 ```
 
-Open Claude Code and invoke `/sl-sensemaker`. Setup refreshes bundled files and preserves additions you’ve saved under their own names. If you previously installed SL Mentor, the new command uses your existing catalog. The old command may still appear because it was installed in a separate skill folder.
+Open Claude Code and invoke `/sl-sensemaker`. Setup refreshes bundled files and preserves additions you’ve saved under their own names.
 
-If the catalog is missing, rerun setup. If Claude reports a read-permission error, check its access to `~/.cache/sl-mentor/`.
+If the catalog is missing, rerun setup. If Claude reports a read-permission error, check its access to `~/.cache/sl-knowledge-atlas/`.

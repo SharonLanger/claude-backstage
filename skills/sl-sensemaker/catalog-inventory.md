@@ -1,6 +1,6 @@
 # AI Design Patterns Catalog — Inventory
 
-Installed catalog: `~/.cache/sl-mentor/catalog/`
+Installed catalog: `~/.cache/sl-knowledge-atlas/catalog/`
 Total files: 270 markdown files
 
 ## Summary

@@ -5,13 +5,14 @@ skill=$(CDPATH= cd "$(dirname "$0")/.." && pwd)
 sandbox=$(mktemp -d)
 trap 'rm -rf "$sandbox"' EXIT
 test_home="$sandbox/test home"
-cache="$test_home/.cache/sl-mentor"
+cache="$test_home/.cache/sl-knowledge-atlas"
 entry="$test_home/.claude/skills/sl-sensemaker/SKILL.md"
 
 cd "$sandbox"
 env HOME="$test_home" "$skill/setup.sh"
 cmp "$skill/SKILL.md" "$entry"
 grep -Fxq 'name: sl-sensemaker' "$entry"
+grep -Fxq "  - 'Read(~/.cache/sl-knowledge-atlas/**)'" "$entry"
 diff -r "$skill/catalog" "$cache/catalog"
 cmp "$skill/bridge-file.md" "$cache/bridge-file.md"
 cmp "$skill/catalog-inventory.md" "$cache/catalog-inventory.md"
