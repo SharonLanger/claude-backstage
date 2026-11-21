@@ -2,6 +2,10 @@
 
 Reusable instructions and tools that teach Claude Code how to perform specific tasks. Each skill's README covers installation, usage, examples, and requirements.
 
+### [SL Mentor](sl-mentor/README.md)
+
+Describe an AI agent problem with `/sl-mentor` and get a next step supported by a local catalog entry. The README includes the one-script install and a prompt to try.
+
 ### [SL SVG Diagram](sl-svg-diagram/README.md)
 
 Create animated Markdown diagrams to explain methods, API calls, data flow, and concurrent work. The skill uses a pinned animdiagram dependency, checks its integrity before execution, and builds bounded flow/branch/grid layouts from editable semantic JSON and saves each visual and a concise `.agent.md` companion.
