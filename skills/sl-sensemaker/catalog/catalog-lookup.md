@@ -62,6 +62,12 @@ Choose your entry point based on what you have:
 
 | You're dealing with… | Start here |
 |---|---|
+| Agent changes or deletes the regression test | [AP10 — scope write access](anti-patterns/AP10-overpowered-coding-agent.md), [D02 — verify against protected tests](families/D-verification-evaluation/patterns/D02-test-before-done.md) |
+| Long session loses decisions or requirements | [Context Compaction](families/E-context-engineering/patterns/context-compaction.md), [Repository-as-System-of-Record](families/E-context-engineering/patterns/repository-as-system-of-record.md) |
+| Agent keeps proposing a rejected approach | [Fresh-Context Retry for accumulated failed attempts](families/I-reliability-recovery/patterns/fresh-context-retry.md), [Root-Cause-Before-Retry when the failure is unclear](families/I-reliability-recovery/patterns/root-cause-before-retry.md) |
+| Diff is too large to review | [B5 — verifiable milestones](families/B-task-decomposition/patterns/B5-milestone-checkpoint.md), [K01 — human checkpoints](families/K-human-control/patterns/K01-human-in-the-loop-checkpoint.md), [K05 — preview before writing](families/K-human-control/patterns/K05-draft-preview-before-apply.md) |
+| Project instruction file has grown too large | [Map-Not-Manual](families/E-context-engineering/patterns/map-not-manual.md), [AP03 — Giant Instruction Manual](anti-patterns/AP03-giant-instruction-manual.md) |
+| Routine task needs the same instructions every time | [F07 — Agent Skills / Procedures](families/F-harness-environment/patterns/F07-agent-skills-procedures.md) |
 | Agent loops or repeats mistakes | [I — Reliability](families/I-reliability-recovery/), [H — Deterministic Control](families/H-deterministic-control/), [AP04](anti-patterns/AP04-retry-without-new-information.md), [AP09](anti-patterns/AP09-infinite-weakly-bounded-loop.md) |
 | Need to verify the agent actually finished | [D — Verification](families/D-verification-evaluation/), [AP01](anti-patterns/AP01-self-certified-completion.md) |
 | Agent has wrong or noisy context | [E — Context Engineering](families/E-context-engineering/), [AP03](anti-patterns/AP03-giant-instruction-manual.md), [AP07](anti-patterns/AP07-shared-context-everywhere.md) |
@@ -100,7 +106,7 @@ Each family directory follows this structure (not all subdirectories present in 
 
 | Subdirectory | What it contains | Families that have it |
 |---|---|---|
-| `patterns/` | Individual pattern files (8-section schema) | All families |
+| `patterns/` | Individual engineering and practical patterns | All families |
 | `guides/` | How-to guides and decision aids for the family's topic | C, D, E, M |
 | `comparisons/` | Side-by-side comparisons of similar patterns | C |
 | `reference/` | Checklists, quick-reference tables | G |

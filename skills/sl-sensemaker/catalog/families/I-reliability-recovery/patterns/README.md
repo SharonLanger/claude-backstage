@@ -44,7 +44,7 @@ patterns/
 
 ## Schema
 
-Every pattern file follows this structure:
+Each engineering pattern follows this structure:
 
 | Section | Contents |
 |---------|----------|

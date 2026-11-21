@@ -27,7 +27,7 @@ L-memory-state/
 
 ## Per-Pattern File Schema
 
-Every pattern file follows this structure:
+Each engineering pattern follows this structure:
 
 ```
 # <Pattern Name>

@@ -23,7 +23,7 @@ patterns/
 
 ## Schema
 
-Every file in this folder follows the same structure:
+Each engineering entry in this folder follows the same structure:
 
 | Section | What it contains |
 |---|---|

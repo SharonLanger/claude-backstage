@@ -28,7 +28,7 @@ A-workflow-topology/
 
 ## Per-Pattern File Schema
 
-Every pattern file follows this structure (in order):
+Each engineering pattern follows this structure (in order):
 
 | Section | Content |
 |---|---|

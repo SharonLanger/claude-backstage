@@ -32,7 +32,7 @@ I-reliability-recovery/
 
 ## Per-Pattern File Schema
 
-Every file in `patterns/` and `anti-patterns/` follows this structure:
+Each engineering entry in `patterns/` and `anti-patterns/` follows this structure:
 
 ```markdown
 # <Pattern Name>
@@ -71,6 +71,8 @@ What you fall into if you misapply this pattern.
 ```
 
 ---
+
+If an agent reintroduces a rejected approach and accumulated attempts may be influencing the next try, see [Fresh-Context Retry](patterns/fresh-context-retry.md). If the failure is still unexplained, see [Root-Cause-Before-Retry](patterns/root-cause-before-retry.md). These entries cover retry workflows. Persistent rejection tracking and guidance for intentionally unusual code are separate gaps.
 
 ## Failure Mode → Recovery Pattern
 

@@ -19,11 +19,15 @@ cmp "$skill/catalog-inventory.md" "$cache/catalog-inventory.md"
 
 # The first end-to-end route starts at a real symptom and ends at the primary entry.
 ap=anti-patterns/AP10-overpowered-coding-agent.md
+test_pattern=families/D-verification-evaluation/patterns/D02-test-before-done.md
 grep -F 'deletes failing tests' "$cache/bridge-file.md" | grep -Fq "(catalog/$ap)"
-grep -Fq "($ap)" "$cache/catalog/catalog-lookup.md"
+grep -F 'deletes failing tests' "$cache/bridge-file.md" | grep -Fq "(catalog/$test_pattern)"
+grep -F 'Agent changes or deletes the regression test' "$cache/catalog/catalog-lookup.md" | grep -F "($ap)" | grep -Fq "($test_pattern)"
+grep -Fq 'test suite is authored independently of the agent and cannot be modified by it' "$cache/catalog/$test_pattern"
 grep -Fq 'CSS styling task' "$cache/catalog/$ap"
 grep -Fq 'Read-only access to non-CSS files' "$cache/catalog/$ap"
-printf 'Covered route reaches %s\n' "catalog/$ap"
+printf 'Covered route reaches %s and %s\n' "catalog/$ap" "catalog/$test_pattern"
+test -z "$(find "$cache" -name practitioner-coverage.md -print)"
 
 # Simulate stale installed content and a user addition between installs.
 printf 'stale file\n' > "$cache/catalog/$ap"

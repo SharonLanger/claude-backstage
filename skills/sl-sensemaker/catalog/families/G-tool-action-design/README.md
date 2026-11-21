@@ -33,7 +33,7 @@ G-tool-action-design/
 
 ## Per-Pattern File Schema
 
-Every file under `patterns/` follows this structure:
+Each engineering entry under `patterns/` follows this structure:
 
 ```markdown
 # G<nn> — <Pattern Name>
