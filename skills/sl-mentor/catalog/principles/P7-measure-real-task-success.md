@@ -26,9 +26,9 @@ This principle recurs because evaluation is where the gap between "impressive de
 ## Patterns That Implement This Principle
 
 - [Task-Success Evaluation](../families/D-verification-evaluation/) — define success as the real-world outcome, not intermediate process quality
-- [Trace-Driven Error Analysis](../families/M-observability/) — use execution traces to identify where task outcomes diverge from expectations
+- [Trace-Driven Error Analysis](../families/M-observability-debugging/) — use execution traces to identify where task outcomes diverge from expectations
 - [Evidence-Based Completion](../families/D-verification-evaluation/) — require observable evidence that the task succeeded before marking it complete
-- [Explicit Definition of Done](../families/F-harness-engineering/) — specify measurable completion criteria before execution begins
+- [Explicit Definition of Done](../families/F-harness-environment/) — specify measurable completion criteria before execution begins
 
 ---
 

@@ -134,7 +134,7 @@ function total_parse(text: String) -> Dict:
 - [Schema Validation](schema-validation.md) — runs after a successful total parse; catches semantic schema violations
 - [Typed Result Object](typed-result-object.md) — receives the fully parsed result after rejection gate
 - [Programmatic Postcondition](programmatic-postcondition.md) — asserts semantic invariants after parse succeeds
-- [Family H — Deterministic Control](../H-deterministic-control/README.md) — the rejection gate is a hard deterministic control point in the agentic pipeline
+- [Family H — Deterministic Control](../../H-deterministic-control/README.md) — the rejection gate is a hard deterministic control point in the agentic pipeline
 
 ## When to Use / When Not to Use
 

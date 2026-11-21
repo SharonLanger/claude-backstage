@@ -106,7 +106,7 @@ flowchart TD
 - [Orchestrator → Workers](orchestrator-workers.md) — orchestrator routes by task type; coordinator routes by domain expertise
 - [Specialist Reviewer](specialist-reviewer.md) — a specialist whose only job is critique, not production
 - [Agent-as-Tool](agent-as-tool.md) — each specialist can be wrapped as a callable tool in the coordinator's loop
-- [Family B — Task Decomposition](../B-task-decomposition/README.md) — how to decompose a cross-domain request before routing
+- [Family B — Task Decomposition](../../B-task-decomposition/README.md) — how to decompose a cross-domain request before routing
 
 ## Example Sketch
 

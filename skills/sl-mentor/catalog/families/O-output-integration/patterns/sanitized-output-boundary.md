@@ -137,7 +137,7 @@ function write_model_output(result: TypedResult, base_dir: Path):
 - [Typed Result Object](typed-result-object.md) — the typed object entering the sanitization layer
 - [Structured Output Boundary](structured-output-boundary.md) — reduces the attack surface by constraining the model's output shape
 - [Programmatic Postcondition](programmatic-postcondition.md) — semantic checks that can include basic injection-pattern detection as an invariant
-- [Family J — Security](../J-security/README.md) — the J family covers the full threat model of prompt injection and agentic security; this pattern is the O-side enforcement point
+- [Family J — Security](../../J-security-trust/README.md) — the J family covers the full threat model of prompt injection and agentic security; this pattern is the O-side enforcement point
 
 ## When to Use / When Not to Use
 

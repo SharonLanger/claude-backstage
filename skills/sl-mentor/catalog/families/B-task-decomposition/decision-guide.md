@@ -87,5 +87,5 @@ Is the task structure known before execution begins?
 
 - Anthropic — [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)
 - Google Cloud — [Choose a Design Pattern for Your Agentic AI System](https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system)
-- Stanford — [CS224G: Agentic Design Patterns](https://web.stanford.edu/class/cs224g/lectures/Agentic_Design_Patterns.pdf)
+- Stanford — [CS224G: Agentic Design Patterns](https://web.stanford.edu/class/cs224g/2025/lectures/Agentic_Design_Patterns.pdf)
 - OpenAI — [Harness Engineering](https://openai.com/index/harness-engineering/)

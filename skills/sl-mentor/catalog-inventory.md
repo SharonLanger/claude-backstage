@@ -1,6 +1,6 @@
 # AI Design Patterns Catalog — Inventory
 
-Source: `plans/__research/research-ai-design-patterns/`
+Installed catalog: `~/.cache/sl-mentor/catalog/`
 Total files: 270 markdown files
 
 ## Summary
@@ -15,7 +15,7 @@ Total files: 270 markdown files
 | Guides | 8 |
 | Comparisons | 2 |
 | Reference docs | 2 |
-| Use-case files | 31 (across 8 categories) |
+| Use-case files | 26 articles across 8 categories, plus 9 indexes |
 | Contributing/meta files | 5 |
 | Input/research files | 1 |
 | Index/README files | ~46 |
@@ -206,7 +206,7 @@ Total files: 270 markdown files
 | `J10-capability-minimization` | Capability Minimization |
 | `J11-read-write-separation` | Read/Write Separation |
 
-**Anti-patterns:** model-as-security-boundary, overpowered-coding-agent
+**Anti-patterns:** AP-model-as-security-boundary, AP-overpowered-coding-agent
 
 ### K — Human Control (6 patterns)
 
@@ -249,7 +249,7 @@ Total files: 270 markdown files
 | `M08-trace-linked-eval` | Trace-Linked Eval |
 | `M09-failure-categorization` | Failure Categorization |
 
-**Anti-patterns:** generic-evals-before-analysis
+**Anti-patterns:** AP-generic-evals-before-analysis
 **Guides:** debugging-runbook, observability-stack
 
 ### N — Efficiency & Model Routing (9 patterns, 2 anti-patterns)
@@ -319,7 +319,7 @@ Cross-reference: `principles/index.md` maps principles × families × anti-patte
 
 ---
 
-## Use Cases (31 files across 8 categories)
+## Use Cases (26 articles across 8 categories)
 
 ### Debugging (5 files)
 | File | What it covers |

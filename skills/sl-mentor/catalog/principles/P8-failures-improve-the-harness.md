@@ -25,9 +25,9 @@ This principle appears across sources because production agent teams universally
 
 ## Patterns That Implement This Principle
 
-- [Trace-Driven Error Analysis](../families/M-observability/) — use execution traces to identify systemic failure causes
+- [Trace-Driven Error Analysis](../families/M-observability-debugging/) — use execution traces to identify systemic failure causes
 - [Retry With Feedback](../families/I-reliability-recovery/) — failed attempts produce diagnostic information that changes the next attempt
-- [Repository-as-System-of-Record](../families/F-harness-engineering/) — harness improvements persist as code, documentation, and configuration
+- [Repository-as-System-of-Record](../families/F-harness-environment/) — harness improvements persist as code, documentation, and configuration
 - [Bounded Agent Loop](../families/I-reliability-recovery/) — loops terminate and surface failures rather than retrying indefinitely
 
 ---

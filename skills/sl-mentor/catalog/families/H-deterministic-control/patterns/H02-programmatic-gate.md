@@ -66,8 +66,8 @@ flowchart TD
 
 ## Related Families
 
-- [Family G — Tool Gate](../G-tool-gate/README.md): A tool gate is this pattern applied at the tool interface boundary.
-- [Family J — Security](../J-security/README.md): Security threat models identify which conditions require gates.
+- [Family G — Tool Gate](../../G-tool-action-design/README.md): A tool gate is this pattern applied at the tool interface boundary.
+- [Family J — Security](../../J-security-trust/README.md): Security threat models identify which conditions require gates.
 
 ## Example
 

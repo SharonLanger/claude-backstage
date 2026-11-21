@@ -108,9 +108,9 @@ function planAndExecute(task, context):
 - [B4: Fixed Decomposition](B4-fixed-decomposition.md) — B1 is a special case of B4 where the plan structure is implicit in the planning step.
 - [B5: Milestone / Checkpoint Planning](B5-milestone-checkpoint.md) — adds validation gates between phases; often combined with B1 for long plans.
 - [B6: Reconnaissance-First](B6-reconnaissance-first.md) — precedes B1 when the domain is unfamiliar.
-- [Family A — Topology](../A-topology/README.md) — the plan's step sequence maps to chain or DAG topologies.
-- [Family C — Orchestration](../C-orchestration/README.md) — an orchestrator assigns each plan step to a worker.
-- [Family K — Human Control](../K-human-control/README.md) — the plan review gate is a human-in-the-loop checkpoint.
+- [Family A — Topology](../../A-workflow-topology/README.md) — the plan's step sequence maps to chain or DAG topologies.
+- [Family C — Orchestration](../../C-orchestration/README.md) — an orchestrator assigns each plan step to a worker.
+- [Family K — Human Control](../../K-human-control/README.md) — the plan review gate is a human-in-the-loop checkpoint.
 
 ## Example
 

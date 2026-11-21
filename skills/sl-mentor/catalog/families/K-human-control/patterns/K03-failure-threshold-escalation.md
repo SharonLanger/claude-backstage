@@ -160,7 +160,7 @@ function escalate(action, errors, context, snapshot=null, reason):
 - [K01 — Human-in-the-Loop Checkpoint](K01-human-in-the-loop-checkpoint.md) — K01 is proactive (checkpoints at planned points); K03 is reactive (fires only on failure)
 - [K02 — High-Risk Action Gate](K02-high-risk-action-gate.md) — K02 gates before first attempt; K03 escalates after N failed attempts
 - [K06 — Human-on-the-Loop Monitoring](K06-human-on-the-loop-monitoring.md) — K06 can observe failure patterns and alert; K03 is the hard escalation path when the agent itself gives up
-- [Family I — Reliability](../I-reliability/README.md) — K03 is the human-facing exit from Family I's retry and self-healing chains
+- [Family I — Reliability](../../I-reliability-recovery/README.md) — K03 is the human-facing exit from Family I's retry and self-healing chains
 
 ## Example
 

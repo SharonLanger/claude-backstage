@@ -73,8 +73,8 @@ flowchart TD
 
 ## Related Families
 
-- [Family J — Security](../J-security/README.md): This pattern belongs to both H and J; see J for the full security threat model including prompt injection and confused deputy.
-- [Family G — Tool Gate](../G-tool-gate/README.md): Tool gates are the execution-time enforcement point that authz decisions feed into.
+- [Family J — Security](../../J-security-trust/README.md): This pattern belongs to both H and J; see J for the full security threat model including prompt injection and confused deputy.
+- [Family G — Tool Gate](../../G-tool-action-design/README.md): Tool gates are the execution-time enforcement point that authz decisions feed into.
 
 ## Example
 

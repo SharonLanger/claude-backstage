@@ -121,7 +121,7 @@ Key wiring decisions:
 
 - [Bounded Loop](bounded-loop.md) — the `max_steps` cap is the loop safety mechanism every ReAct implementation requires.
 - [Prompt Chaining](prompt-chaining.md) — when the action sequence is known upfront, a chain is simpler and more predictable than ReAct.
-- [Family C — Orchestration](../C-orchestration/README.md) — the orchestrator manages tool dispatch and observation injection; ReAct is one of the primary patterns orchestrators implement.
+- [Family C — Orchestration](../../C-orchestration/README.md) — the orchestrator manages tool dispatch and observation injection; ReAct is one of the primary patterns orchestrators implement.
 
 ## 8. Anti-Patterns Addressed
 
@@ -138,4 +138,4 @@ Key wiring decisions:
 - Google — [Choose a Design Pattern for Agentic AI](https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system)
 - AWS — [Agentic AI Patterns](https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-patterns/agent-patterns.html)
 - Microsoft Azure — [AI Agent Design Patterns](https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/ai-agent-design-patterns)
-- Stanford CS224G — [Agentic Design Patterns (lecture slides)](https://web.stanford.edu/class/cs224g/lectures/Agentic_Design_Patterns.pdf)
+- Stanford CS224G — [Agentic Design Patterns (lecture slides)](https://web.stanford.edu/class/cs224g/2025/lectures/Agentic_Design_Patterns.pdf)

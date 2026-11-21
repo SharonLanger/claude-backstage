@@ -105,7 +105,7 @@ flowchart LR
 - [Manager → Workers](manager-workers.md) — manager can invoke a reviewer as one of its workers
 - [Coordinator → Specialists](coordinator-specialists.md) — reviewer is a specialist in evaluation
 - [Synthesizer / Aggregator](synthesizer-aggregator.md) — panel review variant aggregates multiple reviewer verdicts
-- [Family K — Human-in-the-Loop](../K-human-in-the-loop/README.md) — human reviewer as an escalation path from the specialist reviewer
+- [Family K — Human-in-the-Loop](../../K-human-control/README.md) — human reviewer as an escalation path from the specialist reviewer
 
 ## Example Sketch
 
@@ -150,4 +150,4 @@ function reviewer.evaluate(task_spec, output, criteria):
 - **Anthropic Engineering** — AI safety company; authors of Claude. [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)
 - **Google Cloud Architecture Center** — Google's cloud architecture team. [Choose a Design Pattern for Agentic AI](https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system)
 - **AWS Prescriptive Guidance** — Amazon Web Services architecture team. [Agentic AI Patterns](https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-patterns/agent-patterns.html)
-- **Stanford CS224G** — Stanford University course on LLM agents. [Agentic Design Patterns (lecture slides)](https://web.stanford.edu/class/cs224g/lectures/Agentic_Design_Patterns.pdf)
+- **Stanford CS224G** — Stanford University course on LLM agents. [Agentic Design Patterns (lecture slides)](https://web.stanford.edu/class/cs224g/2025/lectures/Agentic_Design_Patterns.pdf)

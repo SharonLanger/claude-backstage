@@ -96,7 +96,7 @@ flowchart LR
 - [M03 — Execution Tree](M03-execution-tree.md) — the tree uses tool-call counts per node for anomaly detection
 - [M07 — Replayable Run](M07-replayable-run.md) — frozen tool responses for replay come from this log
 - [M09 — Failure Categorization](M09-failure-categorization.md) — tool errors are the primary input to failure classification
-- [Family F — Harness](../F-harness/README.md) — the harness owns the tool dispatcher where interception occurs
+- [Family F — Harness](../../F-harness-environment/README.md) — the harness owns the tool dispatcher where interception occurs
 
 ## Example
 

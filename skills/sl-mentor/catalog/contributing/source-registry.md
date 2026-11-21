@@ -73,7 +73,7 @@ Every substantial claim in a pattern file (the Problem, the Solution Structure, 
 
 | # | Institution | Title | URL |
 |---|---|---|---|
-| 24 | Stanford | CS224G — Agentic Design Patterns | https://web.stanford.edu/class/cs224g/lectures/Agentic_Design_Patterns.pdf |
+| 24 | Stanford | CS224G — Agentic Design Patterns | https://web.stanford.edu/class/cs224g/2025/lectures/Agentic_Design_Patterns.pdf |
 
 ### Open Source
 

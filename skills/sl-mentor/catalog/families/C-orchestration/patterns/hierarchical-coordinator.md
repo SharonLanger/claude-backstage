@@ -117,7 +117,7 @@ flowchart TD
 - [Coordinator → Specialists](coordinator-specialists.md) — sub-coordinators can be domain specialists
 - [Agent-as-Tool](agent-as-tool.md) — sub-coordinators can be wrapped as tools for the root
 - [Synthesizer / Aggregator](synthesizer-aggregator.md) — each coordinator-level integration is a synthesizer
-- [Family B — Task Decomposition](../B-task-decomposition/README.md) — the decomposition strategy used at each level
+- [Family B — Task Decomposition](../../B-task-decomposition/README.md) — the decomposition strategy used at each level
 
 ## Example Sketch
 

@@ -103,7 +103,7 @@ flowchart TD
 - [Coordinator → Specialists](coordinator-specialists.md) — specialists are natural candidates to wrap as tools
 - [Manager → Workers](manager-workers.md) — manager's tool registry can include agent-as-tool entries
 - [Hierarchical Coordinator](hierarchical-coordinator.md) — sub-coordinators can be wrapped as tools at the parent level
-- [Family A — Topology](../A-topology/README.md) — agent-as-tool creates a nested node in the topology
+- [Family A — Topology](../../A-workflow-topology/README.md) — agent-as-tool creates a nested node in the topology
 
 ## Example Sketch
 

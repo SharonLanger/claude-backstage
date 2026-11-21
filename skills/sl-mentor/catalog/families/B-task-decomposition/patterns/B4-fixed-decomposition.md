@@ -114,8 +114,8 @@ function fixedDecompose(goal, context):
 - [B3: Dynamic Decomposition](B3-dynamic-decomposition.md) — the adaptive alternative; use B3 when the task structure cannot be known upfront.
 - [B5: Milestone / Checkpoint Planning](B5-milestone-checkpoint.md) — adds validation gates between groups of fixed subtasks.
 - [B6: Reconnaissance-First](B6-reconnaissance-first.md) — a recon pass before B4 improves decomposition quality for unfamiliar domains.
-- [Family A — Topology](../A-topology/README.md) — a frozen dependency DAG maps directly to a static DAG topology.
-- [Family C — Orchestration](../C-orchestration/README.md) — fixed plans are easiest to schedule; orchestrators can assign all work upfront.
+- [Family A — Topology](../../A-workflow-topology/README.md) — a frozen dependency DAG maps directly to a static DAG topology.
+- [Family C — Orchestration](../../C-orchestration/README.md) — fixed plans are easiest to schedule; orchestrators can assign all work upfront.
 
 ## Example
 

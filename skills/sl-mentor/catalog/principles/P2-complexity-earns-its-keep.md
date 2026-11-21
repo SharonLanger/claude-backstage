@@ -45,4 +45,4 @@ This principle appears across every major source because all of them observed th
 - OpenAI — [Harness Engineering](https://openai.com/index/harness-engineering/)
 - Google Cloud — [Choose a Design Pattern for Your Agentic AI System](https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system)
 - AWS — [Agentic AI Patterns and Workflows](https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-patterns/introduction.html)
-- Stanford — [CS224G — Agentic Design Patterns](https://web.stanford.edu/class/cs224g/lectures/Agentic_Design_Patterns.pdf)
+- Stanford — [CS224G — Agentic Design Patterns](https://web.stanford.edu/class/cs224g/2025/lectures/Agentic_Design_Patterns.pdf)

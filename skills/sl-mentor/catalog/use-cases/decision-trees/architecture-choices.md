@@ -43,7 +43,7 @@ You're designing an agent system and face fundamental architecture decisions: si
 | **Pro** | Fast, scales without human bottleneck | Safe, catches errors before they propagate |
 | **Con** | Risk of cascading errors; security surface | Slow, doesn't scale, human becomes bottleneck |
 | **Choose when** | Actions are reversible AND low-cost AND well-validated | Actions are irreversible OR high-cost OR novel |
-| **Safety patterns needed** | [Least Privilege](../../families/J-security-trust/patterns/J01-least-privilege.md), [Circuit Breaker](../../families/I-reliability-recovery/patterns/circuit-breaker.md), [Maker-Checker](../../families/C-orchestration/patterns/maker-checker.md) | [Approval Levels](../../families/K-human-control/patterns/K02-tiered-approval-levels.md), [Read-Write Separation](../../families/J-security-trust/patterns/J11-read-write-separation.md) |
+| **Safety patterns needed** | [Least Privilege](../../families/J-security-trust/patterns/J01-least-privilege.md), [Circuit Breaker](../../families/I-reliability-recovery/patterns/circuit-breaker.md), [Maker-Checker](../../families/C-orchestration/patterns/maker-checker.md) | Approval Levels (catalog entry unavailable), [Read-Write Separation](../../families/J-security-trust/patterns/J11-read-write-separation.md) |
 
 ### Fork 4: Deterministic Steps vs. AI-Decided Everything
 

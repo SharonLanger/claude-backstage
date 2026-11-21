@@ -92,7 +92,7 @@ The agent encounters something beyond its capability or authority.
 - Edge cases not covered by instructions
 - Actions that exceed the agent's authorized scope
 
-**Pattern:** [I-Human-Escalation](../../families/I-reliability-recovery/patterns/human-escalation.md), [K05-Tiered-Autonomy](../../families/K-human-control/patterns/K05-tiered-autonomy.md)
+**Pattern:** [I-Human-Escalation](../../families/I-reliability-recovery/patterns/human-escalation.md), K05-Tiered-Autonomy (catalog entry unavailable)
 
 ## Calibrating Interrupt Frequency
 
@@ -117,14 +117,14 @@ The agent encounters something beyond its capability or authority.
 | Pattern | When to Apply |
 |---------|---------------|
 | [K01-Human-in-the-Loop-Checkpoint](../../families/K-human-control/patterns/K01-human-in-the-loop-checkpoint.md) | Hard stop before irreversible actions |
-| [K02-Configurable-Autonomy](../../families/K-human-control/patterns/K02-configurable-autonomy.md) | Let users adjust how often agents interrupt |
-| [K03-Approval-Queue](../../families/K-human-control/patterns/K03-approval-queue.md) | Batch pending approvals for efficient review |
-| [K04-Graceful-Handoff](../../families/K-human-control/patterns/K04-graceful-handoff.md) | Transfer control smoothly when agent escalates |
-| [K05-Tiered-Autonomy](../../families/K-human-control/patterns/K05-tiered-autonomy.md) | Different autonomy levels for different action types |
+| K02-Configurable-Autonomy (catalog entry unavailable) | Let users adjust how often agents interrupt |
+| K03-Approval-Queue (catalog entry unavailable) | Batch pending approvals for efficient review |
+| K04-Graceful-Handoff (catalog entry unavailable) | Transfer control smoothly when agent escalates |
+| K05-Tiered-Autonomy (catalog entry unavailable) | Different autonomy levels for different action types |
 | [K06-Human-on-the-Loop-Monitoring](../../families/K-human-control/patterns/K06-human-on-the-loop-monitoring.md) | Async oversight without blocking execution |
 | [I-Human-Escalation](../../families/I-reliability-recovery/patterns/human-escalation.md) | Escalate on failure or uncertainty |
 | [I-Stop-Condition](../../families/I-reliability-recovery/patterns/stop-condition.md) | Define when to stop autonomous iteration |
-| [J05-Human-Approval-Gate](../../families/J-security-trust/patterns/J05-human-approval-gate.md) | Security-motivated approval requirements |
+| [J08-Human-Approval-Gate](../../families/J-security-trust/patterns/J08-human-approval-gate.md) | Security-motivated approval requirements |
 | [B5-Milestone-Checkpoint](../../families/B-task-decomposition/patterns/B5-milestone-checkpoint.md) | Review at natural task milestones |
 
 ## Anti-Patterns to Watch For

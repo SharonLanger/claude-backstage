@@ -89,8 +89,8 @@ A team builds a multi-step reasoning pipeline and immediately routes 80% of inpu
 
 ## Related Patterns (what to do instead)
 
-- [Family D — Verification & Evaluation](../D-verification-evaluation/README.md) — establish correctness before optimizing
-- [Family I — Reliability & Recovery](../I-reliability-recovery/README.md) — ensure reliability before optimizing
+- [Family D — Verification & Evaluation](../../D-verification-evaluation/README.md) — establish correctness before optimizing
+- [Family I — Reliability & Recovery](../../I-reliability-recovery/README.md) — ensure reliability before optimizing
 - [Complexity-Based Model Routing](../patterns/complexity-based-model-routing.md) — apply routing only after correctness is validated
 - [Silent Quality Degradation](silent-quality-degradation.md) — the most common consequence of premature optimization
 

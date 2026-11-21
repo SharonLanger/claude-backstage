@@ -96,7 +96,7 @@ A legal document classifier routes most routine filings through a small model wi
 - [Complexity-Based Model Routing](complexity-based-model-routing.md) — classify before calling any model when input features are reliable predictors
 - [Small-Model-First Escalation](small-model-first-escalation.md) — escalate on failure rather than on confidence score; simpler when no confidence signal is available
 - [Cost-Aware Stopping](cost-aware-stopping.md) — stop an agent loop when marginal improvement falls below a threshold, analogous to confidence-gated escalation
-- [Family D — Verification & Evaluation](../D-verification-evaluation/README.md) — confidence scoring is a lightweight form of self-evaluation
+- [Family D — Verification & Evaluation](../../D-verification-evaluation/README.md) — confidence scoring is a lightweight form of self-evaluation
 
 ## Related Anti-Patterns
 

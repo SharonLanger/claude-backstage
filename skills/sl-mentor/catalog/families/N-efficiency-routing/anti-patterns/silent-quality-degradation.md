@@ -91,7 +91,7 @@ A team adds confidence-based routing, setting the escalation threshold at 0.8 "b
 - [Complexity-Based Model Routing](../patterns/complexity-based-model-routing.md) — validate classifier accuracy before routing production traffic
 - [Caching](../patterns/caching.md) — set TTL based on measured staleness rate, not intuition
 - [Premature Optimization](premature-optimization.md) — the precursor; optimization before correctness makes silent degradation inevitable
-- [Family D — Verification & Evaluation](../D-verification-evaluation/README.md) — evaluation infrastructure that must be in place before N patterns ship
+- [Family D — Verification & Evaluation](../../D-verification-evaluation/README.md) — evaluation infrastructure that must be in place before N patterns ship
 
 ## Sources
 

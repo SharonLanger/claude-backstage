@@ -26,7 +26,7 @@ Is the output format wrong (invalid JSON, missing fields)?
   NO ↓
 
 Is the agent doing the right steps but getting a bad final answer?
-  YES → D: Verification (D04 LLM-as-Judge, D02 Assertions)
+  YES → D: Verification (D09 LLM-as-Judge, Assertions (catalog entry unavailable))
   NO ↓
 
 Is the agent taking wrong actions or calling wrong tools?

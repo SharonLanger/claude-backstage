@@ -83,8 +83,8 @@ AWS Prescriptive Guidance documents identity-based authorization as a non-negoti
 - [J04 — Tool Gateway](J04-tool-gateway.md)
 - [J07 — Session Isolation](J07-session-isolation.md)
 - [J08 — Human Approval Gate](J08-human-approval-gate.md)
-- [Anti-pattern: Model as Security Boundary](anti-patterns/AP-model-as-security-boundary.md)
-- [Family H — Deterministic Control](../H-deterministic-control/README.md)
+- [Anti-pattern: Model as Security Boundary](../anti-patterns/AP-model-as-security-boundary.md)
+- [Family H — Deterministic Control](../../H-deterministic-control/README.md)
 
 ## Sources
 

@@ -100,7 +100,7 @@ Key wiring decisions:
 
 - [Sequential Workflow](sequential-workflow.md) — routing selects which sequential workflow to run for a given input type.
 - [Parallel Sectioning](parallel-sectioning.md) — when a single input must be handled by multiple handlers concurrently.
-- [Family B — Task Decomposition](../B-task-decomposition/README.md) — decomposition determines the dispatch targets that routing selects between.
+- [Family B — Task Decomposition](../../B-task-decomposition/README.md) — decomposition determines the dispatch targets that routing selects between.
 
 ## 8. Anti-Patterns Addressed
 

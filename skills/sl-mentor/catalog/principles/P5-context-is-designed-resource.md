@@ -27,7 +27,7 @@ This principle recurs across independent sources because every team building pro
 
 - [Progressive Disclosure / Map-Not-Manual](../families/E-context-engineering/) — short top-level file points to deeper knowledge on demand
 - [Context Isolation](../families/E-context-engineering/) — each agent or step sees only its relevant subset
-- [Repository-as-System-of-Record](../families/F-harness-engineering/) — ground truth lives in structured files, not in the prompt
+- [Repository-as-System-of-Record](../families/F-harness-environment/) — ground truth lives in structured files, not in the prompt
 - [External Durable State](../families/L-memory-state/) — state persists outside the conversation window
 - [Minimal-Context Handoff](../families/C-orchestration/) — orchestrators pass only task-relevant information to workers
 

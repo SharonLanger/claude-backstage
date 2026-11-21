@@ -119,7 +119,7 @@ Key wiring decisions:
 - [Generator-Critic](generator-critic.md) — the revision cycle must be bounded.
 - [Evaluator-Optimizer](evaluator-optimizer.md) — the optimization loop requires a max-iteration cap.
 - [ReAct](react.md) — the Thought-Action-Observation cycle must have a `max_steps` bound.
-- [Family I — Reliability & Recovery](../I-reliability-recovery/README.md) — loop termination is a reliability property; see timeout, retry budget, and circuit breaker patterns there.
+- [Family I — Reliability & Recovery](../../I-reliability-recovery/README.md) — loop termination is a reliability property; see timeout, retry budget, and circuit breaker patterns there.
 
 ## 8. Anti-Patterns Addressed
 

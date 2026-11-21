@@ -102,7 +102,7 @@ Key wiring decisions:
 - [Parallel Sectioning](parallel-sectioning.md) — runs N workers on N different inputs; Parallel Voting runs N workers on the same input.
 - [Generator-Critic](generator-critic.md) — generates multiple candidates then applies a critic; use when the output is not easily voted on.
 - [Evaluator-Optimizer](evaluator-optimizer.md) — selects among candidates using a formal acceptance criterion rather than majority vote.
-- [Family N — Efficiency](../N-efficiency/README.md) — cost/latency optimization strategies for N× call patterns.
+- [Family N — Efficiency](../../N-efficiency-routing/README.md) — cost/latency optimization strategies for N× call patterns.
 
 ## 8. Anti-Patterns Addressed
 

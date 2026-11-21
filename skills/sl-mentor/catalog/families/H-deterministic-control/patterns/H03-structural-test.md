@@ -69,7 +69,7 @@ flowchart TD
 
 ## Related Families
 
-- [Family D — Verification](../D-verification/README.md): Structural tests are the cheapest verification step; D covers richer runtime verification strategies.
+- [Family D — Verification](../../D-verification-evaluation/README.md): Structural tests are the cheapest verification step; D covers richer runtime verification strategies.
 
 ## Example
 

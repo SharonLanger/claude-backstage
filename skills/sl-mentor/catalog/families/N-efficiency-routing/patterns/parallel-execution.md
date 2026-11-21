@@ -99,7 +99,7 @@ A research agent needs to gather information from five independent data sources 
 - [Budgeted Agent Loop](budgeted-agent-loop.md) — cap total parallel spend to prevent concurrent cost spikes
 - [Tool/Result Reuse](tool-result-reuse.md) — avoid re-dispatching subtasks whose results are already cached
 - [Complexity-Based Model Routing](complexity-based-model-routing.md) — route each parallel subtask to the appropriate model tier
-- [Family A — Workflow Topology](../A-workflow-topology/README.md) — parallel execution is also a topology pattern; N treats it as a latency optimization
+- [Family A — Workflow Topology](../../A-workflow-topology/README.md) — parallel execution is also a topology pattern; N treats it as a latency optimization
 
 ## Related Anti-Patterns
 

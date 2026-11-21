@@ -81,7 +81,7 @@ flowchart LR
 
 **Cascaded Checker**: First checker is fast and cheap (schema validation, rule-based); second checker is a full LLM verification only if the first passes. Reduces cost on common failures.
 
-**Human-in-the-Loop Checker**: The checker is a human approval step. See [Family K — Human-in-the-Loop](../K-human-in-the-loop/README.md).
+**Human-in-the-Loop Checker**: The checker is a human approval step. See [Family K — Human-in-the-Loop](../../K-human-control/README.md).
 
 ## Implementation Notes
 
@@ -108,7 +108,7 @@ flowchart LR
 - [Specialist Reviewer](specialist-reviewer.md) — qualitative critique vs. binary verification; different purposes
 - [Manager → Workers](manager-workers.md) — manager can invoke maker-checker as a sub-pattern for high-risk worker outputs
 - [Synthesizer / Aggregator](synthesizer-aggregator.md) — synthesizer unifies many; checker verifies one
-- [Family K — Human-in-the-Loop](../K-human-in-the-loop/README.md) — human as checker; escalation path when automated checker fails
+- [Family K — Human-in-the-Loop](../../K-human-control/README.md) — human as checker; escalation path when automated checker fails
 
 ## Example Sketch
 
@@ -155,4 +155,4 @@ function checker.verify(task_spec, candidate):
 - **Anthropic Engineering** — AI safety company; authors of Claude. [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)
 - **Google Cloud Architecture Center** — Google's cloud architecture team. [Choose a Design Pattern for Agentic AI](https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system)
 - **AWS Prescriptive Guidance** — Amazon Web Services architecture team. [Agentic AI Patterns](https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-patterns/agent-patterns.html)
-- **Stanford CS224G** — Stanford University course on LLM agents. [Agentic Design Patterns (lecture slides)](https://web.stanford.edu/class/cs224g/lectures/Agentic_Design_Patterns.pdf)
+- **Stanford CS224G** — Stanford University course on LLM agents. [Agentic Design Patterns (lecture slides)](https://web.stanford.edu/class/cs224g/2025/lectures/Agentic_Design_Patterns.pdf)

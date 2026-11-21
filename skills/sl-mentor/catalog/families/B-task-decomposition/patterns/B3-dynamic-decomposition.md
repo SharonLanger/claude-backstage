@@ -115,9 +115,9 @@ function dynamicDecompose(goal, maxSteps):
 - [B1: Plan → Execute](B1-plan-execute.md) — B1 produces a complete plan upfront; B3 produces it incrementally.
 - [B4: Fixed Decomposition](B4-fixed-decomposition.md) — the deterministic alternative; prefer B4 when the task is well-understood.
 - [B6: Reconnaissance-First](B6-reconnaissance-first.md) — a bounded recon pass before decomposition can reduce the need for dynamic adaptation.
-- [Family A — Topology](../A-topology/README.md) — dynamic decomposition often produces loop or evolving-DAG topologies.
-- [Family C — Orchestration](../C-orchestration/README.md) — an orchestrator may use dynamic decomposition to assign work to agents adaptively.
-- [Family I — Reliability](../I-reliability/README.md) — step limits, working memory snapshots, and loop-detection belong to reliability patterns.
+- [Family A — Topology](../../A-workflow-topology/README.md) — dynamic decomposition often produces loop or evolving-DAG topologies.
+- [Family C — Orchestration](../../C-orchestration/README.md) — an orchestrator may use dynamic decomposition to assign work to agents adaptively.
+- [Family I — Reliability](../../I-reliability-recovery/README.md) — step limits, working memory snapshots, and loop-detection belong to reliability patterns.
 
 ## Example
 

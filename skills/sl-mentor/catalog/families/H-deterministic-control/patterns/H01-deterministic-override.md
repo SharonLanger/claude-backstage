@@ -63,8 +63,8 @@ flowchart TD
 
 ## Related Families
 
-- [Family D — Verification](../D-verification/README.md): Verification strategies detect invalid output; Override acts on that detection.
-- [Family O — Output](../O-output/README.md): Output shaping patterns operate in the same post-inference layer as Override.
+- [Family D — Verification](../../D-verification-evaluation/README.md): Verification strategies detect invalid output; Override acts on that detection.
+- [Family O — Output](../../O-output-integration/README.md): Output shaping patterns operate in the same post-inference layer as Override.
 
 ## Example
 

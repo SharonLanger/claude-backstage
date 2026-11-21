@@ -6,8 +6,8 @@ You are building an agent that processes untrusted input — user messages, retr
 
 ## Quick Answer
 
-1. **Separate trust levels architecturally** — never concatenate untrusted input directly into system-level instructions. Use [J03-Input-Validation-Boundary](../../families/J-security-trust/patterns/J03-input-validation-boundary.md) to define clear boundaries.
-2. **Layer defenses** — combine input validation, output filtering, sandboxed execution, and human approval. No single defense is sufficient. Apply [J09-Defense-In-Depth](../../families/J-security-trust/patterns/J09-defense-in-depth.md).
+1. **Separate trust levels architecturally** — never concatenate untrusted input directly into system-level instructions. Use J03-Input-Validation-Boundary (catalog entry unavailable) to define clear boundaries.
+2. **Layer defenses** — combine input validation, output filtering, sandboxed execution, and human approval. No single defense is sufficient. Apply J09-Defense-In-Depth (catalog entry unavailable).
 3. **Validate outputs deterministically** — use [D01-Deterministic-Validator](../../families/D-verification-evaluation/patterns/D01-deterministic-validator.md) and [O-Schema-Validation](../../families/O-output-integration/patterns/schema-validation.md) to catch anomalous agent behavior regardless of how it was induced.
 
 ## The Lethal Trifecta
@@ -62,10 +62,10 @@ Does the agent process untrusted text?
 
 | Pattern | Role in Injection Defense |
 |---------|---------------------------|
-| [J03-Input-Validation-Boundary](../../families/J-security-trust/patterns/J03-input-validation-boundary.md) | Define and enforce trust boundaries on all inputs |
-| [J09-Defense-In-Depth](../../families/J-security-trust/patterns/J09-defense-in-depth.md) | Layer multiple independent defenses |
-| [J04-Sandboxed-Execution](../../families/J-security-trust/patterns/J04-sandboxed-execution.md) | Isolate execution so injection cannot escape |
-| [J06-Output-Filtering](../../families/J-security-trust/patterns/J06-output-filtering.md) | Strip sensitive data from agent outputs |
+| J03-Input-Validation-Boundary (catalog entry unavailable) | Define and enforce trust boundaries on all inputs |
+| J09-Defense-In-Depth (catalog entry unavailable) | Layer multiple independent defenses |
+| [J02-Sandboxed-Execution](../../families/J-security-trust/patterns/J02-sandbox.md) | Isolate execution so injection cannot escape |
+| J06-Output-Filtering (catalog entry unavailable) | Strip sensitive data from agent outputs |
 | [J11-Read-Write-Separation](../../families/J-security-trust/patterns/J11-read-write-separation.md) | Separate reading untrusted content from acting |
 | [E-Context-Isolation](../../families/E-context-engineering/patterns/context-isolation.md) | Prevent context contamination across trust levels |
 | [C-Maker-Checker](../../families/C-orchestration/patterns/maker-checker.md) | Separate planning from execution for independent review |

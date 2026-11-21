@@ -101,8 +101,8 @@ Key wiring decisions:
 
 - [Prompt Chaining](prompt-chaining.md) — the decompose and merge steps are themselves chained calls around the parallel fan-out.
 - [Parallel Voting](parallel-voting.md) — runs the same prompt N times on the same input for consensus; Parallel Sectioning runs the same prompt on N different inputs.
-- [Family B — Task Decomposition](../B-task-decomposition/README.md) — provides the decomposition strategies used in the split step.
-- [Family N — Efficiency](../N-efficiency/README.md) — parallelism is a core efficiency lever; see token batching and cost strategies there.
+- [Family B — Task Decomposition](../../B-task-decomposition/README.md) — provides the decomposition strategies used in the split step.
+- [Family N — Efficiency](../../N-efficiency-routing/README.md) — parallelism is a core efficiency lever; see token batching and cost strategies there.
 
 ## 8. Anti-Patterns Addressed
 

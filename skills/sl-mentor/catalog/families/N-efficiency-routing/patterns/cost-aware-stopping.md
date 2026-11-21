@@ -102,7 +102,7 @@ A report-writing agent runs up to 10 refinement rounds. With cost-aware stopping
 - [Budgeted Agent Loop](budgeted-agent-loop.md) — hard ceiling on total cost; cost-aware stopping fires first in the common case of converging runs
 - [Confidence-Based Routing](confidence-based-routing.md) — analogous: stop escalating when confidence is sufficient; stop iterating when improvement is sufficient
 - [Complexity-Based Model Routing](complexity-based-model-routing.md) — route each iteration to the cheapest model that can make meaningful progress
-- [Family D — Verification & Evaluation](../D-verification-evaluation/README.md) — the quality estimator used for stopping is a lightweight evaluator
+- [Family D — Verification & Evaluation](../../D-verification-evaluation/README.md) — the quality estimator used for stopping is a lightweight evaluator
 
 ## Related Anti-Patterns
 

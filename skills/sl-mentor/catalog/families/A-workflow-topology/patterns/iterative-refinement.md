@@ -103,7 +103,7 @@ Key wiring decisions:
 - [Bounded Loop](bounded-loop.md) — provides the loop safety mechanism (max iterations cap) that every iterative refinement must implement.
 - [Generator-Critic](generator-critic.md) — separates the critic into a distinct role with structured feedback; use when critique logic is non-trivial.
 - [Evaluator-Optimizer](evaluator-optimizer.md) — adds a formal acceptance criterion as the convergence gate; use when "passes" means meeting a measurable spec.
-- [Family I — Reliability & Recovery](../I-reliability-recovery/README.md) — convergence failures are a reliability concern; see retry and fallback patterns there.
+- [Family I — Reliability & Recovery](../../I-reliability-recovery/README.md) — convergence failures are a reliability concern; see retry and fallback patterns there.
 
 ## 8. Anti-Patterns Addressed
 

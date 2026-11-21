@@ -82,7 +82,7 @@ AWS Prescriptive Guidance recommends minimizing agent capability sets as a core 
 - [J02 — Sandbox](J02-sandbox.md)
 - [J04 — Tool Gateway](J04-tool-gateway.md)
 - [J11 — Read/Write Separation](J11-read-write-separation.md)
-- [Anti-pattern: Overpowered Coding Agent](anti-patterns/AP-overpowered-coding-agent.md)
+- [Anti-pattern: Overpowered Coding Agent](../anti-patterns/AP-overpowered-coding-agent.md)
 
 ## Sources
 

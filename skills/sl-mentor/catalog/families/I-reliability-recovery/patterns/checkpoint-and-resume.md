@@ -104,7 +104,7 @@ A document-processing agent must run 200 PDFs through extraction, enrichment, an
 - [Human Escalation](human-escalation.md) — requires persisted state before control transfers to a human
 - [Fresh-Context Retry](fresh-context-retry.md) — checkpoint ensures progress is not lost when context is discarded
 - [Bounded Retry](bounded-retry.md) — retry logic works at the step level; checkpoints work across steps
-- [Family L — Memory & State](../L-memory-state/README.md) — the broader family for state persistence patterns
+- [Family L — Memory & State](../../L-memory-state/README.md) — the broader family for state persistence patterns
 
 ## Related Anti-Patterns
 

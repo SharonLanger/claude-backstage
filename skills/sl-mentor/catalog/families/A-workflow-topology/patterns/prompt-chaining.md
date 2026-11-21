@@ -95,7 +95,7 @@ Key wiring decisions:
 - [Iterative Refinement](iterative-refinement.md) — chains where the same prompt is applied repeatedly until quality is sufficient.
 - [Evaluator-Optimizer](evaluator-optimizer.md) — adds a measurable acceptance criterion between chain steps.
 - [Bounded Loop](bounded-loop.md) — dynamic chain length controlled by a loop condition.
-- [Family B — Task Decomposition](../B-task-decomposition/README.md) — determines how to split tasks before a chain is designed.
+- [Family B — Task Decomposition](../../B-task-decomposition/README.md) — determines how to split tasks before a chain is designed.
 
 ## 8. Anti-Patterns Addressed
 

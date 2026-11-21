@@ -118,7 +118,7 @@ result = TypedResult.from_dict(parsed)
 - [Parse-and-Reject](parse-and-reject.md) — handles parse failures before schema validation runs
 - [Programmatic Postcondition](programmatic-postcondition.md) — asserts semantic invariants that the schema cannot express
 - [Sanitized Output Boundary](sanitized-output-boundary.md) — sanitizes fields after schema validation before use in injection-capable sinks
-- [Family H — Deterministic Control](../H-deterministic-control/README.md) — schema validation is a hard gate in control flow; the H family covers the broader pattern of deterministic gates in agentic pipelines
+- [Family H — Deterministic Control](../../H-deterministic-control/README.md) — schema validation is a hard gate in control flow; the H family covers the broader pattern of deterministic gates in agentic pipelines
 
 ## When to Use / When Not to Use
 

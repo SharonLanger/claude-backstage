@@ -102,7 +102,7 @@ A customer support system receives 10,000 requests per day. After labeling a sam
 - [Confidence-Based Routing](confidence-based-routing.md) — route after the model scores its own confidence rather than before calling any model
 - [Small-Model-First Escalation](small-model-first-escalation.md) — start cheap and escalate on failure; complementary when pre-classification is unreliable
 - [Budgeted Agent Loop](budgeted-agent-loop.md) — cap total cost after routing decisions are made
-- [Family C — Orchestration](../C-orchestration/README.md) — routing between specialized agents rather than model tiers
+- [Family C — Orchestration](../../C-orchestration/README.md) — routing between specialized agents rather than model tiers
 
 ## Related Anti-Patterns
 

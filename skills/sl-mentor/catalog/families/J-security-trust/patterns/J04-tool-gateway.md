@@ -83,8 +83,8 @@ AWS Prescriptive Guidance recommends explicit tool allowlists and argument valid
 - [J05 — Deterministic Authorization](J05-deterministic-authorization.md)
 - [J08 — Human Approval Gate](J08-human-approval-gate.md)
 - [J10 — Capability Minimization](J10-capability-minimization.md)
-- [Anti-pattern: Model as Security Boundary](anti-patterns/AP-model-as-security-boundary.md)
-- [Family G — Tool Design](../G-tool-design/README.md)
+- [Anti-pattern: Model as Security Boundary](../anti-patterns/AP-model-as-security-boundary.md)
+- [Family G — Tool Design](../../G-tool-action-design/README.md)
 
 ## Sources
 

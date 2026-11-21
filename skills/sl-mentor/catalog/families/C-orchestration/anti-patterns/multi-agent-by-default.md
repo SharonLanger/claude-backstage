@@ -84,11 +84,11 @@ If any checkbox cannot be marked done, the system likely has unnecessary agents.
 - [Do You Actually Need Multi-Agent?](../guides/do-you-need-multi-agent.md) — decision guide to apply before building
 - [Manager → Workers](../patterns/manager-workers.md) — the correct pattern when multi-agent is genuinely justified and a single owner is needed
 - [Agent-as-Tool](../patterns/agent-as-tool.md) — wrapping a complex sub-process as a tool delays the agent boundary until it is actually needed
-- [Family N — Efficiency](../N-efficiency/README.md) — patterns for reducing agent count and cost
+- [Family N — Efficiency](../../N-efficiency-routing/README.md) — patterns for reducing agent count and cost
 
 ## Sources
 
 - **Anthropic Engineering** — AI safety company; authors of Claude. [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)
 - **OpenAI Engineering** — AI research company; authors of GPT and Codex. [A Practical Guide to Building AI Agents](https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/)
 - **Google Cloud Architecture Center** — Google's cloud architecture team. [Choose a Design Pattern for Agentic AI](https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system)
-- **Stanford CS224G** — Stanford University course on LLM agents. [Agentic Design Patterns (lecture slides)](https://web.stanford.edu/class/cs224g/lectures/Agentic_Design_Patterns.pdf)
+- **Stanford CS224G** — Stanford University course on LLM agents. [Agentic Design Patterns (lecture slides)](https://web.stanford.edu/class/cs224g/2025/lectures/Agentic_Design_Patterns.pdf)

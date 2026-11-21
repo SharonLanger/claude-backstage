@@ -70,4 +70,4 @@ Only after Level 2 is solid should you consider:
 - https://www.anthropic.com/engineering/building-effective-agents
 - https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/
 - https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-patterns/introduction.html
-- https://web.stanford.edu/class/cs224g/lectures/Agentic_Design_Patterns.pdf
+- https://web.stanford.edu/class/cs224g/2025/lectures/Agentic_Design_Patterns.pdf

@@ -26,28 +26,28 @@ You have deployed (or are about to deploy) an agent system and need to know whet
    - Pattern: [Schema Validation (output)](../../families/O-output-integration/patterns/schema-validation.md)
 
 2. **Programmatic correctness checks** — Does the output satisfy known invariants?
-   - Pattern: [D02 Assertion-Based Validator](../../families/D-verification-evaluation/patterns/D02-assertion-based-validator.md)
+   - Pattern: D02 Assertion-Based Validator (catalog entry unavailable)
    - Pattern: [Programmatic Postcondition](../../families/O-output-integration/patterns/programmatic-postcondition.md)
 
 3. **Behavioral benchmarks** — Given known inputs, does the system produce known-good outputs?
-   - Pattern: [D08 Regression Suite](../../families/D-verification-evaluation/patterns/D08-regression-suite.md)
+   - Pattern: D08 Regression Suite (catalog entry unavailable)
    - See also: [regression-testing.md](./regression-testing.md)
 
 4. **LLM-as-judge** — For subjective quality where no ground truth exists
-   - Pattern: [D04 LLM-as-Judge](../../families/D-verification-evaluation/patterns/D04-LLM-as-judge.md)
+   - Pattern: [D09 LLM-as-Judge](../../families/D-verification-evaluation/patterns/D09-llm-as-judge.md)
    - Caution: calibrate judges against human labels; uncalibrated judges are unreliable
 
 5. **Human evaluation** — Gold standard for ambiguous tasks; expensive but necessary for calibration
-   - Pattern: [D07 Multi-Evaluator Consensus](../../families/D-verification-evaluation/patterns/D07-multi-evaluator-consensus.md)
+   - Pattern: [D08 Multi-Evaluator Consensus](../../families/D-verification-evaluation/patterns/D08-multi-review-ensemble.md)
 
 ## Relevant Patterns
 
 | Pattern | Family | Role in Evaluation |
 |---------|--------|-------------------|
 | [Deterministic Validator](../../families/D-verification-evaluation/patterns/D01-deterministic-validator.md) | D | Cheapest, fastest check — always start here |
-| [Assertion-Based Validator](../../families/D-verification-evaluation/patterns/D02-assertion-based-validator.md) | D | Encodes domain invariants as pass/fail |
-| [Regression Suite](../../families/D-verification-evaluation/patterns/D08-regression-suite.md) | D | Catches known-good → broken transitions |
-| [LLM-as-Judge](../../families/D-verification-evaluation/patterns/D04-LLM-as-judge.md) | D | Evaluates subjective quality at scale |
+| Assertion-Based Validator (catalog entry unavailable) | D | Encodes domain invariants as pass/fail |
+| Regression Suite (catalog entry unavailable) | D | Catches known-good → broken transitions |
+| [LLM-as-Judge](../../families/D-verification-evaluation/patterns/D09-llm-as-judge.md) | D | Evaluates subjective quality at scale |
 | [Structured Trace](../../families/M-observability-debugging/patterns/M01-structured-trace.md) | M | Makes failures diagnosable |
 | [Trace-Linked Eval](../../families/M-observability-debugging/patterns/M08-trace-linked-eval.md) | M | Connects eval results to execution traces |
 | [Failure Categorization](../../families/M-observability-debugging/patterns/M09-failure-categorization.md) | M | Classifies errors for targeted improvement |

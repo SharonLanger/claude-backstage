@@ -99,7 +99,7 @@ Regenerate the JSON fixing only these fields.
 - [D02: Test-Before-Done](D02-test-before-done.md) — deterministic check at the task level rather than the output level.
 - [D05: Review Pass](D05-review-pass.md) — structured checklist; use D01 for machine-checkable items, D05 for qualitative items.
 - [D07: Evaluator-Optimizer](D07-evaluator-optimizer.md) — when the validator score drives iterative improvement.
-- [Family H](../H-defensive-design/README.md) — prefer deterministic checks over LLM checks wherever possible.
+- [Family H](../../H-deterministic-control/README.md) — prefer deterministic checks over LLM checks wherever possible.
 
 ## Anti-Patterns Addressed
 

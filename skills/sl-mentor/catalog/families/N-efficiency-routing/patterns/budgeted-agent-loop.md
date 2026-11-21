@@ -103,7 +103,7 @@ A data analysis agent is given an open-ended "explore and summarize" task. Witho
 - [Cost-Aware Stopping](cost-aware-stopping.md) — stop early when marginal improvement no longer justifies cost, complementing the hard ceiling
 - [Complexity-Based Model Routing](complexity-based-model-routing.md) — routing to cheaper models reduces per-step spend, making budget go further
 - [Context Minimization](context-minimization.md) — trimming context reduces per-step token count against the token budget
-- [Family I — Reliability & Recovery](../I-reliability-recovery/README.md) — Bounded Retry caps retries for correctness; Budgeted Loop caps total run cost
+- [Family I — Reliability & Recovery](../../I-reliability-recovery/README.md) — Bounded Retry caps retries for correctness; Budgeted Loop caps total run cost
 
 ## Related Anti-Patterns
 

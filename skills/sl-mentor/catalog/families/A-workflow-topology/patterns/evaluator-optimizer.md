@@ -119,8 +119,8 @@ Key wiring decisions:
 - [Generator-Critic](generator-critic.md) — replaces the formal evaluator with an LLM critic; use when criteria are subjective or hard to formalize.
 - [Iterative Refinement](iterative-refinement.md) — similar loop structure without a formal evaluator; quality is assessed by heuristics or LLM judgment.
 - [Bounded Loop](bounded-loop.md) — provides the loop termination guarantee; every Evaluator-Optimizer must implement a max-iteration cap.
-- [Family B — Task Decomposition](../B-task-decomposition/README.md) — decomposing a failing candidate into sub-criteria can help the optimizer target specific failures.
-- [Family C — Orchestration](../C-orchestration/README.md) — when the evaluator is an external service or tool that the orchestrator manages.
+- [Family B — Task Decomposition](../../B-task-decomposition/README.md) — decomposing a failing candidate into sub-criteria can help the optimizer target specific failures.
+- [Family C — Orchestration](../../C-orchestration/README.md) — when the evaluator is an external service or tool that the orchestrator manages.
 
 ## 8. Anti-Patterns Addressed
 

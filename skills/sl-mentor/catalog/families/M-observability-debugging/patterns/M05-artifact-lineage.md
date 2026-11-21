@@ -88,7 +88,7 @@ When `report.md` is wrong, the lineage graph shows it was derived from `a-002` a
 - [M03 — Execution Tree](M03-execution-tree.md) — `agent_id` in the lineage record maps to a node in the tree
 - [M04 — Instrumented Handoff](M04-instrumented-handoff.md) — `run_id` in lineage records comes from handoff context propagation
 - [M08 — Trace-Linked Eval](M08-trace-linked-eval.md) — evals on artifacts reference the lineage record to attribute results
-- [Family L — Memory](../L-memory/README.md) — provenance-tagged memory entries are an instance of artifact lineage applied to the memory store
+- [Family L — Memory](../../L-memory-state/README.md) — provenance-tagged memory entries are an instance of artifact lineage applied to the memory store
 
 ## Example
 

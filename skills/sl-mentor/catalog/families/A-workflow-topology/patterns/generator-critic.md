@@ -110,7 +110,7 @@ Key wiring decisions:
 - [Evaluator-Optimizer](evaluator-optimizer.md) — replaces the LLM critic with a formal, measurable acceptance criterion.
 - [Sequential Workflow](sequential-workflow.md) — if the critic is a one-time review (no loop), this is a two-stage sequential workflow.
 - [Bounded Loop](bounded-loop.md) — provides the loop safety mechanism; Generator-Critic must always be bounded.
-- [Family C — Orchestration](../C-orchestration/README.md) — when Generator and Critic are deployed as separate agents with independent state.
+- [Family C — Orchestration](../../C-orchestration/README.md) — when Generator and Critic are deployed as separate agents with independent state.
 
 ## 8. Anti-Patterns Addressed
 

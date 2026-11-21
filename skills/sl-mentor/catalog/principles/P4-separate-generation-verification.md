@@ -48,4 +48,4 @@ This principle appears across nearly every source because it maps directly to a 
 - AWS — [Agent Patterns](https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-patterns/agent-patterns.html)
 - Hamel Husain & Shreya Shankar — [LLM Evals FAQ](https://hamel.dev/blog/posts/evals-faq/)
 - OpenAI — [Harness Engineering](https://openai.com/index/harness-engineering/)
-- Stanford — [CS224G — Agentic Design Patterns](https://web.stanford.edu/class/cs224g/lectures/Agentic_Design_Patterns.pdf)
+- Stanford — [CS224G — Agentic Design Patterns](https://web.stanford.edu/class/cs224g/2025/lectures/Agentic_Design_Patterns.pdf)

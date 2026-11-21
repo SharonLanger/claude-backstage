@@ -7,8 +7,8 @@ You need to implement approval workflows in an agent system — structured point
 ## Quick Answer
 
 1. **Design gates as explicit workflow nodes** — approval checkpoints should be first-class elements in your agent topology, not afterthoughts. Use [K01-Human-in-the-Loop-Checkpoint](../../families/K-human-control/patterns/K01-human-in-the-loop-checkpoint.md).
-2. **Make approvals informative** — present reviewers with a clear summary of what the agent did, what it wants to do next, and what the risks are. Use [K04-Graceful-Handoff](../../families/K-human-control/patterns/K04-graceful-handoff.md).
-3. **Batch and queue** — when multiple actions need approval, queue them for efficient batch review rather than interrupting per-action. Apply [K03-Approval-Queue](../../families/K-human-control/patterns/K03-approval-queue.md).
+2. **Make approvals informative** — present reviewers with a clear summary of what the agent did, what it wants to do next, and what the risks are. Use K04-Graceful-Handoff (catalog entry unavailable).
+3. **Batch and queue** — when multiple actions need approval, queue them for efficient batch review rather than interrupting per-action. Apply K03-Approval-Queue (catalog entry unavailable).
 
 ## Approval Workflow Design
 
@@ -112,12 +112,12 @@ While waiting for approval, the system must:
 | Pattern | Role in Approval Workflows |
 |---------|----------------------------|
 | [K01-Human-in-the-Loop-Checkpoint](../../families/K-human-control/patterns/K01-human-in-the-loop-checkpoint.md) | Core mechanism — block execution until approved |
-| [K03-Approval-Queue](../../families/K-human-control/patterns/K03-approval-queue.md) | Batch pending approvals for efficient review |
-| [K04-Graceful-Handoff](../../families/K-human-control/patterns/K04-graceful-handoff.md) | Present clear context when handing to reviewer |
-| [K05-Tiered-Autonomy](../../families/K-human-control/patterns/K05-tiered-autonomy.md) | Different approval requirements by action tier |
-| [K02-Configurable-Autonomy](../../families/K-human-control/patterns/K02-configurable-autonomy.md) | Allow organizations to adjust gate placement |
-| [J05-Human-Approval-Gate](../../families/J-security-trust/patterns/J05-human-approval-gate.md) | Security-motivated approval requirements |
-| [J07-Audit-Trail](../../families/J-security-trust/patterns/J07-audit-trail.md) | Log all approval decisions for compliance |
+| K03-Approval-Queue (catalog entry unavailable) | Batch pending approvals for efficient review |
+| K04-Graceful-Handoff (catalog entry unavailable) | Present clear context when handing to reviewer |
+| K05-Tiered-Autonomy (catalog entry unavailable) | Different approval requirements by action tier |
+| K02-Configurable-Autonomy (catalog entry unavailable) | Allow organizations to adjust gate placement |
+| [J08-Human-Approval-Gate](../../families/J-security-trust/patterns/J08-human-approval-gate.md) | Security-motivated approval requirements |
+| J07-Audit-Trail (catalog entry unavailable) | Log all approval decisions for compliance |
 | [B5-Milestone-Checkpoint](../../families/B-task-decomposition/patterns/B5-milestone-checkpoint.md) | Natural checkpoint at task milestones |
 | [L-Checkpoint-State](../../families/L-memory-state/patterns/checkpoint-state.md) | Preserve agent state while awaiting approval |
 | [C-Maker-Checker](../../families/C-orchestration/patterns/maker-checker.md) | Separate proposer from approver |

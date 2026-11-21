@@ -95,7 +95,7 @@ Key wiring decisions:
 - [Generator-Critic](generator-critic.md) — a two-stage loop between writer and reviewer roles; use when revision cycles are needed.
 - [Routing](routing.md) — selects which sequential workflow to run based on input classification.
 - [Evaluator-Optimizer](evaluator-optimizer.md) — adds a measurable gate between stages that can halt or retry.
-- [Family C — Orchestration](../C-orchestration/README.md) — the orchestrator pattern that manages stage transitions at scale.
+- [Family C — Orchestration](../../C-orchestration/README.md) — the orchestrator pattern that manages stage transitions at scale.
 
 ## 8. Anti-Patterns Addressed
 

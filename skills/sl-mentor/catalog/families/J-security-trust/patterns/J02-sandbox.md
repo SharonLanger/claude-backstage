@@ -95,8 +95,8 @@ AWS Prescriptive Guidance recommends execution isolation as a core control for a
 - [J01 — Least Privilege](J01-least-privilege.md)
 - [J09 — External Communication Restriction](J09-external-comm-restriction.md)
 - [J10 — Capability Minimization](J10-capability-minimization.md)
-- [Anti-pattern: Overpowered Coding Agent](anti-patterns/AP-overpowered-coding-agent.md)
-- [Family F — Execution Isolation](../F-execution-isolation/README.md)
+- [Anti-pattern: Overpowered Coding Agent](../anti-patterns/AP-overpowered-coding-agent.md)
+- [Family F — Execution Isolation](../../F-harness-environment/README.md)
 
 ## Sources
 

@@ -132,7 +132,7 @@ business_logic(safe)
 - [Typed Result Object](typed-result-object.md) — provides the structured input to postcondition assertions
 - [Parse-and-Reject](parse-and-reject.md) — provides the rejection and retry infrastructure used by postcondition failures
 - [Structured Output Boundary](structured-output-boundary.md) — reduces the frequency of postcondition failures by constraining the generation
-- [Family D — Verification](../D-verification/README.md) — the programmatic postcondition is the O-family instantiation of the deterministic verifier from the D verification ladder
+- [Family D — Verification](../../D-verification-evaluation/README.md) — the programmatic postcondition is the O-family instantiation of the deterministic verifier from the D verification ladder
 
 ## When to Use / When Not to Use
 

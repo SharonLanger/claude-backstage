@@ -71,15 +71,15 @@ You are preparing an agent system for production deployment and need a systemati
 | Pattern | Role in Security Review |
 |---------|------------------------|
 | [J01-Least-Privilege](../../families/J-security-trust/patterns/J01-least-privilege.md) | Foundation — minimum permissions per agent |
-| [J02-Scoped-Tool-Access](../../families/J-security-trust/patterns/J02-scoped-tool-access.md) | Restrict which tools each agent can call |
-| [J03-Input-Validation-Boundary](../../families/J-security-trust/patterns/J03-input-validation-boundary.md) | Sanitize at every trust boundary |
-| [J04-Sandboxed-Execution](../../families/J-security-trust/patterns/J04-sandboxed-execution.md) | Isolate agent execution environments |
-| [J05-Human-Approval-Gate](../../families/J-security-trust/patterns/J05-human-approval-gate.md) | Require approval for high-risk actions |
-| [J06-Output-Filtering](../../families/J-security-trust/patterns/J06-output-filtering.md) | Filter sensitive data from outputs |
-| [J07-Audit-Trail](../../families/J-security-trust/patterns/J07-audit-trail.md) | Maintain tamper-evident action logs |
-| [J08-Credential-Isolation](../../families/J-security-trust/patterns/J08-credential-isolation.md) | Separate credential storage from agent context |
-| [J09-Defense-In-Depth](../../families/J-security-trust/patterns/J09-defense-in-depth.md) | Layer multiple security controls |
-| [J10-Rate-Limit-Budget](../../families/J-security-trust/patterns/J10-rate-limit-budget.md) | Cap resource consumption |
+| J02-Scoped-Tool-Access (catalog entry unavailable) | Restrict which tools each agent can call |
+| J03-Input-Validation-Boundary (catalog entry unavailable) | Sanitize at every trust boundary |
+| [J02-Sandboxed-Execution](../../families/J-security-trust/patterns/J02-sandbox.md) | Isolate agent execution environments |
+| [J08-Human-Approval-Gate](../../families/J-security-trust/patterns/J08-human-approval-gate.md) | Require approval for high-risk actions |
+| J06-Output-Filtering (catalog entry unavailable) | Filter sensitive data from outputs |
+| J07-Audit-Trail (catalog entry unavailable) | Maintain tamper-evident action logs |
+| [J03-Credential-Isolation](../../families/J-security-trust/patterns/J03-secret-isolation.md) | Separate credential storage from agent context |
+| J09-Defense-In-Depth (catalog entry unavailable) | Layer multiple security controls |
+| J10-Rate-Limit-Budget (catalog entry unavailable) | Cap resource consumption |
 | [J11-Read-Write-Separation](../../families/J-security-trust/patterns/J11-read-write-separation.md) | Separate read and write permissions |
 | [K01-Human-in-the-Loop-Checkpoint](../../families/K-human-control/patterns/K01-human-in-the-loop-checkpoint.md) | Human gates on critical decisions |
 | [M01-Structured-Trace](../../families/M-observability-debugging/patterns/M01-structured-trace.md) | Audit-quality execution traces |

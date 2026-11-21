@@ -20,8 +20,8 @@ This principle emerged from the coding-agent community because the difference be
 
 ## Patterns That Implement This Principle
 
-- [Evidence-Based Completion](../families/F-harness-engineering/) — task is complete only when execution evidence confirms it
-- [Repository-as-System-of-Record](../families/F-harness-engineering/) — the repo's actual state (tests, types, lint) is truth, not the agent's memory of what it did
+- [Evidence-Based Completion](../families/F-harness-environment/) — task is complete only when execution evidence confirms it
+- [Repository-as-System-of-Record](../families/F-harness-environment/) — the repo's actual state (tests, types, lint) is truth, not the agent's memory of what it did
 - [Retry With Feedback](../families/I-reliability-recovery/) — retry includes the actual error, not just "try again"
 - [External Durable State](../families/L-memory-state/) — persist real results to external storage so future steps use facts, not recalled impressions
 

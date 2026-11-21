@@ -144,7 +144,7 @@ function dispatchAction(action, context):
 - [K04 — Review Before Side Effect](K04-review-before-side-effect.md) — K04 is a broader form covering all external state changes; K02 is narrower, filtering by risk score
 - [K05 — Draft/Preview Before Apply](K05-draft-preview-before-apply.md) — K05 is the lightweight variant for file writes specifically; K02 covers any action class
 - [K03 — Failure-Threshold Escalation](K03-failure-threshold-escalation.md) — K03 escalates after repeated failure; K02 gates before first execution
-- [Family J — Security](../J-security/README.md) — J's human-approval-gate is a security-scoped variant of K02; K02 is the general form
+- [Family J — Security](../../J-security-trust/README.md) — J's human-approval-gate is a security-scoped variant of K02; K02 is the general form
 
 ## Example
 

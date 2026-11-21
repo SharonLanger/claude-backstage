@@ -143,12 +143,12 @@ The model makes the decision, but code validates the output.
 
 ## Related Patterns
 
-- [H01 — Deterministic Override](../patterns/H01-deterministic-override.md) — code overrides model decisions when correctness is provable
-- [H02 — Programmatic Gate](../patterns/H02-programmatic-gate.md) — blocking invalid transitions
-- [H03 — Structural Test](../patterns/H03-structural-test.md) — verifying structural properties deterministically
-- [H05 — Typed Boundary](../patterns/H05-typed-boundary.md) — enforcing types at system boundaries
-- [H06 — Schema Validator](../patterns/H06-schema-validator.md) — validating output structure
-- [H07 — Authorization Outside Model](../patterns/H07-authorization-outside-model.md) — never trusting the model for auth
+- [H01 — Deterministic Override](patterns/H01-deterministic-override.md) — code overrides model decisions when correctness is provable
+- [H02 — Programmatic Gate](patterns/H02-programmatic-gate.md) — blocking invalid transitions
+- [H03 — Structural Test](patterns/H03-structural-test.md) — verifying structural properties deterministically
+- [H05 — Typed Boundary](patterns/H05-typed-boundary.md) — enforcing types at system boundaries
+- [H06 — Schema Validator](patterns/H06-schema-validator.md) — validating output structure
+- [H07 — Authorization Outside Model](patterns/H07-authorization-outside-model.md) — never trusting the model for auth
 
 ---
 

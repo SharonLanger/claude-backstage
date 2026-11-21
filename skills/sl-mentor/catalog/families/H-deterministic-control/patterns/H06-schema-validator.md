@@ -70,8 +70,8 @@ flowchart TD
 
 ## Related Families
 
-- [Family O — Output](../O-output/README.md): Schema validation applied at the output boundary is a core O-family concern; both families claim it.
-- [Family D — Verification](../D-verification/README.md): Schema validation is the cheapest runtime verification step; D covers richer verification strategies.
+- [Family O — Output](../../O-output-integration/README.md): Schema validation applied at the output boundary is a core O-family concern; both families claim it.
+- [Family D — Verification](../../D-verification-evaluation/README.md): Schema validation is the cheapest runtime verification step; D covers richer verification strategies.
 
 ## Example
 

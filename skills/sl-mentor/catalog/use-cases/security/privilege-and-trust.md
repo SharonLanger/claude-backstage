@@ -8,7 +8,7 @@ You are designing the permission model for an agent system — deciding what eac
 
 1. **Start with zero permissions and add incrementally** — each agent gets only the tools and data access required for its specific task. Use [J01-Least-Privilege](../../families/J-security-trust/patterns/J01-least-privilege.md).
 2. **Separate read from write** — agents that gather information should not be the same agents that take action. Apply [J11-Read-Write-Separation](../../families/J-security-trust/patterns/J11-read-write-separation.md).
-3. **Sandbox execution environments** — code execution, file access, and network calls should run in isolated environments with explicit resource limits. Use [J04-Sandboxed-Execution](../../families/J-security-trust/patterns/J04-sandboxed-execution.md).
+3. **Sandbox execution environments** — code execution, file access, and network calls should run in isolated environments with explicit resource limits. Use [J02-Sandboxed-Execution](../../families/J-security-trust/patterns/J02-sandbox.md).
 
 ## Design Principles
 
@@ -80,12 +80,12 @@ For each agent in the system, ask:
 | Pattern | Role in Privilege Design |
 |---------|--------------------------|
 | [J01-Least-Privilege](../../families/J-security-trust/patterns/J01-least-privilege.md) | Core principle — minimum permissions per component |
-| [J02-Scoped-Tool-Access](../../families/J-security-trust/patterns/J02-scoped-tool-access.md) | Restrict tool availability per agent role |
-| [J04-Sandboxed-Execution](../../families/J-security-trust/patterns/J04-sandboxed-execution.md) | Isolated environments for untrusted operations |
-| [J08-Credential-Isolation](../../families/J-security-trust/patterns/J08-credential-isolation.md) | Separate secrets from agent context |
-| [J10-Rate-Limit-Budget](../../families/J-security-trust/patterns/J10-rate-limit-budget.md) | Cap resource consumption per agent |
+| J02-Scoped-Tool-Access (catalog entry unavailable) | Restrict tool availability per agent role |
+| [J02-Sandboxed-Execution](../../families/J-security-trust/patterns/J02-sandbox.md) | Isolated environments for untrusted operations |
+| [J03-Credential-Isolation](../../families/J-security-trust/patterns/J03-secret-isolation.md) | Separate secrets from agent context |
+| J10-Rate-Limit-Budget (catalog entry unavailable) | Cap resource consumption per agent |
 | [J11-Read-Write-Separation](../../families/J-security-trust/patterns/J11-read-write-separation.md) | Architectural split between readers and writers |
-| [J05-Human-Approval-Gate](../../families/J-security-trust/patterns/J05-human-approval-gate.md) | Human confirmation for privilege escalation |
+| [J08-Human-Approval-Gate](../../families/J-security-trust/patterns/J08-human-approval-gate.md) | Human confirmation for privilege escalation |
 | [E-Context-Isolation](../../families/E-context-engineering/patterns/context-isolation.md) | Prevent data leakage across context boundaries |
 | [L-Session-Isolation](../../families/L-memory-state/patterns/session-isolation.md) | Isolate state between sessions/users |
 | [L-Scoped-Memory](../../families/L-memory-state/patterns/scoped-memory.md) | Restrict memory access by scope |

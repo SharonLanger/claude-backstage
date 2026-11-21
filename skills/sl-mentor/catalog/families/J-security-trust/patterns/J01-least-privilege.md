@@ -85,7 +85,7 @@ AWS Prescriptive Guidance documents least privilege as a foundational control fo
 - [J04 — Tool Gateway](J04-tool-gateway.md)
 - [J10 — Capability Minimization](J10-capability-minimization.md)
 - [J11 — Read/Write Separation](J11-read-write-separation.md)
-- [Anti-pattern: Model as Security Boundary](anti-patterns/AP-model-as-security-boundary.md)
+- [Anti-pattern: Model as Security Boundary](../anti-patterns/AP-model-as-security-boundary.md)
 
 ## Sources
 

@@ -88,7 +88,7 @@ The tree immediately shows that subagent B.2 consumed 87% of the run's total inp
 - [M03 — Execution Tree](M03-execution-tree.md) — token metrics attach to tree nodes and roll up through the tree
 - [M01 — Structured Trace](M01-structured-trace.md) — model invocation events carry the token counts
 - [M09 — Failure Categorization](M09-failure-categorization.md) — context overflow is a failure category detected via `context_utilization`
-- [Family F — Harness](../F-harness/README.md) — the harness implements budget thresholds and `budget.exceeded` halting
+- [Family F — Harness](../../F-harness-environment/README.md) — the harness implements budget thresholds and `budget.exceeded` halting
 
 ## Example
 

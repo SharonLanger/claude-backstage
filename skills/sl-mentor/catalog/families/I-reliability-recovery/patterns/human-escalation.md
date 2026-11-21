@@ -107,7 +107,7 @@ An agent is migrating database records. It encounters a record that matches two 
 - [Fallback Model/Workflow](fallback-model-workflow.md) — an automated alternative to escalation when human latency is unacceptable
 - [Checkpoint and Resume](checkpoint-and-resume.md) — agent state must be persisted before escalating so the human can resume
 - [Stop Condition](stop-condition.md) — escalation is one of the terminal outcomes of a well-defined loop
-- [Family K — Human Control](../K-human-control/README.md) — the broader family governing human-agent oversight and control
+- [Family K — Human Control](../../K-human-control/README.md) — the broader family governing human-agent oversight and control
 
 ## Related Anti-Patterns
 

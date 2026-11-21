@@ -1292,7 +1292,7 @@ For each pattern, the next researcher should capture:
 
 ## Academic / educational
 22. Stanford CS224G — Agentic Design Patterns  
-    https://web.stanford.edu/class/cs224g/lectures/Agentic_Design_Patterns.pdf
+    https://web.stanford.edu/class/cs224g/2025/lectures/Agentic_Design_Patterns.pdf
 
 ## Open source
 23. AWS Sample Agentic Design Patterns  

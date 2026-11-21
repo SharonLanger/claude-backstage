@@ -104,7 +104,7 @@ A 20-step research agent accumulates raw web search results (avg. 2,000 tokens e
 - [Caching](caching.md) — avoid re-generating content that trimming would discard
 - [Tool/Result Reuse](tool-result-reuse.md) — store tool results externally so they can be trimmed from context but retrieved on demand
 - [Budgeted Agent Loop](budgeted-agent-loop.md) — context minimization reduces per-step cost; budgeting caps the total
-- [Family E — Context Engineering](../E-context-engineering/README.md) — context minimization is also a context pattern; N treats it as a cost intervention
+- [Family E — Context Engineering](../../E-context-engineering/README.md) — context minimization is also a context pattern; N treats it as a cost intervention
 
 ## Related Anti-Patterns
 

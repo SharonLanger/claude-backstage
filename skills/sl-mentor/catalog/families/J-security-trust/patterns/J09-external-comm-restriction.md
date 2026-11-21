@@ -82,7 +82,7 @@ OWASP GenAI Top 10 for Agentic Applications 2026 calls out data exfiltration via
 - [J06 — Untrusted Context Isolation](J06-untrusted-context-isolation.md)
 - [J02 — Sandbox](J02-sandbox.md)
 - [J08 — Human Approval Gate](J08-human-approval-gate.md)
-- [Anti-pattern: Overpowered Coding Agent](anti-patterns/AP-overpowered-coding-agent.md)
+- [Anti-pattern: Overpowered Coding Agent](../anti-patterns/AP-overpowered-coding-agent.md)
 
 ## Sources
 

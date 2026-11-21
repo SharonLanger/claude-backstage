@@ -118,8 +118,8 @@ function hierarchicalDecompose(goal, depth, context):
 - [B1: Plan → Execute](B1-plan-execute.md) — B2 is a generalization; B1 is a two-level hierarchy (plan = level 1, execute = level 2).
 - [B3: Dynamic Decomposition](B3-dynamic-decomposition.md) — use when the subtree structure depends on runtime results.
 - [B4: Fixed Decomposition](B4-fixed-decomposition.md) — B2 with fixed decomposition locks the full tree before execution.
-- [Family A — Topology](../A-topology/README.md) — the decomposition tree maps to a fan-out or DAG topology.
-- [Family C — Orchestration](../C-orchestration/README.md) — orchestrators manage assignment of subtasks to workers at each level.
+- [Family A — Topology](../../A-workflow-topology/README.md) — the decomposition tree maps to a fan-out or DAG topology.
+- [Family C — Orchestration](../../C-orchestration/README.md) — orchestrators manage assignment of subtasks to workers at each level.
 
 ## Example
 
@@ -130,4 +130,4 @@ An agent is asked to "produce a competitive analysis report covering four produc
 - **Anthropic Engineering** — AI safety company; authors of Claude. [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)
 - **Google Cloud Architecture Center** — Google's cloud architecture team. [Choose a Design Pattern for Agentic AI](https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system)
 - **Microsoft Azure Architecture Center** — Microsoft's cloud architecture team. [AI Agent Design Patterns](https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/ai-agent-design-patterns)
-- **Stanford CS224G** — Stanford University course on LLM agents. [Agentic Design Patterns (lecture slides)](https://web.stanford.edu/class/cs224g/lectures/Agentic_Design_Patterns.pdf)
+- **Stanford CS224G** — Stanford University course on LLM agents. [Agentic Design Patterns (lecture slides)](https://web.stanford.edu/class/cs224g/2025/lectures/Agentic_Design_Patterns.pdf)

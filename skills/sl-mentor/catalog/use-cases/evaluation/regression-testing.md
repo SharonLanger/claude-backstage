@@ -6,7 +6,7 @@ You changed your agent's prompts, tools, model version, or orchestration logic a
 
 ## Quick Answer
 
-1. **Maintain a regression suite** of known input-output pairs that must always pass. See [D08 Regression Suite](../../families/D-verification-evaluation/patterns/D08-regression-suite.md).
+1. **Maintain a regression suite** of known input-output pairs that must always pass. See D08 Regression Suite (catalog entry unavailable).
 2. **Diff behavior, not just outputs** — trace-level comparison catches regressions in intermediate steps that may not surface in final output yet. See [M01 Structured Trace](../../families/M-observability-debugging/patterns/M01-structured-trace.md).
 3. **Run evals before AND after** every change, compare scores, and flag degradation beyond a threshold.
 
@@ -56,9 +56,9 @@ You changed your agent's prompts, tools, model version, or orchestration logic a
 
 | Pattern | Family | Role in Regression Detection |
 |---------|--------|------------------------------|
-| [Regression Suite](../../families/D-verification-evaluation/patterns/D08-regression-suite.md) | D | Core pattern — maintains known-good test cases |
+| Regression Suite (catalog entry unavailable) | D | Core pattern — maintains known-good test cases |
 | [Deterministic Validator](../../families/D-verification-evaluation/patterns/D01-deterministic-validator.md) | D | Catches format/schema breaks instantly |
-| [Assertion-Based Validator](../../families/D-verification-evaluation/patterns/D02-assertion-based-validator.md) | D | Encodes invariants that must hold across versions |
+| Assertion-Based Validator (catalog entry unavailable) | D | Encodes invariants that must hold across versions |
 | [Structured Trace](../../families/M-observability-debugging/patterns/M01-structured-trace.md) | M | Enables trace-level diffing between runs |
 | [Replayable Run](../../families/M-observability-debugging/patterns/M07-replayable-run.md) | M | Allows re-running past inputs deterministically |
 | [Trace-Linked Eval](../../families/M-observability-debugging/patterns/M08-trace-linked-eval.md) | M | Connects eval scores to specific execution paths |

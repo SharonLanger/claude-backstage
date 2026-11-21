@@ -83,7 +83,7 @@ sequenceDiagram
 - [M01 — Structured Trace](M01-structured-trace.md) — defines the events (`agent.spawn`, `agent.start`, `agent.complete`) that handoffs produce
 - [M03 — Execution Tree](M03-execution-tree.md) — depends entirely on the `parent_agent_id` linkage this pattern establishes
 - [M07 — Replayable Run](M07-replayable-run.md) — replay must propagate the same trace context to produce matching events
-- [Family F — Harness](../F-harness/README.md) — the harness is the authoritative assigner of `agent_id` and the injector of trace context
+- [Family F — Harness](../../F-harness-environment/README.md) — the harness is the authoritative assigner of `agent_id` and the injector of trace context
 
 ## Example
 

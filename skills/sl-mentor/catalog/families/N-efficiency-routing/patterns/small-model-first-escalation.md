@@ -108,7 +108,7 @@ A code generation assistant tries every request on a small model first. It valid
 - [Confidence-Based Routing](confidence-based-routing.md) — escalate on confidence score rather than on a post-hoc quality check
 - [Complexity-Based Model Routing](complexity-based-model-routing.md) — skip the small-model attempt entirely when input is clearly complex
 - [Budgeted Agent Loop](budgeted-agent-loop.md) — cap total escalation attempts to prevent runaway cost
-- [Family I — Reliability & Recovery](../I-reliability-recovery/README.md) — escalation shares structure with retry patterns
+- [Family I — Reliability & Recovery](../../I-reliability-recovery/README.md) — escalation shares structure with retry patterns
 
 ## Related Anti-Patterns
 

@@ -8,7 +8,7 @@ Your agent failed in production — wrong output, tool call error, infinite loop
 
 1. **Capture the full trace** of the failed execution — inputs, intermediate steps, tool calls, and final output. See [M01 Structured Trace](../../families/M-observability-debugging/patterns/M01-structured-trace.md).
 2. **Classify the failure** before writing the eval — is it a format error, correctness error, safety violation, or performance issue? Different failure types need different eval approaches. See [M09 Failure Categorization](../../families/M-observability-debugging/patterns/M09-failure-categorization.md).
-3. **Write the minimal reproduction** as a test case and add it to your regression suite. See [D08 Regression Suite](../../families/D-verification-evaluation/patterns/D08-regression-suite.md).
+3. **Write the minimal reproduction** as a test case and add it to your regression suite. See D08 Regression Suite (catalog entry unavailable).
 
 ## The Error-to-Eval Pipeline
 
@@ -56,11 +56,11 @@ Production failure occurs
 | Failure Category | Example | Eval Approach | Pattern |
 |-----------------|---------|---------------|---------|
 | Format/schema violation | JSON output has wrong field names | Deterministic schema validator | [D01](../../families/D-verification-evaluation/patterns/D01-deterministic-validator.md) |
-| Factual incorrectness | Agent stated wrong API endpoint | Assertion against known-good answer | [D02](../../families/D-verification-evaluation/patterns/D02-assertion-based-validator.md) |
+| Factual incorrectness | Agent stated wrong API endpoint | Assertion against known-good answer | D02 (catalog entry unavailable) |
 | Tool misuse | Called delete instead of update | Tool-call sequence assertion | [M02](../../families/M-observability-debugging/patterns/M02-tool-call-event-log.md) |
 | Infinite/excessive looping | Retried 47 times without progress | Loop count assertion + cost check | [Bounded Loop](../../families/A-workflow-topology/patterns/bounded-loop.md) |
 | Safety/security violation | Leaked PII in output | Pattern-match + sanitization check | [Sanitized Output Boundary](../../families/O-output-integration/patterns/sanitized-output-boundary.md) |
-| Subtle quality regression | Answer technically correct but unhelpful | LLM-as-judge with rubric | [D04](../../families/D-verification-evaluation/patterns/D04-LLM-as-judge.md) |
+| Subtle quality regression | Answer technically correct but unhelpful | LLM-as-judge with rubric | [D09](../../families/D-verification-evaluation/patterns/D09-llm-as-judge.md) |
 | Wrong routing/delegation | Sent math question to writing specialist | Routing decision assertion | [Routing](../../families/A-workflow-topology/patterns/routing.md) |
 
 ## Practical Steps: From Error Log to Eval Case
@@ -97,7 +97,7 @@ After writing the specific case, ask: "What class of input would trigger similar
 | [Structured Trace](../../families/M-observability-debugging/patterns/M01-structured-trace.md) | M | Captures the raw evidence |
 | [Failure Categorization](../../families/M-observability-debugging/patterns/M09-failure-categorization.md) | M | Classifies the error type |
 | [Step-Level Diagnostic](../../families/D-verification-evaluation/patterns/D12-step-level-diagnostic.md) | D | Pinpoints which step failed |
-| [Regression Suite](../../families/D-verification-evaluation/patterns/D08-regression-suite.md) | D | Stores the resulting eval permanently |
+| Regression Suite (catalog entry unavailable) | D | Stores the resulting eval permanently |
 | [Replayable Run](../../families/M-observability-debugging/patterns/M07-replayable-run.md) | M | Allows re-running the exact failure scenario |
 | [Tool Call Event Log](../../families/M-observability-debugging/patterns/M02-tool-call-event-log.md) | M | Captures tool-call-level detail for tool misuse bugs |
 | [Artifact Lineage](../../families/M-observability-debugging/patterns/M05-artifact-lineage.md) | M | Tracks how outputs were derived (provenance) |

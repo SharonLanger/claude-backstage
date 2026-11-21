@@ -72,8 +72,8 @@ flowchart TD
 
 ## Related Families
 
-- [Family J — Security](../J-security/README.md): Security policies (authz, rate limiting, data isolation) are primary consumers of the hook pattern.
-- [Family G — Tool Gate](../G-tool-gate/README.md): Tool gates are policy hooks specialized to the tool-call boundary.
+- [Family J — Security](../../J-security-trust/README.md): Security policies (authz, rate limiting, data isolation) are primary consumers of the hook pattern.
+- [Family G — Tool Gate](../../G-tool-action-design/README.md): Tool gates are policy hooks specialized to the tool-call boundary.
 
 ## Example
 

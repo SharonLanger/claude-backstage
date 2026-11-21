@@ -99,7 +99,7 @@ flowchart TD
 - [M03 — Execution Tree](M03-execution-tree.md) — builds the agent hierarchy from `agent.spawn` / `agent.complete` events
 - [M04 — Instrumented Handoff](M04-instrumented-handoff.md) — propagates `run_id` across agent boundaries
 - [M08 — Trace-Linked Eval](M08-trace-linked-eval.md) — attaches eval results to events emitted here
-- [Family F — Harness](../F-harness/README.md) — the harness is where `run_id` is assigned and `run.start` / `run.end` are emitted
+- [Family F — Harness](../../F-harness-environment/README.md) — the harness is where `run_id` is assigned and `run.start` / `run.end` are emitted
 
 ## Example
 

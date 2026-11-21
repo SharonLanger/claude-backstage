@@ -113,11 +113,11 @@ But the prompt is the belt. The deterministic enforcement is the suspenders. Wea
 
 ## Related Patterns
 
-- [H01 — Deterministic Override](../patterns/H01-deterministic-override.md) — code always wins over model for these decisions
-- [H02 — Programmatic Gate](../patterns/H02-programmatic-gate.md) — blocking invalid workflow transitions
-- [H04 — Policy Hook](../patterns/H04-policy-hook.md) — running policy checks before/after actions
-- [H06 — Schema Validator](../patterns/H06-schema-validator.md) — validating structured output
-- [H07 — Authorization Outside Model](../patterns/H07-authorization-outside-model.md) — auth must never be model-only
+- [H01 — Deterministic Override](patterns/H01-deterministic-override.md) — code always wins over model for these decisions
+- [H02 — Programmatic Gate](patterns/H02-programmatic-gate.md) — blocking invalid workflow transitions
+- [H04 — Policy Hook](patterns/H04-policy-hook.md) — running policy checks before/after actions
+- [H06 — Schema Validator](patterns/H06-schema-validator.md) — validating structured output
+- [H07 — Authorization Outside Model](patterns/H07-authorization-outside-model.md) — auth must never be model-only
 
 ---
 

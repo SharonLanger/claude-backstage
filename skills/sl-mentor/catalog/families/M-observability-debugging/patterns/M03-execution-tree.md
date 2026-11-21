@@ -90,7 +90,7 @@ The tree immediately isolates the failing branch (B → B.1) without scanning al
 - [M04 — Instrumented Handoff](M04-instrumented-handoff.md) — handoffs are what populate `parent_agent_id`
 - [M05 — Artifact Lineage](M05-artifact-lineage.md) — artifacts are annotated with the tree node that produced them
 - [M06 — Token/Cost Metrics](M06-token-cost-metrics.md) — token counts roll up the tree
-- [Family F — Harness](../F-harness/README.md) — the orchestrator manages spawning and must enforce depth limits
+- [Family F — Harness](../../F-harness-environment/README.md) — the orchestrator manages spawning and must enforce depth limits
 
 ## Example
 

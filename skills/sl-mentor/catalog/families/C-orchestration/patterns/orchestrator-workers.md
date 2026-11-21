@@ -105,7 +105,7 @@ flowchart TD
 - [Coordinator → Specialists](coordinator-specialists.md) — coordinator uses domain knowledge; orchestrator uses routing rules
 - [Agent-as-Tool](agent-as-tool.md) — an individual worker can itself be an agent wrapped as a tool
 - [Synthesizer / Aggregator](synthesizer-aggregator.md) — handles the fan-in step after orchestrator fan-out
-- [Family A — Topology](../A-topology/README.md) — the orchestrator is a hub node in a hub-and-spoke topology
+- [Family A — Topology](../../A-workflow-topology/README.md) — the orchestrator is a hub node in a hub-and-spoke topology
 
 ## Example Sketch
 

@@ -78,4 +78,4 @@ Agent not completing
 - https://www.anthropic.com/engineering/building-effective-agents
 - https://openai.com/index/unrolling-the-codex-agent-loop/
 - https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-patterns/agent-patterns.html
-- https://web.stanford.edu/class/cs224g/lectures/Agentic_Design_Patterns.pdf
+- https://web.stanford.edu/class/cs224g/2025/lectures/Agentic_Design_Patterns.pdf

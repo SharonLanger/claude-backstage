@@ -84,7 +84,7 @@ OWASP GenAI identifies prompt injection (LLM01) as the mechanism by which in-con
 - [J01 — Least Privilege](J01-least-privilege.md)
 - [J06 — Untrusted Context Isolation](J06-untrusted-context-isolation.md)
 - [J09 — External Communication Restriction](J09-external-comm-restriction.md)
-- [Anti-pattern: Overpowered Coding Agent](anti-patterns/AP-overpowered-coding-agent.md)
+- [Anti-pattern: Overpowered Coding Agent](../anti-patterns/AP-overpowered-coding-agent.md)
 
 ## Sources
 

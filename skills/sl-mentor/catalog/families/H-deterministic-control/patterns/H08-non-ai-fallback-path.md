@@ -73,8 +73,8 @@ flowchart TD
 
 ## Related Families
 
-- [Family D — Verification](../D-verification/README.md): Verification steps detect AI path failures; the fallback path is the response to those failures.
-- [Family O — Output](../O-output/README.md): Output quality checks trigger fallback activation.
+- [Family D — Verification](../../D-verification-evaluation/README.md): Verification steps detect AI path failures; the fallback path is the response to those failures.
+- [Family O — Output](../../O-output-integration/README.md): Output quality checks trigger fallback activation.
 
 ## Example
 

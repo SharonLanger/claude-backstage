@@ -123,8 +123,8 @@ function reconFirst(goal, context):
 - [B3: Dynamic Decomposition](B3-dynamic-decomposition.md) — B6 can anchor the first iteration of a dynamic loop, reducing mid-execution drift.
 - [B4: Fixed Decomposition](B4-fixed-decomposition.md) — recon before B4 produces a more accurate upfront plan, reducing the cost of fixing a wrong fixed plan.
 - [B5: Milestone / Checkpoint Planning](B5-milestone-checkpoint.md) — a recon milestone can be the first milestone of a checkpoint plan.
-- [Family A — Topology](../A-topology/README.md) — recon is a pre-topology phase; its output determines the shape of the execution topology.
-- [Family C — Orchestration](../C-orchestration/README.md) — an orchestrator may assign recon work to a specialist agent before dispatching execution workers.
+- [Family A — Topology](../../A-workflow-topology/README.md) — recon is a pre-topology phase; its output determines the shape of the execution topology.
+- [Family C — Orchestration](../../C-orchestration/README.md) — an orchestrator may assign recon work to a specialist agent before dispatching execution workers.
 
 ## Example
 
@@ -135,4 +135,4 @@ A developer asks an agent to "add caching to the product search endpoint." The a
 - **Anthropic Engineering** — AI safety company; authors of Claude. [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)
 - **OpenAI Engineering** — AI research company; authors of GPT and Codex. [A Practical Guide to Building AI Agents](https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/)
 - **Google Cloud Architecture Center** — Google's cloud architecture team. [Choose a Design Pattern for Agentic AI](https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system)
-- **Stanford CS224G** — Stanford University course on LLM agents. [Agentic Design Patterns (lecture slides)](https://web.stanford.edu/class/cs224g/lectures/Agentic_Design_Patterns.pdf)
+- **Stanford CS224G** — Stanford University course on LLM agents. [Agentic Design Patterns (lecture slides)](https://web.stanford.edu/class/cs224g/2025/lectures/Agentic_Design_Patterns.pdf)

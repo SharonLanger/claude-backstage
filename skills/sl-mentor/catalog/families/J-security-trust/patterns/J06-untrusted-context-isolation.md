@@ -84,7 +84,7 @@ OWASP GenAI identifies prompt injection (LLM01) as the primary mechanism; indire
 - [J03 — Secret Isolation](J03-secret-isolation.md)
 - [J07 — Session Isolation](J07-session-isolation.md)
 - [J09 — External Communication Restriction](J09-external-comm-restriction.md)
-- [Anti-pattern: Overpowered Coding Agent](anti-patterns/AP-overpowered-coding-agent.md)
+- [Anti-pattern: Overpowered Coding Agent](../anti-patterns/AP-overpowered-coding-agent.md)
 
 ## Sources
 

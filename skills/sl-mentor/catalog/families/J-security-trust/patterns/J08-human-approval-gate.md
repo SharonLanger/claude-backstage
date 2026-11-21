@@ -86,8 +86,8 @@ OWASP GenAI Top 10 for Agentic Applications 2026 identifies unchecked autonomous
 - [J04 — Tool Gateway](J04-tool-gateway.md)
 - [J05 — Deterministic Authorization](J05-deterministic-authorization.md)
 - [J10 — Capability Minimization](J10-capability-minimization.md)
-- [Anti-pattern: Model as Security Boundary](anti-patterns/AP-model-as-security-boundary.md)
-- [Family K — Human Oversight](../K-human-oversight/README.md)
+- [Anti-pattern: Model as Security Boundary](../anti-patterns/AP-model-as-security-boundary.md)
+- [Family K — Human Oversight](../../K-human-control/README.md)
 
 ## Sources
 

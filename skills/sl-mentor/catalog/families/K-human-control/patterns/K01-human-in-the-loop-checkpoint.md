@@ -133,7 +133,7 @@ function executeWithCheckpoints(plan):
 - [K04 — Review Before Side Effect](K04-review-before-side-effect.md) — K04 is the fine-grained version: review any single external state change; K01 is coarser
 - [K05 — Draft/Preview Before Apply](K05-draft-preview-before-apply.md) — K05 is a lightweight K01 scoped to file writes; consider K05 inside a K01 phase
 - [K06 — Human-on-the-Loop Monitoring](K06-human-on-the-loop-monitoring.md) — K06 is the non-blocking alternative; use K06 when the human need not block the agent but should be able to intervene
-- [Family B — Task Decomposition](../B-task-decomposition/README.md) — K01 checkpoints map naturally to plan-approval gates between decomposed phases
+- [Family B — Task Decomposition](../../B-task-decomposition/README.md) — K01 checkpoints map naturally to plan-approval gates between decomposed phases
 
 ## Example
 

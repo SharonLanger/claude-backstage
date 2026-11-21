@@ -108,8 +108,8 @@ flowchart TD
 - [Hierarchical Coordinator](hierarchical-coordinator.md) — nested managers for deep decomposition
 - [Synthesizer / Aggregator](synthesizer-aggregator.md) — specialized integration step after parallel fan-out
 - [Maker-Checker](maker-checker.md) — add a verification layer after workers produce results
-- [Family B — Task Decomposition](../B-task-decomposition/README.md) — patterns for how a manager breaks down the goal
-- [Family K — Human-in-the-Loop](../K-human-in-the-loop/README.md) — where to insert human gates in the manager loop
+- [Family B — Task Decomposition](../../B-task-decomposition/README.md) — patterns for how a manager breaks down the goal
+- [Family K — Human-in-the-Loop](../../K-human-control/README.md) — where to insert human gates in the manager loop
 
 ## Example Sketch
 

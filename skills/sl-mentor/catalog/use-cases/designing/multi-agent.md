@@ -103,4 +103,4 @@ How agents share information is as important as how they are organized:
 - https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system
 - https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/ai-agent-design-patterns
 - https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-patterns/agent-patterns.html
-- https://web.stanford.edu/class/cs224g/lectures/Agentic_Design_Patterns.pdf
+- https://web.stanford.edu/class/cs224g/2025/lectures/Agentic_Design_Patterns.pdf

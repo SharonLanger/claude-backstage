@@ -21,7 +21,7 @@ This principle recurs across independent sources because every organization that
 ## Patterns That Implement This Principle
 
 - [Deterministic Validation Gate](../families/H-deterministic-control/) — wraps model output in schema/type/format validators
-- [Least-Privilege Tool Access](../families/G-tool-design/) — tool permissions enforced by code, not by asking the model to self-limit
+- [Least-Privilege Tool Access](../families/G-tool-action-design/) — tool permissions enforced by code, not by asking the model to self-limit
 - [Structured Output Enforcement](../families/O-output-integration/) — output schemas enforced by parsing, not by instruction
 - [Bounded Agent Loop](../families/I-reliability-recovery/) — loop termination via counter/timer, not model self-awareness
 

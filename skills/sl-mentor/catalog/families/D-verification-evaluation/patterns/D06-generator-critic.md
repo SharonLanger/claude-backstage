@@ -110,7 +110,7 @@ function generator_critic_loop(task, approval_criteria, max_iterations=4):
 - [D04: Independent Verifier](D04-independent-verifier.md) — context-isolated check; D06 critic shares conversation context.
 - [D07: Evaluator-Optimizer](D07-evaluator-optimizer.md) — score-driven variant of this loop; the critic emits a score rather than structured issues.
 - [D08: Multi-Review / Ensemble](D08-multi-review-ensemble.md) — multiple critics to reduce single-critic bias.
-- [Family A](../A-topology/README.md) — Generator-Critic is also a network topology pattern.
+- [Family A](../../A-workflow-topology/README.md) — Generator-Critic is also a network topology pattern.
 
 ## Anti-Patterns Addressed
 

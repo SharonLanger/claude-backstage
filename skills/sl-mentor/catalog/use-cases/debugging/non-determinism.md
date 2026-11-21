@@ -99,4 +99,4 @@ Non-deterministic behavior observed
 - https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents
 - https://hamel.dev/blog/posts/evals-faq/
 - https://hamel.dev/blog/posts/evals-faq/how-do-i-evaluate-agentic-workflows.html
-- https://web.stanford.edu/class/cs224g/lectures/Agentic_Design_Patterns.pdf
+- https://web.stanford.edu/class/cs224g/2025/lectures/Agentic_Design_Patterns.pdf

@@ -122,9 +122,9 @@ function milestoneExecution(goal, milestones):
 - [B1: Plan → Execute](B1-plan-execute.md) — B5 adds validation gates and persistence to B1's two-phase structure.
 - [B4: Fixed Decomposition](B4-fixed-decomposition.md) — milestones are groups of fixed subtasks; B5 and B4 compose naturally.
 - [B6: Reconnaissance-First](B6-reconnaissance-first.md) — reconnaissance before the first milestone reduces the risk that milestone 1 is mis-scoped.
-- [Family A — Topology](../A-topology/README.md) — milestone sequences map to chain topologies with gate nodes.
-- [Family K — Human Control](../K-human-control/README.md) — human checkpoints in B5 are a direct instantiation of human-in-the-loop patterns.
-- [Family I — Reliability](../I-reliability/README.md) — checkpoint persistence is the foundation for retry, resume, and fault-tolerance patterns.
+- [Family A — Topology](../../A-workflow-topology/README.md) — milestone sequences map to chain topologies with gate nodes.
+- [Family K — Human Control](../../K-human-control/README.md) — human checkpoints in B5 are a direct instantiation of human-in-the-loop patterns.
+- [Family I — Reliability](../../I-reliability-recovery/README.md) — checkpoint persistence is the foundation for retry, resume, and fault-tolerance patterns.
 
 ## Example
 

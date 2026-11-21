@@ -71,8 +71,8 @@ flowchart TD
 
 ## Related Families
 
-- [Family O — Output](../O-output/README.md): Output shaping patterns define the contract that Typed Boundary enforces.
-- [Family D — Verification](../D-verification/README.md): Type checking is the cheapest form of output verification.
+- [Family O — Output](../../O-output-integration/README.md): Output shaping patterns define the contract that Typed Boundary enforces.
+- [Family D — Verification](../../D-verification-evaluation/README.md): Type checking is the cheapest form of output verification.
 
 ## Example
 

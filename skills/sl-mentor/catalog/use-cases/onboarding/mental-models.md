@@ -119,5 +119,5 @@ Gap between them → your design space
 - https://www.anthropic.com/engineering/building-effective-agents
 - https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
 - https://openai.com/index/unrolling-the-codex-agent-loop/
-- https://web.stanford.edu/class/cs224g/lectures/Agentic_Design_Patterns.pdf
+- https://web.stanford.edu/class/cs224g/2025/lectures/Agentic_Design_Patterns.pdf
 - https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-patterns/introduction.html

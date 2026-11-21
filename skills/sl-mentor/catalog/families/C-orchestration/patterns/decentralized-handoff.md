@@ -104,7 +104,7 @@ flowchart LR
 - [Manager → Workers](manager-workers.md) — manager maintains global state and can recover from chain failures
 - [Hierarchical Coordinator](hierarchical-coordinator.md) — nested coordinators can use decentralized handoff internally within each subtree
 - [Synthesizer / Aggregator](synthesizer-aggregator.md) — terminal node that collects results from a branching handoff
-- [Family A — Topology](../A-topology/README.md) — decentralized handoff implements a pipeline or DAG topology
+- [Family A — Topology](../../A-workflow-topology/README.md) — decentralized handoff implements a pipeline or DAG topology
 
 ## Example Sketch
 

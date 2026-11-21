@@ -126,7 +126,7 @@ elif result.decision == Decision.ESCALATE:
 - [Schema Validation](schema-validation.md) — validates the dict before it reaches the constructor
 - [Parse-and-Reject](parse-and-reject.md) — rejects malformed output before construction is attempted
 - [Programmatic Postcondition](programmatic-postcondition.md) — post-construction invariant checks complement constructor validation
-- [Family G — Tool Design](../G-tool-design/README.md) — typed tool results mirror this pattern applied to tool outputs
+- [Family G — Tool Design](../../G-tool-action-design/README.md) — typed tool results mirror this pattern applied to tool outputs
 
 ## When to Use / When Not to Use
 
