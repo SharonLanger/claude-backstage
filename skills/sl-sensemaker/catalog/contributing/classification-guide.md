@@ -1,6 +1,6 @@
 # Classification Guide
 
-How to classify extracted content and assign it to the right place in the catalog.
+How to classify extracted content and assign it to the right place in the catalog. One accessible, relevant source can support a documented practice. Use the [practical format](authoring-guide.md#practical-entry-format) for conversational, manual, and file-based guidance.
 
 ---
 
@@ -8,22 +8,22 @@ How to classify extracted content and assign it to the right place in the catalo
 
 | If the source describes… | It's a… | File location |
 |---|---|---|
-| A recurring problem + a reusable structural solution + trade-offs | **Pattern** | `families/<family>/patterns/<name>.md` |
+| A recurring situation + a reusable response + trade-offs | **Pattern** | `families/<family>/patterns/<name>.md` |
 | A recurring structure that causes failure + observable symptoms | **Anti-Pattern** | `anti-patterns/AP<nn>-<name>.md` |
 | A cross-cutting rule that explains WHY multiple patterns exist | **Principle** | `principles/P<n>-<name>.md` |
 | A how-to procedure for a family's topic area | **Guide** | `families/<family>/guides/<name>.md` |
 | A side-by-side comparison of approaches within a family | **Comparison** | `families/<family>/comparisons/<name>.md` |
 | A checklist, lookup table, or quick-reference for a family | **Reference** | `families/<family>/reference/<name>.md` |
 | A concrete scenario mapping problem → patterns | **Use-case** | `use-cases/<category>/<name>.md` |
-| A technique, tip, or best practice without a recurring problem/solution structure | **Not a pattern** — skip or note for future reference | — |
+| A documented practical technique with a clear situation and actionable steps | **Guide** or **Reference**, according to how it will be used | Existing family |
+| An obstacle or explanation without supported guidance | **Research gap** | Research inventory |
 
 ### Decision signals
 
 **It's a pattern when:**
-- The source describes the same structural solution appearing in 2+ independent contexts
+- The source documents a reusable response to a recognizable situation
 - There's a clear "when to use / when not to use" boundary
 - It has real trade-offs (not "just do this")
-- It can be diagrammed as a component wiring
 
 **It's an anti-pattern when:**
 - The source describes a failure mode that teams repeatedly fall into
@@ -35,15 +35,15 @@ How to classify extracted content and assign it to the right place in the catalo
 - It applies across multiple families
 - Removing it would make multiple patterns seem arbitrary
 
-**Skip it when:**
-- It's a one-off technique specific to one tool/framework
-- It's advice without structure ("be careful with X")
-- It's already covered by an existing pattern (see Step 3)
+**Record a limitation or gap when:**
+- It is specific to one tool or framework. Keep that scope explicit if the guidance is actionable.
+- It explains an obstacle without supporting a remedy. Record the gap in research.
+- It overlaps an existing entry. Compare applicability and add only supported contributions (see Step 3).
 
 **It's a guide when:**
 - The source walks through a procedure step-by-step
 - It teaches "how to do X" within a specific family's topic area
-- It doesn't define a new pattern — it helps you apply existing ones
+- It helps someone apply an existing pattern or carry out a distinct practice
 
 **It's a comparison when:**
 - The source puts two or more approaches side by side
@@ -111,14 +111,14 @@ Before writing a new file, check for duplicates.
 
 ### Search procedure
 
-1. **Search by name:** grep pattern names across all family READMEs
+1. **Search by name:** search families and related content types
    ```
-   grep -ri "<candidate name>" families/*/README.md
+   rg -i "<candidate name>" families/ anti-patterns/ principles/ use-cases/
    ```
 
 2. **Search by problem:** read the Problem section of patterns in the candidate family — does any existing pattern address the same failure mode?
 
-3. **Search by solution shape:** does any existing pattern describe the same structural wiring, even under a different name?
+3. **Search by solution shape:** does an existing entry already describe the same action for the same situation and controls, even under a different name? Read the actual entry before deciding.
 
 ### If it already exists
 
@@ -127,7 +127,7 @@ Before writing a new file, check for duplicates.
 | Same pattern, same name | Skip — already cataloged. Add the new source to its Sources section if not already there. |
 | Same pattern, different name | Skip — add the new source and note the alternative name in the existing file. |
 | Similar but distinct (different problem or different solution shape) | Write a new pattern. Note the relationship in both files' "Related Patterns" sections. |
-| Existing pattern is incomplete | Update the existing file with new information from the source. |
+| Existing entry is incomplete | Enrich it with supported information. Create a linked guide when the practical workflow is distinct. |
 
 ---
 
@@ -151,4 +151,4 @@ Anti-patterns are numbered sequentially: `AP<nn>`.
 
 ---
 
-Last updated: 2026-11-19
+Last updated: 2026-11-21

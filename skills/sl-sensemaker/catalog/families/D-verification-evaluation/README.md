@@ -38,9 +38,11 @@ D-verification-evaluation/
 
 ---
 
+For tests that change during a bug fix, see [D02](patterns/D02-test-before-done.md) when the acceptance checks can be protected and [AP10](../../anti-patterns/AP10-overpowered-coding-agent.md) when write access exceeds the task.
+
 ## Per-Pattern File Schema
 
-Every file in `patterns/` follows this structure:
+Each engineering entry in `patterns/` follows this structure:
 
 ```markdown
 # D##: <Pattern Name>
@@ -129,4 +131,3 @@ Use the cheapest check that catches the failure. Escalate only when lower rungs 
 ---
 
 Last updated: 2026-08-24
-

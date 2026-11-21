@@ -37,7 +37,7 @@ patterns/
 
 ## Schema
 
-Every pattern file follows this structure:
+Each engineering pattern follows this structure:
 
 | Section | Contents |
 |---------|----------|
@@ -68,4 +68,3 @@ Every pattern file follows this structure:
 ---
 
 Last updated: 2026-08-24
-

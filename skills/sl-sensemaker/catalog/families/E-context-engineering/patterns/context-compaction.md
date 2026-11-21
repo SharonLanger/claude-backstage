@@ -69,6 +69,8 @@ flowchart TD
 | Cleaner context improves instruction-following in later turns | Nuance from early turns may not survive compression |
 | Transparent to the agent — it simply continues | Compaction timing must be tuned; too early wastes detail, too late causes truncation |
 
+For a person deciding whether to summarize or restart a drifting conversation, use [the checked session handoff](../../I-reliability-recovery/patterns/fresh-context-retry.md#in-a-session-recover-decisions-without-losing-useful-work). Length alone is not its reset trigger, and preserving useful file changes is separate from resetting a chat.
+
 ## Related Patterns
 
 - [Context Offloading](context-offloading.md) — offloading moves content to external storage; compaction keeps it in context but compressed.

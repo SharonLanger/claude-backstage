@@ -25,6 +25,7 @@ E-context-engineering/
 │   └── repository-as-system-of-record.md ← the repo is the source of truth; prompt is transient
 │
 ├── guides/
+│   ├── README.md                       ← guide navigation
 │   ├── context-failure-modes.md         ← quick-reference: 7 failure modes + diagnostic signals
 │   ├── context-vs-memory-vs-state.md    ← when to use context, memory (L), or state (L/F)
 │   ├── clarify-domain-terms.md         ← resolve conflicting meanings with the decision owner
@@ -39,7 +40,7 @@ E-context-engineering/
 
 ## Per-Pattern File Schema
 
-Every file under `patterns/` follows this schema exactly. Use it when writing new pattern files.
+Use this schema for engineering entries. For conversational, manual, and file-based practices, use the [practical entry format](../../contributing/authoring-guide.md#practical-entry-format).
 
 ```markdown
 # <Pattern Name>
@@ -85,6 +86,8 @@ Short concrete scenario. Code or pseudocode optional; prefer prose.
 ```
 
 ---
+
+When prior decisions go missing, check whether they are still available in the session or in a current record. Use [Context Compaction](patterns/context-compaction.md) for accessible session history and [Repository-as-System-of-Record](patterns/repository-as-system-of-record.md) when the user controls project files. For growing instruction files, see [Map-Not-Manual](patterns/map-not-manual.md).
 
 ## Context Failure Modes — Quick Reference
 
@@ -165,4 +168,3 @@ Both anti-patterns below are cataloged in `anti-patterns/` at the top-level cata
 ---
 
 Last updated: 2026-08-24
-

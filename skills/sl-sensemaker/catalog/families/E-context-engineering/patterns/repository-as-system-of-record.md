@@ -68,6 +68,8 @@ flowchart TD
 | Full audit trail via version control (git log, diffs) | Repository structure must be designed for agent navigation, not just human navigation |
 | Human reviewers can inspect and override decisions via normal git workflow | Latency: reading and writing files adds round-trips |
 
+Before recording a disputed term as authoritative, use [Clarify domain terms](../guides/clarify-domain-terms.md) to obtain the responsible person's decision. A plausible assistant-written definition does not settle an unresolved requirement.
+
 ## Related Patterns
 
 - [Map-Not-Manual](map-not-manual.md) — the map (AGENTS.md) is the entry point to the repository as system of record.

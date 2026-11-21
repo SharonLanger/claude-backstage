@@ -137,4 +137,4 @@ function format_revision_targets(failures):
 - **AWS Prescriptive Guidance** — Amazon Web Services architecture team. [Agentic AI Patterns](https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-patterns/agent-patterns.html)
 
 - Moby / Docker maintainers — [AI Usage Policy](https://github.com/moby/.github/blob/512ca97347590b4ecaf892adaf780797b1e637b9/AI_POLICY.md): human verification, focused changes, contributor accountability, and project-specific disclosure requirements; consulted 2026-11-21.
-
+- Anthropic — [Best practices for Claude Code](https://code.claude.com/docs/en/best-practices): “Give Claude a check to run” and “Review against your spec”; runnable evidence and review against requirements; consulted 2026-11-21.

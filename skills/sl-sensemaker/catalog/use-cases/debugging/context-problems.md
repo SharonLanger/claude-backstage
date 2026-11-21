@@ -10,15 +10,19 @@ Your agent loses track of earlier information, ignores instructions that were pr
 2. **Compact and scope context deliberately** — Include only what the current step needs. See [Context Compaction](../../families/E-context-engineering/patterns/context-compaction.md) and [Minimal Context Handoff](../../families/E-context-engineering/patterns/minimal-context-handoff.md).
 3. **Retrieve just-in-time instead of loading upfront** — Fetch relevant information at the moment of decision, not at the start. See [Just-in-Time Retrieval](../../families/E-context-engineering/patterns/just-in-time-retrieval.md).
 
+For an agreed decision missing from a long session, check what history is still available and whether there is a current project record. [Context Compaction](../../families/E-context-engineering/patterns/context-compaction.md) applies to available history. [Repository-as-System-of-Record](../../families/E-context-engineering/patterns/repository-as-system-of-record.md) applies when the user can maintain project files.
+
+For a person in a chat or CLI, [session recovery](../../families/I-reliability-recovery/patterns/fresh-context-retry.md#in-a-session-recover-decisions-without-losing-useful-work) gives the checked handoff and summary/reset choice. If a term or requirement is unresolved, use [domain clarification](../../families/E-context-engineering/guides/clarify-domain-terms.md) first.
+
 ## Decision Guide
 
 ```
 Context problem observed
 │
 ├─ Agent forgets earlier instructions/information
-│   ├─ Long conversation (>50K tokens) → Context window saturation
+│   ├─ Long conversation near the tool’s context limit → Check for saturation or compaction
 │   │   → Apply: Context Compaction + Summarized Memory
-│   ├─ Instructions at start, action much later → Positional decay
+│   ├─ Instructions at start, action much later → Check if they are still available and relevant
 │   │   → Apply: Progressive Disclosure + Role-Scoped Context
 │   └─ Multi-agent: downstream agent missing info → Handoff loss
 │       → Apply: Minimal Context Handoff + Artifact-Based Handoff
@@ -32,7 +36,7 @@ Context problem observed
 │       → Apply: Shared Memory Gateway + External Durable State
 │
 ├─ Agent's output quality degrades over time
-│   ├─ First outputs good, later outputs sloppy → Context noise accumulation
+│   ├─ First outputs good, later outputs sloppy → Check whether noisy history is accumulating
 │   │   → Apply: Context Compaction + Fresh Context Retry
 │   ├─ Repeating itself or contradicting earlier work → State confusion
 │   │   → Apply: State Machine + Checkpoint State

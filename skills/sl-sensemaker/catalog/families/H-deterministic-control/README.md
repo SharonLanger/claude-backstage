@@ -30,7 +30,7 @@ H-deterministic-control/
 
 ## Per-Pattern File Schema
 
-Every file in `patterns/` follows this structure exactly:
+Each engineering entry in `patterns/` follows this structure exactly:
 
 ```
 # H<nn> — <Pattern Name>

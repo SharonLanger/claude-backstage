@@ -12,6 +12,8 @@ Help a person and their assistant resolve words that imply different behavior be
 
 You need the request and someone authorized to settle the affected requirement. For a personal project, that may be you. A settled specification may already answer the question.
 
+You can do the clarification in a conversation. Persisting a shared glossary or decision requires project-file access; for a one-off chat, keep the agreed case in the conversation. Executable verification applies when the work becomes code.
+
 ## Guide content
 
 1. Ask the agent to locate the term in the request, code, and existing decisions. Compare the implied behavior. Include relevant issue history if the decision lives there.
@@ -39,7 +41,7 @@ Review persisted definitions; stale or contradictory notes can mislead. Do not c
 
 ## Sources
 
-- Matt Pocock — [The /domain-modeling Skill](https://www.aihero.dev/skills-domain-modeling): practitioner advice on reconciling terms with code, short glossaries, and selective decision records; consulted 2026-11-21.
+- Matt Pocock — [The /domain-modeling Skill](https://www.aihero.dev/skills-domain-modeling): sections “Cross-referencing and where it stops,” “Two artifacts, two bars,” and “Common questions”; advice on terms, glossaries, and selective decision records; consulted 2026-11-21.
 - Anthropic — [Best practices for Claude Code](https://code.claude.com/docs/en/best-practices#brainstorm-with-claude-first): clarifying requirements and saving an agreed specification.
 
 The deciding case, explicit owner decision, and paired verification are catalog adaptations from research method PAT-0006. The illustration is newly written. Neither cited guide measures a general reduction in drift from this procedure.

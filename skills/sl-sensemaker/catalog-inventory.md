@@ -31,6 +31,8 @@ Total files: 272 markdown files
 
 ---
 
+Use the [symptom bridge](bridge-file.md) for conversational wording and the [catalog lookup](catalog/catalog-lookup.md#quick-lookup-by-problem) for topic routes. In the family inventory below, start with B5 and K01/K05 for staged review, Context Compaction and Repository-as-System-of-Record for decisions lost in a session, and Fresh-Context Retry for repeated failed attempts.
+
 ## Families (A–O)
 
 ### A — Workflow Topology (10 patterns)
@@ -417,4 +419,3 @@ Selected research is now adapted into four existing patterns (Fresh-Context Retr
 ---
 
 Last updated: 2026-11-21
-

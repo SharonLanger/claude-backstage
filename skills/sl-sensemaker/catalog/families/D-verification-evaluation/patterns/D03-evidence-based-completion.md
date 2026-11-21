@@ -11,6 +11,8 @@ Agents declare tasks complete based on their internal belief that the work is do
 
 Define, for each task type, a required evidence bundle that must accompany any completion claim. The evidence bundle is a set of concrete artefacts — file paths, URLs, log excerpts, test results, citations — that a downstream validator or human can inspect independently. The agent's completion message is rejected if the required artefacts are absent, malformed, or unresolvable. The check is structural: does the bundle exist and resolve? Not whether the evidence is correct (that is D04 or D10).
 
+For human inspection of an AI-generated change, use [the review pass](D05-review-pass.md#in-a-session-review-ai-changes-before-accepting-them). Check altered assertions and removed regressions as well as command output.
+
 ## Structure
 
 <details>

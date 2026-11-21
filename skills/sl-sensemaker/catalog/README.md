@@ -1,7 +1,8 @@
 # AI / Agent Design Patterns
 
-A catalog of reusable, model-independent engineering patterns for developers building with LLMs and coding agents.
+A catalog of reusable guidance for people working with LLMs and coding agents, including practical session procedures and engineering patterns.
 
+- **Working through a session problem?** Start with [practitioner entry points](catalog-lookup.md#working-with-an-assistant-in-a-session).
 - **Looking up patterns?** Read [`catalog-lookup.md`](catalog-lookup.md)
 - **Adding patterns from a new source?** Read [`contributing/catalog-intake.md`](contributing/catalog-intake.md)
 

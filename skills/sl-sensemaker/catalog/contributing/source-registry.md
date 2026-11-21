@@ -6,11 +6,11 @@ Verified sources approved for citation, plus rules for how to cite them.
 
 ## Citation Rules
 
-1. **Every pattern file MUST have a Sources section** with at least one relevant, verifiable source. Additional sources are welcome when they support or qualify the guidance; there is no fixed upper limit.
-2. **Every link MUST be verifiable** — it must point to a real, published blog post, documentation page, or academic resource.
-3. **Never invent URLs.** If you cannot find a real source for a claim, do not make the claim.
-4. **Use only sources from the Verified Source Registry** (below) unless you have personally verified a new URL exists.
-5. **Format:** `- Author/Org — [Article Title](URL)`
+1. Cite at least one accessible, relevant source for authored guidance. Include additional sources that corroborate, qualify, contradict, or extend it.
+2. Verify each cited URL and read the relevant source material before using it. A working URL establishes access. The cited passage establishes what is supported.
+3. Record author or organization, title, URL, section or locator where useful, and revision or date when available. For example, `- Author/Org — [Title](URL), section, revision/date`.
+4. Attribute source examples and follow the source's reuse terms. Mark examples composed for the catalog as illustrations.
+5. Treat versions and republications of the same work as one line of evidence.
 
 ### What counts as a valid source
 
@@ -24,13 +24,13 @@ Verified sources approved for citation, plus rules for how to cite them.
 
 ### Mapping sources to claims
 
-Every substantial claim in a pattern file (the Problem, the Solution Structure, the trade-offs) must be supportable by at least one source in the Sources section. The source doesn't need to use the exact same name — it needs to describe the same structural solution to the same recurring problem.
+Connect each substantive claim to the source passage that supports it or label it as a catalog adaptation or inference. Distinguish advice an author documents from findings a study measures. Keep the original setting, population or task, limitations, and any contradictory evidence visible. A single author's documented practice can support a scoped entry without independent corroboration.
 
 ### Adding a new source
 
 1. Verify the URL resolves to a real, published page
 2. Add it to the appropriate table below with the next sequential number
-3. Add a Family–Source Mapping entry if the source is relevant to specific families
+3. Update the Family–Source Mapping for each relevant family. One source may support multiple entries, and an entry may cite multiple sources. Keep the claim-to-source relationship in each entry.
 
 ---
 
@@ -97,9 +97,9 @@ Which sources are most relevant to each family. When writing a pattern file, cit
 | Family | Primary Sources (by registry #) | Why |
 |---|---|---|
 | **A — Workflow Topology** | 1, 5, 9, 12, 10 | Anthropic defines the topology taxonomy; Google/AWS/OpenAI/Microsoft validate it |
-| **B — Task Decomposition** | 1, 4, 9, 24, 27 | Anthropic+Google define decomposition; OpenAI harness drives plan→execute; Stanford/Ng teaches planning; Pocock adds reviewable tickets |
+| **B — Task Decomposition** | 1, 4, 9, 24, 26, 27 | Anthropic+Google define decomposition; OpenAI harness drives plan→execute; Stanford/Ng teaches planning; Pocock adds reviewable tickets |
 | **C — Orchestration** | 5, 8, 10, 9, 12 | OpenAI Symphony + Guide; Microsoft distributed-systems framing; Google coordinator patterns |
-| **D — Verification** | 3, 18, 19, 20, 21, 9, 30 | Anthropic evals guide; Hamel/Shreya evaluation methodology; Google review/critique patterns; Moby gives project-specific contributor accountability |
+| **D — Verification** | 3, 18, 19, 20, 21, 9, 26, 30 | Anthropic evals guide; Hamel/Shreya evaluation methodology; Google review/critique patterns; Moby gives project-specific contributor accountability |
 | **E — Context Engineering** | 2, 4, 10, 9, 26, 28 | Anthropic coined context engineering; OpenAI map-not-manual; Microsoft minimal-context handoff; Pocock clarifies domain language; Anthropic covers session practice |
 | **F — Harness Engineering** | 4, 6, 7, 8 | OpenAI coined and defined harness engineering across 4 articles |
 | **G — Tool Design** | 5, 14, 12, 13 | OpenAI agent guide tool design; AWS MCP tool scope + agent patterns + security |
@@ -115,4 +115,3 @@ Which sources are most relevant to each family. When writing a pattern file, cit
 ---
 
 Last updated: 2026-11-21
-

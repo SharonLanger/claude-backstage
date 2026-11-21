@@ -1,7 +1,8 @@
 # Practitioner research intake — batch 1
 
-Date: 2026-11-21  
-Compared against main: `17a09cce854bd511c81302babc037b87df3fc318`
+Source intake: 2026-11-21; reconciliation and verification: 2026-11-22
+
+Initial comparison: `17a09cc`. Reconciled against preparation PR #8 on main at `ae01ad6466c390e34817c0bef8c7d87ae91c779f`.
 
 ## Outcome and scope
 
@@ -31,33 +32,27 @@ The original sources were checked on 2026-11-21. Registry IDs 26–30 point to t
 | Ivett Ördög / Samman Coaching, [ROSE Feedback](https://sammancoaching.org/learning_hours/agentic_engineering/rose_feedback.html) | Flexible risk/observation/solution/expected-outcome feedback on produced work | The modified session subsection is attributed and licensed CC BY-SA 4.0; it uses a new retry-count illustration and additional verification. No claim of permanent model learning. |
 | Moby / Docker maintainers, [AI Usage Policy](https://github.com/moby/.github/blob/512ca97347590b4ecaf892adaf780797b1e637b9/AI_POLICY.md) | Contributor verification, focused changes, ownership, and project-specific disclosure | This is a policy example, not a universal approval rule. The CSV illustration is newly written. |
 
-One relevant, verifiable source is sufficient; additional sources may support or qualify a claim. The three contributor checklists are aligned on that rule. This batch does not redesign other contribution requirements.
+One relevant, verifiable source is sufficient; additional sources may support or qualify a claim. PR #8's contributor instructions are retained. Only new source rows, evidence notes, and family mappings are added to its registry.
 
-## Coverage of the 17 pain-point groups
+## Intake records under PR #8
 
-All groups are represented as ordinary symptom sentences in [the bridge](../../skills/sl-sensemaker/bridge-file.md). A route is not a diagnosis or a claim that every aspect is solved.
+The comparison above records the existing entries read, destination, and enrich/write decision. The following completes the candidate records with source location, controls, evidence, and limits. The relevant original publications and selected dossiers were read during the initial intake; this reconciliation checks those contributions against the newly merged rules.
 
-| Group | Example symptoms | Coverage after this batch |
-|---|---|---|
-| 1 | Repeating preferences, corrections lost next session, reset loses planning | Checked handoff and durable records; user must review and reload them. |
-| 2 | Earlier instructions ignored, long conversation, research/tool output buries task | Session recovery and context compaction; diagnose the specific missing requirement first. |
-| 3 | Giant instruction file, stale or contradictory saved notes | Existing map and system-of-record entries; partial until conflicting content is resolved. |
-| 4 | “Improves” intentional code; forgets why a choice was made | Domain clarification and rationale, plus decision recovery when the choice was already settled. |
-| 5 | Agrees without understanding, starts too soon, never challenges | Clarification and preview for ambiguity; partial for general uncritical agreement. |
-| 6 | Literal compliance misses goal; unhelpful response to feedback | Outcome-based corrective feedback and distinguishing cases. |
-| 7 | First explanation becomes fact, unverified fix, more retries worsen it | Reconnaissance, corrective feedback, and conditional session recovery. |
-| 8 | Changes assertions, deletes tests, coverage creates false confidence, test review overload | Human review of test changes, feedback checks, and smaller review units. |
-| 9 | Too much generated code, huge diff, accepts without understanding | Reviewable milestones and ownership review. |
-| 10 | Invented or obsolete APIs, repeated library corrections, safe experiments | Existing retrieval and reconnaissance; sandbox guidance is partial and requires actual configuration. |
-| 11 | Large tasks lose requirements, too many session responsibilities, growing repository | Milestones and reconnaissance; partial for broader repository failure modes. |
-| 12 | Rules ignored, steps skipped, unclear compliance | Observable completion evidence and feedback; enforced boundaries only when needed and controllable. |
-| 13 | Too verbose, wrong detail, difficulty explaining, domain mismatch | Domain guide and response feedback; dedicated communication-level guidance remains a gap. |
-| 14 | Leading with own answer, no alternatives, conversation drifts | Reconnaissance and session recovery; systematic alternatives comparison remains a gap. |
-| 15 | Inconsistent results, repeated chores, cost and supervision | Existing debugging and procedures; partial, since tooling and execution controls vary. |
-| 16 | Side tasks, unfinished work, missed input requests, needless delegation back to user | Milestones, recovery, escalation and access checks; notification and personal task-management gaps remain explicit. |
-| 17 | AI replaces teammate interaction, lost shared understanding, stale docs/diagrams | Artifact records and personal review cover part; team isolation and automatic diagram maintenance remain gaps. |
+| Candidate | Source locations and contribution | User controls | Evidence, adaptation, and limits |
+|---|---|---|---|
+| PAT-0001 | Anthropic “Steer the session,” plus its recovery/verification advice: redirect and recover a conversation. SRC-0002. | Can inspect the agreed decision and start or summarize a conversation; optional file access to preserve work. | Documented vendor advice. Checked handoff, rejected-option reminder, and distinguishing prediction are adaptations; no universal reset threshold or guarantee. |
+| PAT-0003 | Pocock “Tracer bullets, not layers,” “Blocking edges,” “The wide-refactor exception,” “Common questions”; Anthropic “Give Claude a check to run” and “Review against your spec.” SRC-0006/SRC-0002. | Can scope requests, inspect and preserve the diff, and review proposed milestones. | Practitioner/vendor advice. Review prompts and neighboring checks are adaptations. No measured review-time benefit; wide changes may require integration. |
+| PAT-0005 | ROSE lesson's feedback structure and optional elements for already produced work; research method's worked checks. SRC-0010. | Can inspect the output, agree expected behavior, and check the revision; executable claims need execution evidence. | Documented teaching practice. New retry-count illustration and paired check; no permanent learning claim. Modified session subsection carries CC BY-SA 4.0 attribution. |
+| PAT-0006 | Pocock “Cross-referencing and where it stops,” “Two artifacts, two bars,” “Common questions”; Anthropic requirements/specification review. SRC-0009/SRC-0002. | Can consult a decision owner or settled specification; project access only for persistent glossary/decisions. | Practitioner/vendor advice. Owner decision, deciding case, and paired verification are adaptations. Does not settle unavailable requirements or enforce all future edits. |
+| PAT-0008 | Pinned Moby AI_POLICY.md contribution requirements; Anthropic “Review against your spec.” SRC-0018/SRC-0002. | Can inspect implementation and tests, assess actual evidence, and accept responsibility under project rules. | Project-specific policy plus vendor advice. CSV example and targeted neighboring checks are adaptations. Neither policy nor selected tests prove general correctness. |
 
-No external collection links or collection source inventory were added. Symptom strings are search vocabulary; original research sources supply the actual guidance.
+Each contribution supplies a recognizable situation, practical action, explicit controls, a newly labeled illustration, limits, and local related guidance. Existing engineering sections remain available. No new anti-pattern or principle was introduced, so those indexes and the pattern count do not change.
+
+## Coverage summary
+
+The authoritative [57-scenario inventory](practitioner-coverage.md) keeps every stable ID from PR #8. Its revised disposition is **21 covered, 28 partially covered, 8 missing**, compared with 13 / 33 / 11 before intake. Eight scenarios gain scoped guidance; two response-format cases move from missing to partial. “Covered” means an applicable next step under the stated controls, not a guarantee.
+
+All 48 design sentences and Sharon's explicit scenarios have bridge routes or explicit gaps. The bridge retains PR #8's organization and D02/AP10 protected-check routes, adding direct practical destinations. General pushback, intent elicitation, task triage, hidden-instruction visibility, team isolation, and diagram maintenance remain limited or absent. No external collection links or source inventory were added.
 
 ## Retrieval and installation
 
@@ -67,10 +62,12 @@ The inventory changes from 270 to 272 catalog Markdown files: one guide plus its
 
 ## Validation
 
-- Existing local-link and anchor check: 1,774 links, zero unresolved.
-- Existing install/reinstall test: passed, including copying the complete catalog, preserving a local addition, and missing-catalog recovery instructions.
-- Static route walkthroughs: test deletion → human review; rejected approach → checked handoff; oversized diff → B5; feedback shortcut → retry-count counterexample; ambiguous daily visits → owner decision; team isolation → explicit gap.
-- Whitespace/diff validation: passed.
+- Local-link and anchor check: 1,841 links checked, zero unresolved.
+- Install/reinstall check: passed. Retains the protected-test route and checks all five practical destinations; verifies research records stay outside the cache.
+- Seven static walkthroughs in the scenario inventory cover deleted tests, lost decisions, rejected approaches, large diffs, superficial feedback, domain terms, and team isolation.
+- Coverage and batch-record links: 136 checked, zero unresolved. The rendered coverage table has 57 rows, six columns per row, and all 48 design sentences are present in the bridge.
+- PR #8's authoring, intake, classification, contributor overview, citation rules, skill flow, and setup are retained. Raw research is unchanged; no conflict markers remain.
+- Whitespace/diff validation and the 272-file catalog count passed.
 - These are content, route, and installation checks, not an interactive Claude evaluation or measured practitioner effectiveness.
 
-The five research method files and their raw source dossiers are unchanged. This implementation is separate from preparation design PR #7; it does not implement all of that design. Merge review should reconcile overlapping contributor/navigation edits if another implementation of #7 lands first.
+The five research method files and their raw source dossiers are unchanged. PR #8 is now the contribution baseline. The merge retains its authoring and intake files unchanged, its citation rules, its 57-scenario inventory, and its tests. PR #9 adds the five selected contributions and integrates their coverage, navigation, and source records.

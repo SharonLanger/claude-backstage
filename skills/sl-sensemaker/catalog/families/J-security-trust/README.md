@@ -38,7 +38,7 @@ J-security-trust/
 
 ## Per-Pattern File Schema
 
-Every pattern file (`J01` – `J11`) follows this structure:
+Each engineering pattern (`J01` – `J11`) follows this structure:
 
 ```
 # <Pattern Name>

@@ -13,7 +13,7 @@ Before retrying, inject the failure signal — the error message, the validator 
 
 ## In a session: turn feedback into a check
 
-Use this after the agent has produced work you can inspect. Agreement with a review comment does not show that a revision is correct.
+Use this after the agent has produced work you can inspect. You control the conversation and need a known expected outcome. Code claims require relevant execution or inspection; a prose revision can be checked directly against its content requirements. Agreement with a review comment does not show that a revision is correct.
 
 Ivett Ördög's ROSE feedback names the risk, observation, requested solution, and expected outcome. Use only the elements needed; they need not appear in that order. Our adaptation from PAT-0005 makes the outcome checkable and adds a neighboring case that a shortcut might break.
 
@@ -126,4 +126,3 @@ An agent uses a code-execution tool to run generated Python. The first attempt r
 - **AWS Prescriptive Guidance** — Amazon Web Services architecture team; defines Validation-Retry Loop and Structured Error Classification. [Agentic AI Patterns](https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-patterns/agent-patterns.html)
 
 - Ivett Ördög / Samman Coaching — [ROSE Feedback](https://sammancoaching.org/learning_hours/agentic_engineering/rose_feedback.html): feedback structure, optional elements, and scope to already produced work; consulted 2026-11-21. The ROSE-based session subsection above adapts this lesson with new wording, a new illustration, and a verification step; that subsection is shared under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
-

@@ -62,6 +62,8 @@ flowchart LR
 | Prompt stays small and focused | Read latency per step that fetches offloaded content |
 | Multiple agents share the same external source | Content that should always be present must not be offloaded |
 
+For domain definitions that disagree with the request or code, use [Clarify domain terms](../guides/clarify-domain-terms.md) before offloading them. Storage and retrieval do not decide which meaning is correct.
+
 ## Related Patterns
 
 - [Map-Not-Manual](map-not-manual.md) — the map is itself the offloading mechanism for knowledge documents.

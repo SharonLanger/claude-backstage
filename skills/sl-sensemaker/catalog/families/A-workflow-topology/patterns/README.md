@@ -42,7 +42,7 @@ patterns/
 
 ## Schema
 
-Every pattern file in this folder follows the same 8-section structure:
+Each engineering pattern in this folder follows the same 8-section structure:
 
 1. **Problem** — the specific challenge this pattern addresses
 2. **Solution Structure** — how the pattern works, including a Mermaid diagram of the flow

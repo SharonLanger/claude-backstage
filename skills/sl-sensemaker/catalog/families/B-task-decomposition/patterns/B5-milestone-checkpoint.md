@@ -14,6 +14,8 @@ Group the task's subtasks into milestones — cohesive units of work that togeth
 
 ## In a session: slice a change for review
 
+You need to be able to scope the request, inspect the proposed diff, and preserve existing edits. No custom orchestration system is required.
+
 Use the milestone as a behavior you can inspect, not an arbitrary number of files or lines. This applies while planning work or reorganizing an already large diff; save the existing work before asking for restructuring.
 
 1. Ask the agent for the smallest useful outcome: who does what, and what becomes observable? Include the code and tests across every layer needed to demonstrate it.
@@ -150,5 +152,5 @@ A code migration agent is tasked with upgrading a 200-file codebase from an old 
 - **AWS Prescriptive Guidance** — Amazon Web Services architecture team. [Agentic AI Patterns](https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-patterns/agent-patterns.html)
 - **Google Cloud Architecture Center** — Google's cloud architecture team. [Choose a Design Pattern for Agentic AI](https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system)
 
-- Matt Pocock — [The /to-tickets Skill](https://www.aihero.dev/skills-to-tickets): practitioner guidance on reviewable slices, dependencies, and wide-refactor exceptions; consulted 2026-11-21.
-
+- Matt Pocock — [The /to-tickets Skill](https://www.aihero.dev/skills-to-tickets): sections “Tracer bullets, not layers,” “Blocking edges,” “The wide-refactor exception,” and “Common questions”; practitioner guidance on reviewable slices and dependencies; consulted 2026-11-21.
+- Anthropic — [Best practices for Claude Code](https://code.claude.com/docs/en/best-practices): “Give Claude a check to run” and “Review against your spec”; runnable evidence and review against requirements; consulted 2026-11-21.

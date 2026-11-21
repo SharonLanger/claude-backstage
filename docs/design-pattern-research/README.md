@@ -4,6 +4,8 @@ This collection asks what engineers can do when AI-assisted coding goes off trac
 
 ## Start here
 
+The [practitioner coverage inventory](practitioner-coverage.md) compares the examples from the Sensemaker intake design with the installed catalog and records the gaps.
+
 1. **Source–topic map.** Which topics, methods, and sources relate to the problem I’m investigating? Start with “Find a practice by symptom” or the coverage table. [Open the map](raw/source-topic-map.md)
 2. **Original brief and research runbook.** What questions did the researchers start with, and how did they turn publications into dossiers and methods? The mission and execution phases explain the approach. Appendix A contains the original assignment. [Open the runbook](raw/00-START-HERE-RESEARCH-RUNBOOK.md)
 3. **Final quality audit.** Which claims and examples did reviewers check, what changed, and where does the evidence stop? [Open the audit](raw/audits/final-quality-audit.md)

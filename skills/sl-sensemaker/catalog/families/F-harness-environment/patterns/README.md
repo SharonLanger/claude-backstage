@@ -30,7 +30,7 @@ patterns/
 
 ## Schema
 
-Every pattern file follows the same structure:
+Each engineering pattern follows the same structure:
 
 | Section | Contents |
 |---|---|

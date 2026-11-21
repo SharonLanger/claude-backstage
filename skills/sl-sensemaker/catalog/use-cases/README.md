@@ -68,7 +68,7 @@ use-cases/
 
 Arrive with a scenario. Find your families and watch out for the anti-patterns listed.
 
-| Scenario | Primary Families | Watch for Anti-Patterns |
+| Scenario | Start here | Watch for Anti-Patterns |
 |---|---|---|
 | Building an agent system from scratch | A, B, C | Multi-Agent by Default; Giant Instruction Manual |
 | Choosing workflow topology (sequential vs parallel vs DAG) | A, C | Infinite/Weakly Bounded Agent Loop |
@@ -92,6 +92,11 @@ Arrive with a scenario. Find your families and watch out for the anti-patterns l
 | Connecting agent output to downstream systems | O, G | — |
 | Measuring if an agent system is working | D, M | Generic Evals Before Error Analysis; Self-Certified Completion |
 | Building evals after production failures | D, M | Generic Evals Before Error Analysis |
+| Decisions or requirements lost in a long session | [Context problems](debugging/context-problems.md) | Giant Instruction Manual; Retry Without New Information |
+| Coding agent changed the test that defines success | [Regression testing](evaluation/regression-testing.md) | Overpowered Coding Agent |
+| Feedback revisions still miss the intended behavior | [Feedback into a check](../families/I-reliability-recovery/patterns/retry-with-feedback.md#in-a-session-turn-feedback-into-a-check) | Retry Without New Information |
+| Domain terms imply conflicting behavior | [Clarify domain terms](../families/E-context-engineering/guides/clarify-domain-terms.md) | — |
+| Generated change exceeds human review capacity | [Reviewable milestones](../families/B-task-decomposition/patterns/B5-milestone-checkpoint.md#in-a-session-slice-a-change-for-review) and [Human review](../families/D-verification-evaluation/patterns/D05-review-pass.md#in-a-session-review-ai-changes-before-accepting-them) | Self-Certified Completion |
 | Regression testing after changes | D, M, F | Generic Evals Before Error Analysis |
 | Multi-agent: do I need it? | A, B, C | Multi-Agent by Default |
 | Multi-agent: how to orchestrate | C, A, J | Shared Context Everywhere; Model as Security Boundary |

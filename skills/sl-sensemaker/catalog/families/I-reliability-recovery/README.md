@@ -37,7 +37,7 @@ I-reliability-recovery/
 
 ## Per-Pattern File Schema
 
-Every file in `patterns/` and `anti-patterns/` follows this structure:
+Each engineering entry in `patterns/` and `anti-patterns/` follows this structure:
 
 ```markdown
 # <Pattern Name>
@@ -76,6 +76,8 @@ What you fall into if you misapply this pattern.
 ```
 
 ---
+
+If an agent reintroduces a rejected approach and accumulated attempts may be influencing the next try, see [Fresh-Context Retry](patterns/fresh-context-retry.md). If the failure is still unexplained, see [Root-Cause-Before-Retry](patterns/root-cause-before-retry.md). For a person in a chat or CLI, start with the session-recovery subsection above. It preserves rejected alternatives and useful work; a guarantee of permanent compliance and code-local enforcement remain outside its scope.
 
 ## Failure Mode → Recovery Pattern
 
@@ -158,4 +160,3 @@ ALWAYS: use Checkpoint and Resume for long multi-step tasks so recovery
 ---
 
 Last updated: 2026-08-24
-

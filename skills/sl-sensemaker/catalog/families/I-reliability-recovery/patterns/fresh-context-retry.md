@@ -135,4 +135,3 @@ The session procedure is guidance, not a measured repository-level success rate.
 - **AWS Prescriptive Guidance** — Amazon Web Services architecture team; defines Validation-Retry Loop and Structured Error Classification. [Agentic AI Patterns](https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-patterns/agent-patterns.html)
 
 - Anthropic — [Best practices for Claude Code](https://code.claude.com/docs/en/best-practices#steer-the-session): session steering and separating conversation recovery from file changes; consulted 2026-11-21.
-
