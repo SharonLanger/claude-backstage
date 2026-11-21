@@ -1,0 +1,31 @@
+---
+artifact_id: PAT-0007
+artifact_type: pattern_verification
+reviewer: review_question
+reviewed: "2026-11-21"
+initial_verdict: PASS
+verdict: PASS
+---
+
+# Independent verification of PAT-0007
+
+**PASS.** A developer can use the entry to obtain a second assessment, compare predictions, and run a check before choosing a change. All four steps identify which parts come from an experiment or a practitioner guide and which parts the pattern author contributes. No content repair was required. [Reviewed pattern](../patterns/PAT-0007--ask-for-an-assessment-before-naming-a-fix.md)
+
+## Findings
+
+1. **Preserve the evidence (step 1).** Anthropic recommends stating the symptom, likely location and expected outcome for a specific fix, and allows open questions during exploration. Dubois discusses risks to user intent in rewriting. Appendix D, Table 5 shows examples of changes in how negation is expressed. These sources support the caution about losing information. Classifying a known cache hit as evidence and a suspected cache fault as an open hypothesis is the pattern author's engineering judgment. Checked SRC-0002:C06 and SRC-0013:C08–C09. [Anthropic prompt guidance](https://code.claude.com/docs/en/best-practices#write-a-specific-prompt) · [Dubois discussion](https://arxiv.org/pdf/2602.23971v4#page=10) · [Table 5](https://arxiv.org/pdf/2602.23971v4#page=22)
+2. **Ask before proposing a fix (step 2).** Dubois Figures 1–2 score how replies express sycophancy on subjective items. Both tested rewrites lower that score. Sharma Figure 3 uses model-graded correctness on free-form TriviaQA and TruthfulQA. A weak, incorrect suggestion reduced aggregate accuracy across the tested assistants. The sources support different parts of the diagnosis. Deferring a proposed code change and requesting a plausible rival are explicitly original adaptations. Neither experiment counted alternatives explored during debugging. Checked SRC-0013:C02, C04 and SRC-0005:C05. [Dubois §§2.1–2.2](https://arxiv.org/pdf/2602.23971v4#page=4) · [Sharma §3.3, Figure 3](https://arxiv.org/pdf/2310.13548v4#page=5)
+3. **Compare predictions (step 3).** Sharma Figure 2 conditions on a correct first answer and distinguishes an admission of error from a change to a wrong answer. Figure 3 manipulates the initial suggestion. Neither design tests delaying a developer's hypothesis. Anthropic gives the basis for requiring an interpretable check. The entry lets an observation settle the question even when the assistant agrees with the developer. Checked SRC-0005:C03, C05 and SRC-0002:C07. [Sharma §§3.2–3.3](https://arxiv.org/pdf/2310.13548v4#page=4) · [Anthropic verification guidance](https://code.claude.com/docs/en/best-practices#give-claude-a-check-to-run)
+4. **Decide from the result (step 4).** The guide asks for execution evidence and describes a review against the spec and edge-case tests. Rerunning an already-working case and postponing an inconclusive patch are appropriate adaptations for this scenario. The entry supplies a stopping condition and permits direct implementation when the cause has already been demonstrated. Checked SRC-0002:C07–C08, C10. [Execution evidence](https://code.claude.com/docs/en/best-practices#give-claude-a-check-to-run) · [Spec review](https://code.claude.com/docs/en/best-practices#review-against-your-spec)
+5. **Measures and provenance.** Dubois Figure 5 reports GPT-5's persona-aligned selections as 59.9% under questions and 64.6% under statements. Its outcome is agreement with a political stance. Its certainty contrast is near zero, unlike the graded conviction effect on the advisory items. Dubois cites Sharma and reused political materials from Perez and colleagues, whose authors include several Sharma coauthors. The new advisory data give a separate experiment. The vendor guide supplies practice advice. The entry correctly leaves repository correctness, breadth of technical exploration and time savings open. Checked SRC-0013:C03, C07. [Figure 5](https://arxiv.org/pdf/2602.23971v4#page=9) · [Dubois methods and references](https://arxiv.org/pdf/2602.23971v4#page=14) · [Perez author record](https://aclanthology.org/2023.findings-acl.847/) · [Sharma author record](https://arxiv.org/html/2310.13548v4)
+
+## Usability, rights and disposition
+
+6. I extracted and executed the published Python block unchanged with Python 3.12.14 and SQLite 3.53.1. Both queries returned IDs 1 and 3 with only the linked cancellation. Adding the unmatched event made the original query return an empty list and the revised query return 1 and 3. A separate count confirmed one unmatched cancellation still existed. The example demonstrates a sufficient query-layer cause under the stated contract. Establishing actual endpoint behavior requires the application and its database.
+7. I compared the example, worked prompts and evidence summaries against the two versioned manuscripts and Anthropic's living guide. The catalog contains its own scenario and code. Publication titles, section labels and attributed findings identify the evidence. The paper pages identify CC BY-NC-ND 4.0 for Dubois and CC BY 4.0 for Sharma. The guide's dossier records no verified grant for full-text reuse. The entry reproduces no source figure, table, exercise or extended passage. [Dubois version and rights](https://arxiv.org/html/2602.23971v4) · [Sharma version and rights](https://arxiv.org/html/2310.13548v4) · [Anthropic source dossier](../sources/SRC-0002--claude-code-best-practices.md)
+8. All outgoing relative file links in the reviewed pattern resolved locally, including the three accepted dossiers and their independent source audits. The PAT is ready for integration. Its narrower evidence scope should follow it into the AP-03, OB-02 and BP-02 topic notes. [Dubois dossier](../sources/SRC-0013--ask-without-supplying-the-answer.md) · [Sharma dossier](../sources/SRC-0005--sycophancy-and-user-beliefs.md)
+
+## Drive navigation
+
+- [patterns/PAT-0007--ask-for-an-assessment-before-naming-a-fix.md](../patterns/PAT-0007--ask-for-an-assessment-before-naming-a-fix.md) · [Local copy](../patterns/PAT-0007--ask-for-an-assessment-before-naming-a-fix.md)
+- [source-topic-map.md](../source-topic-map.md) · [Local copy](../source-topic-map.md)
