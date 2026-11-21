@@ -69,7 +69,7 @@ Context problem observed
 | [State Machine](../../families/L-memory-state/patterns/state-machine.md) | Memory/State | Track agent progress through explicit states to prevent confusion |
 | [Artifact State](../../families/L-memory-state/patterns/artifact-state.md) | Memory/State | Use artifacts (files, documents) as the source of truth for state |
 | [Fresh Context Retry](../../families/I-reliability-recovery/patterns/fresh-context-retry.md) | Reliability | When context is poisoned, restart with a clean prompt |
-| [Repository as System of Record](../../families/F-harness-environment/patterns/F01-agent-legible-repository.md) | Harness | Use the repository/filesystem as persistent ground truth |
+| [Repository-Local System of Record](../../families/F-harness-environment/patterns/F02-repository-local-system-of-record.md) | Harness | Use the repository/filesystem as persistent ground truth |
 
 ## Anti-Patterns to Watch For
 

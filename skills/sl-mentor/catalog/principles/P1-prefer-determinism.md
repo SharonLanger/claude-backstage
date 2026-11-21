@@ -20,15 +20,16 @@ This principle recurs across independent sources because every organization that
 
 ## Patterns That Implement This Principle
 
-- [Deterministic Validation Gate](../families/H-deterministic-control/) — wraps model output in schema/type/format validators
-- [Least-Privilege Tool Access](../families/G-tool-action-design/) — tool permissions enforced by code, not by asking the model to self-limit
-- [Structured Output Enforcement](../families/O-output-integration/) — output schemas enforced by parsing, not by instruction
-- [Bounded Agent Loop](../families/I-reliability-recovery/) — loop termination via counter/timer, not model self-awareness
+- [Deterministic Validation Gate](../families/H-deterministic-control/patterns/H02-programmatic-gate.md) — wraps model output in schema/type/format validators
+- [Least-Privilege Tool Access](../families/J-security-trust/patterns/J01-least-privilege.md) — tool permissions enforced by code, not by asking the model to self-limit
+- [Structured Output Enforcement](../families/O-output-integration/patterns/schema-validation.md) — output schemas enforced by parsing, not by instruction
+- [Bounded Agent Loop](../families/A-workflow-topology/patterns/bounded-loop.md) — loop termination via counter/timer, not model self-awareness
 
 ## Anti-Patterns This Prevents
 
-- **Prompt-as-Policy** — encoding authorization, validation, or business rules solely in system prompts where they can be overridden or ignored
-- **Model as Security Boundary** — trusting the model to refuse unauthorized actions rather than enforcing permissions in code
+- [Prompt-as-Policy](../anti-patterns/AP02-prompt-as-policy.md) — encoding authorization, validation, or business rules solely in system prompts where they can be overridden or ignored
+- [Model as Security Boundary](../anti-patterns/AP06-model-as-security-boundary.md) — trusting the model to refuse unauthorized actions rather than enforcing permissions in code
+- [Infinite / Weakly Bounded Loop](../anti-patterns/AP09-infinite-weakly-bounded-loop.md) — the model controls when the loop ends. Enforce an iteration limit in code.
 
 ## Practical Application
 

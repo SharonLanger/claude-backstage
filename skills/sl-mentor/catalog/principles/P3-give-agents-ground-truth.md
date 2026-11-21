@@ -20,10 +20,10 @@ This principle emerged from the coding-agent community because the difference be
 
 ## Patterns That Implement This Principle
 
-- [Evidence-Based Completion](../families/F-harness-environment/) — task is complete only when execution evidence confirms it
-- [Repository-as-System-of-Record](../families/F-harness-environment/) — the repo's actual state (tests, types, lint) is truth, not the agent's memory of what it did
-- [Retry With Feedback](../families/I-reliability-recovery/) — retry includes the actual error, not just "try again"
-- [External Durable State](../families/L-memory-state/) — persist real results to external storage so future steps use facts, not recalled impressions
+- [Evidence-Based Completion](../families/D-verification-evaluation/patterns/D03-evidence-based-completion.md) — task is complete only when execution evidence confirms it
+- [Repository-Local System of Record](../families/F-harness-environment/patterns/F02-repository-local-system-of-record.md) — the repo's actual state (tests, types, lint) is truth, not the agent's memory of what it did
+- [Retry With Feedback](../families/I-reliability-recovery/patterns/retry-with-feedback.md) — retry includes the actual error, not just "try again"
+- [External Durable State](../families/L-memory-state/patterns/external-durable-state.md) — persist real results to external storage so future steps use facts, not recalled impressions
 
 ## Anti-Patterns This Prevents
 

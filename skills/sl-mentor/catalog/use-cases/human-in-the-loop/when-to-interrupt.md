@@ -92,7 +92,7 @@ The agent encounters something beyond its capability or authority.
 - Edge cases not covered by instructions
 - Actions that exceed the agent's authorized scope
 
-**Pattern:** [I-Human-Escalation](../../families/I-reliability-recovery/patterns/human-escalation.md), K05-Tiered-Autonomy (catalog entry unavailable)
+**Pattern:** [Human Escalation](../../families/I-reliability-recovery/patterns/human-escalation.md). See [Autonomy Calibration Guide](../../families/K-human-control/autonomy-calibration-guide.md) for choosing when exceptions should interrupt an otherwise autonomous run.
 
 ## Calibrating Interrupt Frequency
 
@@ -117,10 +117,10 @@ The agent encounters something beyond its capability or authority.
 | Pattern | When to Apply |
 |---------|---------------|
 | [K01-Human-in-the-Loop-Checkpoint](../../families/K-human-control/patterns/K01-human-in-the-loop-checkpoint.md) | Hard stop before irreversible actions |
-| K02-Configurable-Autonomy (catalog entry unavailable) | Let users adjust how often agents interrupt |
-| K03-Approval-Queue (catalog entry unavailable) | Batch pending approvals for efficient review |
-| K04-Graceful-Handoff (catalog entry unavailable) | Transfer control smoothly when agent escalates |
-| K05-Tiered-Autonomy (catalog entry unavailable) | Different autonomy levels for different action types |
+| [Autonomy Calibration Guide](../../families/K-human-control/autonomy-calibration-guide.md) | Set autonomy per agent and task, with intervention thresholds based on risk |
+| [Batch Approval Queue](./approval-workflows.md#batch-approval-queue) | Batch pending approvals for efficient review |
+| [Human Escalation](../../families/I-reliability-recovery/patterns/human-escalation.md) | Hand the operator the current state, attempts, and decision needed |
+| [Tiered Approval](./approval-workflows.md#tiered-approval) | Route higher-risk actions to a reviewer with the right authority |
 | [K06-Human-on-the-Loop-Monitoring](../../families/K-human-control/patterns/K06-human-on-the-loop-monitoring.md) | Async oversight without blocking execution |
 | [I-Human-Escalation](../../families/I-reliability-recovery/patterns/human-escalation.md) | Escalate on failure or uncertainty |
 | [I-Stop-Condition](../../families/I-reliability-recovery/patterns/stop-condition.md) | Define when to stop autonomous iteration |

@@ -20,10 +20,10 @@ This principle appears across every major source because all of them observed th
 
 ## Patterns That Implement This Principle
 
-- [Escalation Topology](../families/A-workflow-topology/) — choose the simplest topology that handles the task
-- [Orchestrator → Workers](../families/C-orchestration/) — use only when a single agent genuinely cannot hold the full task
-- [Confidence-Based Routing](../families/N-efficiency-routing/) — route simple tasks to simple paths, complex tasks to complex paths
-- [Plan → Execute → Verify](../families/B-task-decomposition/) — decompose only when the task exceeds single-pass capability
+- [Do You Actually Need Multi-Agent?](../families/C-orchestration/guides/do-you-need-multi-agent.md) — choose the simplest topology that handles the task
+- [Orchestrator → Workers](../families/C-orchestration/patterns/orchestrator-workers.md) — use workers when independent tasks can run in parallel or deterministic routing can assign them to specialists
+- [Confidence-Based Routing](../families/N-efficiency-routing/patterns/confidence-based-routing.md) — escalate a small model’s answer when its confidence falls below the threshold
+- [Plan → Execute](../families/B-task-decomposition/patterns/B1-plan-execute.md) — decompose only when the task exceeds single-pass capability
 
 ## Anti-Patterns This Prevents
 

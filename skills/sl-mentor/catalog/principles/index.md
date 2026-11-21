@@ -47,7 +47,7 @@ Each principle, when violated, manifests as one or more named anti-patterns.
 
 | Principle | Anti-Patterns Prevented |
 |---|---|
-| **P1** Prefer Determinism | Prompt-as-Policy, Model as Security Boundary |
+| **P1** Prefer Determinism | Prompt-as-Policy, Model as Security Boundary, Infinite / Weakly Bounded Loop |
 | **P2** Complexity Earns Its Keep | Multi-Agent by Default |
 | **P3** Give Agents Ground Truth | Giant Instruction Manual, Shared Context Everywhere |
 | **P4** Separate Generation / Verification | Self-Certified Completion |

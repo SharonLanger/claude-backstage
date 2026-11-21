@@ -6,8 +6,8 @@ You are building an agent that processes untrusted input — user messages, retr
 
 ## Quick Answer
 
-1. **Separate trust levels architecturally** — never concatenate untrusted input directly into system-level instructions. Use J03-Input-Validation-Boundary (catalog entry unavailable) to define clear boundaries.
-2. **Layer defenses** — combine input validation, output filtering, sandboxed execution, and human approval. No single defense is sufficient. Apply J09-Defense-In-Depth (catalog entry unavailable).
+1. **Separate trust levels architecturally** — never concatenate untrusted input directly into system-level instructions. Use [J06 Untrusted Context Isolation](../../families/J-security-trust/patterns/J06-untrusted-context-isolation.md) to pass validated structured data across the trust boundary.
+2. **Layer defenses** — combine input validation, output filtering, sandboxed execution, and human approval. No single defense is sufficient. See [Defense Layers](#defense-layers).
 3. **Validate outputs deterministically** — use [D01-Deterministic-Validator](../../families/D-verification-evaluation/patterns/D01-deterministic-validator.md) and [O-Schema-Validation](../../families/O-output-integration/patterns/schema-validation.md) to catch anomalous agent behavior regardless of how it was induced.
 
 ## The Lethal Trifecta
@@ -51,6 +51,7 @@ Does the agent process untrusted text?
 
 - **Deterministic checks**: Validate every action the agent wants to take against allowlists, schemas, and business rules — not against LLM judgment.
 - **Anomaly detection**: Flag actions that don't match the user's original intent (e.g., user asked to summarize an email, agent tries to forward it).
+- **Redaction and blocking**: Use an [output redactor](../../families/H-deterministic-control/never-in-a-prompt.md) for known PII patterns. [J03 Secret Isolation](../../families/J-security-trust/patterns/J03-secret-isolation.md) redacts known credential patterns in tool responses before passing them to the model. [J09 External Communication Restriction](../../families/J-security-trust/patterns/J09-external-comm-restriction.md) blocks outbound payloads that match credential patterns. These checks cover the formats they are configured to recognize.
 - **Rejection on parse failure**: Use [O-Parse-and-Reject](../../families/O-output-integration/patterns/parse-and-reject.md) to refuse malformed or unexpected outputs.
 
 ### Layer 4: Human Oversight
@@ -62,10 +63,10 @@ Does the agent process untrusted text?
 
 | Pattern | Role in Injection Defense |
 |---------|---------------------------|
-| J03-Input-Validation-Boundary (catalog entry unavailable) | Define and enforce trust boundaries on all inputs |
-| J09-Defense-In-Depth (catalog entry unavailable) | Layer multiple independent defenses |
+| [Input Boundary Controls](#layer-1-input-boundary-controls) | Separate untrusted input and check its type and length |
+| [Defense Layers](#defense-layers) | Layer multiple independent defenses |
 | [J02-Sandboxed-Execution](../../families/J-security-trust/patterns/J02-sandbox.md) | Isolate execution so injection cannot escape |
-| J06-Output-Filtering (catalog entry unavailable) | Strip sensitive data from agent outputs |
+| [Output Validation](#layer-3-output-validation) | Validate outputs, redact known patterns, and block outbound calls that match credential patterns |
 | [J11-Read-Write-Separation](../../families/J-security-trust/patterns/J11-read-write-separation.md) | Separate reading untrusted content from acting |
 | [E-Context-Isolation](../../families/E-context-engineering/patterns/context-isolation.md) | Prevent context contamination across trust levels |
 | [C-Maker-Checker](../../families/C-orchestration/patterns/maker-checker.md) | Separate planning from execution for independent review |

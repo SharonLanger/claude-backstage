@@ -124,7 +124,7 @@ Your agent system has a problem but you're not sure what's causing it. You obser
 
 **Fix Patterns**:
 - [LLM-as-Judge](../../families/D-verification-evaluation/patterns/D09-llm-as-judge.md) — Add quality-sensitive evaluation
-- Regression Suite (catalog entry unavailable) — Catch quality drops on known cases
+- [Practical Regression Workflow](../evaluation/regression-testing.md#practical-regression-workflow) — Catch quality drops on known cases
 - [Complexity-Based Model Routing](../../families/N-efficiency-routing/patterns/complexity-based-model-routing.md) — Route by difficulty, not uniformly cheap
 - [Confidence-Based Routing](../../families/N-efficiency-routing/patterns/confidence-based-routing.md) — Escalate uncertain cases to better models
 
@@ -150,7 +150,7 @@ Your agent system has a problem but you're not sure what's causing it. You obser
 
 **Fix Patterns**:
 - Start with [Prompt Chaining](../../families/A-workflow-topology/patterns/prompt-chaining.md) on the best model
-- Establish quality with Regression Suite (catalog entry unavailable)
+- Establish a quality baseline with the [Practical Regression Workflow](../evaluation/regression-testing.md#practical-regression-workflow)
 - THEN optimize with [Small Model First Escalation](../../families/N-efficiency-routing/patterns/small-model-first-escalation.md)
 - Use [Caching](../../families/N-efficiency-routing/patterns/caching.md) only after quality is stable
 

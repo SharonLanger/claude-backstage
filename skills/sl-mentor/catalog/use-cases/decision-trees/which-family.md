@@ -26,7 +26,9 @@ Is the output format wrong (invalid JSON, missing fields)?
   NO ↓
 
 Is the agent doing the right steps but getting a bad final answer?
-  YES → D: Verification (D09 LLM-as-Judge, Assertions (catalog entry unavailable))
+  YES → D: Verification
+        • D01 Deterministic Validator for known invariants
+        • D09 LLM-as-Judge for rubric-based judgments
   NO ↓
 
 Is the agent taking wrong actions or calling wrong tools?

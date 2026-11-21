@@ -23,13 +23,13 @@ Choose your entry point based on what you have:
 ### "I have a problem to solve"
 
 1. Check the **Quick Lookup by Problem** table below — it maps common problems to families and anti-patterns
-2. If no match, go to `use-cases/README.md` — it has a master lookup table with 30+ scenarios mapped to families
+2. If no match, go to `use-cases/README.md` — its scenario table maps problems to families
 3. Still no match — check `use-cases/decision-trees/which-family.md` for a guided decision tree
 
 ### "I'm diagnosing a failure"
 
 1. Go to `anti-patterns/README.md` — check the **Detection at a Glance** table to match symptoms
-2. Open the matching anti-pattern file — it has Counter-Patterns and Migration Path sections
+2. Open the matching anti-pattern file and read its Counter-Patterns section
 3. Follow the counter-pattern links to the pattern files that fix it
 
 ### "I want to understand WHY a pattern works"
@@ -145,7 +145,7 @@ Some problems span multiple families. When one family's patterns don't fully sol
 
 | Principle | Governs families | Violated by anti-patterns |
 |---|---|---|
-| P1 Prefer Determinism | H, G, O | AP02, AP09 |
+| P1 Prefer Determinism | H, G, O | AP02, AP06, AP09 |
 | P2 Complexity Earns Its Keep | C, B, N | AP05 |
 | P3 Give Agents Ground Truth | E, F, L | AP03, AP07 |
 | P4 Separate Generation From Verification | D, C, A | AP01 |

@@ -403,11 +403,11 @@ Cross-reference: `principles/index.md` maps principles × families × anti-patte
 
 ## Source Registry Summary
 
-25 verified sources across 5 categories:
+The registry lists 25 sources across four categories.
 
 | Category | Sources | Examples |
 |---|---|---|
-| Primary (high-authority) | 17 | Anthropic (3), OpenAI (5), Google (1), Microsoft (1), AWS (5), OWASP (3) |
+| Primary (high-authority) | 17 | Anthropic (3), OpenAI (5), Google (1), Microsoft (1), AWS (4), OWASP (3) |
 | Practitioner / Expert | 6 | Hamel Husain (4), Simon Willison (2) |
 | Academic | 1 | Stanford CS224G |
 | Open Source | 1 | AWS Samples repo |

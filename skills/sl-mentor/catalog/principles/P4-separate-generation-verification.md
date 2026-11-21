@@ -21,11 +21,11 @@ This principle appears across nearly every source because it maps directly to a 
 
 ## Patterns That Implement This Principle
 
-- [Generator → Critic → Revision](../families/D-verification-evaluation/) — separate model instance critiques output before final acceptance
-- [Independent Verifier](../families/D-verification-evaluation/) — verification performed by a structurally separate system
-- [Evaluator-Optimizer Loop](../families/A-workflow-topology/) — cyclic topology where evaluation drives re-generation
-- [Parallel Independent Review](../families/C-orchestration/) — multiple independent reviewers assess the same output
-- [Deterministic Validation Gate](../families/H-deterministic-control/) — code-based validators that cannot be influenced by the generator's reasoning
+- [Generator → Critic → Revision](../families/D-verification-evaluation/patterns/D06-generator-critic.md) — separate model instance critiques output before final acceptance
+- [Independent Verifier](../families/D-verification-evaluation/patterns/D04-independent-verifier.md) — verification performed by a structurally separate system
+- [Evaluator-Optimizer Loop](../families/A-workflow-topology/patterns/evaluator-optimizer.md) — cyclic topology where evaluation drives re-generation
+- [Parallel Independent Review](../families/D-verification-evaluation/patterns/D08-multi-review-ensemble.md) — multiple independent reviewers assess the same output
+- [Deterministic Validation Gate](../families/H-deterministic-control/patterns/H02-programmatic-gate.md) — code-based validators that cannot be influenced by the generator's reasoning
 
 ## Anti-Patterns This Prevents
 

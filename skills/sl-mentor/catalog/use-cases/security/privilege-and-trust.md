@@ -80,10 +80,10 @@ For each agent in the system, ask:
 | Pattern | Role in Privilege Design |
 |---------|--------------------------|
 | [J01-Least-Privilege](../../families/J-security-trust/patterns/J01-least-privilege.md) | Core principle — minimum permissions per component |
-| J02-Scoped-Tool-Access (catalog entry unavailable) | Restrict tool availability per agent role |
+| [G03 Tool Gateway](../../families/G-tool-action-design/patterns/G03-tool-gateway.md) | Enforce which tools each agent role can call |
 | [J02-Sandboxed-Execution](../../families/J-security-trust/patterns/J02-sandbox.md) | Isolated environments for untrusted operations |
 | [J03-Credential-Isolation](../../families/J-security-trust/patterns/J03-secret-isolation.md) | Separate secrets from agent context |
-| J10-Rate-Limit-Budget (catalog entry unavailable) | Cap resource consumption per agent |
+| [Budgeted Agent Loop](../../families/N-efficiency-routing/patterns/budgeted-agent-loop.md) | Cap steps, tokens, time, or cost for each run |
 | [J11-Read-Write-Separation](../../families/J-security-trust/patterns/J11-read-write-separation.md) | Architectural split between readers and writers |
 | [J08-Human-Approval-Gate](../../families/J-security-trust/patterns/J08-human-approval-gate.md) | Human confirmation for privilege escalation |
 | [E-Context-Isolation](../../families/E-context-engineering/patterns/context-isolation.md) | Prevent data leakage across context boundaries |

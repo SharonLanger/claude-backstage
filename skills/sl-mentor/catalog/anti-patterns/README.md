@@ -82,7 +82,7 @@ Each anti-pattern violates one or more of the 8 cross-cutting principles in `../
 | AP03 | P5 — Context Is a Designed Resource |
 | AP04 | P8 — Failures Should Improve the Harness; P3 — Give Agents Ground Truth |
 | AP05 | P2 — Complexity Must Earn Its Keep |
-| AP06 | P6 — Security Boundaries Belong Outside the Model |
+| AP06 | P6 — Security Boundaries Belong Outside the Model, P1 — Prefer Determinism Where the Problem Is Deterministic |
 | AP07 | P5 — Context Is a Designed Resource |
 | AP08 | P7 — Measure Real Task Success |
 | AP09 | P1 — Prefer Determinism Where the Problem Is Deterministic |

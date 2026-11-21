@@ -7,8 +7,8 @@ You need to implement approval workflows in an agent system — structured point
 ## Quick Answer
 
 1. **Design gates as explicit workflow nodes** — approval checkpoints should be first-class elements in your agent topology, not afterthoughts. Use [K01-Human-in-the-Loop-Checkpoint](../../families/K-human-control/patterns/K01-human-in-the-loop-checkpoint.md).
-2. **Make approvals informative** — present reviewers with a clear summary of what the agent did, what it wants to do next, and what the risks are. Use K04-Graceful-Handoff (catalog entry unavailable).
-3. **Batch and queue** — when multiple actions need approval, queue them for efficient batch review rather than interrupting per-action. Apply K03-Approval-Queue (catalog entry unavailable).
+2. **Make approvals informative** — present reviewers with the relevant context, proposed action, and expected effects. Use [K04 Review Before Side Effect](../../families/K-human-control/patterns/K04-review-before-side-effect.md).
+3. **Batch and queue** — when multiple actions need approval, queue them for efficient batch review rather than interrupting per-action. See [Batch Approval Queue](#batch-approval-queue).
 
 ## Approval Workflow Design
 
@@ -102,22 +102,22 @@ While waiting for approval, the system must:
 
 ### Audit and Compliance
 
-- **Log every approval decision** — who approved, when, what context they saw.
+- **Log the full approval lifecycle** — record the request, who made the decision, when it was made, what context the reviewer saw, and whether the action ran or was cancelled. See [J08 Human Approval Gate](../../families/J-security-trust/patterns/J08-human-approval-gate.md).
 - **Record rejections with reasons** — helps improve future agent proposals.
 - **Maintain approval chain** — for regulated environments, preserve the full sequence of reviews.
-- **Make approvals non-repudiable** — reviewer cannot deny having approved.
+- **Protect approval records** — store decisions in an append-only log outside the agent’s reach. [J04 Tool Gateway](../../families/J-security-trust/patterns/J04-tool-gateway.md) describes this storage for tool calls. Independently detecting tampering requires a separate control.
 
 ## Relevant Patterns
 
 | Pattern | Role in Approval Workflows |
 |---------|----------------------------|
 | [K01-Human-in-the-Loop-Checkpoint](../../families/K-human-control/patterns/K01-human-in-the-loop-checkpoint.md) | Core mechanism — block execution until approved |
-| K03-Approval-Queue (catalog entry unavailable) | Batch pending approvals for efficient review |
-| K04-Graceful-Handoff (catalog entry unavailable) | Present clear context when handing to reviewer |
-| K05-Tiered-Autonomy (catalog entry unavailable) | Different approval requirements by action tier |
-| K02-Configurable-Autonomy (catalog entry unavailable) | Allow organizations to adjust gate placement |
+| [Batch Approval Queue](#batch-approval-queue) | Batch pending approvals for efficient review |
+| [K04 Review Before Side Effect](../../families/K-human-control/patterns/K04-review-before-side-effect.md) | Present the proposed action and its effects before execution |
+| [Tiered Approval](#tiered-approval) | Set reviewer authority and approval requirements by action risk |
+| [Autonomy Calibration Guide](../../families/K-human-control/autonomy-calibration-guide.md) | Choose the autonomy level for each type of task |
 | [J08-Human-Approval-Gate](../../families/J-security-trust/patterns/J08-human-approval-gate.md) | Security-motivated approval requirements |
-| J07-Audit-Trail (catalog entry unavailable) | Log all approval decisions for compliance |
+| [Audit and Compliance](#audit-and-compliance) | Record approvals, rejections, and review context across the approval lifecycle |
 | [B5-Milestone-Checkpoint](../../families/B-task-decomposition/patterns/B5-milestone-checkpoint.md) | Natural checkpoint at task milestones |
 | [L-Checkpoint-State](../../families/L-memory-state/patterns/checkpoint-state.md) | Preserve agent state while awaiting approval |
 | [C-Maker-Checker](../../families/C-orchestration/patterns/maker-checker.md) | Separate proposer from approver |

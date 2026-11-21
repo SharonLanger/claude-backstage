@@ -26,12 +26,11 @@ You have deployed (or are about to deploy) an agent system and need to know whet
    - Pattern: [Schema Validation (output)](../../families/O-output-integration/patterns/schema-validation.md)
 
 2. **Programmatic correctness checks** — Does the output satisfy known invariants?
-   - Pattern: D02 Assertion-Based Validator (catalog entry unavailable)
+   - Pattern: [D01 Deterministic Validator](../../families/D-verification-evaluation/patterns/D01-deterministic-validator.md)
    - Pattern: [Programmatic Postcondition](../../families/O-output-integration/patterns/programmatic-postcondition.md)
 
 3. **Behavioral benchmarks** — Given known inputs, does the system produce known-good outputs?
-   - Pattern: D08 Regression Suite (catalog entry unavailable)
-   - See also: [regression-testing.md](./regression-testing.md)
+   - Guide: [Practical Regression Workflow](./regression-testing.md#practical-regression-workflow)
 
 4. **LLM-as-judge** — For subjective quality where no ground truth exists
    - Pattern: [D09 LLM-as-Judge](../../families/D-verification-evaluation/patterns/D09-llm-as-judge.md)
@@ -44,9 +43,8 @@ You have deployed (or are about to deploy) an agent system and need to know whet
 
 | Pattern | Family | Role in Evaluation |
 |---------|--------|-------------------|
-| [Deterministic Validator](../../families/D-verification-evaluation/patterns/D01-deterministic-validator.md) | D | Cheapest, fastest check — always start here |
-| Assertion-Based Validator (catalog entry unavailable) | D | Encodes domain invariants as pass/fail |
-| Regression Suite (catalog entry unavailable) | D | Catches known-good → broken transitions |
+| [D01 Deterministic Validator](../../families/D-verification-evaluation/patterns/D01-deterministic-validator.md) | D | Start with low-cost pass/fail checks for schemas and known invariants |
+| [Practical Regression Workflow](./regression-testing.md#practical-regression-workflow) | — | Catch previously passing cases that now fail |
 | [LLM-as-Judge](../../families/D-verification-evaluation/patterns/D09-llm-as-judge.md) | D | Evaluates subjective quality at scale |
 | [Structured Trace](../../families/M-observability-debugging/patterns/M01-structured-trace.md) | M | Makes failures diagnosable |
 | [Trace-Linked Eval](../../families/M-observability-debugging/patterns/M08-trace-linked-eval.md) | M | Connects eval results to execution traces |

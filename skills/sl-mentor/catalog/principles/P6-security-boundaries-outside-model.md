@@ -25,10 +25,10 @@ This principle has the strongest cross-source convergence of any in this catalog
 
 ## Patterns That Implement This Principle
 
-- [Least-Privilege Tool Access](../families/G-tool-action-design/) — tools expose minimal capabilities; permissions are granted by the harness, not the model
-- [Deterministic Validation Gate](../families/H-deterministic-control/) — security-relevant decisions use code-level checks, not prompt-level instructions
-- [Human Approval Gate](../families/K-human-control/) — irreversible or high-privilege actions require explicit human authorization
-- [Scoped Tool Permissions](../families/J-security-trust/) — tool access is narrowed to the minimum required for each task
+- [Least-Privilege Tool Access](../families/J-security-trust/patterns/J01-least-privilege.md) — tools expose minimal capabilities; permissions are granted by the harness, not the model
+- [Deterministic Validation Gate](../families/H-deterministic-control/patterns/H02-programmatic-gate.md) — security-relevant decisions use code-level checks, not prompt-level instructions
+- [Human Approval Gate](../families/J-security-trust/patterns/J08-human-approval-gate.md) — irreversible or high-privilege actions require explicit human authorization
+- [Scoped Tool Permissions](../families/J-security-trust/patterns/J10-capability-minimization.md) — tool access is narrowed to the minimum required for each task
 
 ---
 
