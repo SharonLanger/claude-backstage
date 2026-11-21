@@ -6,6 +6,6 @@ Documentation will be organized by topic, with an overview and links to deeper e
 
 ## Available documentation
 
-No standalone documentation has been added to this section yet.
+- [Design-pattern research](design-pattern-research/README.md) — topics, reviewed methods, and evidence for AI-assisted coding.
 
 [← Back to Claude Backstage](../README.md)
