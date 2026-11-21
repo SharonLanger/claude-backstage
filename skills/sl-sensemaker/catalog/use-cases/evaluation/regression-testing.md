@@ -4,7 +4,7 @@
 
 You changed your agent's prompts, tools, model version, or orchestration logic and need to verify you didn't break something that was previously working. You want a systematic approach to regression detection — not just "run it again and see if it looks okay."
 
-For a coding agent editing the test that defines success, see [AP10](../../anti-patterns/AP10-overpowered-coding-agent.md) for write scope and [D02](../../families/D-verification-evaluation/patterns/D02-test-before-done.md) for independently authored checks. The test must be protected during the fix for it to serve as a baseline.
+For a coding agent changing tests during a fix, start with [human review](../../families/D-verification-evaluation/patterns/D05-review-pass.md#in-a-session-review-ai-changes-before-accepting-them): inspect the requirement, assertions, removed checks, and neighboring behavior. A legitimate behavior change can require new expectations. For an unchanged trusted baseline, see [D02](../../families/D-verification-evaluation/patterns/D02-test-before-done.md); use [AP10](../../anti-patterns/AP10-overpowered-coding-agent.md) when write scope needs restriction. An independently preserved baseline is distinct from an agent-edited test.
 
 ## Quick Answer
 

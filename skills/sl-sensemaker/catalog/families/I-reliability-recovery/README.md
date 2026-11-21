@@ -4,6 +4,11 @@
 
 ---
 
+## Practitioner entry points
+
+- [Recover a drifting session](patterns/fresh-context-retry.md#in-a-session-recover-decisions-without-losing-useful-work) — the session returns to an abandoned approach or forgets a decision.
+- [Turn feedback into a check](patterns/retry-with-feedback.md#in-a-session-turn-feedback-into-a-check) — the agent agrees with feedback but the fix is still wrong.
+
 ## Directory Tree
 
 ```
@@ -72,7 +77,7 @@ What you fall into if you misapply this pattern.
 
 ---
 
-If an agent reintroduces a rejected approach and accumulated attempts may be influencing the next try, see [Fresh-Context Retry](patterns/fresh-context-retry.md). If the failure is still unexplained, see [Root-Cause-Before-Retry](patterns/root-cause-before-retry.md). These entries cover retry workflows. Persistent rejection tracking and guidance for intentionally unusual code are separate gaps.
+If an agent reintroduces a rejected approach and accumulated attempts may be influencing the next try, see [Fresh-Context Retry](patterns/fresh-context-retry.md). If the failure is still unexplained, see [Root-Cause-Before-Retry](patterns/root-cause-before-retry.md). For a person in a chat or CLI, start with the session-recovery subsection above. It preserves rejected alternatives and useful work; a guarantee of permanent compliance and code-local enforcement remain outside its scope.
 
 ## Failure Mode → Recovery Pattern
 

@@ -58,14 +58,30 @@ Choose your entry point based on what you have:
 
 ---
 
+## Working with an assistant in a session
+
+Start with the observable problem. These sections give actions a person can take in a chat or CLI; a custom agent harness is not required. Read the destination and its limits before recommending it.
+
+| You observe… | Read first |
+|---|---|
+| The session returns to an abandoned approach or forgets a decision | [Recover a drifting session](families/I-reliability-recovery/patterns/fresh-context-retry.md#in-a-session-recover-decisions-without-losing-useful-work) |
+| The AI change is too large to review | [Slice a change for review](families/B-task-decomposition/patterns/B5-milestone-checkpoint.md#in-a-session-slice-a-change-for-review) |
+| The agent agrees with feedback but the fix is still wrong | [Turn feedback into a check](families/I-reliability-recovery/patterns/retry-with-feedback.md#in-a-session-turn-feedback-into-a-check) |
+| We use the same domain term but expect different behavior | [Clarify domain terms](families/E-context-engineering/guides/clarify-domain-terms.md) |
+| Tests pass after the agent changed assertions; I cannot explain the diff | [Review AI changes](families/D-verification-evaluation/patterns/D05-review-pass.md#in-a-session-review-ai-changes-before-accepting-them) |
+
+For more phrasings and partial matches, see the [symptom bridge](../bridge-file.md). A matching symptom is not a confirmed diagnosis.
+
+---
+
 ## Quick Lookup by Problem
 
 | You're dealing with… | Start here |
 |---|---|
-| Agent changes or deletes the regression test | [AP10 — scope write access](anti-patterns/AP10-overpowered-coding-agent.md), [D02 — verify against protected tests](families/D-verification-evaluation/patterns/D02-test-before-done.md) |
-| Long session loses decisions or requirements | [Context Compaction](families/E-context-engineering/patterns/context-compaction.md), [Repository-as-System-of-Record](families/E-context-engineering/patterns/repository-as-system-of-record.md) |
-| Agent keeps proposing a rejected approach | [Fresh-Context Retry for accumulated failed attempts](families/I-reliability-recovery/patterns/fresh-context-retry.md), [Root-Cause-Before-Retry when the failure is unclear](families/I-reliability-recovery/patterns/root-cause-before-retry.md) |
-| Diff is too large to review | [B5 — verifiable milestones](families/B-task-decomposition/patterns/B5-milestone-checkpoint.md), [K01 — human checkpoints](families/K-human-control/patterns/K01-human-in-the-loop-checkpoint.md), [K05 — preview before writing](families/K-human-control/patterns/K05-draft-preview-before-apply.md) |
+| Agent changes or deletes the regression test | [Human review](families/D-verification-evaluation/patterns/D05-review-pass.md#in-a-session-review-ai-changes-before-accepting-them), [AP10 — scope write access](anti-patterns/AP10-overpowered-coding-agent.md), [D02 — verify against protected tests](families/D-verification-evaluation/patterns/D02-test-before-done.md) |
+| Long session loses decisions or requirements | [Session recovery](families/I-reliability-recovery/patterns/fresh-context-retry.md#in-a-session-recover-decisions-without-losing-useful-work), [Context Compaction](families/E-context-engineering/patterns/context-compaction.md), [Repository-as-System-of-Record](families/E-context-engineering/patterns/repository-as-system-of-record.md) |
+| Agent keeps proposing a rejected approach | [Session recovery with a checked decision handoff](families/I-reliability-recovery/patterns/fresh-context-retry.md#in-a-session-recover-decisions-without-losing-useful-work), [Root-Cause-Before-Retry when the failure is unclear](families/I-reliability-recovery/patterns/root-cause-before-retry.md) |
+| Diff is too large to review | [B5 — reviewable milestones](families/B-task-decomposition/patterns/B5-milestone-checkpoint.md#in-a-session-slice-a-change-for-review), [K01 — human checkpoints](families/K-human-control/patterns/K01-human-in-the-loop-checkpoint.md), [K05 — preview before writing](families/K-human-control/patterns/K05-draft-preview-before-apply.md) |
 | Project instruction file has grown too large | [Map-Not-Manual](families/E-context-engineering/patterns/map-not-manual.md), [AP03 — Giant Instruction Manual](anti-patterns/AP03-giant-instruction-manual.md) |
 | Routine task needs the same instructions every time | [F07 — Agent Skills / Procedures](families/F-harness-environment/patterns/F07-agent-skills-procedures.md) |
 | Agent loops or repeats mistakes | [I — Reliability](families/I-reliability-recovery/), [H — Deterministic Control](families/H-deterministic-control/), [AP04](anti-patterns/AP04-retry-without-new-information.md), [AP09](anti-patterns/AP09-infinite-weakly-bounded-loop.md) |

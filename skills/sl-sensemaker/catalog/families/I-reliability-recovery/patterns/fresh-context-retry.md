@@ -11,6 +11,19 @@ As an agent accumulates conversation history across multiple failed attempts, th
 
 Discard the accumulated conversation context entirely and retry the task from a clean state, as if it were the first attempt. The new run starts with only the original task description — or a freshly constructed prompt incorporating only the actionable lessons learned — without the failure history weighing on it.
 
+## In a session: recover decisions without losing useful work
+
+Use this when a conversation keeps restoring a rejected approach. Length alone is not a reason to reset. If the agent is still following the goal and uncovering different defects, continue investigating.
+
+1. Point to one mismatch between the latest proposal and the agreed requirement. Resolve an undecided or contradictory requirement first.
+2. Before changing conversations, ask for a short handoff: current goal, governing decision and rationale, rejected approach and why, useful findings with file locations, edits worth keeping, open questions, and the next observable check. Review it against the actual files and original decision. For chat-only work, keep a reviewed note you can paste.
+3. If the conversation is aligned but buried in output, summarize around those facts. If it repeatedly returns to the same rejected premise, start a fresh conversation with the checked handoff. A new chat does not revert files: inspect and preserve the useful diff separately. Do not discard edits just to clear conversation history.
+4. Ask the agent to apply the decision to one distinguishing example before editing. Afterward, inspect the actual result and any changed checks. A correct explanation is not evidence that the implementation works.
+
+**Illustrative prompt:** “We rejected alphabetical ordering; the agreed rule is input order. Before editing, predict the output for Zebra followed by Apple. Keep the working escaped-title fix. Read the ordering decision and show which check will distinguish these behaviors.”
+
+This is our practitioner adaptation of research method PAT-0001, informed by Anthropic's session guidance. It is not a guaranteed cure or a diagnosis of model attention. A summary can carry forward a mistaken rule; a fresh chat cannot settle a product decision. For terminology disagreements, use [Clarify domain terms](../../E-context-engineering/guides/clarify-domain-terms.md).
+
 ## Solution Structure
 
 <details>
@@ -69,14 +82,14 @@ function freshContextRetry(originalTask, failureHistory, maxFreshAttempts):
 
 # Trigger heuristics for switching to this pattern:
 # - same error repeated N times despite feedback injection
-# - context length > 70% of window
+# - a checked handoff is ready and repeated failures revisit the same premise
 # - model output quality is degrading across retries
 ```
 
 ## When to Use
 
 - The same error recurs across multiple feedback-enriched retries, suggesting the model is stuck in a local failure mode reinforced by context.
-- Context length is approaching the model's window limit and early content is being dropped.
+- Repeated mistakes persist after clarifying the requirement; check whether to summarize useful context or restart with a reviewed handoff.
 - Output quality is visibly degrading across iterations (the model seems confused, not just wrong).
 - A prior attempt produced content that directly contradicts the task goal and cannot easily be counteracted by appending new instructions.
 
@@ -85,14 +98,14 @@ function freshContextRetry(originalTask, failureHistory, maxFreshAttempts):
 - Failures are caused by missing information or capability, not context pollution — discarding context does not add capability.
 - The task is stateful and prior context contains essential information (use [Checkpoint and Resume](checkpoint-and-resume.md) to preserve state, then discard only the failure noise).
 - The failure is transient (network, rate limit) — context is not the problem; just retry with backoff.
-- Only one or two retries have been attempted — it is too early to conclude context is the problem.
+- The current attempt is making verifiable progress. There is no universal retry count that diagnoses a context problem.
 
 ## Trade-offs
 
 | Pro | Con |
 |-----|-----|
 | Breaks the failure cycle when context accumulation is the root cause | Loses the conversation history — any useful information must be explicitly extracted first |
-| Restores the model to its default reasoning without anchoring bias | Distilling lessons adds complexity; done poorly, it carries forward the same bad assumptions |
+| Gives a new attempt less failed-history context to reuse | Distilling lessons adds complexity; done poorly, it carries forward the same bad assumptions |
 | Can recover from confusing multi-turn dialogues | A fresh context does not fix a fundamental capability gap or a bad original prompt |
 | Works across model sessions and agent restarts | Must be paired with Checkpoint and Resume if work was done before the context reset |
 
@@ -111,8 +124,14 @@ A coding agent is asked to refactor a module. After three feedback-injected retr
 
 - [Retry Without New Information](../anti-patterns/retry-without-new-information.md) — fresh-context retry without lesson distillation is this anti-pattern in disguise
 
+## Evidence scope
+
+The session procedure is guidance, not a measured repository-level success rate. Preserving a rejected alternative and checking a distinguishing input are our adaptations. The structural retry loop above remains useful when implementing recovery in a harness.
+
 ## Sources
 
 - **Anthropic Engineering** — AI safety company; authors of Claude. [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)
 - **OpenAI Engineering** — AI research company; authors of GPT and Codex. [A Practical Guide to Building AI Agents](https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/)
 - **AWS Prescriptive Guidance** — Amazon Web Services architecture team; defines Validation-Retry Loop and Structured Error Classification. [Agentic AI Patterns](https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-patterns/agent-patterns.html)
+
+- Anthropic — [Best practices for Claude Code](https://code.claude.com/docs/en/best-practices#steer-the-session): session steering and separating conversation recovery from file changes; consulted 2026-11-21.

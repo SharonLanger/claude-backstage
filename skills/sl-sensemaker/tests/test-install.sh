@@ -27,7 +27,21 @@ grep -Fq 'test suite is authored independently of the agent and cannot be modifi
 grep -Fq 'CSS styling task' "$cache/catalog/$ap"
 grep -Fq 'Read-only access to non-CSS files' "$cache/catalog/$ap"
 printf 'Covered route reaches %s and %s\n' "catalog/$ap" "catalog/$test_pattern"
+# Practical routes must reach files actually copied into the installed catalog.
+check_practitioner_route() {
+    symptom=$1
+    target=$2
+    grep -F "$symptom" "$cache/bridge-file.md" | grep -Fq "(catalog/$target)"
+    test -f "$cache/catalog/${target%%#*}"
+}
+check_practitioner_route 'deletes failing tests' 'families/D-verification-evaluation/patterns/D05-review-pass.md#in-a-session-review-ai-changes-before-accepting-them'
+check_practitioner_route 'approach we explicitly rejected' 'families/I-reliability-recovery/patterns/fresh-context-retry.md#in-a-session-recover-decisions-without-losing-useful-work'
+check_practitioner_route 'the diff is enormous' 'families/B-task-decomposition/patterns/B5-milestone-checkpoint.md#in-a-session-slice-a-change-for-review'
+check_practitioner_route 'My feedback produces' 'families/I-reliability-recovery/patterns/retry-with-feedback.md#in-a-session-turn-feedback-into-a-check'
+check_practitioner_route 'Domain experts and developers' 'families/E-context-engineering/guides/clarify-domain-terms.md'
+printf 'Five practitioner routes reach installed guidance.\n'
 test -z "$(find "$cache" -name practitioner-coverage.md -print)"
+test -z "$(find "$cache" -name practitioner-intake-batch-1.md -print)"
 
 # Simulate stale installed content and a user addition between installs.
 printf 'stale file\n' > "$cache/catalog/$ap"

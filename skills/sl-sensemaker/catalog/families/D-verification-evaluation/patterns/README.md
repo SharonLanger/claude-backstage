@@ -4,6 +4,10 @@ Navigation hub for the 12 pattern files in this folder.
 
 ---
 
+## Practitioner entry points
+
+- [Review AI changes](D05-review-pass.md#in-a-session-review-ai-changes-before-accepting-them) — tests pass after the agent changed assertions; I cannot explain the diff.
+
 ## Key Insight
 
 Verification must be externalized. Per Hamel Husain & Shreya Shankar: run end-to-end task success (D11) first to confirm something is actually broken, then use step-level diagnostics (D12) to find which step caused it. Never design targeted evals before you have inspected real failing traces.

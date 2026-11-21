@@ -57,6 +57,7 @@ Connect each substantive claim to the source passage that supports it or label i
 | 15 | OWASP | Top 10 for Agentic Applications 2026 | https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/ |
 | 16 | OWASP | LLM Top 10 | https://genai.owasp.org/llm-top-10/ |
 | 17 | OWASP | Prompt Injection | https://genai.owasp.org/llmrisk/llm01-prompt-injection/ |
+| 26 | Anthropic | Best practices for Claude Code | https://code.claude.com/docs/en/best-practices |
 
 ### Practitioner / Expert Sources
 
@@ -68,18 +69,24 @@ Connect each substantive claim to the source passage that supports it or label i
 | 21 | Hamel Husain & Shreya Shankar | Why Is Error Analysis Important | https://hamel.dev/blog/posts/evals-faq/why-is-error-analysis-so-important-in-llm-evals-and-how-is-it-performed.html |
 | 22 | Simon Willison | The Lethal Trifecta for AI Agents | https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/ |
 | 23 | Simon Willison | Living Dangerously with Claude | https://simonwillison.net/2025/Oct/22/living-dangerously-with-claude/ |
+| 27 | Matt Pocock | The /to-tickets Skill | https://www.aihero.dev/skills-to-tickets |
+| 28 | Matt Pocock | The /domain-modeling Skill | https://www.aihero.dev/skills-domain-modeling |
 
 ### Academic / Educational
 
 | # | Institution | Title | URL |
 |---|---|---|---|
 | 24 | Stanford | CS224G — Agentic Design Patterns | https://web.stanford.edu/class/cs224g/2025/lectures/Agentic_Design_Patterns.pdf |
+| 29 | Ivett Ördög / Samman Coaching | ROSE Feedback | https://sammancoaching.org/learning_hours/agentic_engineering/rose_feedback.html |
 
 ### Open Source
 
 | # | Org | Title | URL |
 |---|---|---|---|
 | 25 | AWS Samples | Agentic Design Patterns Repository | https://github.com/aws-samples/sample-agentic-design-patterns |
+| 30 | Moby / Docker maintainers | AI Usage Policy (pinned revision) | https://github.com/moby/.github/blob/512ca97347590b4ecaf892adaf780797b1e637b9/AI_POLICY.md |
+
+Sources 26–30 were checked on 2026-11-21 for the practitioner intake. They are guidance or project policy, not measured evidence of universal effectiveness. The modified ROSE session subsection in Retry-With-Feedback carries its own CC BY-SA 4.0 attribution; other sources are summarized with newly written examples.
 
 ---
 
@@ -90,14 +97,14 @@ Which sources are most relevant to each family. When writing a pattern file, cit
 | Family | Primary Sources (by registry #) | Why |
 |---|---|---|
 | **A — Workflow Topology** | 1, 5, 9, 12, 10 | Anthropic defines the topology taxonomy; Google/AWS/OpenAI/Microsoft validate it |
-| **B — Task Decomposition** | 1, 4, 9, 24 | Anthropic+Google define decomposition; OpenAI harness drives plan→execute; Stanford/Ng teaches planning |
+| **B — Task Decomposition** | 1, 4, 9, 24, 26, 27 | Anthropic+Google define decomposition; OpenAI harness drives plan→execute; Stanford/Ng teaches planning; Pocock adds reviewable tickets |
 | **C — Orchestration** | 5, 8, 10, 9, 12 | OpenAI Symphony + Guide; Microsoft distributed-systems framing; Google coordinator patterns |
-| **D — Verification** | 3, 18, 19, 20, 21, 9 | Anthropic evals guide; Hamel/Shreya evaluation methodology; Google review/critique patterns |
-| **E — Context Engineering** | 2, 4, 10, 9 | Anthropic coined context engineering; OpenAI map-not-manual; Microsoft minimal-context handoff |
+| **D — Verification** | 3, 18, 19, 20, 21, 9, 26, 30 | Anthropic evals guide; Hamel/Shreya evaluation methodology; Google review/critique patterns; Moby gives project-specific contributor accountability |
+| **E — Context Engineering** | 2, 4, 10, 9, 26, 28 | Anthropic coined context engineering; OpenAI map-not-manual; Microsoft minimal-context handoff; Pocock clarifies domain language; Anthropic covers session practice |
 | **F — Harness Engineering** | 4, 6, 7, 8 | OpenAI coined and defined harness engineering across 4 articles |
 | **G — Tool Design** | 5, 14, 12, 13 | OpenAI agent guide tool design; AWS MCP tool scope + agent patterns + security |
 | **H — Deterministic Control** | 13, 4, 1, 12 | AWS deterministic-override principle; OpenAI mechanical enforcement; Anthropic gate patterns |
-| **I — Reliability** | 12, 4, 9, 25 | AWS validation-retry + error classification; OpenAI bounded loops; Google loop termination |
+| **I — Reliability** | 12, 4, 9, 25, 26, 29 | AWS validation-retry + error classification; OpenAI bounded loops; Google loop termination; Anthropic session recovery; ROSE structures feedback |
 | **J — Security** | 22, 23, 15, 16, 17, 13 | Simon Willison lethal trifecta; OWASP agentic+LLM top 10 + injection; AWS security design |
 | **K — Human Control** | 9, 5, 10, 15 | Google human-in-the-loop; OpenAI guide; Microsoft human participation; OWASP oversight |
 | **L — Memory & State** | 10, 13, 9, 4 | Microsoft external persistent state; AWS session isolation + shared memory; Google context persistence |

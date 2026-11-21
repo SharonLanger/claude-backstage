@@ -4,6 +4,10 @@ Navigation hub for the 6 pattern files in this family.
 
 ---
 
+## Practitioner entry points
+
+- [Slice a change for review](B5-milestone-checkpoint.md#in-a-session-slice-a-change-for-review) — the AI change is too large to review.
+
 ## Directory Tree
 
 ```

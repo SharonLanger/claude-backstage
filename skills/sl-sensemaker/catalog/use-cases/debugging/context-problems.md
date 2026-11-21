@@ -12,6 +12,8 @@ Your agent loses track of earlier information, ignores instructions that were pr
 
 For an agreed decision missing from a long session, check what history is still available and whether there is a current project record. [Context Compaction](../../families/E-context-engineering/patterns/context-compaction.md) applies to available history. [Repository-as-System-of-Record](../../families/E-context-engineering/patterns/repository-as-system-of-record.md) applies when the user can maintain project files.
 
+For a person in a chat or CLI, [session recovery](../../families/I-reliability-recovery/patterns/fresh-context-retry.md#in-a-session-recover-decisions-without-losing-useful-work) gives the checked handoff and summary/reset choice. If a term or requirement is unresolved, use [domain clarification](../../families/E-context-engineering/guides/clarify-domain-terms.md) first.
+
 ## Decision Guide
 
 ```
