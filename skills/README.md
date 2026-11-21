@@ -2,9 +2,9 @@
 
 Reusable instructions and tools that teach Claude Code how to perform specific tasks. Each skill's README covers installation, usage, examples, and requirements.
 
-### [SL Mentor](sl-mentor/README.md)
+### [SL Sensemaker](sl-sensemaker/README.md)
 
-Describe an AI agent problem with `/sl-mentor` and get a next step supported by a local catalog entry. The README includes the one-script install and a prompt to try.
+Start a conversation with `/sl-sensemaker` about a problem you’re facing with an LLM or AI agent. It helps you understand what happened and choose a next step grounded in the local pattern catalog.
 
 ### [SL SVG Diagram](sl-svg-diagram/README.md)
 

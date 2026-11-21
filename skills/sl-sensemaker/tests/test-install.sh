@@ -6,11 +6,12 @@ sandbox=$(mktemp -d)
 trap 'rm -rf "$sandbox"' EXIT
 test_home="$sandbox/test home"
 cache="$test_home/.cache/sl-mentor"
-entry="$test_home/.claude/skills/sl-mentor/SKILL.md"
+entry="$test_home/.claude/skills/sl-sensemaker/SKILL.md"
 
 cd "$sandbox"
 env HOME="$test_home" "$skill/setup.sh"
 cmp "$skill/SKILL.md" "$entry"
+grep -Fxq 'name: sl-sensemaker' "$entry"
 diff -r "$skill/catalog" "$cache/catalog"
 cmp "$skill/bridge-file.md" "$cache/bridge-file.md"
 cmp "$skill/catalog-inventory.md" "$cache/catalog-inventory.md"
@@ -36,5 +37,5 @@ printf 'Second install restored the entry and preserved the addition. No nested 
 
 mv "$cache/catalog" "$sandbox/absent-catalog"
 test ! -f "$cache/catalog/catalog-lookup.md"
-grep -F 'From your Claude Backstage checkout, run' "$entry"
+grep -F './skills/sl-sensemaker/setup.sh`, then try `/sl-sensemaker' "$entry"
 printf 'Missing-catalog fixture created and installed recovery instruction verified.\n'
