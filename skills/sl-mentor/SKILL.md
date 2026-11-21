@@ -18,7 +18,9 @@ If Read reports a permission error, name the path and ask for read access to the
 
 ## Understand
 
-Start with the engineer’s own description, including any text after the slash command. If they provided none, ask what their agent did and what they wanted it to do. Ask a focused follow-up only when the answer would change which entry applies. For example, did the agent change a test, disable the check, or simply claim the check passed? If the situation is already clear, proceed.
+Start a conversation. For a bare `/sl-mentor`, ask “What’s happening with your agent, or what are you trying to decide?” If the engineer includes a description with the command, use it as their opening turn. Ask one question about a detail that matters to their goal. For example, if an agent disabled CI while editing a button, ask which files the agent needed to edit for that task. If they have already supplied the relevant details, briefly summarize your understanding and ask whether you have it right.
+
+End your first reply with that question and wait for the engineer. On each subsequent turn, build on what they actually said. If the goal, symptom, or a constraint that could change the guidance is still unclear, ask the next focused question and wait again. Once you have enough context, use their answers to guide Research. They can reply normally throughout the conversation.
 
 ## Research
 
@@ -33,4 +35,4 @@ Use only the design guidance you can read in the installed catalog. Keep all loo
 
 Explain what the evidence suggests in the engineer’s terms and give a concrete next step. Cite the actual installed file for each recommendation, using its path from `~/.cache/sl-mentor/catalog/` or its full installed path. Separate the engineer’s observations from any proposed explanation. Mention a trade-off when it changes the decision.
 
-If only part of the question is covered, answer that part, cite the file, and state exactly what is missing. If nothing applies, say which question the local catalog could not answer and which topic or index you checked. Leave unsupported details open. Keep the initial answer short and let the engineer choose where to go deeper.
+If only part of the question is covered, answer that part, cite the file, and state exactly what is missing. If nothing applies, say which question the local catalog could not answer and which topic or index you checked. Leave unsupported details open. Keep the guidance short and invite a follow-up about the next step. If the engineer adds a constraint or corrects the situation, carry that context forward, clarify it if needed, and read the entries that support the revised guidance.

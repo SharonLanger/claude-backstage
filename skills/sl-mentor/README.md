@@ -15,13 +15,15 @@ Setup uses a POSIX shell and standard file utilities. It installs the command at
 
 ## Try it
 
-Paste this into Claude Code:
+Type `/sl-mentor` in Claude Code. It opens by asking what’s happening with your agent or what you’re trying to decide. Reply in the same chat. The mentor asks one question at a time until it understands enough to consult the catalog.
+
+You can also include your opening description:
 
 ```text
 /sl-mentor I asked my agent to fix the padding on a button. It made CI green by disabling the failing check. How should I scope its access next time?
 ```
 
-Look for an explanation grounded in [Overpowered Coding Agent](catalog/anti-patterns/AP10-overpowered-coding-agent.md), which describes this failure. You can also type `/sl-mentor` on its own and describe your situation conversationally. If the catalog covers only part of a question, the mentor identifies the remaining gap.
+The mentor might ask, “Which files did the agent need to change for the padding fix?” Try answering, “Only the button’s stylesheet. It could read the test results, but it had no reason to edit CI.” Look for guidance grounded in [Overpowered Coding Agent](catalog/anti-patterns/AP10-overpowered-coding-agent.md). You can keep talking, for example by asking how the advice changes if the agent also needs to run tests. If the catalog covers only part of a question, the mentor identifies the remaining gap.
 
 ## Update or repair
 
