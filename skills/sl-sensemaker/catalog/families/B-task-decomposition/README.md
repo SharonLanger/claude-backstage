@@ -6,6 +6,10 @@
 
 ---
 
+## Practitioner entry points
+
+- [Slice a change for review](patterns/B5-milestone-checkpoint.md#in-a-session-slice-a-change-for-review) — the AI change is too large to review.
+
 ## Directory Tree
 
 ```
@@ -115,3 +119,4 @@ Reconnaissance is a cheap information-gathering pass — read, search, sample �
 ---
 
 Last updated: 2026-08-24
+

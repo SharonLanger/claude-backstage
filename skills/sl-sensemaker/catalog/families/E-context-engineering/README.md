@@ -27,6 +27,7 @@ E-context-engineering/
 ├── guides/
 │   ├── context-failure-modes.md         ← quick-reference: 7 failure modes + diagnostic signals
 │   ├── context-vs-memory-vs-state.md    ← when to use context, memory (L), or state (L/F)
+│   ├── clarify-domain-terms.md         ← resolve conflicting meanings with the decision owner
 │   └── context-design-worksheet.md      ← step-by-step worksheet for designing a context strategy
 │
 └── anti-patterns/
@@ -151,6 +152,7 @@ Both anti-patterns below are cataloged in `anti-patterns/` at the top-level cata
 
 | You are trying to… | Read first |
 |---|---|
+| Resolve a domain term or preserve the reason for an intentional behavior | [Clarify domain terms](guides/clarify-domain-terms.md) |
 | Diagnose why the model is ignoring instructions | Context failure modes (above) → Map-Not-Manual or Context Compaction |
 | Design context for a new multi-step workflow | `guides/context-design-worksheet.md` |
 | Understand when to use memory instead of context | `guides/context-vs-memory-vs-state.md` |
@@ -163,3 +165,4 @@ Both anti-patterns below are cataloged in `anti-patterns/` at the top-level cata
 ---
 
 Last updated: 2026-08-24
+

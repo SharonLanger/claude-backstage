@@ -1,7 +1,7 @@
 # AI Design Patterns Catalog — Inventory
 
 Installed catalog: `~/.cache/sl-knowledge-atlas/catalog/`
-Total files: 270 markdown files
+Total files: 272 markdown files
 
 ## Summary
 
@@ -12,13 +12,13 @@ Total files: 270 markdown files
 | Anti-patterns (top-level) | 10 (AP01–AP10) |
 | Anti-patterns (family-level) | 10 |
 | Principles | 8 (P1–P8) |
-| Guides | 8 |
+| Guides | 9 |
 | Comparisons | 2 |
 | Reference docs | 2 |
 | Use-case files | 26 articles across 8 categories, plus 9 indexes |
 | Contributing/meta files | 5 |
 | Input/research files | 1 |
-| Index/README files | ~46 |
+| Index/README files | ~47 |
 
 ---
 
@@ -100,7 +100,7 @@ Total files: 270 markdown files
 
 **Guides:** eval-type-selector, verification-ladder
 
-### E — Context Engineering (10 patterns, 2 anti-patterns, 3 guides)
+### E — Context Engineering (10 patterns, 2 anti-patterns, 4 guides)
 
 **Patterns:**
 
@@ -118,7 +118,7 @@ Total files: 270 markdown files
 | `role-scoped-context` | Role-Scoped Context |
 
 **Anti-patterns:** giant-instruction-manual, shared-context-everywhere
-**Guides:** context-design-worksheet, context-failure-modes, context-vs-memory-vs-state
+**Guides:** clarify-domain-terms, context-design-worksheet, context-failure-modes, context-vs-memory-vs-state
 
 ### F — Harness / Environment Engineering (11 patterns)
 
@@ -385,7 +385,7 @@ Cross-reference: `principles/index.md` maps principles × families × anti-patte
 
 | File | Purpose |
 |---|---|
-| `source-registry.md` | 25 verified source URLs + family-source mapping |
+| `source-registry.md` | 30 verified source URLs + family-source mapping |
 | `authoring-guide.md` | How to write pattern files |
 | `catalog-intake.md` | How to add new patterns to the catalog |
 | `classification-guide.md` | How to classify patterns into families |
@@ -403,17 +403,18 @@ Cross-reference: `principles/index.md` maps principles × families × anti-patte
 
 ## Source Registry Summary
 
-The registry lists 25 sources across four categories.
+The registry lists 30 sources across four categories.
 
 | Category | Sources | Examples |
 |---|---|---|
-| Primary (high-authority) | 17 | Anthropic (3), OpenAI (5), Google (1), Microsoft (1), AWS (4), OWASP (3) |
-| Practitioner / Expert | 6 | Hamel Husain (4), Simon Willison (2) |
-| Academic | 1 | Stanford CS224G |
-| Open Source | 1 | AWS Samples repo |
+| Primary (high-authority) | 18 | Anthropic (4), OpenAI (5), Google (1), Microsoft (1), AWS (4), OWASP (3) |
+| Practitioner / Expert | 8 | Hamel Husain (4), Simon Willison (2), Matt Pocock (2) |
+| Academic / Educational | 2 | Stanford CS224G, Samman Coaching |
+| Open Source | 2 | AWS Samples repo, Moby AI usage policy |
 
-No practitioner blog content is ingested locally — the registry only lists URLs.
+Selected research is now adapted into four existing patterns (Fresh-Context Retry, B5, Retry-With-Feedback, D05) and the new Clarify Domain Terms guide. Their practical session sections, examples, limits, and source attribution are bundled locally; full source articles are not bundled.
 
 ---
 
 Last updated: 2026-11-21
+

@@ -12,6 +12,19 @@ Long multi-step tasks accumulate errors silently. An incorrect assumption made i
 
 Group the task's subtasks into milestones — cohesive units of work that together produce a meaningful, verifiable intermediate artifact. Between milestones, place checkpoint gates: validation steps that verify the milestone's output before the next milestone begins. Validation can be automated (schema check, test run, assertion), human (reviewer approval), or both. Partial results are persisted at each checkpoint so that if a later milestone fails, work can resume from the last successful checkpoint rather than restarting from zero. Checkpoints also create natural audit points: the full state of the system at each gate is knowable and inspectable.
 
+## In a session: slice a change for review
+
+Use the milestone as a behavior you can inspect, not an arbitrary number of files or lines. This applies while planning work or reorganizing an already large diff; save the existing work before asking for restructuring.
+
+1. Ask the agent for the smallest useful outcome: who does what, and what becomes observable? Include the code and tests across every layer needed to demonstrate it.
+2. Review dependencies before implementation. If the first ticket cannot be tried until the last lands, combine them or identify the genuine prerequisite. Stop splitting when the whole change is already coherent and reviewable.
+3. Specify one acceptance example and one neighboring behavior that must remain unchanged. When feasible, run the example on the intended base and inspect why it fails; a broken environment does not demonstrate the bug.
+4. Ask for the diff and the commands/results for that slice. Review it before expanding to the next outcome. If a large patch already exists, ask for a proposed split and review order before edits; do not throw away working changes merely to satisfy a size target.
+
+**Illustrative prompt:** “The task includes open-item filtering and CSV export. Propose a reviewable first slice for filtering only, including its CLI behavior and tests. Show that ordinary listing still includes completed items. Explain any prerequisite; keep CSV export for later.”
+
+Matt Pocock's ticket guidance supports independently demonstrable slices, explicit dependencies, and avoiding over-splitting. Our adaptation from PAT-0003 adds the review question and paired checks. For a mechanical change that cannot land independently, plan compatibility/migration stages or a declared integration checkpoint instead. No fixed line count or measured review-time saving is implied.
+
 ## Structure
 
 <details>
@@ -81,7 +94,7 @@ flowchart TD
 
 ## Implementation Notes
 
-**Milestone granularity.** A milestone should produce one coherent artifact — a draft, a schema, a passing test suite, a deployed component. If a milestone's output cannot be validated in isolation, the milestone boundaries are wrong. Aim for 3–7 milestones per task.
+**Milestone granularity.** A milestone should produce one coherent artifact — a draft, a schema, a passing test suite, a deployed component. If its output cannot be validated in isolation, revisit the boundary or identify the required integration checkpoint explicitly. Choose the number from observable outcomes and genuine dependencies; there is no required milestone count.
 
 **Checkpoint types.** Three tiers, ordered by cost: (1) automated assertion (fast, cheap, no human needed), (2) automated test suite (slower, more thorough), (3) human review (highest signal, highest latency). Use the cheapest checkpoint that provides adequate signal. Reserve human gates for decisions with significant irreversibility or ambiguity.
 
@@ -136,3 +149,6 @@ A code migration agent is tasked with upgrading a 200-file codebase from an old 
 - **Microsoft Azure Architecture Center** — Microsoft's cloud architecture team. [AI Agent Design Patterns](https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/ai-agent-design-patterns)
 - **AWS Prescriptive Guidance** — Amazon Web Services architecture team. [Agentic AI Patterns](https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-patterns/agent-patterns.html)
 - **Google Cloud Architecture Center** — Google's cloud architecture team. [Choose a Design Pattern for Agentic AI](https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system)
+
+- Matt Pocock — [The /to-tickets Skill](https://www.aihero.dev/skills-to-tickets): practitioner guidance on reviewable slices, dependencies, and wide-refactor exceptions; consulted 2026-11-21.
+

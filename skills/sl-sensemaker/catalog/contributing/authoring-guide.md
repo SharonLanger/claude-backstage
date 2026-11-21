@@ -90,7 +90,7 @@ Every pattern `.md` file follows this 8-section structure + Sources.
 - **Implementation Sketch** uses pseudocode, not a specific language. Shows the structural wiring, not domain logic.
 - **Related Patterns** uses relative markdown links (`[Name](path.md)`).
 - **Anti-Patterns Addressed** references named anti-patterns from the `anti-patterns/` folder.
-- **Sources** lists 2–6 verified URLs. See [source-registry.md](source-registry.md) for citation format and approved sources.
+- **Sources** lists at least one relevant, verified source; include additional sources when they support or qualify the guidance. See [source-registry.md](source-registry.md) for citation format and approved sources.
 
 ---
 
@@ -262,7 +262,7 @@ Before any file is considered complete, verify:
 
 - [ ] All 8 sections present in order
 - [ ] Mermaid diagram present in Solution Structure (wrapped in `<details>`)
-- [ ] Sources section has 2–6 links
+- [ ] Sources section has at least one relevant, verified source
 - [ ] Every link appears in the [source registry](source-registry.md) OR has been independently verified
 - [ ] No invented URLs — every link resolves to a real page
 - [ ] Problem section describes the failure/limitation, not the solution
@@ -295,3 +295,4 @@ Before any file is considered complete, verify:
 ---
 
 Last updated: 2026-11-19
+

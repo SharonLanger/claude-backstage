@@ -7,6 +7,10 @@ Related families: A (Generator-Critic is also a topology), H (prefer determinist
 
 ---
 
+## Practitioner entry points
+
+- [Review AI changes](patterns/D05-review-pass.md#in-a-session-review-ai-changes-before-accepting-them) — tests pass after the agent changed assertions; I cannot explain the diff.
+
 ## Directory Tree
 
 ```
@@ -125,3 +129,4 @@ Use the cheapest check that catches the failure. Escalate only when lower rungs 
 ---
 
 Last updated: 2026-08-24
+

@@ -4,6 +4,11 @@
 
 ---
 
+## Practitioner entry points
+
+- [Recover a drifting session](fresh-context-retry.md#in-a-session-recover-decisions-without-losing-useful-work) — the session returns to an abandoned approach or forgets a decision.
+- [Turn feedback into a check](retry-with-feedback.md#in-a-session-turn-feedback-into-a-check) — the agent agrees with feedback but the fix is still wrong.
+
 ## File Tree
 
 ```
@@ -83,3 +88,4 @@ Every pattern file follows this structure:
 ---
 
 Last updated: 2026-08-24
+

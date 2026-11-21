@@ -4,6 +4,11 @@
 
 ---
 
+## Practitioner entry points
+
+- [Recover a drifting session](patterns/fresh-context-retry.md#in-a-session-recover-decisions-without-losing-useful-work) — the session returns to an abandoned approach or forgets a decision.
+- [Turn feedback into a check](patterns/retry-with-feedback.md#in-a-session-turn-feedback-into-a-check) — the agent agrees with feedback but the fix is still wrong.
+
 ## Directory Tree
 
 ```
@@ -153,3 +158,4 @@ ALWAYS: use Checkpoint and Resume for long multi-step tasks so recovery
 ---
 
 Last updated: 2026-08-24
+

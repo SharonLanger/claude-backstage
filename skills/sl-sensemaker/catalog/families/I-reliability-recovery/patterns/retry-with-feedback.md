@@ -5,11 +5,28 @@
 
 ## Problem
 
-When an agent fails, the simplest recovery is to try again with the same input. But repeating an identical prompt to a model that already failed produces the same wrong output — or a different wrong output for the wrong reason. Without new information, retries waste tokens and time.
+When an agent fails, the simplest recovery is to try again with the same input. Repeating an identical prompt may produce another failure without resolving what went wrong. Without new information, retries waste tokens and time.
 
 ## Solution
 
 Before retrying, inject the failure signal — the error message, the validator report, the tool exception, or the evaluator's critique — directly into the conversation context. The model then has explicit evidence of what went wrong and can correct its approach. Each retry carries forward everything learned from prior failures.
+
+## In a session: turn feedback into a check
+
+Use this after the agent has produced work you can inspect. Agreement with a review comment does not show that a revision is correct.
+
+Ivett Ördög's ROSE feedback names the risk, observation, requested solution, and expected outcome. Use only the elements needed; they need not appear in that order. Our adaptation from PAT-0005 makes the outcome checkable and adds a neighboring case that a shortcut might break.
+
+1. Describe what you observed, with an input or location, separately from the suspected cause and possible consequence.
+2. State the agreed behavior. If the cause is unknown, ask for investigation rather than prescribing an unverified fix. If the requirement itself is unresolved, get that decision before editing.
+3. Ask for the failed example and a nearby existing case to be checked after the change. Request observable results; read changes to assertions and expected outputs yourself.
+4. Close the feedback when the revision matches the requirement, not when the agent says it agrees. If the same premise returns despite useful feedback, consult [Fresh-Context Retry](fresh-context-retry.md).
+
+**Original illustration:** “With an explicit retry count of zero, this parser returns three. That could repeat work the caller disabled. Preserve explicit counts; the configuration contract still defaults to three when absent. Show results for zero, absent, and two, and the relevant diff.”
+
+Expected results are 0, 3, and 2. Replacing the default with zero passes only the first case. An agent's verbal prediction still needs a check on the revised work.
+
+**Limits:** A wrong expected result can steer a correct implementation into a bug. A one-line correction is sufficient when its context and check are already clear. This practice helps structure feedback; it does not permanently train the model or demonstrate general effectiveness.
 
 ## Solution Structure
 
@@ -107,3 +124,6 @@ An agent uses a code-execution tool to run generated Python. The first attempt r
 - **Anthropic Engineering** — AI safety company; authors of Claude. [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)
 - **OpenAI Engineering** — AI research company; authors of GPT and Codex. [A Practical Guide to Building AI Agents](https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/)
 - **AWS Prescriptive Guidance** — Amazon Web Services architecture team; defines Validation-Retry Loop and Structured Error Classification. [Agentic AI Patterns](https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-patterns/agent-patterns.html)
+
+- Ivett Ördög / Samman Coaching — [ROSE Feedback](https://sammancoaching.org/learning_hours/agentic_engineering/rose_feedback.html): feedback structure, optional elements, and scope to already produced work; consulted 2026-11-21. The ROSE-based session subsection above adapts this lesson with new wording, a new illustration, and a verification step; that subsection is shared under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+

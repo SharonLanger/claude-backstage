@@ -58,6 +58,22 @@ Choose your entry point based on what you have:
 
 ---
 
+## Working with an assistant in a session
+
+Start with the observable problem. These sections give actions a person can take in a chat or CLI; a custom agent harness is not required. Read the destination and its limits before recommending it.
+
+| You observe… | Read first |
+|---|---|
+| The session returns to an abandoned approach or forgets a decision | [Recover a drifting session](families/I-reliability-recovery/patterns/fresh-context-retry.md#in-a-session-recover-decisions-without-losing-useful-work) |
+| The AI change is too large to review | [Slice a change for review](families/B-task-decomposition/patterns/B5-milestone-checkpoint.md#in-a-session-slice-a-change-for-review) |
+| The agent agrees with feedback but the fix is still wrong | [Turn feedback into a check](families/I-reliability-recovery/patterns/retry-with-feedback.md#in-a-session-turn-feedback-into-a-check) |
+| We use the same domain term but expect different behavior | [Clarify domain terms](families/E-context-engineering/guides/clarify-domain-terms.md) |
+| Tests pass after the agent changed assertions; I cannot explain the diff | [Review AI changes](families/D-verification-evaluation/patterns/D05-review-pass.md#in-a-session-review-ai-changes-before-accepting-them) |
+
+For more phrasings and partial matches, see the [symptom bridge](../bridge-file.md). A matching symptom is not a confirmed diagnosis.
+
+---
+
 ## Quick Lookup by Problem
 
 | You're dealing with… | Start here |
@@ -157,3 +173,4 @@ Some problems span multiple families. When one family's patterns don't fully sol
 ---
 
 Last updated: 2026-11-19
+

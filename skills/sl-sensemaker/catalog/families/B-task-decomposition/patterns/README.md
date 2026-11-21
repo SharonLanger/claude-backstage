@@ -4,6 +4,10 @@ Navigation hub for the 6 pattern files in this family.
 
 ---
 
+## Practitioner entry points
+
+- [Slice a change for review](B5-milestone-checkpoint.md#in-a-session-slice-a-change-for-review) — the AI change is too large to review.
+
 ## Directory Tree
 
 ```
@@ -61,3 +65,4 @@ All files end with a **Sources** section linking to primary references from Anth
 ---
 
 Last updated: 2026-08-24
+

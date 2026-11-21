@@ -92,7 +92,7 @@ After writing the files:
 
 Run the verification checklist from [authoring-guide.md](authoring-guide.md) on every new or modified file:
 
-- Pattern files: all 8 sections, Mermaid diagram, 2–6 source links, working relative links
+- Pattern files: all 8 sections, Mermaid diagram, at least one relevant verified source, working relative links
 - Anti-pattern files: all 6 sections, working counter-pattern links
 - Principle files: all sections per schema, working family and anti-pattern links
 - README files: directory tree matches disk, every file has a description
@@ -133,3 +133,4 @@ Run the verification checklist from [authoring-guide.md](authoring-guide.md) on 
 ---
 
 Last updated: 2026-11-19
+

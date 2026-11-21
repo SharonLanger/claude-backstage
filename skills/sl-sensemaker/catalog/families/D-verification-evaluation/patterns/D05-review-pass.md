@@ -11,6 +11,19 @@ Unstructured self-review ("does this look good?") is unreliable because agents s
 
 Maintain a per-task-type checklist of required properties. After generation, the agent (or a separate review step) works through the checklist item by item, marking each as PASS, FAIL, or N/A. Items marked FAIL are returned to the generator as specific revision targets. The checklist is authored separately from the generation prompt and is not modified during the review loop. A Review Pass is declared complete only when all required items are PASS or explicitly waived.
 
+## In a session: review AI changes before accepting them
+
+Use a human review pass when you can repeat the agent's summary but cannot explain its diff, or when a fix changes the test that was supposed to expose the bug. You need the agreed behavior, the actual diff, and relevant checks. No custom review harness is required.
+
+1. Ask the agent to connect each material change to the requested behavior. Read the implementation, assertions, expected outputs, fixtures, and configuration changes yourself. Remove unrelated work from the proposed change.
+2. For each changed or deleted regression test, ask which requirement justifies the change and what will now detect the original failure. A legitimate behavior change can require updated tests; a passing suite with weakened expectations is insufficient evidence.
+3. Exercise the reported case and an adjacent behavior that should still work. Where feasible, compare the base and candidate. Ask for actual commands/results and unavailable checks; do not accept an execution claim you cannot substantiate.
+4. Explain the behavior and remaining limits in your own words. Follow the target project's contribution and disclosure rules and respond to later review or regression reports. Moby/Docker's policy is a project-specific example, not a universal approval workflow.
+
+**Original illustration:** An empty CSV export should retain its header. The agent changes the empty-export fixture. Check that the requirement authorizes that expectation and that a populated export still has one header and its data row. Inspect whether another check was removed to make the suite pass.
+
+If the patch is too large to inspect, first use [reviewable milestones](../../B-task-decomposition/patterns/B5-milestone-checkpoint.md#in-a-session-slice-a-change-for-review). A review request is not an enforced write restriction; for protected files use configured permissions. This PAT-0008 adaptation is a review procedure, not proof that passing selected checks establishes all correctness.
+
 ## Structure
 
 <details>
@@ -122,3 +135,6 @@ function format_revision_targets(failures):
 - **Anthropic Engineering** — AI safety company; authors of Claude. [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)
 - **OpenAI Engineering** — AI research company; authors of GPT and Codex. [A Practical Guide to Building AI Agents](https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/)
 - **AWS Prescriptive Guidance** — Amazon Web Services architecture team. [Agentic AI Patterns](https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-patterns/agent-patterns.html)
+
+- Moby / Docker maintainers — [AI Usage Policy](https://github.com/moby/.github/blob/512ca97347590b4ecaf892adaf780797b1e637b9/AI_POLICY.md): human verification, focused changes, contributor accountability, and project-specific disclosure requirements; consulted 2026-11-21.
+
