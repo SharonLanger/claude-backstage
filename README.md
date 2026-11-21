@@ -6,6 +6,7 @@ Reusable skills and workflows for working with Claude Code.
 
 Instructions and tools for specific tasks, with setup guides and examples.
 
+- [SL Sensemaker](skills/sl-sensemaker/README.md) — Get practical advice from the local AI agent pattern catalog.
 - [SL SVG Diagram](skills/sl-svg-diagram/README.md) — Explain methods, APIs, and data flow with animated diagrams in Markdown.
 
 ## 🔄 [Workflows](workflows/README.md)

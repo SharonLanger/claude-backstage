@@ -2,6 +2,10 @@
 
 Reusable instructions and tools that teach Claude Code how to perform specific tasks. Each skill's README covers installation, usage, examples, and requirements.
 
+### [SL Sensemaker](sl-sensemaker/README.md)
+
+Start a conversation with `/sl-sensemaker` about a problem you’re facing with an LLM or AI agent. It helps you understand what happened and choose a next step grounded in the local pattern catalog.
+
 ### [SL SVG Diagram](sl-svg-diagram/README.md)
 
 Create animated Markdown diagrams to explain methods, API calls, data flow, and concurrent work. The skill uses a pinned animdiagram dependency, checks its integrity before execution, and builds bounded flow/branch/grid layouts from editable semantic JSON and saves each visual and a concise `.agent.md` companion.
