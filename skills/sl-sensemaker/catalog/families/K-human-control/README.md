@@ -28,7 +28,7 @@ K-human-control/
 
 ## Per-Pattern File Schema
 
-Every pattern file (`K0N-*.md`) follows this structure:
+Each engineering pattern (`K0N-*.md`) follows this structure:
 
 ```
 # K0N — Pattern Name
@@ -70,6 +70,8 @@ A short concrete scenario showing the pattern in action.
 ```
 
 ---
+
+If a generated diff outpaces review, start with [K01](patterns/K01-human-in-the-loop-checkpoint.md) for phase boundaries and [K05](patterns/K05-draft-preview-before-apply.md) when the tool can wait before a write. For independently verifiable chunks, see [B5](../B-task-decomposition/patterns/B5-milestone-checkpoint.md).
 
 ## Autonomy Calibration Guide
 

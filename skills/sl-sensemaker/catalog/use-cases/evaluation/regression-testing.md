@@ -4,6 +4,8 @@
 
 You changed your agent's prompts, tools, model version, or orchestration logic and need to verify you didn't break something that was previously working. You want a systematic approach to regression detection — not just "run it again and see if it looks okay."
 
+For a coding agent editing the test that defines success, see [AP10](../../anti-patterns/AP10-overpowered-coding-agent.md) for write scope and [D02](../../families/D-verification-evaluation/patterns/D02-test-before-done.md) for independently authored checks. The test must be protected during the fix for it to serve as a baseline.
+
 ## Quick Answer
 
 1. **Maintain a regression suite** of known input-output pairs that must always pass. See [Practical Regression Workflow](#practical-regression-workflow) for how to establish a baseline and update the suite.

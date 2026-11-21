@@ -26,7 +26,7 @@ O-output-integration/
 
 ## Per-Pattern File Schema
 
-Every file under `patterns/` follows this structure:
+Each engineering entry under `patterns/` follows this structure:
 
 ```markdown
 # Pattern Name

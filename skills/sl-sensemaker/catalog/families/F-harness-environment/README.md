@@ -37,9 +37,11 @@ F-harness-environment/
 
 ---
 
+For a repeatable task where the user can install or edit a procedure, see [F07 — Agent Skills / Procedures](patterns/F07-agent-skills-procedures.md). For recording why a project decision was made, see [F02 — Repository-Local System of Record](patterns/F02-repository-local-system-of-record.md).
+
 ## Per-Pattern File Schema
 
-Every pattern file (`F01` through `F11`) uses this structure:
+Each engineering pattern (`F01` through `F11`) uses this structure:
 
 ```markdown
 # F<N> — <Pattern Name>

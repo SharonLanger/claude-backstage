@@ -25,7 +25,7 @@ B-task-decomposition/
 
 ## Per-Pattern File Schema
 
-Every file in `patterns/` follows this structure:
+Each engineering entry in `patterns/` follows this structure:
 
 ```
 # <ID>: <Pattern Name>
@@ -59,6 +59,8 @@ Concrete scenario (one paragraph) showing the pattern in action.
 ```
 
 ---
+
+For work that generates more than a reviewer can inspect, start with [B5](patterns/B5-milestone-checkpoint.md) when changes can be staged as verifiable artifacts. Follow [K01](../K-human-control/patterns/K01-human-in-the-loop-checkpoint.md) when the agent can pause for a human decision.
 
 ## Quick-Reference Table
 

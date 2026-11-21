@@ -33,7 +33,7 @@ N-efficiency-routing/
 
 ## Per-Pattern File Schema
 
-Every file in `patterns/` and `anti-patterns/` follows this structure:
+Each engineering entry in `patterns/` and `anti-patterns/` follows this structure:
 
 ```markdown
 # <Pattern Name>

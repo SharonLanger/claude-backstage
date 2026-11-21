@@ -22,7 +22,7 @@ patterns/
 
 ## Schema
 
-Every pattern file follows the same nine-section structure:
+Each engineering pattern follows the same nine-section structure:
 
 | Section | Purpose |
 |---|---|

@@ -35,7 +35,7 @@ M-observability-debugging/
 
 ## Per-Pattern File Schema
 
-Every file under `patterns/` follows this structure:
+Each engineering entry under `patterns/` follows this structure:
 
 ```markdown
 # M0N — Pattern Name

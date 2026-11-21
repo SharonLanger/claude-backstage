@@ -4,7 +4,7 @@ How to write pattern files, anti-pattern files, and README files for this catalo
 
 For source citation rules and verified URLs, see [source-registry.md](source-registry.md).
 For classifying a pattern into a family, see [classification-guide.md](classification-guide.md).
-For the full intake pipeline (blog → catalog), see [catalog-intake.md](catalog-intake.md).
+For the full intake pipeline (source → catalog), see [catalog-intake.md](catalog-intake.md).
 
 ---
 
@@ -14,9 +14,9 @@ Every term below has a verified source. Do not use these terms loosely.
 
 ### Pattern
 
-> A reusable solution structure for a recurring engineering problem that appears when building with probabilistic models or autonomous agents.
+> A reusable response to a recurring situation when working with LLMs or building with probabilistic models and agents.
 
-A pattern contains: (1) a recurring problem, (2) a reusable structural response, (3) defined responsibilities, (4) trade-offs, (5) when to use / not use conditions, (6) at least one implementation shape, (7) evidence it recurs across sources.
+A pattern describes the situation, the reusable response, who does what, and when the response helps or adds cost. One relevant source can establish a documented practice. Report how much evidence there is for its applicability.
 
 ### Principle
 
@@ -28,7 +28,7 @@ Principles are higher than patterns. A principle generates many patterns; a patt
 
 > A recurring structure that causes failure — the opposite of a pattern. Named so developers can recognize and avoid it.
 
-Each anti-pattern links to counter-patterns that fix it.
+Link any applicable counter-patterns. Record an explanation without actionable guidance as a research gap during intake.
 
 ### Workflow vs. Agent
 
@@ -65,9 +65,17 @@ Each anti-pattern links to counter-patterns that fix it.
 
 ---
 
-## Pattern File Schema
+## Practical Entry Format
 
-Every pattern `.md` file follows this 8-section structure + Sources.
+Use this format when the action is primarily a conversation, manual review, file-based practice, or a tool setting. It applies across families and content types. Family-local engineering schemas describe implementation entries. Practical entries can use prose, a sample exchange, or a worked review or file example without code, pseudocode, or diagrams.
+
+Include the recognizable situation, when it applies, a practical action, a concrete example, limitations or trade-offs, attribution, and relevant catalog links. State what the reader must control (conversation, project files, settings, or implementation). Preserve attribution for source examples and label examples written for the catalog as illustrations. Keep practitioner advice, measured findings, and catalog adaptations visibly distinct.
+
+For authored guidance in any format, cite at least one accessible and relevant source. Add relevant supporting, qualifying, or contradictory sources wherever they improve the entry. Navigation-only indexes point to the entries that carry the evidence. See the [citation rules](source-registry.md#citation-rules).
+
+## Engineering Pattern File Schema
+
+Engineering patterns use this structure or their family-local engineering schema.
 
 | # | Section | Content | Mandatory |
 |---|---|---|---|
@@ -90,7 +98,7 @@ Every pattern `.md` file follows this 8-section structure + Sources.
 - **Implementation Sketch** uses pseudocode, not a specific language. Shows the structural wiring, not domain logic.
 - **Related Patterns** uses relative markdown links (`[Name](path.md)`).
 - **Anti-Patterns Addressed** references named anti-patterns from the `anti-patterns/` folder.
-- **Sources** lists 2–6 verified URLs. See [source-registry.md](source-registry.md) for citation format and approved sources.
+- **Sources** links to one or more relevant sources and makes clear which claims they support. See [source-registry.md](source-registry.md) for citation format and approved sources.
 
 ---
 
@@ -102,10 +110,10 @@ Anti-pattern files follow a different structure:
 |---|---|---|
 | 1 | **Name** | The anti-pattern's canonical name |
 | 2 | **Symptoms** | Observable signs that this anti-pattern is present (bullet list) |
-| 3 | **Root Cause** | Why teams fall into this trap (one paragraph) |
+| 3 | **Root Cause** | Supported explanation and any relevant uncertainty |
 | 4 | **Failure Scenario** | Concrete example of what goes wrong |
 | 5 | **Counter-Patterns** | Named patterns that fix this, with relative links |
-| 6 | **Sources** | Verified URLs (1–4 links) |
+| 6 | **Sources** | One or more relevant sources |
 
 ### Rules
 
@@ -123,7 +131,7 @@ Principle files follow this structure:
 | 1 | **Statement** | One sentence — the principle itself |
 | 2 | **Problem it addresses** | The failure mode when this principle is violated |
 | 3 | **Why it holds** | The underlying reason this constraint matters for probabilistic systems |
-| 4 | **Evidence** | Which sources named this principle independently |
+| 4 | **Evidence** | Which sources support this principle and under what conditions |
 | 5 | **Related families** | Links to families that operationalize this principle |
 | 6 | **Counter-patterns** | Anti-patterns that arise when this principle is ignored |
 | 7 | **Tension with** | Other principles this one trades off against |
@@ -220,7 +228,7 @@ Every folder in this catalog has a `README.md` that serves as a **navigation hub
 
 ## Mermaid Diagram Rules
 
-Every pattern's Solution Structure section must include a Mermaid diagram.
+Use Mermaid for engineering patterns where the schema calls for a structural diagram.
 
 ### Format
 
@@ -258,13 +266,16 @@ flowchart TD
 
 Before any file is considered complete, verify:
 
-### For pattern files
+### For all authored guidance
 
-- [ ] All 8 sections present in order
-- [ ] Mermaid diagram present in Solution Structure (wrapped in `<details>`)
-- [ ] Sources section has 2–6 links
-- [ ] Every link appears in the [source registry](source-registry.md) OR has been independently verified
-- [ ] No invented URLs — every link resolves to a real page
+- [ ] The situation, action, applicability, example, and limits are clear
+- [ ] At least one accessible, relevant source supports the guidance
+- [ ] Substantive claims are supported or clearly identified as adaptations or inferences
+- [ ] Source examples, measured results, and catalog illustrations are distinguishable
+
+### For engineering pattern files
+
+- [ ] The engineering schema fits the entry and any required structural diagram is present
 - [ ] Problem section describes the failure/limitation, not the solution
 - [ ] Trade-offs table has real costs, not platitudes
 - [ ] Related Patterns uses working relative links
@@ -280,18 +291,14 @@ Before any file is considered complete, verify:
 
 ### For anti-pattern files
 
-- [ ] All 6 sections present
+- [ ] The anti-pattern gives observable symptoms, a supported explanation, and applicable counter-patterns
 - [ ] Counter-Patterns use working relative links
-- [ ] Sources section has 1–4 links from the [source registry](source-registry.md)
 - [ ] Symptoms are observable (things you can see), not judgments
 
 ### Link verification
 
-1. Extract every URL from the file
-2. Confirm each URL appears in the [source registry](source-registry.md)
-3. If a URL is NOT in the registry — flag it for manual verification
-4. Zero tolerance: any unverifiable link means the file is NOT complete
+Check that repository links resolve and that entry citations match the [source registry](source-registry.md). Verify new source URLs and read the cited material to confirm that it supports the associated claims.
 
 ---
 
-Last updated: 2026-11-19
+Last updated: 2026-11-21

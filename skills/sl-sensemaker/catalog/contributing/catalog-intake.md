@@ -1,6 +1,6 @@
 # Catalog Intake — Adding New Sources
 
-End-to-end pipeline for extracting patterns, anti-patterns, principles, and use-case material from a new blog post, article, or documentation page.
+Pipeline for turning accessible sources into practical or engineering catalog guidance.
 
 Read this file first. It routes you to the detailed guides for each step.
 
@@ -8,10 +8,10 @@ Read this file first. It routes you to the detailed guides for each step.
 
 ## Before You Start
 
-1. Read the source material fully before extracting anything
+1. Read the full relevant source material before extracting recommendations. Use inventories to locate sources and dossiers, then check the original material. One accessible, relevant source is sufficient. Include additional sources when they corroborate, qualify, contradict, or extend the guidance.
 2. Have the catalog root `README.md` open for reference (family list, layer model)
 3. Know where the detailed guides are:
-   - **Writing patterns/anti-patterns/principles:** [authoring-guide.md](authoring-guide.md)
+   - **Writing practical and engineering entries:** [authoring-guide.md](authoring-guide.md)
    - **Classifying and placing:** [classification-guide.md](classification-guide.md)
    - **Sources and citations:** [source-registry.md](source-registry.md)
    - **Finding existing content (to check for duplicates):** [../catalog-lookup.md](../catalog-lookup.md)
@@ -20,21 +20,23 @@ Read this file first. It routes you to the detailed guides for each step.
 
 ## The Pipeline
 
-### Phase 1: Read & Tag
+### Phase 1: Read & Extract Candidates
 
-Read the source and identify every candidate — anything that looks like it could be a pattern, anti-pattern, principle, or use-case material.
+Read the source and identify each candidate contribution, including useful observations that may belong in the research inventory.
 
 For each candidate, note:
-- **Name** (use the source's name if it has one, or invent a working name)
-- **Type guess** — pattern / anti-pattern / principle / use-case material / skip
-- **One-sentence summary** — what problem does it solve or what failure does it describe?
-- **Where in the source** — quote or section reference
+- **Source and location** — author, title, URL, revision/date where available, and the section or passage used
+- **User situation** — recognizable problem or opportunity, including what the user controls
+- **Contribution** — useful advice or explanation, with the source's term where useful
+- **Evidence type and limits** — documented advice, measured finding, or catalog inference/adaptation, with scope, trade-offs, and reuse terms
+- **Existing overlap and proposed destination** — actual entries read and the family or index that fits
+- **Disposition** — enrich, write, cross-link, or record a gap, with a reason. Confirm this in Phase 2.
 
 **What to look for:**
 
 | Signal in the source | Likely type |
 |---|---|
-| "When building X, do Y because Z" with trade-offs | **Pattern** |
+| A reusable response to a recurring engineering or practitioner situation | **Pattern** |
 | "Don't do X — here's what goes wrong" with symptoms | **Anti-pattern** |
 | A general rule that applies across many situations | **Principle** |
 | A concrete scenario ("if you're building a chatbot...") with relevant patterns | **Use-case material** |
@@ -44,7 +46,7 @@ For each candidate, note:
 
 Output: a candidate list. Don't write any files yet.
 
-### Phase 2: Classify
+### Phase 2: Classify & Deduplicate
 
 For each candidate, apply the classification procedure in [classification-guide.md](classification-guide.md):
 
@@ -54,14 +56,14 @@ For each candidate, apply the classification procedure in [classification-guide.
 
 Output: a filtered list with type, family/location assignment, and duplicate status for each candidate.
 
-### Phase 3: Extract & Write
+### Phase 3: Write or Enrich
 
-For each confirmed new candidate, write the file following the schema in [authoring-guide.md](authoring-guide.md):
+Use the [authoring guide](authoring-guide.md) for confirmed contributions. Use its practical format for conversation, manual review, file-based, and settings guidance. The table gives the usual locations and engineering schemas.
 
 | Content type | Schema | Where the file goes |
 |---|---|---|
-| **Pattern** | 8-section schema | `families/<family>/patterns/<family><nn>-<name>.md` |
-| **Anti-pattern** | 6-section schema | `anti-patterns/AP<nn>-<name>.md` |
+| **Pattern** | Practical format or engineering schema | `families/<family>/patterns/<family><nn>-<name>.md` |
+| **Anti-pattern** | Practical format or anti-pattern schema | `anti-patterns/AP<nn>-<name>.md` |
 | **Principle** | Principle schema | `principles/P<n>-<name>.md` |
 | **Guide** | Guide schema | `families/<family>/guides/<name>.md` |
 | **Comparison** | Free-form with trade-off table | `families/<family>/comparisons/<name>.md` |
@@ -70,9 +72,10 @@ For each confirmed new candidate, write the file following the schema in [author
 
 Key rules while writing:
 - The **Problem** section comes from the source's description of the failure/limitation — not from the solution
-- **Patterns** must include a Mermaid diagram in Solution Structure
-- **Sources** must include the new blog/article. Check [source-registry.md](source-registry.md) — if the URL isn't in the registry, verify it exists and add it
-- **Related Patterns** — link to existing catalog patterns that pair with, extend, or constrain this one
+- Use diagrams and implementation sketches when they explain engineering structure. A practical entry can explain the action in prose.
+- Attribute each contribution. Preserve applicability and limitations. Distinguish source advice, measured findings, catalog adaptations, and composed examples.
+- Verify each new source URL and register the source. One source can support multiple entries, and an entry can draw on multiple sources. See [source-registry.md](source-registry.md).
+- **Related guidance** — link to existing catalog entries that pair with, extend, or constrain this one
 - **Anti-Patterns Addressed** — link to existing anti-patterns this pattern counters
 - **Principles** — link to the principle(s) that motivate this pattern
 
@@ -80,23 +83,19 @@ Key rules while writing:
 
 After writing the files:
 
-1. **Update the family README** — add the new file to the directory tree with a one-line description
-2. **Update cross-references** — if existing patterns in other families should link to the new one, update their "Related Patterns" sections
-3. **Update the source registry** — if the blog/article is new, add it to [source-registry.md](source-registry.md)
-4. **Update the anti-patterns README** — if a new anti-pattern was added, update the tables in `anti-patterns/README.md`
-5. **Update the principles README** — if a new principle was added, update `principles/README.md` and `principles/index.md`
-6. **Update the use-cases README** — if new use-case material was added, update `use-cases/README.md` master lookup table
-7. **Update the root README** — only if counts changed significantly or new families/categories were created
+- [ ] Update the [symptom bridge](../../bridge-file.md), [catalog lookup](../catalog-lookup.md), and [inventory](../../catalog-inventory.md) where the change affects retrieval. Link to the canonical entry and state important applicability limits.
+- [ ] Update the owning family and subfolder READMEs, plus the relevant anti-pattern or principle indexes.
+- [ ] Update relevant use-case routes and their indexes. Link symptom-first and family-first routes to the same entry.
+- [ ] Update related entries where a cross-reference changes the reader's choices.
+- [ ] Update the [source registry](source-registry.md) and family–source mapping for new citations.
+- [ ] Reconcile changed counts and file lists in the inventory and affected READMEs, including the catalog root.
+- [ ] Record uncovered scenarios in repository research. Add runtime routes when there is an applicable entry.
 
 ### Phase 5: Verify
 
 Run the verification checklist from [authoring-guide.md](authoring-guide.md) on every new or modified file:
 
-- Pattern files: all 8 sections, Mermaid diagram, 2–6 source links, working relative links
-- Anti-pattern files: all 6 sections, working counter-pattern links
-- Principle files: all sections per schema, working family and anti-pattern links
-- README files: directory tree matches disk, every file has a description
-- Use-case files: scenarios link to correct families, anti-patterns exist
+Check the entry and evidence against the applicable format. Walk both routes through to the actual entry with the user’s constraints in mind. From the repository root, run `python3 skills/sl-sensemaker/tests/check-links.py` (requires Pandoc) and `sh skills/sl-sensemaker/tests/test-install.sh` (uses a disposable home).
 
 ---
 
@@ -104,8 +103,8 @@ Run the verification checklist from [authoring-guide.md](authoring-guide.md) on 
 
 | Situation | What to do |
 |---|---|
-| Blog describes a technique but not a recurring problem | Skip it — no problem means no pattern |
-| Blog describes something that overlaps 2+ existing patterns | Don't create a new file. Add the source to the existing patterns' Sources sections and note any new nuance |
+| Source documents a scoped practice or describes an obstacle | Classify actionable guidance by its shape. Record an obstacle without supported guidance in the research inventory. |
+| Source overlaps existing entries | Add the supported contribution to each applicable entry. Use a distinct linked guide when the action differs. |
 | Blog introduces a concept that doesn't fit any existing family | Flag it. Consider whether it warrants a new family or belongs as a principle. Don't force it into an ill-fitting family. |
 | Blog contradicts an existing pattern's claims | Note the contradiction in the existing pattern file as a "Counterpoint" under Trade-offs. Add the source. |
 | Blog is behind a paywall or requires login | Do not add it to the source registry. Only publicly accessible sources qualify. |
@@ -132,4 +131,4 @@ Run the verification checklist from [authoring-guide.md](authoring-guide.md) on 
 
 ---
 
-Last updated: 2026-11-19
+Last updated: 2026-11-21
