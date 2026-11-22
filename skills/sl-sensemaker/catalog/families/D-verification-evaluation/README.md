@@ -7,6 +7,10 @@ Related families: A (Generator-Critic is also a topology), H (prefer determinist
 
 ---
 
+## Practical session guidance
+
+- [Verify a dependency call against its version and behavior](guides/verify-unfamiliar-api.md).
+
 ## Practitioner entry points
 
 - [Review AI changes](patterns/D05-review-pass.md#in-a-session-review-ai-changes-before-accepting-them) — tests pass after the agent changed assertions; I cannot explain the diff.
@@ -32,6 +36,7 @@ D-verification-evaluation/
 │   └── D12-step-level-diagnostic.md      ← per-step scoring to isolate which step failed
 │
 └── guides/
+    ├── verify-unfamiliar-api.md            ← check version, invocation, and behavior
     ├── verification-ladder.md             ← when to escalate check type (see table below)
     └── eval-type-selector.md              ← "what eval do I need?" decision tree
 ```
@@ -130,4 +135,4 @@ Use the cheapest check that catches the failure. Escalate only when lower rungs 
 
 ---
 
-Last updated: 2026-08-24
+Last updated: 2026-11-22

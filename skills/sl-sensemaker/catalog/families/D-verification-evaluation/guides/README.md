@@ -1,14 +1,19 @@
 # Family D — Verification & Evaluation: Guides
 
-Navigation hub for the 2 decision guides in this folder.
+Navigation hub for the 3 practical and decision guides in this folder.
 
 ---
+
+## Practical guide schema
+
+The API guide gives purpose, applicability, a quick tip, steps, an illustration, limits, related patterns, and sources. Cross-family routes include [retrieval](../../E-context-engineering/patterns/just-in-time-retrieval.md) and [executable feedback](../../F-harness-environment/patterns/F03-executable-feedback-loop.md).
 
 ## File Tree
 
 ```
 guides/
 ├── README.md                  ← this file
+├── verify-unfamiliar-api.md   ← verify the actual dependency contract
 ├── eval-type-selector.md      ← "what eval do I need?" — decision tree mapping symptoms to patterns
 └── verification-ladder.md     ← cost escalation ladder — cheapest check first, escalate only as needed
 ```
@@ -31,8 +36,8 @@ guides/
 
 **If you're debugging a live failure** — both guides converge on the same entry point: run D11 (end-to-end task success) first to confirm the failure exists, then D12 (step-level diagnostic) to locate it.
 
-The two guides cross-link each other at the bottom of each file.
+For a questionable generated dependency call, start with [Verify an unfamiliar API](verify-unfamiliar-api.md). The evaluation guides above address broader system checks.
 
 ---
 
-Last updated: 2026-08-24
+Last updated: 2026-11-22

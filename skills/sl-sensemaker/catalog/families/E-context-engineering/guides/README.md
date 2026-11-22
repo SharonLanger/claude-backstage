@@ -8,3 +8,7 @@
 | Design a context strategy | [Context design worksheet](context-design-worksheet.md) |
 
 Return to [Family E](../README.md).
+
+## Intentional decisions
+
+Use [the edit-boundary section](clarify-domain-terms.md#make-an-intentional-decision-visible-at-the-edit) when unusual code is rewritten despite a settled reason.

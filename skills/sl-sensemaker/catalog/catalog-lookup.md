@@ -69,6 +69,12 @@ Start with the observable problem. These sections give actions a person can take
 | The agent agrees with feedback but the fix is still wrong | [Turn feedback into a check](families/I-reliability-recovery/patterns/retry-with-feedback.md#in-a-session-turn-feedback-into-a-check) |
 | We use the same domain term but expect different behavior | [Clarify domain terms](families/E-context-engineering/guides/clarify-domain-terms.md) |
 | Tests pass after the agent changed assertions; I cannot explain the diff | [Review AI changes](families/D-verification-evaluation/patterns/D05-review-pass.md#in-a-session-review-ai-changes-before-accepting-them) |
+| The assistant agrees with my unverified diagnosis | [Assess before naming a fix](families/I-reliability-recovery/patterns/root-cause-before-retry.md#in-a-session-assess-before-naming-a-fix) |
+| A generated API call is missing, outdated, or does the wrong thing | [Verify an unfamiliar API](families/D-verification-evaluation/guides/verify-unfamiliar-api.md) |
+| Repeated patches fail; should I try a fresh implementation? | [Repair or a fresh attempt](families/I-reliability-recovery/guides/repair-or-fresh-attempt.md) |
+| I have a rough idea but cannot explain the intended behavior | [Clarify an idea](families/K-human-control/guides/clarify-an-idea.md) |
+| Several delegated tasks are waiting for my review | [Manage review overload](families/K-human-control/guides/manage-review-overload.md) |
+| The assistant rewrites unusual code whose behavior is intentional | [Make intentional decisions visible](families/E-context-engineering/guides/clarify-domain-terms.md#make-an-intentional-decision-visible-at-the-edit) |
 
 For more phrasings and partial matches, see the [symptom bridge](../bridge-file.md). A matching symptom is not a confirmed diagnosis.
 

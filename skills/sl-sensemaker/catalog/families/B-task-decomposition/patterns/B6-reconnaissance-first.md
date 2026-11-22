@@ -1,5 +1,9 @@
 # B6: Reconnaissance-First
 
+## Related practitioner guidance
+
+Read [Assess before naming a fix](../../I-reliability-recovery/patterns/root-cause-before-retry.md#in-a-session-assess-before-naming-a-fix) for the corresponding manual session procedure and its applicability limits.
+
 ## Intent
 
 Conduct a bounded information-gathering pass before committing to any decomposition, so that the plan is built on observed reality rather than assumptions.

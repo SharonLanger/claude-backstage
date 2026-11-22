@@ -26,6 +26,18 @@ You can do the clarification in a conversation. Persisting a shared glossary or 
 
 If the agent later proposes deleting repeated scans, point it to the recorded rationale. If the underlying requirement changed, reconsider the decision explicitly rather than treating every old choice as permanent.
 
+## Make an intentional decision visible at the edit
+
+Use this when the agent replaces unusual code whose reason is already settled. You need editable project files; actual enforcement also requires control over checks or permissions.
+
+**Quick tip:** Put a short reason or reference near the affected code, link the governing decision, and identify a representative compatibility check. Ask the agent to explain the requirement before changing it. Inspect edits to the check as carefully as the implementation.
+
+Confirm the decision is still current. Use the existing decision record rather than duplicating its full history in comments. If it lives in an issue or external document, supply that location explicitly. Verify both the unusual case and ordinary behavior; a comment alone cannot block an edit. When the owner changes the requirement, update the record and affected check together.
+
+**Original illustration:** A parser accepts a legacy date format because supported archived exports still contain it. A nearby reference identifies that compatibility decision and its regression check. A proposed cleanup must preserve the legacy case unless support is explicitly withdrawn.
+
+This extends BP-09's decision-discovery advice. Pocock's decision records and cross-references support documenting rationale; Anthropic's [short guidance](https://code.claude.com/docs/en/best-practices#keep-claudemd-short) and [instruction/control distinction](https://code.claude.com/docs/en/best-practices#deterministic-and-non-deterministic-instructions) qualify what a note can do. The nearby reference, paired compatibility check, and illustration are catalog adaptations, not measured protection against every reversal. For protected verification use [D02](../../D-verification-evaluation/patterns/D02-test-before-done.md); for excessive write access see [AP10](../../../anti-patterns/AP10-overpowered-coding-agent.md). Source sections rechecked 2026-11-22.
+
 ## Limits
 
 This is a clarification procedure, not a model-control guarantee. It covers terminology and documented decisions, not every form of disagreement or abandoned proposal. For repeated conversational reversion after the requirement is clear, use [session recovery](../../I-reliability-recovery/patterns/fresh-context-retry.md#in-a-session-recover-decisions-without-losing-useful-work).

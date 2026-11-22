@@ -78,6 +78,10 @@ Connect each substantive claim to the source passage that supports it or label i
 |---|---|---|---|
 | 24 | Stanford | CS224G — Agentic Design Patterns | https://web.stanford.edu/class/cs224g/2025/lectures/Agentic_Design_Patterns.pdf |
 | 29 | Ivett Ördög / Samman Coaching | ROSE Feedback | https://sammancoaching.org/learning_hours/agentic_engineering/rose_feedback.html |
+| 31 | Nihal Jain et al. | On Mitigating Code LLM Hallucinations with API Documentation (2024 preprint v1) | https://arxiv.org/html/2407.09726v1 |
+| 32 | Theo X. Olausson et al. | Is Self-Repair a Silver Bullet for Code Generation? (ICLR 2024) | https://proceedings.iclr.cc/paper_files/paper/2024/file/9ddc141bdbf9d1db510cefff56c586ad-Paper-Conference.pdf |
+| 33 | Laura Counts / UC Berkeley Haas; interview with Xingqi Maggie Ye | AI promised to free up workers’ time. UC Berkeley Haas researchers found the opposite. (2026-02-18) | https://newsroom.haas.berkeley.edu/ai-promised-to-free-up-workers-time-uc-berkeley-haas-researchers-found-the-opposite/ |
+| 34 | Mrinank Sharma et al. | Towards Understanding Sycophancy in Language Models (v4) | https://arxiv.org/html/2310.13548v4 |
 
 ### Open Source
 
@@ -90,6 +94,8 @@ Sources 26–30 were checked on 2026-11-21 for the practitioner intake. They are
 
 ---
 
+Sources 31–34 and the reused sections of 26 and 28 were checked on 2026-11-22. Source 31 is the explicitly cited preprint version, not an additional independent study beside the later publication. Research observations, author advice, and catalog adaptations are distinguished in the entries. New text is paraphrased with attribution; examples are original. No source figures, tables, or code are copied.
+
 ## Family–Source Mapping
 
 Which sources are most relevant to each family. When writing a pattern file, cite from its family's primary sources first.
@@ -99,14 +105,14 @@ Which sources are most relevant to each family. When writing a pattern file, cit
 | **A — Workflow Topology** | 1, 5, 9, 12, 10 | Anthropic defines the topology taxonomy; Google/AWS/OpenAI/Microsoft validate it |
 | **B — Task Decomposition** | 1, 4, 9, 24, 26, 27 | Anthropic+Google define decomposition; OpenAI harness drives plan→execute; Stanford/Ng teaches planning; Pocock adds reviewable tickets |
 | **C — Orchestration** | 5, 8, 10, 9, 12 | OpenAI Symphony + Guide; Microsoft distributed-systems framing; Google coordinator patterns |
-| **D — Verification** | 3, 18, 19, 20, 21, 9, 26, 30 | Anthropic evals guide; Hamel/Shreya evaluation methodology; Google review/critique patterns; Moby gives project-specific contributor accountability |
+| **D — Verification** | 3, 18, 19, 20, 21, 9, 26, 30, 31 | Anthropic evals guide; Hamel/Shreya evaluation methodology; Google review/critique patterns; Moby gives project-specific contributor accountability; Jain et al. distinguish API invocation errors |
 | **E — Context Engineering** | 2, 4, 10, 9, 26, 28 | Anthropic coined context engineering; OpenAI map-not-manual; Microsoft minimal-context handoff; Pocock clarifies domain language; Anthropic covers session practice |
 | **F — Harness Engineering** | 4, 6, 7, 8 | OpenAI coined and defined harness engineering across 4 articles |
 | **G — Tool Design** | 5, 14, 12, 13 | OpenAI agent guide tool design; AWS MCP tool scope + agent patterns + security |
 | **H — Deterministic Control** | 13, 4, 1, 12 | AWS deterministic-override principle; OpenAI mechanical enforcement; Anthropic gate patterns |
-| **I — Reliability** | 12, 4, 9, 25, 26, 29 | AWS validation-retry + error classification; OpenAI bounded loops; Google loop termination; Anthropic session recovery; ROSE structures feedback |
+| **I — Reliability** | 12, 4, 9, 25, 26, 29, 32, 34 | AWS validation-retry + error classification; OpenAI bounded loops; Google loop termination; Anthropic session recovery; ROSE structures feedback; Olausson et al. compare repair budgets; Sharma et al. qualify user-led diagnosis |
 | **J — Security** | 22, 23, 15, 16, 17, 13 | Simon Willison lethal trifecta; OWASP agentic+LLM top 10 + injection; AWS security design |
-| **K — Human Control** | 9, 5, 10, 15 | Google human-in-the-loop; OpenAI guide; Microsoft human participation; OWASP oversight |
+| **K — Human Control** | 9, 5, 10, 15, 26, 33 | Google human-in-the-loop; OpenAI guide; Microsoft human participation; OWASP oversight; Anthropic describes clarification interviews; Ye offers attention-management advice |
 | **L — Memory & State** | 10, 13, 9, 4 | Microsoft external persistent state; AWS session isolation + shared memory; Google context persistence |
 | **M — Observability** | 10, 18, 19, 4 | Microsoft per-agent observability; Hamel trace-driven eval; OpenAI harness feedback loops |
 | **N — Efficiency & Routing** | 1, 9, 12, 25 | Anthropic routing pattern; Google cost/latency criteria; AWS confidence routing |
@@ -114,4 +120,4 @@ Which sources are most relevant to each family. When writing a pattern file, cit
 
 ---
 
-Last updated: 2026-11-21
+Last updated: 2026-11-22

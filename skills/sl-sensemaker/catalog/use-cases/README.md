@@ -4,6 +4,15 @@ Cross-cutting index for the AI/Agent Design Patterns catalog. Developers rarely 
 
 ---
 
+## Practical session routes
+
+- [Assess before naming a fix](../families/I-reliability-recovery/patterns/root-cause-before-retry.md#in-a-session-assess-before-naming-a-fix)
+- [Verify an unfamiliar API](../families/D-verification-evaluation/guides/verify-unfamiliar-api.md)
+- [Repair or a fresh attempt](../families/I-reliability-recovery/guides/repair-or-fresh-attempt.md)
+- [Clarify an idea](../families/K-human-control/guides/clarify-an-idea.md)
+- [Manage review overload](../families/K-human-control/guides/manage-review-overload.md)
+- [Make intentional decisions visible](../families/E-context-engineering/guides/clarify-domain-terms.md#make-an-intentional-decision-visible-at-the-edit)
+
 ## Directory Tree
 
 ```
@@ -145,4 +154,4 @@ Arrive with a scenario. Find your families and watch out for the anti-patterns l
 
 ---
 
-Last updated: 2026-08-24
+Last updated: 2026-11-22

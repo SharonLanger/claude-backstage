@@ -1,5 +1,9 @@
 # Tool Calls Failing, Misused, or Producing Errors
 
+## Practitioner routes
+
+- [Verify an unfamiliar API](../../families/D-verification-evaluation/guides/verify-unfamiliar-api.md)
+
 ## Scenario
 
 Your agent's tool calls are failing (errors, timeouts, permission denied), the agent is calling tools incorrectly (wrong parameters, wrong tool for the task), or tool results are unexpected. The agent may be retrying fruitlessly, hallucinating tool names, or misinterpreting tool outputs.

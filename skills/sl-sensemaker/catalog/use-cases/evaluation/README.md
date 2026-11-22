@@ -10,6 +10,10 @@ evaluation/
 └── evals-from-errors.md    ← building evals from production failures
 ```
 
+## Practical session routes
+
+- [Make intentional decisions visible](../../families/E-context-engineering/guides/clarify-domain-terms.md#make-an-intentional-decision-visible-at-the-edit)
+
 ## File descriptions
 
 - **evaluating-agents.md** — How to measure if an agent system is working; maps to families D, M; source: Hamel Husain & Shreya Shankar methodology
@@ -29,4 +33,4 @@ Use this folder when you need to assess, test, or improve the quality of an agen
 | "I have real production failures — how do I turn them into tests?" | `evals-from-errors.md` |
 | "My evals feel generic and not catching real issues" | `evals-from-errors.md` |
 
-Last updated: 2026-08-24
+Last updated: 2026-11-22

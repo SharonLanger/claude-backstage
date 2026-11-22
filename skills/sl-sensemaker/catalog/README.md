@@ -8,6 +8,10 @@ A catalog of reusable guidance for people working with LLMs and coding agents, i
 
 ---
 
+## Practical coverage
+
+The catalog contains 278 Markdown files, including 137 patterns and 13 guides. Session routes include diagnosis framing, API verification, repair-versus-fresh selection, clarification interviews, review overload, and intentional decision visibility. Start at the [session lookup](catalog-lookup.md#working-with-an-assistant-in-a-session) for canonical entries and limits.
+
 ## What's In This Catalog
 
 ```
@@ -105,4 +109,4 @@ research-ai-design-patterns/
 
 ---
 
-Last updated: 2026-11-19
+Last updated: 2026-11-22

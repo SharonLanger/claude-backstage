@@ -1,5 +1,10 @@
 # Deciding When Agents Should Pause for Human Input
 
+## Practitioner routes
+
+- [Clarify an idea](../../families/K-human-control/guides/clarify-an-idea.md)
+- [Manage review overload](../../families/K-human-control/guides/manage-review-overload.md)
+
 ## Scenario
 
 You are designing an agent system and need to determine where to insert human checkpoints — points where the agent stops and waits for human review, approval, or guidance. Too few checkpoints risk dangerous autonomous actions; too many create bottlenecks that negate the value of automation.
