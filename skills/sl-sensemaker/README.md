@@ -1,8 +1,33 @@
-# SL Sensemaker
+# 🧭 SL Sensemaker
 
-**Understand the problem. Discover better ways to work.**
+**Your agent did what you asked. Somehow, that wasn’t what you meant.**
+
+Describe what happened. Untangle the problem. Find something useful to try next.
 
 Start with `/sl-sensemaker` and describe something you’re running into while working with an LLM or AI agent. Sensemaker asks questions until it understands what happened and what you want to achieve. Then it suggests a practical next step, shows you the catalog entry behind it, and tells you where the evidence runs out.
+
+## 💬 Sound familiar? Try asking…
+
+| | Start here |
+|---|---|
+| 🤝 **Too agreeable?** | “It agrees with every diagnosis I suggest. How do I get a useful second opinion?” |
+| 👻 **Imaginary APIs?** | “That method doesn’t exist. This is the third time. What should I do differently?” |
+| 🔁 **Another fix, another failure?** | “We keep patching the same thing. When should I try a fresh approach?” |
+| 💭 **An idea you can’t quite explain?** | “Help me figure out what I mean before the agent starts building it.” |
+| 🧩 **Too many tasks, one brain?** | “I delegated five things. Now everything is waiting for me.” |
+| 🛑 **‘Improved’ right into a regression?** | “That strange-looking code was intentional. How do I stop it being rewritten?” |
+
+## 🔎 Choose how deep to go
+
+> “Give me one practical tip.”
+
+> “Show me what I could say to my agent.”
+
+> “Walk me through an example.”
+
+> “Explain why this helps and show me the source.”
+
+**You don’t need to know the pattern’s name. Start with the frustration.**
 
 ## Try a conversation
 
